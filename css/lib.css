@@ -1,0 +1,33 @@
+* {
+    margin: auto;
+}
+
+:root {
+    --ghost_bg: #50505080;
+    --oceanicGreen: #01f870;
+}
+
+.fix {
+    position: fixed;
+}
+
+.flex {
+    display: flex;
+}
+
+.center {
+    align-items: center;
+    justify-content: center;
+}
+
+.grid {
+    display: grid;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.h100 {
+    height: 100vh;
+}

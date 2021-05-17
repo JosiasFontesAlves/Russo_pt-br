@@ -1,2 +1,61 @@
 @import url(./lib.css);
 
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    text-align: center;
+}
+
+header {
+    top: 0;
+    z-index: -1;
+    padding: 5px;
+}
+
+#container {
+    grid-template-columns: repeat(3, auto);
+}
+
+.blocos {
+    width: 30vw;
+    height: 15vw;
+    margin: 0.7vw;
+    border: 1px solid;
+}
+
+#bl_0 {
+    width: 93.2vw;
+    height: fit-content;
+    display: flex;
+    grid-area: 1 / span 3;
+    align-items: center;
+    justify-content: center;
+}
+
+#txt {
+    width: 80vw;
+    position: fixed;
+}
+
+#ok {
+    color: white;
+    width:  30px;
+    height: 30px;
+    margin: 3px;
+    border: none;
+    transform: translateX(40vw);
+    background: red;
+    box-shadow: 0px 2px 7px var(--ghost_bg);
+    border-radius: 50%;
+}
+
+#ok:hover {
+    box-shadow: 1px 5px 7px red;
+}
+
+footer {
+    bottom: 0;
+    font-size: 10px;
+}

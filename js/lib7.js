@@ -445,10 +445,10 @@ const slider = (local, id, [larg, alt], fotos, vel) => {
 */
 export function grid(classe, qtde, id) {
     let el = document.getElementById('container');
+    el.classList += 'grid';
     for (let i = 0; i < qtde; i++) {
-        el.classList = 'grid';
         el.innerHTML += `<div class="${classe}"></div>`;
-        if (arguments.length == 3) [...document.getElementsByClassName(arguments[0])][i].id = `${id}${i}`;
+        if (arguments.length >= 3) [...document.getElementsByClassName(arguments[0])][i].id = `${id}${i}`;
     }
 }
 

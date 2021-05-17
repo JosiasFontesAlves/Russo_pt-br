@@ -19,10 +19,11 @@ header {
 }
 
 .blocos {
-    width: 30vw;
-    height: 15vw;
+    width: 25vw;
+    height: fit-content;
     margin: 0.7vw;
     border: 1px solid;
+    padding: 5px;
 }
 
 #bl_0 {
@@ -37,13 +38,16 @@ header {
     justify-content: center;
 }
 
-#bl_1 {
-    grid-area: 2 / span 3;
+input {
+    border: 1px solid;
+    outline: none;
 }
 
 #txt {
-    width: 80vw;
+    width: 50vw;
     position: fixed;
+    padding: 2px;
+    border-radius: 8.7px;
 }
 
 #ok {
@@ -52,14 +56,18 @@ header {
     height: 30px;
     margin: 3px;
     border: none;
-    transform: translateX(40vw);
+    transform: translateX(25.3vw);
     background: red;
-    box-shadow: 0px 2px 7px var(--ghost_bg);
+    box-shadow: var(--neon) var(--ghost_bg);
     border-radius: 50%;
 }
 
 #ok:hover {
-    box-shadow: 1px 5px 7px red;
+    box-shadow: var(--neon) red;
+}
+
+#bl_1 {
+    grid-area: 2 / span 3;
 }
 
 footer {

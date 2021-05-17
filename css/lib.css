@@ -3,7 +3,9 @@
 }
 
 :root {
+    --neon: 1px 1px 10px 2px;
     --ghost_bg: #50505080;
+    --oceanicBlue: #00ccff;
     --oceanicGreen: #01f870;
 }
 

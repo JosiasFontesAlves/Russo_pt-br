@@ -11,4 +11,6 @@ kreatto(
 
 ['header', 'footer'].forEach(el => addClass({ elems: [sElem(el)], classe: 'fix w100' }));
 
-texto({ id: 'title', texto: 'Dicionário de russo' }, { id: 'copyright', texto: 'Matsa &copy; 2021' });
+texto(
+    { id: 'bl_2', texto: '<a href="#"> Meses do ano </a>' }, { id: 'title', texto: 'Dicionário de russo' }, { id: 'copyright', texto: 'Matsa &copy; 2021' }
+);

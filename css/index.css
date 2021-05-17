@@ -26,12 +26,19 @@ header {
 }
 
 #bl_0 {
+    grid-area: 1 / span 3;
+}
+
+#bl_0, #bl_1 {
     width: 93.2vw;
     height: fit-content;
     display: flex;
-    grid-area: 1 / span 3;
     align-items: center;
     justify-content: center;
+}
+
+#bl_1 {
+    grid-area: 2 / span 3;
 }
 
 #txt {
@@ -41,7 +48,7 @@ header {
 
 #ok {
     color: white;
-    width:  30px;
+    width: 30px;
     height: 30px;
     margin: 3px;
     border: none;

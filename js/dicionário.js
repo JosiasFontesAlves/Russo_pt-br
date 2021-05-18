@@ -1,4 +1,4 @@
-export default dicionário = {
+export const dicionário = {
     endereço: 'Адрес', aeroporto: 'Аэропорт', rodoviária: 'Автовокзал', ser: 'Быть', sem: 'без', papel: 'Бумага', pegar: 'Брать', sauna: 'баня',
     arremessar: 'бросить', abismo: 'бездна', irmãos: 'братья', quadris: 'бëдра', piscina: 'бассейн', irritar: 'бесить', reserva: 'бронирование',
     reservar: 'бронировать', desgraça: 'бедa', agradecer: 'благодарить', insanamente: 'безумно', sair: 'выйти', cume: 'Вершина', cair: 'выпасть',

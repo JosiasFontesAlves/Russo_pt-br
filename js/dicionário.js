@@ -9,5 +9,6 @@ export const dicionário = {
     realmente: 'действительно', acrescentar: 'добавить', naturalmente: 'естественно', estômago: 'желудок', reclamar: 'жаловаться', tocar: 'Затронуть',
     trocar: 'заменить', adoecer: 'заболеть', congelar: 'замерзнуть', proteger: 'защищать', adormecer: 'заснуть', mudar: 'изменить', evitar: 'избегать',
     pele: 'Кожа', grito: 'крик', joelho: 'Колень', balançar: 'качать', alimentar: 'кормить', caçar: 'ловить', banquisa: 'льдина', tratamento: 'Лечение',
-    selo: 'марка', bebê: 'Младенец', sonhar: 'мечтать', nativo: 'местный', opinião: 'мнение', falso: 'Неверный(ая)', cobrir: 'накрывать', cortar: 'нарезать', injusto: 'нечестный', chatear: 'наскучить', observar: 'наблюдать', pernoitar: 'ночевать', necessário: 'Необходимо'
+    selo: 'марка', bebê: 'Младенец', sonhar: 'мечтать', nativo: 'местный', opinião: 'мнение', falso: 'Неверный(ая)', cobrir: 'накрывать', 
+    cortar: 'нарезать',  injusto: 'нечестный', chatear: 'наскучить', observar: 'наблюдать', pernoitar: 'ночевать', necessário: 'Необходимо'
 }

@@ -9,7 +9,7 @@
     * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-var versão = '2.0.9';
+var versão = '2.1.5';
 
 /** 
 * @param {string} local
@@ -42,8 +42,8 @@ export function criarBotão(local, idBtn, estilo, cor) {
             break;
 
         case 4:
-            borda = `width: 50px; height: 15px; border-radius: 20px; transform: translateY(10px); background: darkred;`;
-            botão = `width: 25px; height: 25px; position: fixed; background: red; transform: translate(0, -20%); align-items: center; border-radius: 50%;`;
+            borda = `width: 50px; height: 15px; background: darkred; border-radius: 25px; display: flex; align-items: center`;
+            botão = `width: 25px; height: 25px; background: red; border-radius: 50%;`;
             break;
 
         case 5:
@@ -59,7 +59,7 @@ export function criarBotão(local, idBtn, estilo, cor) {
         default: console.error(`o método CriarBotão() requer um parâmetro do tipo int -> \n 0 -> botão redondo
         \n 1 -> botão quadrado \n 2 -> botão redondo flutuante \n 3 -> botão quadrado com borda redonda`);
     }
-    document.getElementById(`${local}`).innerHTML = `<div style="${borda};"> <div id="${idBtn}" style="${botão}"> </div> </div>`;
+    document.getElementById(`${local}`).innerHTML = `<div style="${borda};"> <div id="${idBtn}" style="${botão} position: fixed;"> </div> </div>`;
 } /* ----- Lib de botões ----- */
 
 export class Tempus {
@@ -194,9 +194,9 @@ export function temEsc(id, pos) {
     document.getElementById(id).addEventListener('click', function () {
         const { body } = document, { style } = this;
         if (pos.length <= 2) {
-            style.transform == `translate(0%)` && style.background == 'white'
-                ? (style.transform = `translate(${pos})`, style.background = 'black')
-                : (style.transform = `translate(0%)`, style.background = 'white');
+            style.transform == `translate(0%)` && body.style.background == 'white'
+                ? (style.transform = `translate(${pos})`, body.style.background = 'black')
+                : (style.transform = `translate(0%)`, body.style.background = 'white');
         }
     });
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
@@ -206,12 +206,9 @@ export function temEsc(id, pos) {
 * @param {number} px 
 */
 export function menuLateral(id, px) {
-    let lat = document.querySelector('aside');
-    lat.style.transform = `translateX(-${px}px)`;
-
-    document.getElementById(id).addEventListener('click', function () {
-        lat.style.transform == `translateX(-${px}px)` ? lat.style.transform = 'translateX(0)' : lat.style.transform = `translateX(-${px}px)`;
-    });
+    const { style } = document.querySelector('aside'), pos = [`translateX(-${px}px)`, 'translateX(0)'];
+    style.transform = pos[0];
+    document.getElementById(id).addEventListener('click', () => style.transform == pos[0] ? style.transform = pos[1] : style.transform = pos[0]);
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
@@ -236,7 +233,7 @@ export function kreatto(elems) {
                         }
                     }
                 }
-            }
+            } else inject(`<${tag[t]}></${tag[t]}>`);
         }
     });
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
@@ -305,7 +302,6 @@ export class Animatus {
 
     static barr(id, pxMax, vel) {
         let px = 0, b = this.a(id);
-
         setInterval(() => (b.style.width != `${pxMax}px`) ? b.style.width = `${px++}px` : '', vel);
     }
 
@@ -380,6 +376,7 @@ export function jacss() {
  * @param {object} arguments
  * @param {string} arguments.local
  * @param {string[]} arguments.lista
+ * @param {string} arguments.el
  */
 export function criarLista([local, lista, el]) {
     [...arguments].forEach(x => x[1].forEach(l => document.getElementById(x[0]).innerHTML += `<${x[2]}> ${l} </${x[2]}>`));
@@ -417,7 +414,7 @@ export const forAninhado = (varCtrl, obj, fn) => {
             fn();
         }
     }
-}
+} /* --------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
  * @param {string} local 
@@ -428,7 +425,7 @@ export const forAninhado = (varCtrl, obj, fn) => {
  * @param {string[]} fotos
  * @param {number} vel
  */
-const slider = (local, id, [larg, alt], fotos, vel) => {
+export const slider = (local, id, [larg, alt], fotos, vel) => {
     let s = `width: ${larg}; height: ${alt}; border: 1px solid; border-radius: 7px; background-image: url(img_8.jpg); background-size: cover;`, ctrl = 0;
     document.querySelector(local).innerHTML += `<div id="${id}" style="${s[0]}"></div>`;
 
@@ -436,13 +433,13 @@ const slider = (local, id, [larg, alt], fotos, vel) => {
         document.getElementById(id).style.backgroundImage = `url(${fotos[ctrl++]})`;
         if (ctrl >= fts.length) ctrl = 0;
     }, vel);
-}
+} /* --------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
  * @param {string} classe 
  * @param {number} qtde 
  * @param {string} id
-*/
+ */
 export function grid(classe, qtde, id) {
     let el = document.getElementById('container');
     el.classList += 'grid';
@@ -450,6 +447,6 @@ export function grid(classe, qtde, id) {
         el.innerHTML += `<div class="${classe}"></div>`;
         if (arguments.length >= 3) [...document.getElementsByClassName(arguments[0])][i].id = `${id}${i}`;
     }
-}
+} /* --------------------------------------------------------------------------------------------------------------------------------- */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2021\nCriada por Josias Fontes Alves`);

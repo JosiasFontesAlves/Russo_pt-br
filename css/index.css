@@ -1,6 +1,7 @@
 @import url(./lib.css);
 
 * {
+    transition: 0.5s;
     font-family: Arial, Helvetica, sans-serif;
 }
 

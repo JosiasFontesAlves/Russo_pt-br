@@ -2,7 +2,7 @@ import { addClass, criarLista, grid, kreatto, sElem, templatr, texto } from "./l
 
 templatr('header', { section: { id: 'container' } }, 'footer');
 
-grid('blocos', 5, 'bl_');
+grid('blocos', 4, 'bl_');
 
 kreatto(
     { header: 'h1 id="title"' },

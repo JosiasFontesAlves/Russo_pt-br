@@ -1,0 +1,37 @@
+@import url(./lib.css);
+
+body {
+    text-align: center;
+}
+
+header {
+    top: 0;
+    flex-wrap: wrap;
+    font-family: 'work sans';
+}
+
+input {
+    outline: none;
+}
+
+#cx_pesquisa {
+    width: 80%;
+    border: 1px solid;
+    padding: 5px;
+    border-radius: 25px;
+}
+
+#ok {
+    width:  40px;
+    height: 40px;
+    border: none;
+    background: #c4c4c4;
+    transform: translateX(40vw);
+    box-shadow: var(--neon2) var(--ghost_bg);
+    border-radius: 50%;
+}
+
+#ok:hover {
+    background: var(--oceanicGreen);
+    box-shadow: var(--neon) var(--oceanicGreen);
+}

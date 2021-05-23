@@ -402,19 +402,7 @@ export function addId([classe, id]) {
         }
     });
 }
-
-/**
- * @param {string[]} varCtrl 
- * @param {object} obj 
- * @param {function} fn 
- */
-export const forAninhado = (varCtrl, obj, fn) => {
-    for (varctrl[0] in obj) {
-        for (varctrl[1] in obj[varCtrl[1]]) {
-            fn();
-        }
-    }
-} /* --------------------------------------------------------------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
  * @param {string} local 

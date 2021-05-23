@@ -2,12 +2,24 @@
 
 body {
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
-    top: 0;
-    flex-wrap: wrap;
-    font-family: 'work sans';
+    margin: 50px;
+    font-family: 'roboto mono';
+}
+
+#bl_0 {
+   z-index: -1;
+}
+
+#bl_1 {
+    width: 95%;
+    margin: 30px;
+    font-size: 20px;
+    border-radius: 15px;
+    background: white;
 }
 
 input {

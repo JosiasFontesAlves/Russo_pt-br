@@ -1,22 +1,18 @@
 @import url(./lib.css);
 
-body {
+* {
+    padding: 5px;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:  'work sans', sans-serif;
 }
 
 header {
     margin: 50px;
-    font-family: 'roboto mono';
+    font-family: 'roboto mono', sans-serif;
 }
 
 #cx {
    z-index: -1;
-}
-
-#container {
-    margin: 35px;
-    grid-template-columns: repeat(4, auto);
 }
 
 input {
@@ -43,4 +39,8 @@ input {
 #ok:hover {
     background: var(--oceanicGreen);
     box-shadow: var(--neon) var(--oceanicGreen);
+}
+
+#container {
+    grid-template-columns: repeat(2, auto);
 }

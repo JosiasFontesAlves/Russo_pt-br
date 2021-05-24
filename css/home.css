@@ -10,16 +10,13 @@ header {
     font-family: 'roboto mono';
 }
 
-#bl_0 {
+#cx {
    z-index: -1;
 }
 
-#bl_1 {
-    width: 95%;
-    margin: 30px;
-    font-size: 20px;
-    border-radius: 15px;
-    background: white;
+#container {
+    margin: 35px;
+    grid-template-columns: repeat(4, auto);
 }
 
 input {

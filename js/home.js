@@ -12,4 +12,3 @@ grid('blocos', 24, 'bl_');
 addClass({ elems: [selek('cx')], classe: 'flex center' }, { elems: [selek('cx_pesquisa'), selek('ok')], classe: ' fix' });
 
 texto({ id: 'ttl', texto: 'Dicionário de russo' });
-

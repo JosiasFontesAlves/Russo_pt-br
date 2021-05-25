@@ -29,7 +29,7 @@ export const dicionário2 = {
         irmãos: 'братья', irritar: 'бесить', insanamente: 'безумно', imaginação: 'воображение', injusto: 'нечестный',
     },
     J: {
-
+        joelho: 'Колень',
     },
     K: {
 
@@ -44,28 +44,29 @@ export const dicionário2 = {
         naturalmente: 'естественно', nativo: 'местный', necessário: 'Необходимо',
     },
     O: {
-
+        opinar: 'высказать', opinião: 'мнение', observar: 'наблюдать',
     },
     P: {
-
+        pele: 'Кожа', pernoitar: 'ночевать', pegar: 'Брать / взять', piscina: 'бассейн', papel: 'Бумага', precisar: 'должен(а/о/ы)', proteger: 'защищать',
     },
     Q: {
-
+        quadris: 'бëдра',
     },
     R: {
-
+        rodoviária: 'Автовокзал', reclamar: 'жаловаться', realmente: 'действительно', relatório: 'доклад', realizar: 'выполнить', reservar: 'бронировать',
+        reserva: 'бронирование',
     },
     S: {
-
+        ser: 'Быть', sem: 'без', sauna: 'баня', sair: 'выйти', selo: 'марка', sonhar: 'мечтать',
     },
     T: {
-
+        tocar: 'Затронуть', transportar: 'водить', tratamento: 'Лечение', trocar: 'заменить',
     },
     U: {
 
     },
     V: {
-
+        visão: 'зрение',
     },
     X: {
 

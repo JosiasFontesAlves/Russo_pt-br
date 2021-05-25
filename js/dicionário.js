@@ -1,8 +1,8 @@
 export const dicionário = {
-    endereço: 'Адрес', aeroporto: 'Аэропорт', rodoviária: 'Автовокзал', ser: 'Быть', sem: 'без', papel: 'Бумага', pegar: 'Брать', sauna: 'баня',
+    endereço: 'Адрес', aeroporto: 'Аэропорт', rodoviária: 'Автовокзал', ser: 'Быть', sem: 'без', papel: 'Бумага', pegar: 'Брать / взять', sauna: 'баня',
     arremessar: 'бросить', abismo: 'бездна', irmãos: 'братья', quadris: 'бëдра', piscina: 'бассейн', irritar: 'бесить', reserva: 'бронирование',
     reservar: 'бронировать', desgraça: 'бедa', agradecer: 'благодарить', insanamente: 'безумно', sair: 'выйти', cume: 'Вершина', cair: 'выпасть',
-    ligar: 'включать', pegar: 'взять', opinar: 'высказать', durante: 'в течение', chamada: 'вызов', lembrar: 'вспоминать', conhecer: 'встречать',
+    ligar: 'включать', opinar: 'высказать', durante: 'в течение', chamada: 'вызов', lembrar: 'вспоминать', conhecer: 'встречать',
     realizar: 'выполнить', levantar: 'вставать', imaginação: 'воображение', alegremente: 'весело', transportar: 'водить', merda: 'гавно (adj)',
     cidade: 'город', gramado: 'газон', garganta: 'горло/глотка', casa: 'дом', além: 'дальше', mexer: 'двигаться', buraco: 'дырка', amizade: 'дружба',
     alcançar: 'достать / доставать', precisar: 'должен(а/о/ы)', conseguir: 'достичь', relatório: 'доклад', evidência: 'доказательство', visão: 'зрение',

@@ -1,4 +1,5 @@
 @import url(./lib.css);
+
 body {
     padding: 7px;
     text-align: center;
@@ -10,13 +11,10 @@ header {
     top: 0;
     left: 0;
     z-index: 1;
+    border: 1px solid var(--vidro);
     padding: 7px;
     text-align: left;
     box-shadow: var(--neon) var(--ghost_bg);
-}
-
-header, #cx_pesquisa {
-    border: 1px solid var(--vidro);
     background: var(--vidro);
     backdrop-filter: blur(2px);
 }
@@ -29,41 +27,8 @@ h2 {
     margin: 10px;
 }
 
-#cx {
-    transform: translateY(-60px);
-}
-
-input {
-    outline: none;
-}
-
-#cx_pesquisa {
-    width: 80%;
-    padding: 5px;
-    border-radius: 25px;
-}
-
-#cx_pesquisa:focus {
-    box-shadow: var(--neon) var(--oceanicGreen);
-}
-
-#ok {
-    width: 40px;
-    height: 40px;
-    border: none;
-    transform: translateX(40vw);
-    background: #a1a1a1;
-    box-shadow: var(--neon2) var(--ghost_bg);
-    border-radius: 50%;
-}
-
-#ok:hover {
-    background: var(--oceanicGreen);
-    box-shadow: var(--neon) var(--oceanicGreen);
-}
-
 #container {
-    margin-top: 200px;
+    margin-top: 80px;
     grid-template-columns: repeat(2, auto);
 }
 

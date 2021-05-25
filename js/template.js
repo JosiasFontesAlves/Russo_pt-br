@@ -1,19 +1,16 @@
 import { dicionário as dsk } from "./dicionário.js";
-import { addClass, criarLista, grid, kreatto, selek, sElem, templatr, texto } from "./lib7.js";
+import { addClass, criarLista, grid, kreatto, sElem, templatr, texto } from "./lib7.js";
 
 templatr('header', { main: { class: 'w100' } }, 'footer');
 
 kreatto(
     { header: 'h1 id="ttl"' }, { main: [{ section: { id: 'cx', class: 'fix flex center w100' } }, { section: { id: 'container' } }] },
-    { '#cx': [{ input: { type: 'text', id: 'cx_pesquisa' } }, { input: { type: 'button', id: 'ok', value: '=>' } }] }, { footer: 'p id="mts"' }
+    { footer: 'p id="mts"' }
 );
 
 grid('blocos', 24, 'bl_');
 
-addClass(
-    { elems: [sElem('header'), sElem('footer')], classe: 'w100' },
-    { elems: [selek('cx_pesquisa'), selek('ok'), sElem('header'), sElem('footer')], classe: ' fix' }
-);
+addClass({ elems: [sElem('header'), sElem('footer')], classe: 'w100 fix' });
 
 texto({ id: 'ttl', texto: 'Dicionário de russo' }, { id: 'mts', texto: '<p> Josias Fontes Alves - Matsa &copy; 2021</p>' });
 

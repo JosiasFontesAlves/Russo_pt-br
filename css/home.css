@@ -1,18 +1,35 @@
 @import url(./lib.css);
-
-* {
-    padding: 5px;
+body {
+    padding: 7px;
     text-align: center;
-    font-family:  'work sans', sans-serif;
+    text-shadow: var(--neon2) var(--ghost_bg);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
-    margin: 50px;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    padding: 7px;
+    text-align: left;
+    background: var(--vidro);
+}
+
+header, #cx_pesquisa {
+    backdrop-filter: blur(2px);
+}
+
+header, h2 {
     font-family: 'roboto mono', sans-serif;
 }
 
+h2 {
+    margin: 10px;
+}
+
 #cx {
-   z-index: -1;
+    
+    transform: translateY(-60px);
 }
 
 input {
@@ -23,11 +40,12 @@ input {
     width: 80%;
     border: 1px solid;
     padding: 5px;
+    background: var(--vidro);
     border-radius: 25px;
 }
 
 #ok {
-    width:  40px;
+    width: 40px;
     height: 40px;
     border: none;
     background: #c4c4c4;
@@ -42,5 +60,6 @@ input {
 }
 
 #container {
+    margin-top: 200px;
     grid-template-columns: repeat(2, auto);
 }

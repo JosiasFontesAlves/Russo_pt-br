@@ -12,10 +12,12 @@ header {
     z-index: 1;
     padding: 7px;
     text-align: left;
-    background: var(--vidro);
+    box-shadow: var(--neon) var(--ghost_bg);
 }
 
 header, #cx_pesquisa {
+    border: 1px solid var(--vidro);
+    background: var(--vidro);
     backdrop-filter: blur(2px);
 }
 
@@ -28,7 +30,6 @@ h2 {
 }
 
 #cx {
-    
     transform: translateY(-60px);
 }
 
@@ -38,18 +39,20 @@ input {
 
 #cx_pesquisa {
     width: 80%;
-    border: 1px solid;
     padding: 5px;
-    background: var(--vidro);
     border-radius: 25px;
+}
+
+#cx_pesquisa:focus {
+    box-shadow: var(--neon) var(--oceanicGreen);
 }
 
 #ok {
     width: 40px;
     height: 40px;
     border: none;
-    background: #c4c4c4;
     transform: translateX(40vw);
+    background: #a1a1a1;
     box-shadow: var(--neon2) var(--ghost_bg);
     border-radius: 50%;
 }
@@ -62,4 +65,21 @@ input {
 #container {
     margin-top: 200px;
     grid-template-columns: repeat(2, auto);
+}
+
+.blocos {
+    margin: 7px;
+    padding: 10px;
+    border: 2px solid var(--vidro);
+    box-shadow: var(--neon) var(--vidro);
+    border-radius: 5px;
+}
+
+footer {
+    bottom: 0;
+    padding: 3px;
+}
+
+#mts {
+    font-size: 10px;
 }

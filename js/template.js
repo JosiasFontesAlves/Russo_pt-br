@@ -1,7 +1,7 @@
-import { addClass, criarLista, grid, kreatto, selek, templatr, texto } from "./lib7.js";
+import { addClass, criarLista, grid, kreatto, selek, sElem, templatr, texto } from "./lib7.js";
 import { dicionário2 } from "./dicionário2.js";
 
-templatr({ header: { class: 'fix w100' } }, { main: { class: 'w100' } }, 'footer');
+templatr('header', { main: { class: 'w100' } }, 'footer');
 
 kreatto(
     { header: 'h1 id="ttl"' }, { main: [{ section: { id: 'cx', class: 'fix flex center w100' } }, { section: { id: 'container' } }] },
@@ -10,9 +10,12 @@ kreatto(
 
 grid('blocos', 24, 'bl_');
 
-addClass({ elems: [selek('cx_pesquisa'), selek('ok')], classe: ' fix' });
+addClass(
+    { elems: [sElem('header'), sElem('footer')], classe: 'w100' },
+    { elems: [selek('cx_pesquisa'), selek('ok'), sElem('header'), sElem('footer')], classe: ' fix' }
+);
 
-texto({ id: 'ttl', texto: 'Dicionário de russo' });
+texto({ id: 'ttl', texto: 'Dicionário de russo' }, { id: 'mts', texto: '<p>Matsa &copy; 2021</p>' });
 
 let ctrl = 0;
 

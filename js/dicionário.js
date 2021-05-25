@@ -1,77 +1,79 @@
 export const dicionário = {
     A: {
-        aeroporto: 'Аэропорт', arremessar: 'бросить', abismo: 'бездна', agradecer: 'благодарить', alegremente: 'весело', além: 'дальше', amizade: 'дружба',
-        alcançar: 'достать / доставать', acrescentar: 'добавить', adoecer: 'заболеть', adormecer: 'заснуть', alimentar: 'кормить',
+        abacate: 'авокадо', abacaxi: 'ананас', abaixar: 'опускать', aberto: 'открытый', abismo: 'бездна', abril: 'апрель', abandonar: 'оставлять',
+        acrescentar: 'добавить', adoecer: 'заболеть', adormecer: 'заснуть', aeroporto: 'Аэропорт', agosto: 'август', agradecer: 'благодарить',
+        alcançar: 'достать / доставать', alegremente: 'весело', além: 'дальше', alimentar: 'кормить', amizade: 'дружба', arremessar: 'бросить',
     },
     B: {
-        buraco: 'дырка', balançar: 'качать', banquisa: 'льдина', bebê: 'Младенец',
+        balançar: 'качать', banheiro: 'ванная комната', banquisa: 'льдина', barba: 'борода', barco: 'корабль ', bastante: 'достаточно', bebê: 'Младенец',
+        buraco: 'дырка', buscar: 'искать',
     },
     C: {
-        cume: 'Вершина', cair: 'выпасть', chamada: 'вызов', conhecer: 'встречать', cidade: 'город', casa: 'дом', conseguir: 'достичь', cobrir: 'накрывать',
-        congelar: 'замерзнуть', caçar: 'ловить', cortar: 'нарезать', chatear: 'наскучить',
+        cabeça: 'голова', cabelo: 'волос', caçar: 'ловить', cair: 'выпасть', carro: 'машина', casa: 'дом', cidade: 'город', conhecer: 'встречать',
+        conseguir: 'достичь', cobrir: 'накрывать', congelar: 'замерзнуть', cortar: 'нарезать', chamada: 'вызов', chapéu: 'шляпа', chatear: 'наскучить',
+        cume: 'Вершина',
     },
     D: {
-        desgraça: 'бедa', durante: 'в течение',
+        desgraça: 'бедa', dezembro: 'декабрь', domingo: 'воскресенье', durante: 'в течение',
     },
     E: {
-        endereço: 'Адрес', evidência: 'доказательство', estômago: 'желудок', evitar: 'избегать',
+        endereço: 'Адрес', estômago: 'желудок', evidência: 'доказательство', evitar: 'избегать',
     },
     F: {
-        falso: 'Неверный(ая)',
+        faca: 'нож', fevereiro: 'февраль', falso: 'Неверный(ая)',
     },
     G: {
-        gramado: 'газон', garganta: 'горло/глотка', grito: 'крик',
+        garganta: 'горло/глотка', gramado: 'газон', grito: 'крик',
     },
     H: {
-
+       homem: 'мужчина', hora: 'час', hospital: 'больница',
     },
     I: {
-        irmãos: 'братья', irritar: 'бесить', insanamente: 'безумно', imaginação: 'воображение', injusto: 'нечестный',
+        imaginação: 'воображение', insanamente: 'безумно', injusto: 'нечестный', irmãos: 'братья', irritar: 'бесить',
     },
     J: {
-        joelho: 'Колень',
-    },
-    K: {
-
+        janeiro: 'январь', joelho: 'Колень', junho: 'июнь', julho: 'июль',
     },
     L: {
         ligar: 'включать', lembrar: 'вспоминать', levantar: 'вставать',
     },
     M: {
-        merda: 'гавно (adj)', mexer: 'двигаться', mudar: 'изменить',
+        maio: 'май', março: 'март', merda: 'гавно (adj)', mexer: 'двигаться', mudar: 'изменить', mulher: 'женщина',
     },
     N: {
-        naturalmente: 'естественно', nativo: 'местный', necessário: 'Необходимо',
+        naturalmente: 'естественно', nativo: 'местный', necessário: 'Необходимо', novembro: 'ноябрь',
     },
     O: {
-        opinar: 'высказать', opinião: 'мнение', observar: 'наблюдать',
+        opinar: 'высказать', opinião: 'мнение', observar: 'наблюдать', outubro: 'октябрь',
     },
     P: {
         pele: 'Кожа', pernoitar: 'ночевать', pegar: 'Брать / взять', piscina: 'бассейн', papel: 'Бумага', precisar: 'должен(а/о/ы)', proteger: 'защищать',
+        pessoa: 'человек'
     },
     Q: {
-        quadris: 'бëдра',
+        quadris: 'бëдра', 'quarta-feira ': 'среда', 'quinta-feira ': 'четверг',
     },
     R: {
-        rodoviária: 'Автовокзал', reclamar: 'жаловаться', realmente: 'действительно', relatório: 'доклад', realizar: 'выполнить', reservar: 'бронировать',
-        reserva: 'бронирование',
+        rainha: 'королева', realizar: 'выполнить', realmente: 'действительно', reclamar: 'жаловаться', rei: 'король', relatório: 'доклад',
+        reserva: 'бронирование', reservar: 'бронировать', rodoviária: 'Автовокзал',
     },
     S: {
-        ser: 'Быть', sem: 'без', sauna: 'баня', sair: 'выйти', selo: 'марка', sonhar: 'мечтать',
+        sauna: 'баня', sair: 'выйти', sábado: 'суббота', 'segunda-feira': 'понедельник', saudade: 'тоска', selo: 'марка', sem: 'без', ser: 'Быть',
+        setembro: 'сентябрь', 'sexta-feira': 'пятница', sonhar: 'мечтать',
     },
     T: {
-        tocar: 'Затронуть', transportar: 'водить', tratamento: 'Лечение', trocar: 'заменить',
+        'terça-feira': 'вторник', tocar: 'Затронуть', transportar: 'водить', tratamento: 'Лечение', trocar: 'заменить',
     },
     U: {
-
+        último: 'последний',
     },
     V: {
-        visão: 'зрение',
+        vaca: 'корова', visão: 'зрение', votar: 'голосовать',
     },
     X: {
-
+        xícara: 'чашка',
     },
     Z: {
-
+        zero: 'нуль',
     }
 }

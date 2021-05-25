@@ -9,7 +9,7 @@
     * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-var versão = '2.1.5';
+var versão = '2.1.7';
 
 /** 
 * @param {string} local
@@ -435,6 +435,23 @@ export function grid(classe, qtde, id) {
         el.innerHTML += `<div class="${classe}"></div>`;
         if (arguments.length >= 3) [...document.getElementsByClassName(arguments[0])][i].id = `${id}${i}`;
     }
+} /* --------------------------------------------------------------------------------------------------------------------------------- */
+
+/**
+ * @param {string} id 
+ * @param {string[]} pos 
+ * @param {string} cont - conteúdo da popUp
+ * @param {object} estilo 
+ */
+export function popUp(id, pos, cont, estilo) {
+    let st = [], res = `<h2 id="close" style="top: -18px; right: 5px; position: fixed;">X<h2> ${cont}`;
+
+    for (let x in estilo) 
+        st.push(`${x}: ${estilo[x]};`);
+    
+    document.body.innerHTML += `<div id="${id}" style="position: fixed; transform: translate(${[...pos]}); ${st.join(' ')}"> ${res} </div>`;
+    
+    document.getElementById('close').addEventListener('click', () => document.querySelector('body').removeChild(document.getElementById(id)));
 } /* --------------------------------------------------------------------------------------------------------------------------------- */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2021\nCriada por Josias Fontes Alves`);

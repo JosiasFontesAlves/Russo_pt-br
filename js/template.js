@@ -21,3 +21,5 @@ for (let a in dsk) {
     for (let b in dsk[a])
         criarLista([`blc_${ctrl}`, [`${b} - ${dsk[a][b]}`], 'p']);
 }
+
+// criar uma página pra declinação

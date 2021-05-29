@@ -8,7 +8,7 @@ kreatto(
     { footer: 'p id="mts"' }
 );
 
-grid('blocos', 24, 'bl_');
+grid('blocos', 23, 'bl_');
 
 addClass({ elems: [sElem('header'), sElem('footer')], classe: 'w100 fix' });
 

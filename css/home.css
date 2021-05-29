@@ -10,8 +10,8 @@ body {
 header {
     top: 0;
     left: 0;
-    z-index: 1;
     border: 1px solid var(--vidro);
+    z-index: 1;
     padding: 7px;
     text-align: left;
     box-shadow: var(--neon) var(--ghost_bg);
@@ -33,9 +33,9 @@ h2 {
 }
 
 .blocos {
+    border: 2px solid var(--vidro);
     margin: 7px;
     padding: 10px;
-    border: 2px solid var(--vidro);
     box-shadow: var(--neon) var(--vidro);
     border-radius: 5px;
 }

@@ -323,13 +323,13 @@ export class Animatus {
 export function dropDown({ local, btn, lista }) {
     [...arguments].forEach(drop => {
         let items = [], a = document.getElementById(drop.local);
-       
+
         a.hidden = true;
 
         for (let x in drop.lista) items.push(`<p> ${drop.lista[x]} </p>`);
 
-        a.innerHTML = items.join(' ');  
-        
+        a.innerHTML = items.join(' ');
+
         document.querySelector(drop.btn).onclick = () => a.hidden == true ? a.hidden = false : a.hidden = true;
     });
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
@@ -449,23 +449,30 @@ export function grid(classe, qtde, id, local, tag) {
 export function popUp(id, pos, cont, estilo) {
     let st = [], res = `<h2 id="close" style="top: -18px; right: 5px; position: fixed;">X<h2> ${cont}`;
 
-    for (let x in estilo) 
+    for (let x in estilo)
         st.push(`${x}: ${estilo[x]};`);
-    
+
     document.body.innerHTML += `<div id="${id}" style="position: fixed; transform: translate(${[...pos]}); ${st.join(' ')}"> ${res} </div>`;
-    
+
     document.getElementById('close').addEventListener('click', () => document.querySelector('body').removeChild(document.getElementById(id)));
 } /* --------------------------------------------------------------------------------------------------------------------------------- */
 
+/**
+ * @param {string} local 
+ * @param {string} classeCol 
+ * @param {string} classeFila 
+ * @param {object[]} tabela 
+ */
 export function criarTabela(local, classeCol, classeFila, tabela) {
     const tab = document.getElementById(local), col = [], { style } = tab;
-
+    let rowId = 0, colId = 0;
     for (let x in tabela) {
         let row = [];
-        
-        for (var y in tabela[x]) row.push(`<p class="${classeFila}">${tabela[x][y]}</p>`);
+        for (var y in tabela[x]) {
+            row.push(`<p id="${classeFila}_${rowId++}" class="${classeFila}">${tabela[x][y]}</p>`);
+        }
 
-        col.push(`<div class="${classeCol}"> <p class="${classeFila}">${x}</p> ${row.join('\n')}</div>`);
+        col.push(`<div id="${classeCol}_${colId++}" class="${classeCol}"> <p class="${classeFila} tabCol">${x}</p> ${row.join('\n')}</div>`);
     }
 
     style.display = 'flex';

@@ -1,0 +1,17 @@
+#tab {
+    transform: translateY(70px);
+}
+
+.fila {
+    width: 100px;
+    height: fit-content;
+    border: 1px solid;
+    display: flex;
+    padding: 3px;
+    align-items: center;
+    justify-content: center;
+}
+
+.fila:not(.tabCol) {
+    height: 75px;
+}

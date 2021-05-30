@@ -1,6 +1,6 @@
 import home from "./home.js";
 import decl from "./decl.js";
-import { addClass, dropDown, kreatto, sElem, templatr, texto } from "./lib7.js"; // lib 7 v2.2.3
+import { addClass, dropDown, kreatto, sElem, templatr, texto } from "./lib7.js"; // lib 7 v2.2.5
 
 templatr('header', { main: { class: 'w100' } }, 'footer');
 
@@ -17,9 +17,8 @@ dropDown({
 });
 
 window.onload = () => {
-    //home();
-    decl();
-    //location.hash = '#home';
+    home();
+    location.hash = '#home';
     window.onhashchange = () => {
         sElem('main').innerHTML = '';
         switch (location.hash) {

@@ -1,7 +1,10 @@
-import { kreatto, texto } from "./lib7.js";
+import { declinação } from "./declinação.js";
+import { criarTabela, kreatto, texto } from "./lib7.js";
 
 export default () => {
-    texto({id: 'ttl', texto: 'Tabela de declinação'});
-    //kreatto({ main: ['h1 id=""'] });
+    texto({ id: 'ttl', texto: 'Tabela de declinação' });
 
+    kreatto({ main: 'div id="tab"' });
+
+    criarTabela('tab', 'col', 'fila', declinação);
 }

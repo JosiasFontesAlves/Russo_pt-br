@@ -1,11 +1,5 @@
 /* 
-      
-       sopa: 'суп',
-       ovo: 'яйцо',
-       queijo: 'сыр',
-      
-    peixe: 'рыба',
-    cerveja: 'пиво',
+    
 */
 
 export const dicionário = {
@@ -21,9 +15,10 @@ export const dicionário = {
     },
     C: {
         cabeça: 'голова', cabelo: 'волос', caçar: 'ловить', café: 'кофе', cair: 'выпасть', carne: 'мясо', 'carne bovina': 'говядина',
-        'carne de porco': 'свинина', carro: 'машина', casa: 'дом', certo: 'правильный', cidade: 'город', comida: 'еда', conhecer: 'встречать',
-        conseguir: 'достичь', cobrir: 'накрывать', como: 'как', congelar: 'замерзнуть', cortar: 'нарезать', considerar: 'рассмотреть',
-        continuar: 'продолжать', chá: 'чай', chamada: 'вызов', chamar: 'звать', chapéu: 'шляпа', chatear: 'наскучить', crescer: 'расти', cume: 'Вершина',
+        'carne de porco': 'свинина', carro: 'машина', casa: 'дом', certo: 'правильный', cerveja: 'пиво', cidade: 'город', comida: 'еда',
+        conhecer: 'встречать', conseguir: 'достичь', cobrir: 'накрывать', como: 'как', congelar: 'замерзнуть', cortar: 'нарезать',
+        considerar: 'рассмотреть', continuar: 'продолжать', chá: 'чай', chamada: 'вызов', chamar: 'звать', chapéu: 'шляпа', chatear: 'наскучить',
+        crescer: 'расти', cume: 'Вершина',
     },
     D: {
         definitivamente: 'Определённо', 'de repente': 'вдруг', desgraça: 'бедa', despedir: 'прощать', dezembro: 'декабрь', doente: 'больной/болен',
@@ -33,7 +28,7 @@ export const dicionário = {
         endereço: 'Адрес', errado: 'неправый', especialmente: 'особенно', estômago: 'желудок', evidência: 'доказательство', evitar: 'избегать', eu: 'я',
     },
     F: {
-        faca: 'нож', falso: 'Неверный(ая)', faminto: 'голодный', feliz: 'счастливый/счастлив', fevereiro: 'февраль', ficar: 'Остаться', frango: 'курица', 
+        faca: 'нож', falso: 'Неверный(ая)', faminto: 'голодный', feliz: 'счастливый/счастлив', fevereiro: 'февраль', ficar: 'Остаться', frango: 'курица',
         fruta: 'фрукт',
     },
     G: {
@@ -59,15 +54,15 @@ export const dicionário = {
         não: 'нет', naturalmente: 'естественно', nativo: 'местный', necessário: 'Необходимо', normal: 'нормально', novembro: 'ноябрь',
     },
     O: {
-        obrigado: 'спасибо', oferecer: 'предложить', oi: 'привет (informal)', opinar: 'высказать', opinião: 'мнение', ordem: 'приказ', observar: 'наблюдать',
-        outubro: 'октябрь',
+        obrigado: 'спасибо', observar: 'наблюдать', oferecer: 'предложить', oi: 'привет (informal)', opinar: 'высказать', opinião: 'мнение', ordem: 'приказ',
+        ovo: 'яйцо', outubro: 'октябрь',
     },
     P: {
-        pão: 'хлеб', parar: 'остановить(ся)', papel: 'Бумага', pegar: 'Брать / взять', pele: 'Кожа', 'por favor': 'пожалуйста', pernoitar: 'ночевать',
-        pescador: 'рыбак', pessoa: 'человек', piscina: 'бассейн', precisar: 'должен(а/о/ы)', proteger: 'защищать',
+        pão: 'хлеб', parar: 'остановить(ся)', papel: 'Бумага', pegar: 'Брать / взять', peixe: 'рыба', pele: 'Кожа', 'por favor': 'пожалуйста',
+        pernoitar: 'ночевать', pescador: 'рыбак', pessoa: 'человек', piscina: 'бассейн', precisar: 'должен(а/о/ы)', proteger: 'защищать',
     },
     Q: {
-        quadris: 'бëдра', quadro: 'портрет', 'quarta-feira ': 'среда', quebrar: 'сломать', querer: 'хотеть', 'quinta-feira ': 'четверг',
+        quadris: 'бëдра', quadro: 'портрет', 'quarta-feira ': 'среда', quebrar: 'сломать', queijo: 'сыр', querer: 'хотеть', 'quinta-feira ': 'четверг',
     },
     R: {
         rainha: 'королева', rasgar: 'рвать', realizar: 'выполнить', realmente: 'действительно', receber: 'получать', reclamar: 'жаловаться', rei: 'король',
@@ -75,17 +70,17 @@ export const dicionário = {
     },
     S: {
         salada: 'салат', sauna: 'баня', sair: 'выйти', sábado: 'суббота', 'segunda-feira': 'понедельник', saudade: 'тоска', selo: 'марка', sem: 'без',
-        ser: 'Быть', setembro: 'сентябрь', 'sexta-feira': 'пятница', sim: 'да', sonhar: 'мечтать',
+        ser: 'Быть', setembro: 'сентябрь', 'sexta-feira': 'пятница', sim: 'да', sonhar: 'мечтать', sopa: 'суп',
     },
     T: {
         talvez: 'может быть', tchau: 'пока пока', tentar: 'попытаться', 'terça-feira': 'вторник', tocar: 'Затронуть', transportar: 'водить',
-        tratamento: 'Лечение', trocar: 'заменить', tudo: 'всё',
+        tratamento: 'Лечение', trocar: 'заменить', tu: 'ты', tudo: 'всё',
     },
     U: {
         último: 'последний',
     },
     V: {
-        vaca: 'корова', visão: 'зрение', você: 'ты', votar: 'голосовать',
+        vaca: 'корова', visão: 'зрение', você: 'вы', votar: 'голосовать',
     },
     X: {
         xícara: 'чашка',

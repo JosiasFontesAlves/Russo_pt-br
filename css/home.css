@@ -27,6 +27,10 @@ h2 {
     margin: 10px;
 }
 
+#drop {
+    transform: translateY(10px);
+}
+
 #container {
     margin-top: 80px;
     grid-template-columns: repeat(2, auto);
@@ -38,6 +42,10 @@ h2 {
     padding: 10px;
     box-shadow: var(--neon) var(--vidro);
     border-radius: 5px;
+}
+
+.trad {
+    padding: 3px;
 }
 
 footer {

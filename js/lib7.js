@@ -9,7 +9,7 @@
     * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-var versão = '2.1.7';
+var versão = '2.2.3';
 
 /** 
 * @param {string} local
@@ -319,16 +319,17 @@ export class Animatus {
 * @param {string} arguments.local
 * @param {string} arguments.btn
 * @param {string[]} arguments.lista
-* @param {string} arguments.idLista
 */
-export function dropDown({ local, btn, lista, idlista }) {
+export function dropDown({ local, btn, lista }) {
     [...arguments].forEach(drop => {
-        document.getElementById(drop.local).innerHTML += `<div id="${drop.idlista}"></div>`;
-        let a = document.getElementById(drop.idlista);
-        a.id = drop.idLista;
+        let items = [], a = document.getElementById(drop.local);
+       
         a.hidden = true;
-        for (let x in drop.lista)
-            a.innerHTML += `<p> ${lista[x]} </p> `;
+
+        for (let x in drop.lista) items.push(`<p> ${lista[x]} </p>`);
+
+        a.innerHTML = items.join(' ');  
+        
         document.querySelector(btn).onclick = () => a.hidden == true ? a.hidden = false : a.hidden = true;
     });
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
@@ -427,12 +428,14 @@ export const slider = (local, id, [larg, alt], fotos, vel) => {
  * @param {string} classe 
  * @param {number} qtde 
  * @param {string} id
+ * @param {string} local
+ * @param {string} tag
  */
-export function grid(classe, qtde, id) {
-    let el = document.getElementById('container');
+export function grid(classe, qtde, id, local, tag) {
+    let el = document.getElementById(local);
     el.classList += 'grid';
     for (let i = 0; i < qtde; i++) {
-        el.innerHTML += `<div class="${classe}"></div>`;
+        el.innerHTML += `<${tag} class="${classe}"></${tag}>`;
         if (arguments.length >= 3) [...document.getElementsByClassName(arguments[0])][i].id = `${id}${i}`;
     }
 } /* --------------------------------------------------------------------------------------------------------------------------------- */
@@ -443,15 +446,15 @@ export function grid(classe, qtde, id) {
  * @param {string} cont - conteúdo da popUp
  * @param {object} estilo 
  */
-export function popUp(local, id, pos, cont, estilo) {
-    let st = [], res = `<h2 id="close" style="top: -10px; right: 5px; position: fixed;">X<h2> ${cont}`, loc = document.querySelector(local);
-    
+export function popUp(id, pos, cont, estilo) {
+    let st = [], res = `<h2 id="close" style="top: -18px; right: 5px; position: fixed;">X<h2> ${cont}`;
+
     for (let x in estilo) 
         st.push(`${x}: ${estilo[x]};`);
     
-    loc.innerHTML += `<div id="${id}" style="position: fixed; transform: translate(${[...pos]}); ${st.join(' ')}"> ${res} </div>`;
+    document.body.innerHTML += `<div id="${id}" style="position: fixed; transform: translate(${[...pos]}); ${st.join(' ')}"> ${res} </div>`;
     
-    document.getElementById('close').addEventListener('click', () => loc.removeChild(document.getElementById(id)));
+    document.getElementById('close').addEventListener('click', () => document.querySelector('body').removeChild(document.getElementById(id)));
 } /* --------------------------------------------------------------------------------------------------------------------------------- */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2021\nCriada por Josias Fontes Alves`);

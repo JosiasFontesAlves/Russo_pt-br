@@ -1,25 +1,34 @@
-import { dicionário as dsk } from "./dicionário.js";
-import { addClass, criarLista, grid, kreatto, sElem, templatr, texto } from "./lib7.js";
+import home from "./home.js";
+import decl from "./decl.js";
+import { addClass, dropDown, kreatto, sElem, templatr, texto } from "./lib7.js"; // lib 7 v2.1.7
 
 templatr('header', { main: { class: 'w100' } }, 'footer');
 
-kreatto(
-    { header: 'h1 id="ttl"' }, { main: [{ section: { id: 'cx', class: 'fix flex center w100' } }, { section: { id: 'container' } }] },
-    { footer: 'p id="mts"' }
-);
-
-grid('blocos', 23, 'bl_');
+kreatto({ header: ['h1 id="ttl"', { div: { id: "drop", class: "fix" } }] }, { footer: 'p id="mts"' });
 
 addClass({ elems: [sElem('header'), sElem('footer')], classe: 'w100 fix' });
 
-texto({ id: 'ttl', texto: 'Dicionário de russo' }, { id: 'mts', texto: '<p> Josias Fontes Alves - Matsa &copy; 2021</p>' });
+texto({ id: 'mts', texto: '<p> Josias Fontes Alves - Matsa &copy; 2021</p>' });
 
-let ctrl = 0;
+dropDown({
+    local: 'drop',
+    btn: '#ttl',
+    lista: ['<a href="#home"> Início </a>', '<a href="#decl"> Declinação </a>']
+});
 
-for (let a in dsk) {
-    texto({ id: `bl_${ctrl++}`, texto: `<h2>${a}</h2> <p id="blc_${ctrl}"></p>` });
-    for (let b in dsk[a])
-        criarLista([`blc_${ctrl}`, [`${b} - ${dsk[a][b]}`], 'p']);
+window.onload = () => {
+    //home();
+    decl();
+    //location.hash = '#home';
+    window.onhashchange = () => {
+        sElem('main').innerHTML = '';
+        switch (location.hash) {
+            case '#home': 
+                home();
+                break;
+            case '#decl':
+                decl();
+                break;
+        }
+    }
 }
-
-// criar uma página pra declinação

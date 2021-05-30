@@ -1,6 +1,6 @@
 import home from "./home.js";
 import decl from "./decl.js";
-import { addClass, dropDown, kreatto, sElem, templatr, texto } from "./lib7.js"; // lib 7 v2.1.7
+import { addClass, dropDown, kreatto, sElem, templatr, texto } from "./lib7.js"; // lib 7 v2.2.3
 
 templatr('header', { main: { class: 'w100' } }, 'footer');
 

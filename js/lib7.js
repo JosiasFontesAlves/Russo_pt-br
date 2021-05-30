@@ -9,7 +9,7 @@
     * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-var versão = '2.2.3';
+var versão = '2.2.5';
 
 /** 
 * @param {string} local
@@ -326,11 +326,11 @@ export function dropDown({ local, btn, lista }) {
        
         a.hidden = true;
 
-        for (let x in drop.lista) items.push(`<p> ${lista[x]} </p>`);
+        for (let x in drop.lista) items.push(`<p> ${drop.lista[x]} </p>`);
 
         a.innerHTML = items.join(' ');  
         
-        document.querySelector(btn).onclick = () => a.hidden == true ? a.hidden = false : a.hidden = true;
+        document.querySelector(drop.btn).onclick = () => a.hidden == true ? a.hidden = false : a.hidden = true;
     });
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -455,6 +455,22 @@ export function popUp(id, pos, cont, estilo) {
     document.body.innerHTML += `<div id="${id}" style="position: fixed; transform: translate(${[...pos]}); ${st.join(' ')}"> ${res} </div>`;
     
     document.getElementById('close').addEventListener('click', () => document.querySelector('body').removeChild(document.getElementById(id)));
+} /* --------------------------------------------------------------------------------------------------------------------------------- */
+
+export function criarTabela(local, classeCol, classeFila, tabela) {
+    const tab = document.getElementById(local), col = [], { style } = tab;
+
+    for (let x in tabela) {
+        let row = [];
+        
+        for (var y in tabela[x]) row.push(`<p class="${classeFila}">${tabela[x][y]}</p>`);
+
+        col.push(`<div class="${classeCol}"> <p class="${classeFila}">${x}</p> ${row.join('\n')}</div>`);
+    }
+
+    style.display = 'flex';
+    style.width = 'fit-content';
+    tab.innerHTML += col.join('\n');
 } /* --------------------------------------------------------------------------------------------------------------------------------- */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2021\nCriada por Josias Fontes Alves`);

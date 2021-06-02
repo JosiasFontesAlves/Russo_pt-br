@@ -9,7 +9,7 @@
     * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-var versão = '2.2.5';
+var versão = '2.2.7';
 
 /** 
 * @param {string} local
@@ -118,6 +118,7 @@ export class Tempus {
     static saudação = idSau => {
         const hora = new Date().getHours();
         let saudação;
+        
         if (hora <= 12) saudação = "Bom dia!";
         else if (hora >= 18) saudação = "Boa noite!";
         else saudação = "Boa tarde!";
@@ -193,6 +194,7 @@ export const seleKlass = classe => document.getElementsByClassName(`${classe}`);
 export function temEsc(id, pos) {
     document.getElementById(id).addEventListener('click', function () {
         const { body } = document, { style } = this;
+
         if (pos.length <= 2) {
             style.transform == `translate(0%)` && body.style.background == 'white'
                 ? (style.transform = `translate(${pos})`, body.style.background = 'black')
@@ -298,19 +300,16 @@ export function texto({ id, texto }) {
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 export class Animatus {
-    static a = el => document.getElementById(el);
-
     static barr(id, pxMax, vel) {
-        let px = 0, b = this.a(id);
-        setInterval(() => (b.style.width != `${pxMax}px`) ? b.style.width = `${px++}px` : '', vel);
+        const { style } = document.getElementById(id);
+        let px = 0;
+        setInterval(() => (style.width != `${pxMax}px`) ? style.width = `${px++}px` : '', vel);
     }
 
     static girar(id, z, vel) {
-        let ang = 0, b = this.a(id);
-        setInterval(() => {
-            b.style.transform = `rotateZ(${ang++}deg)`;
-            if (ang == z) ang = 0;
-        }, vel);
+        const { style } = document.getElementById(id);
+        let ang = 0;
+        setInterval(() => (ang != z) ? style.transform = `rotateZ(${ang++}deg)` : ang = 0, vel);
     }
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -465,19 +464,25 @@ export function popUp(id, pos, cont, estilo) {
  */
 export function criarTabela(local, classeCol, classeFila, tabela) {
     const tab = document.getElementById(local), col = [], { style } = tab;
-    let rowId = 0, colId = 0;
+
     for (let x in tabela) {
         let row = [];
         for (var y in tabela[x]) {
-            row.push(`<p id="${classeFila}_${rowId++}" class="${classeFila}">${tabela[x][y]}</p>`);
+            row.push(`<p class="${classeFila} ">${tabela[x][y]}</p>`);
         }
-
-        col.push(`<div id="${classeCol}_${colId++}" class="${classeCol}"> <p class="${classeFila} tabCol">${x}</p> ${row.join('\n')}</div>`);
+        col.push(`<div class="${classeCol} "> <p class="${classeFila} tabCol">${x}</p> ${row.join('\n')}</div>`);
     }
 
     style.display = 'flex';
     style.width = 'fit-content';
     tab.innerHTML += col.join('\n');
 } /* --------------------------------------------------------------------------------------------------------------------------------- */
+
+/**
+ * @param {string[]} urls
+ */
+export function addCSS([urls]) {
+    [...arguments].forEach(url => document.head.innerHTML += `<link rel="stylesheet" href="${url}">`);
+}
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2021\nCriada por Josias Fontes Alves`);

@@ -52,7 +52,7 @@ export function criarBotão(local, idBtn, estilo, cor) {
             break;
 
         case 6:
-            borda = `width: 50px; border: 1px solid black; border-radius: 20px; background: ${cor};`;
+            borda = `width: 50px; height: 23px; border: 1px solid black; border-radius: 20px; background: ${cor};`;
             botão = `width: 13px; height: 13px; border-radius: 50%; border: 5px solid;`;
             break;
 

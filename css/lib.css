@@ -27,11 +27,17 @@
     --sand: #fadcb0;
     --neon: 1px 1px 10px 2px;
     --neon2: 2px 2px 7px;
-    --sombra: 5px 2px 5px;
     --vidro: #cfcfcfbb;
+    --sombra: 5px 2px 5px;
     --ghost_bg: #50505080;
+    --nardoGray: #d3d3d3;
     --oceanicBlue: #00ccff;
     --oceanicGreen: #01f870;
+}
+
+.blur {
+    background: var(--ghost_bg);
+    backdrop-filter: blur(2px);
 }
 
 .center {

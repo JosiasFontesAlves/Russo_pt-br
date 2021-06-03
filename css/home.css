@@ -53,6 +53,16 @@ h2 {
     text-decoration: none;
 }
 
+#lua {
+    width: 25px;
+    position: fixed;
+    transform: translateX(-50px);
+}
+
+#temesc {
+    transform: translateX(5px);
+}
+
 h1:hover, #drop a:hover {
     color: blue;
     text-shadow: var(--neon2) blue;

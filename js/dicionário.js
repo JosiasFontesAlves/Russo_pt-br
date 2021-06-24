@@ -1,4 +1,29 @@
 /*
+roupas:'одежда',  
+юбка saia
+платье vestido
+шорты shorts
+пальто casaco
+пиджак jaqueta
+свитер suéter; malha (roupa)
+шарф cachecol
+шапка gorro
+шляпа chapéu
+костюм terno
+носки meias
+обувь sapatos
+тапки sandálias
+ботинки botas
+кроссовки tênis (calçado)
+luvas: 'перчатки',
+roupas íntimas   :'трусы   ',
+guarda-chuva:'зонт    ',
+urinar:'пописать',
+escrever: 'писать',
+novo:     'новый ', 
+ 
+закрытый fechado
+открытый aberto
 
 */
 
@@ -18,12 +43,12 @@ export const dicionário = {
     },
     C: {
         cabeça: 'голова', cabelo: 'волос', caçar: 'ловить', café: 'кофе', cair: 'выпасть', 'caixa eletrônico': 'банкомат', caminhar: 'ходить',
-        cardápio: 'меню', carne: 'мясо', 'carne bovina': 'говядина', 'carne de porco': 'свинина', carro: 'машина', casa: 'дом', Cazaquistão: 'Казахстан',
-        certo: 'правильный', cerveja: 'пиво', cidade: 'город', cinco: 'пять', cinza: 'серый', cliente: 'клиент', cobrir: 'накрывать', coisa: 'вещь',
-        colega: 'коллега', colher: 'ложка (subst)', comer: 'есть', comida: 'еда', como: 'как', comprar: 'купить', conhecer: 'встречать', 
-        conseguir: 'достичь', congelar: 'замерзнуть', conhecer: 'познакомиться', cor: 'цвет', cortar: 'нарезать', considerar: 'рассмотреть', 
-        consumidor: 'покупатель', conta: 'счёт', continuar: 'продолжать', copo: 'стакан', chá: 'чай', chamada: 'вызов', chamar: 'звать', chapéu: 'шляпа', 
-        chatear: 'наскучить', crescer: 'расти', cume: 'Вершина',
+        cardápio: 'меню', carne: 'мясо', 'carne bovina': 'говядина', 'carne de porco': 'свинина', carro: 'машина', carteira: 'бумажник', casa: 'дом',
+        Cazaquistão: 'Казахстан', certo: 'правильный', cerveja: 'пиво', cidade: 'город', cinco: 'пять', cinza: 'серый', cliente: 'клиент',
+        cobrir: 'накрывать', coisa: 'вещь', colega: 'коллега', colher: 'ложка (subst)', comer: 'есть', comida: 'еда', como: 'как', comprar: 'купить',
+        conhecer: 'встречать', conseguir: 'достичь', congelar: 'замерзнуть', conhecer: 'познакомиться', cor: 'цвет', cortar: 'нарезать',
+        considerar: 'рассмотреть', consumidor: 'покупатель', conta: 'счёт', continuar: 'продолжать', copo: 'стакан', chá: 'чай', chamada: 'вызов',
+        chamar: 'звать', chapéu: 'шляпа', chatear: 'наскучить', crescer: 'расти', cume: 'Вершина',
     },
     D: {
         daqui: 'отсюда', de: 'из', definitivamente: 'Определённо', delicioso: 'вкусный', demais: 'слишком', 'de repente': 'вдруг', 'de onde': 'откуда',
@@ -33,7 +58,7 @@ export const dicionário = {
     },
     E: {
         e: 'и', 'é claro': 'конечно', ela: 'она', ele: 'он', eles: 'они', em: 'в/на', endereço: 'Адрес', entender: 'понимать', errado: 'неправый',
-        escola: 'школа', escritório: 'офис', escuro: 'тёмный', especialmente: 'особенно', esporte: 'спорт', esposa: 'жeнa', estádio: 'стадион', 
+        escola: 'школа', escritório: 'офис', escuro: 'тёмный', especialmente: 'особенно', esporte: 'спорт', esposa: 'жeнa', estádio: 'стадион',
         este: 'этот', estômago: 'желудок', evidência: 'доказательство', evitar: 'избегать', eu: 'я',
     },
     F: {
@@ -101,8 +126,8 @@ export const dicionário = {
         Ucrânia: 'Украина', último: 'последний', uniforme: 'форма', um: 'один', 'um pouco': 'немного',
     },
     V: {
-        vaca: 'корова', vender: 'продать', verde: 'зелёный', 'verde claro': 'светло-зелёный', vermelho: 'красный', 'vermelho escuro': 'тёмно-красный',
-        vestir: 'надевать', vinho: 'вино', visão: 'зрение', vinte: 'двадцать', você: 'вы', votar: 'голосовать',
+        vaca: 'корова', velho: 'старый', vender: 'продать', verde: 'зелёный', 'verde claro': 'светло-зелёный', vermelho: 'красный',
+        'vermelho escuro': 'тёмно-красный', vestir: 'надевать', vinho: 'вино', visão: 'зрение', vinte: 'двадцать', você: 'вы', votar: 'голосовать',
     },
     X: {
         xícara: 'чашка',

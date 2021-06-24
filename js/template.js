@@ -33,7 +33,6 @@ selekFn('btn_temesc', 'click', () => {
 
 window.onload = () => {
     home();
-    location.hash = '#home';
 
     window.onhashchange = () => {
         sElem('main').innerHTML = '';

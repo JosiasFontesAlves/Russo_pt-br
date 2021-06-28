@@ -96,8 +96,9 @@ export const dicionário = {
     },
     T: {
         taça: 'бокал', talvez: 'может быть', também: 'тоже', taxi: 'такси', tchau: 'пока пока', telefone: 'телефон', tênis: 'кроссовки',
-        tentar: 'попытаться', 'terça-feira': 'вторник', terno: 'костюм', tocar: 'Затронуть', todo: 'любой (inteiro)', trabalhador: 'рабочий', trabalhar: 'работать', trabalho: 'работа ', transportar: 'водить', tratamento: 'Лечение', três: 'три', treze: 'тринадцать', trocar: 'заменить', tu: 'ты',
-        tudo: 'всё',
+        tentar: 'попытаться', 'terça-feira': 'вторник', terno: 'костюм', tocar: 'Затронуть', todo: 'любой (inteiro)', trabalhador: 'рабочий',
+        trabalhar: 'работать', trabalho: 'работа ', transportar: 'водить', tratamento: 'Лечение', três: 'три', treze: 'тринадцать', trocar: 'заменить',
+        tu: 'ты', tudo: 'всё',
     },
     U: {
         Ucrânia: 'Украина', último: 'последний', uniforme: 'форма', um: 'один', 'um pouco': 'немного', urinar: 'пописать',

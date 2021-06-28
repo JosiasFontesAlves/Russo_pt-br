@@ -1,4 +1,6 @@
-@import url(./lib.css);
+@import url('./lib.css');
+@import url('../css/decl.css');
+@import url('../css/alfabeto.css');
 
 :root {
     --tam7: 7px;

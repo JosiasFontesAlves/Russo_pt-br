@@ -9,7 +9,7 @@
     * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-var versão = '2.2.7';
+var versão = '2.3.2';
 
 /** 
 * @param {string} local
@@ -52,7 +52,7 @@ export function criarBotão(local, idBtn, estilo, cor) {
             break;
 
         case 6:
-            borda = `width: 50px; height: 23px; border: 1px solid black; border-radius: 20px; background: ${cor};`;
+            borda = `width: 50px; border: 1px solid black; border-radius: 20px; background: ${cor};`;
             botão = `width: 13px; height: 13px; border-radius: 50%; border: 5px solid;`;
             break;
 
@@ -69,18 +69,17 @@ export class Tempus {
     */
     static relógio(idRel, estilo) {
         setInterval(() => {
-            const data = new Date(), rlg = [data.getHours(), data.getMinutes(), data.getSeconds()], rel = document.getElementById(`${idRel}`);
-
-            for (let x in rlg) if (rlg[x] < 10) rlg[x] = `0${rlg[x]}`;
-
-            const t = () => rel.innerHTML = rlg.join(':');
+            const data = new Date(), rlg = [data.getHours(), data.getMinutes(), data.getSeconds()];
+            const rel = () => document.getElementById(`${idRel}`).innerHTML = rlg.join(':');
+            
+            for (let x in rlg) rlg[x] < 10 ? rlg[x] = `0${rlg[x]}` : '';
 
             switch (estilo) {
-                case 0: t();
+                case 0: rel();
                     break;
                 case 1:
                     rlg.pop();
-                    t();
+                    rel();
                     break;
                 default: console.error(`O método relógio() requer um parâmetro do tipo int -> \n 0 -> relógio completo \n 1 -> horas e minutos`);
             }
@@ -118,7 +117,7 @@ export class Tempus {
     static saudação = idSau => {
         const hora = new Date().getHours();
         let saudação;
-        
+
         if (hora <= 12) saudação = "Bom dia!";
         else if (hora >= 18) saudação = "Boa noite!";
         else saudação = "Boa tarde!";
@@ -346,7 +345,6 @@ export function addClass({ elems, classe }) {
  * @param {object} arguments
  * @param {string} arguments.local
  * @param {string | string[]} arguments.pesq 
- * @param {string | string[]} arguments.res 
 */
 export function replacer() {
     [...arguments].forEach(x => {
@@ -468,7 +466,7 @@ export function criarTabela(local, classeCol, classeFila, tabela) {
     for (let x in tabela) {
         let row = [];
         for (var y in tabela[x]) {
-            row.push(`<p class="${classeFila} ">${tabela[x][y]}</p>`);
+            row.push(`<p class="${classeFila}">${tabela[x][y]}</p>`);
         }
         col.push(`<div class="${classeCol} "> <p class="${classeFila} tabCol">${x}</p> ${row.join('\n')}</div>`);
     }

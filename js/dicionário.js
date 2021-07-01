@@ -94,7 +94,7 @@ export const dicionário = {
         preto    : 'чёрный'  , pronto  : 'готов'  , proteger   : 'защищать'  ,
     },
     Q: {
-        quadris: 'бëдра'  , quadro : 'портрет', 'quarta-feira ': 'среда' , quatorze: 'четырнадцать', quatro         : 'четыре' , que   : 'что'       , 
+        quadris: 'бëдра'  , quadro : 'портрет', 'quarta-feira': 'среда' , quatorze: 'четырнадцать', quatro         : 'четыре' , que   : 'что'       , 
         quebrar: 'сломать', queijo : 'сыр'    , quem           : 'кто'   , querer  : 'хотеть'      , 'quinta-feira ': 'четверг', quinze: 'пятнадцать',
     },
     R: {

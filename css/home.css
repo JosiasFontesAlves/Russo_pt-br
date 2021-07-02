@@ -2,6 +2,7 @@
 @import url('decl.css');
 @import url('alfabeto.css');
 @import url('semana.css');
+@import url('meses.css');
 
 :root {
     --tam7: 7px;

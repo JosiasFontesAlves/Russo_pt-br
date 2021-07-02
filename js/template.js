@@ -2,7 +2,8 @@ import home from "./home.js";
 import decl from "./decl.js";
 import alfabeto from "./alfabeto.js";
 import dias_semana from "./dias_semana.js";
-import { addClass, criarBotão, dropDown, kreatto, selekFn, sElem, temEsc, templatr, texto } from "./lib7.js"; // lib 7 v2.2.5
+import meses from "./meses.js";
+import { addClass, criarBotão, dropDown, kreatto, selek, selekFn, sElem, temEsc, templatr, texto } from "./lib7.js"; // lib 7 v2.2.5
 
 const title = t => sElem('title').innerText = t;
 
@@ -18,8 +19,8 @@ dropDown({
     local: 'drop',
     btn: '#ttl',
     lista: [
-        '<a href="#home"> Início </a>', '<a href="#decl"> Declinação </a>', '<a href="#semana"> Dias da semana </a>', 
-        '<a href="#alfabeto"> Alfabeto </a>', '<img id="lua" src="../temesc.png"><p id="temesc"><p>'
+        '<a href="#home"> Início </a>', '<a href="#decl"> Declinação </a>', '<a href="#semana"> Dias da semana </a>',
+        '<a href="#alfabeto"> Alfabeto </a>', '<a href="#meses"> Meses do ano </a>', '<img id="lua" src="../temesc.png"><p id="temesc"><p>'
     ]
 });
 
@@ -33,11 +34,11 @@ selekFn('btn_temesc', 'click', () => {
 });
 
 window.onload = () => {
-    //home();
-    dias_semana();
+    home();
 
     window.onhashchange = () => {
         sElem('main').innerHTML = '';
+        selek('drop').hidden = true;
 
         switch (location.hash) {
             case '#home':
@@ -52,9 +53,13 @@ window.onload = () => {
                 alfabeto();
                 title('Alfabeto russo');
                 break;
-            case '#semana': 
+            case '#semana':
                 dias_semana();
                 title('Dias da semana');
+                break;
+            case '#meses':
+                meses();
+                title('Meses do ano');
                 break;
         }
     }

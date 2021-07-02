@@ -1,7 +1,7 @@
-#dias {
-    transform: translateY(150px);
-}
-
 #semana {
     transform: translateY(200px);
+}
+
+.diaSem {
+    padding: 10px;
 }

@@ -13,7 +13,7 @@ kreatto({ header: ['h1 id="ttl"', { div: { id: "drop", class: "fix" } }] }, { fo
 
 addClass({ elems: [sElem('header'), sElem('footer')], classe: 'w100 fix' });
 
-texto({ id: 'mts', texto: '<p> Josias Fontes Alves - Matsa &copy; 2021</p>' });
+texto({ id: 'mts', texto: '<p> Josias Fontes Alves - Matsa &copy; 2021 </p>' });
 
 dropDown({
     local: 'drop',

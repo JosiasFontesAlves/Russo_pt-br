@@ -212,10 +212,7 @@ export function menuLateral(id, px) {
     document.getElementById(id).addEventListener('click', () => style.transform == pos[0] ? style.transform = pos[1] : style.transform = pos[0]);
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
-/**
-* @param {object} elems
-*/
-export function kreatto(elems) {
+export function kreatto() {
     [...arguments].forEach(tag => {
         for (let t in tag) {
             const inject = res => document.querySelector(t).innerHTML += res;

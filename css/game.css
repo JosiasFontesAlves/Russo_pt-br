@@ -1,0 +1,9 @@
+/* 
+
+@import url('./lib.css');
+*/
+header {
+    background: var(--oceanicGreen);
+    height: 50px;
+}
+

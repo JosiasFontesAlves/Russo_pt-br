@@ -31,6 +31,10 @@ header {
     backdrop-filter: blur(2px);
 }
 
+#drop p {
+    padding: 3px;
+}
+
 h1 {
     cursor: pointer;
 }
@@ -60,7 +64,7 @@ h2 {
 #lua {
     width: 25px;
     position: fixed;
-    transform: translateX(-50px);
+    transform: translate(-50px, 10px);
 }
 
 #temesc {

@@ -9,7 +9,7 @@
     * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-var versão = '2.3.2';
+var versão = '2.4.8';
 
 /** 
 * @param {string} local
@@ -18,48 +18,27 @@ var versão = '2.3.2';
 * @param {string} cor
 */
 export function criarBotão(local, idBtn, estilo, cor) {
-    let tam = ["width: 50px; height: 20px; color: rgb(80, 80, 80)", "width: 20px; height: inherit; transform: translateX(-3%)"], borda, botão;
-
-    switch (estilo) {
-        case 0:
-            borda = `${tam[0]}; border: 2px solid; padding: 2px; border-radius: 15px`;
-            botão = `${tam[1]}; background: ${cor}; border-radius: inherit;`;
-            break;
-
-        case 1:
-            borda = `${tam[0]}; border: 2px solid; padding: 2px;`;
-            botão = `${tam[1]}; background: ${cor};`;
-            break;
-
-        case 2:
-            borda = `${tam[0]}; border: 1px solid; background: lightgreen; border-radius: 25px;`;
-            botão = `width: 20px; height: inherit; background: ${cor}; border-radius: 50%;`;
-            break;
-
-        case 3:
-            borda = `${tam[0]}; background: gray; border-radius: 5px; padding: 2px;`;
-            botão = `${tam[1]}; background: ${cor}; border-radius: inherit;`;
-            break;
-
-        case 4:
-            borda = `width: 50px; height: 15px; background: darkred; border-radius: 25px; display: flex; align-items: center`;
-            botão = `width: 25px; height: 25px; background: red; border-radius: 50%;`;
-            break;
-
-        case 5:
-            borda = `${tam[0]}; border-radius: 25px; background: silver; border: 1px solid`;
-            botão = `width: 10px; height: 10px; border: 5px solid ${cor}; background: none; border-radius: 50%;`;
-            break;
-
-        case 6:
-            borda = `width: 50px; border: 1px solid black; border-radius: 20px; background: ${cor};`;
-            botão = `width: 13px; height: 13px; border-radius: 50%; border: 5px solid;`;
-            break;
-
-        default: console.error(`o método CriarBotão() requer um parâmetro do tipo int -> \n 0 -> botão redondo
-        \n 1 -> botão quadrado \n 2 -> botão redondo flutuante \n 3 -> botão quadrado com borda redonda`);
+    const tam = ["width: 50px; height: 20px; color: rgb(80, 80, 80)", "width: 20px; height: inherit; transform: translateX(-3%)"];
+    const btn = {
+        borda: [
+            `${tam[0]}; border: 2px solid; padding: 2px; border-radius: 15px`, `${tam[0]}; border: 2px solid; padding: 2px;`,
+            `${tam[0]}; border: 1px solid; background: lightgreen; border-radius: 25px;`, `${tam[0]}; background: gray; border-radius: 5px; padding: 2px;`,
+            `width: 50px; height: 15px; background: darkred; border-radius: 25px; display: flex; align-items: center`,
+            `${tam[0]}; border-radius: 25px; background: silver; border: 1px solid`,
+        ],
+        botão: [
+            `${tam[1]}; background: ${cor}; border-radius: inherit;`, `${tam[1]}; background: ${cor};`,
+            `width: 20px; height: inherit; background: ${cor}; border-radius: 50%;`, `${tam[1]}; background: ${cor}; border-radius: inherit;`,
+            `width: 25px; height: 25px; background: red; border-radius: 50%;`,
+            `width: 10px; height: 10px; border: 5px solid ${cor}; background: none; border-radius: 50%;`,
+        ]
     }
-    document.getElementById(`${local}`).innerHTML = `<div style="${borda};"> <div id="${idBtn}" style="${botão} position: fixed;"> </div> </div>`;
+
+    document.getElementById(`${local}`).innerHTML = `
+        <div style="${btn.borda[estilo]};"> 
+            <div id="${idBtn}" style="${btn.botão[estilo]} position: fixed;"> </div> 
+        </div>
+    `;
 } /* ----- Lib de botões ----- */
 
 export class Tempus {
@@ -70,19 +49,12 @@ export class Tempus {
     static relógio(idRel, estilo) {
         setInterval(() => {
             const data = new Date(), rlg = [data.getHours(), data.getMinutes(), data.getSeconds()];
-            const rel = () => document.getElementById(`${idRel}`).innerHTML = rlg.join(':');
-            
-            for (let x in rlg) rlg[x] < 10 ? rlg[x] = `0${rlg[x]}` : '';
 
-            switch (estilo) {
-                case 0: rel();
-                    break;
-                case 1:
-                    rlg.pop();
-                    rel();
-                    break;
-                default: console.error(`O método relógio() requer um parâmetro do tipo int -> \n 0 -> relógio completo \n 1 -> horas e minutos`);
-            }
+            for (let x in rlg) rlg[x] < 10 ? rlg[x] = `0${rlg[x] - 1}` : '';
+
+            const rel = [rlg.join(':'), (rlg.pop(), rlg.join(':'))];
+
+            document.getElementById(`${idRel}`).innerHTML = rel[estilo];
         }, 500);
     }
 
@@ -95,19 +67,14 @@ export class Tempus {
             const data = new Date(), calendário = {
                 diaSem: ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SÁB"],
                 mês: ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"]
-            }, dataCompleta = document.getElementById(`${idCal}`);
-
-            const e = s => dataCompleta.innerHTML = s;
-
-            switch (estilo) {
-                case 0:
-                    e(`${calendário.diaSem[data.getDay()]} ${data.getDate()} ${calendário.mês[data.getMonth()]} ${data.getFullYear()}`);
-                    break;
-                case 1:
-                    e(dataCompleta.innerHTML = `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`);
-                    break;
-                default: console.error(`O método calendário() requer um parâmetro do tipo int -> \n 0 -> 00 mês 0000 \n 1 -> 00/00/0000`);
             }
+
+            const cal = [
+                `${calendário.diaSem[data.getDay()]} ${data.getDate()} ${calendário.mês[data.getMonth()]} ${data.getFullYear()}`,
+                `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`
+            ];
+            
+            document.getElementById(`${idCal}`).innerHTML = cal[estilo];
         }, 500);
     }
 
@@ -116,13 +83,8 @@ export class Tempus {
     */
     static saudação = idSau => {
         const hora = new Date().getHours();
-        let saudação;
-
-        if (hora <= 12) saudação = "Bom dia!";
-        else if (hora >= 18) saudação = "Boa noite!";
-        else saudação = "Boa tarde!";
-
-        document.getElementById(`${idSau}`).innerHTML = saudação;
+        
+        document.getElementById(`${idSau}`).innerHTML = (hora <= 12) ? "Bom dia!" : (hora >= 18) ? "Boa noite!" : "Boa tarde!";
     }
 
     static count(cond, varCtrl) { // Usar apenas nas funções de contagem
@@ -214,50 +176,34 @@ export function menuLateral(id, px) {
 
 export function kreatto() {
     [...arguments].forEach(tag => {
-        for (let t in tag) {
-            const inject = res => document.querySelector(t).innerHTML += res;
-            if (Array.isArray(tag[t])) {
-                for (let v in tag[t]) {
-                    if (typeof tag[t][v] == "string") inject(`<${tag[t][v]}></${tag[t][v]}>`);
-                    else {
-                        let atr = [];
-                        for (let a in tag[t][v]) { // a -> elemento a ser inserido
-                            for (let b in tag[t][v][a])
-                                atr.push(`${b}="${tag[t][v][a][b]}"`); // Atributos
-                            if ((tag[t].length == 2) && (typeof tag[t][1] == 'number'))
-                                for (let i = 0; i < tag[t][1]; i++) inject(`<${a} ${atr.join(' ')}></${a}>`);
-                            else
-                                inject(`<${a} ${atr.join(' ')}></${a}>`);
-                        }
+        for (let key in tag) {
+            for (let value in tag[key]) {
+                let res, atr = [];
+                for (let k in tag[key][value]) {
+                    for (let v in tag[key][value][k]) {
+                        atr.push(`${v}="${tag[key][value][k][v]}"`);
+                        res = (typeof tag[key][value] == 'object') ? `<${k} ${atr.join(' ')}></${k}>` : `<${tag[key][value]}></${tag[key][value]}>`;
                     }
                 }
-            } else inject(`<${tag[t]}></${tag[t]}>`);
+                document.querySelector(key).innerHTML += res;
+            }
         }
     });
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 // IMPORTANTE! --> Sempre usar o templatr no topo do código!
 
-/**
- * @param { string | object } elems
- */
-export function templatr(elems) {
-    const { body } = document, t = res => body.innerHTML += res;
-    [...arguments].forEach(el => {
-        switch (typeof el) {
-            case 'string':
-                t(`<${el}></${el}>`);
-                break;
-            case 'object':
-                for (let e in el) {
-                    let atr = [];
-                    for (let a in el[e]) {
-                        atr.push(`${a}="${el[e][a]}"`);
-                    }
-                    t(`<${e} ${atr.join(' ')}></${e}>`);
-                }
-                break;
+export function templatr() {
+    const { body } = document;
+    [...arguments].forEach(elem => {
+        let atr = [], res;
+        for (let tag in elem) {
+            for (let key in elem[tag])
+                atr.push(`${key}="${elem[tag][key]}"`);
+
+            res = typeof elem == 'string' ? `<${elem}></${elem}>` : `<${tag} ${atr.join(' ')}></${tag}>`;
         }
+        body.innerHTML += res;
     });
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -338,17 +284,12 @@ export function addClass({ elems, classe }) {
     [...arguments].forEach(x => [...x.elems].forEach(el => el['classList'] += x.classe));
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
-/**
- * @param {object} arguments
- * @param {string} arguments.local
- * @param {string | string[]} arguments.pesq 
-*/
 export function replacer() {
-    [...arguments].forEach(x => {
-        for (let local in x) {
-            for (let pesq in x[local]) {
+    [...arguments].forEach(pesq => {
+        for (let local in pesq) {
+            for (let res in pesq[local]) {
                 let str = document.querySelector(local);
-                str.innerText = str.innerText.replace(`{{${pesq}}}`, x[local][pesq]);
+                str.innerHTML = str.innerHTML.replace(`{{${res}}}`, pesq[local][res]);
             }
         }
     });
@@ -373,28 +314,18 @@ export function jacss() {
  * @param {string[]} arguments.lista
  * @param {string} arguments.el
  */
-export function criarLista([local, lista, el]) {
+export function criarLista([_local, _lista, _el]) {
     [...arguments].forEach(x => x[1].forEach(l => document.getElementById(x[0]).innerHTML += `<${x[2]}> ${l} </${x[2]}>`));
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
-/**
- * @param {object} arguments
- * @param {string} arguments.classe
- * @param {string} arguments.id
+/*
+ * Sintaxe -> [classe, id]
  */
-export function addId([classe, id]) {
-    [...arguments].forEach(e => {
-        let cl = [...document.getElementsByClassName(e[0])];
-        for (let c in cl) {
-            switch (e.length) {
-                case 3:
-                    cl[c].id = `${e[1]}${Number(c) + 1}`;
-                    break;
-                default:
-                    cl[c].id = `${e[1] + c}`
-                    break;
-            }
-        }
+export function addId() {
+    [...arguments].forEach(el => {
+        let cl = [...document.getElementsByClassName(el[0])];
+
+        for (let id in cl) cl[id].id = `${el[1] + id}`;
     });
 }
 /* --------------------------------------------------------------------------------------------------------------------------------- */
@@ -476,8 +407,22 @@ export function criarTabela(local, classeCol, classeFila, tabela) {
 /**
  * @param {string[]} urls
  */
-export function addCSS([urls]) {
+export function addCSS([_urls]) {
     [...arguments].forEach(url => document.head.innerHTML += `<link rel="stylesheet" href="${url}">`);
+}
+
+/**
+* @param {object | string} elem 
+*/
+export function render(elem, conteúdo) {
+    for (let tag in elem) {
+        let atr = [];
+
+        for (let key in elem[tag])
+            atr.push(`${key}="${elem[tag][key]}"`);
+
+        return (typeof elem == 'object') ? `<${tag} ${atr.join(' ')}> ${conteúdo} </${tag}>` : `<${elem}> ${conteúdo} </${elem}>`;
+    }
 }
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2021\nCriada por Josias Fontes Alves`);

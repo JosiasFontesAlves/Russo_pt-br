@@ -1,4 +1,4 @@
-import { templatr } from "../lib7.js";
+import { selek, templatr } from "../lib7.js";
 
 templatr(
     { header: { class: 'fix w100' } },

@@ -27,7 +27,7 @@ export default () => {
 
     texto({ id: 'ttl', texto: 'Tabela de declinação' });
 
-    kreatto({ main: ['div id="tab"'] });
+    kreatto({ main: [{ div: { id: "tab" } }] });
 
     criarTabela('tab', 'col', 'fila', declinação);
 }

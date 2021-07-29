@@ -12,8 +12,15 @@
     transition: 0.3s;
 }
 
-body {
+.bg_vidro {
+    background: var(--vidro);
+}
+
+.padd7 {
     padding: var(--tam7);
+}
+
+body {
     text-align: center;
     text-shadow: var(--neon2) var(--ghost_bg);
     font-family: Arial, Helvetica, sans-serif;
@@ -24,10 +31,8 @@ header {
     left: 0;
     border: 1px solid var(--vidro);
     z-index: 1;
-    padding: var(--tam7);
     text-align: left;
     box-shadow: var(--neon) var(--ghost_bg);
-    background: var(--vidro);
     backdrop-filter: blur(2px);
 }
 
@@ -76,8 +81,45 @@ h1:hover, #drop a:hover {
     text-shadow: var(--neon2) blue;
 }
 
+#search {
+    flex-wrap: wrap;
+    top: 70px;
+    position: absolute;
+}
+
+#txt {
+    position: inherit;
+    border: 2px solid var(--vidro);
+    border-radius: 20px;
+    box-shadow: var(--sombra) var(--vidro);
+    outline: none;
+    padding: 5px;
+    width: 70vw;
+}
+
+#ok {
+    background: var(--nardoGray);
+    border: 3px solid var(--nardoGray);
+    border-radius: 50%;
+    box-shadow: var(--sombra) var(--ghost_bg);
+    height: 45px;
+    outline: none;
+    transform: translateX(35vw);
+    width: 45px;
+}
+
+#res {
+    background: white;
+    border: 2px solid var(--nardoGray);
+    box-shadow: var(--sombra) var(--ghost_bg);
+    padding: 5px;
+    position: inherit;
+    top: 50px;
+    width: 75vw;
+}
+
 #container {
-    margin-top: 80px;
+    margin-top: 110px;
     grid-template-columns: repeat(2, auto);
 }
 

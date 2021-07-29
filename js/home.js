@@ -1,18 +1,53 @@
 import { dicionário as dsk } from "./dicionário.js";
-import { criarLista, grid, kreatto, render, texto } from "./lib7.js";
+import { criarLista, grid, kreatto, render, selek, selekFn, texto } from "./lib7.js";
 
 export default () => {
-    kreatto({ main: [{ section: { id: 'container' } }] });
+    kreatto(
+        {
+            main: [
+                { section: { id: 'search', class: 'flex center' } },
+                { section: { id: 'container' } }
+            ]
+        },
+        {
+            '#search': [
+                { input: { type: 'text', id: 'txt', class: 'bg_vidro', placeholder: 'Pesquisar no dicionário' } },
+                { button: { id: 'ok' } },
+                { p: { id: 'res' } }
+            ]
+        }
+    );
 
-    texto({ id: 'ttl', texto: 'Dicionário de russo' });
-    
+    texto(
+        { id: 'ttl', texto: 'Dicionário de russo' },
+        { id: 'ok', texto: '=>' }
+    );
+
     grid('blocos', 23, 'bl_', 'container', 'div');
 
     let ctrl = 0;
 
     for (let a in dsk) {
         texto({ id: `bl_${ctrl++}`, texto: `${render('h2', a)} ${render({ p: { id: 'blc_' + ctrl } }, '')}` }); // Insere as letras no começo
-        for (let b in dsk[a])
-            criarLista([`blc_${ctrl}`, [`${b} - ${dsk[a][b]}`], 'p class="trad"']); // Insere as traduções
+
+        for (let b in dsk[a]) criarLista([`blc_${ctrl}`, [`${b} - ${dsk[a][b]}`], 'p class="trad"']); // Insere as traduções
     }
+
+    const res = selek('res');
+
+    res.hidden = true;
+
+    selekFn('ok', 'click', () => {
+        const { style } = res, txt = selek('txt');
+
+        function search() {
+            res.hidden = false;
+            
+            texto({ id: 'res', texto: dsk[txt.value[0].toUpperCase()][txt.value] ?? 'Ainda não temos essa palavra no dicionário' });
+
+            txt.value = '';
+        }
+
+        (res.hidden == true && txt.value != '') ? search() : res.hidden = true;
+    });
 }

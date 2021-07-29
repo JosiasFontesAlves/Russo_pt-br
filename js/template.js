@@ -7,9 +7,21 @@ import { addClass, criarBotão, dropDown, kreatto, render, selek, selekFn, sElem
 
 const title = t => sElem('title').innerText = t;
 
-templatr('header', { main: { class: 'w100' } }, 'footer');
+templatr(
+    { header: { class: 'bg_vidro padd7 ' } },
+    { main: { class: 'w100 flex center' } },
+    'footer'
+);
 
-kreatto({ header: [{ h1: { id: "ttl" } }, { div: { id: "drop", class: "fix" } }] }, { footer: [{ p: { id: "mts" } }] });
+kreatto(
+    {
+        header: [
+            { h1: { id: "ttl" } },
+            { div: { id: "drop", class: "fix" } }
+        ]
+    },
+    { footer: [{ p: { id: "mts" } }] }
+);
 
 addClass({ elems: [sElem('header'), sElem('footer')], classe: 'w100 fix' });
 
@@ -44,7 +56,7 @@ selekFn('btn_temesc', 'click', () => {
 
 window.onload = () => {
     home();
-    
+
     style.background = localStorage.getItem('tema_body');
     main.style.color = localStorage.getItem('tema_color');
 

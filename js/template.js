@@ -25,7 +25,7 @@ kreatto(
 
 addClass({ elems: [sElem('header'), sElem('footer')], classe: 'w100 fix' });
 
-texto({ id: 'mts', texto: '<p> Josias Fontes Alves - Matsa &copy; 2021 </p>' });
+texto({ id: 'mts', texto: render('p', 'Josias Fontes Alves - Matsa &copy; 2021') });
 
 const listaDrop = [];
 

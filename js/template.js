@@ -33,13 +33,13 @@ const listaDrop = [];
     { "#home": "Início" }, { "#decl": "Declinação" }, { "#semana": "Dias da semana" },
     { "#alfabeto": "Alfabeto" }, { "#decl": "Declinação" }, { "#meses": "Meses do ano" }
 ].forEach(link => {
-    for (let num in link) listaDrop.push(render({ a: { href: num } }, link[num]));
+    for (let num in link) listaDrop.push(render({ p: { class: 'padd3' } }, render({ a: { href: num } }, link[num])));
 });
 
 dropDown({
     local: 'drop',
     btn: '#ttl',
-    lista: [...listaDrop, render({ img: { id: "lua", src: "../temesc.png" } }, ''), render({ p: { id: "temesc" } })]
+    lista: [...listaDrop, render({ img: { id: "lua", src: "../temesc.png", class: 'fix' } }, ''), render({ p: { id: "temesc" } }, '')],
 });
 
 criarBotão('temesc', 'btn_temesc', 5, 'blue');

@@ -9,7 +9,7 @@
     * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-var versão = '2.4.8';
+let versão = '2.5';
 
 /** 
 * @param {string} local
@@ -255,23 +255,17 @@ export class Animatus {
     }
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
-/**
-* @param {object} arguments
-* @param {string} arguments.local
-* @param {string} arguments.btn
-* @param {string[]} arguments.lista
-*/
-export function dropDown({ local, btn, lista }) {
+export function dropDown() {
     [...arguments].forEach(drop => {
-        let items = [], a = document.getElementById(drop.local);
+        let items = [], local = document.getElementById(drop.local);
 
-        a.hidden = true;
+        local.hidden = true;
 
-        for (let x in drop.lista) items.push(`<p> ${drop.lista[x]} </p>`);
+        for (let x in drop.lista) items.push(drop.lista[x]);
 
-        a.innerHTML = items.join(' ');
+        local.innerHTML = items.join(' ');
 
-        document.querySelector(drop.btn).onclick = () => a.hidden == true ? a.hidden = false : a.hidden = true;
+        document.querySelector(drop.btn).onclick = () => local.hidden == true ? local.hidden = false : local.hidden = true;
     });
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 

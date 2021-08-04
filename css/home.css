@@ -16,8 +16,16 @@
     background: var(--vidro);
 }
 
+.padd3 {
+    padding: 3px;
+}
+
 .padd7 {
     padding: var(--tam7);
+}
+
+.br_20 {
+    border-radius: 20px;
 }
 
 body {
@@ -68,8 +76,7 @@ h2 {
 
 #lua {
     width: 25px;
-    position: fixed;
-    transform: translate(-50px, 10px);
+    transform: translateX(-50px);
 }
 
 #temesc {
@@ -83,14 +90,13 @@ h1:hover, #drop a:hover {
 
 #search {
     flex-wrap: wrap;
-    top: 70px;
+    top: 66px;
     position: absolute;
 }
 
 #txt {
     position: inherit;
     border: 2px solid var(--vidro);
-    border-radius: 20px;
     box-shadow: var(--sombra) var(--vidro);
     outline: none;
     padding: 5px;
@@ -109,13 +115,24 @@ h1:hover, #drop a:hover {
 }
 
 #res {
-    background: white;
     border: 2px solid var(--nardoGray);
     box-shadow: var(--sombra) var(--ghost_bg);
+    color: black;
     padding: 5px;
     position: inherit;
     top: 50px;
     width: 75vw;
+}
+
+#close {
+    border: 2px solid var(--ghost_bg);
+    box-shadow: var(--sombra) var(--ghost_bg);
+    cursor: pointer;
+    float: right;
+}
+
+#close:hover {
+    background: var(--ghost_bg);
 }
 
 #container {

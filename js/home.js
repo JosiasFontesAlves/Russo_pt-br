@@ -31,31 +31,30 @@ export default () => {
 
     let ctrl = 0;
 
-    for (let a in dsk) {
-        texto({ id: `bl_${ctrl++}`, texto: `${render('h2', a)} ${render({ p: { id: 'blc_' + ctrl } }, '')}` }); // Insere as letras no começo
+    for (let letra in dsk) {
+        texto({ id: `bl_${ctrl++}`, texto: `${render('h2', letra)} ${render({ p: { id: 'blc_' + ctrl } }, '')}` }); // Insere as letras no começo
 
-        for (let b in dsk[a]) criarLista([`blc_${ctrl}`, [`${b} - ${dsk[a][b]}`], 'p class="trad"']); // Insere as traduções
+        for (let palavra in dsk[letra]) 
+            criarLista([`blc_${ctrl}`, [`${palavra} - ${dsk[letra][palavra]}`], { p: { class: 'trad' } }]); // Insere as traduções
     }
 
     res.hidden = true;
 
-    selekFn('ok', 'click', () => {
-        const search = () => {
-            res.hidden = false;
+    const search = () => {
+        res.hidden = false;
 
-            texto({
-                id: 'res',
-                texto: `
-                    ${txt.value} - ${dsk[txt.value[0].toUpperCase()][txt.value] ?? 'Ainda não temos essa palavra no dicionário'}
-                    ${render({ button: { id: 'close', class: 'br_20' } }, 'X')}
-                `
-            });
+        texto({
+            id: 'res',
+            texto: `
+                ${txt.value} - ${dsk[txt.value[0].toUpperCase()][txt.value] ?? 'Ainda não temos essa palavra no dicionário'}
+                ${render({ button: { id: 'close', class: 'br_20' } }, 'X')}
+            `
+        });
 
-            selekFn('close', 'click', () => res.hidden = true);
+        selekFn('close', 'click', () => res.hidden = true);
 
-            txt.value = '';
-        }
+        txt.value = '';
+    }
 
-        (res.hidden == true && txt.value != '') ? search() : res.hidden = true;
-    });
+    selekFn('ok', 'click', () => (res.hidden == true && txt.value != '') ? search() : res.hidden = true);
 }

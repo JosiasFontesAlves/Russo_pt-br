@@ -9,7 +9,7 @@
     * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-let versão = '2.5';
+let versão = '2.5.3';
 
 /** 
 * @param {string} local
@@ -73,7 +73,7 @@ export class Tempus {
                 `${calendário.diaSem[data.getDay()]} ${data.getDate()} ${calendário.mês[data.getMonth()]} ${data.getFullYear()}`,
                 `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`
             ];
-            
+
             document.getElementById(`${idCal}`).innerHTML = cal[estilo];
         }, 500);
     }
@@ -83,7 +83,7 @@ export class Tempus {
     */
     static saudação = idSau => {
         const hora = new Date().getHours();
-        
+
         document.getElementById(`${idSau}`).innerHTML = (hora <= 12) ? "Bom dia!" : (hora >= 18) ? "Boa noite!" : "Boa tarde!";
     }
 
@@ -306,10 +306,22 @@ export function jacss() {
  * @param {object} arguments
  * @param {string} arguments.local
  * @param {string[]} arguments.lista
- * @param {string} arguments.el
+ * @param {string | object} arguments.el
  */
 export function criarLista([_local, _lista, _el]) {
-    [...arguments].forEach(x => x[1].forEach(l => document.getElementById(x[0]).innerHTML += `<${x[2]}> ${l} </${x[2]}>`));
+    [...arguments].forEach(lista => {
+        let res;
+        lista[1].forEach(item => {
+            for (let tag in lista[2]) {
+                for (let key in lista[2][tag]) {
+                    res = (typeof lista[2] == 'object')
+                        ? `<${tag} ${key}="${lista[2][tag][key]}">${item}</${tag}>`
+                        : `<${lista[2]}>${item}</${lista[2]}>`;
+                }
+            }
+            document.getElementById(lista[0]).innerHTML += res;
+        });
+    });
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /*
@@ -406,14 +418,14 @@ export function addCSS([_urls]) {
 }
 
 /**
-* @param {object | string} elem 
+ * @param {object | string} elem 
+ * @param {string} conteúdo
 */
 export function render(elem, conteúdo) {
     for (let tag in elem) {
         let atr = [];
 
-        for (let key in elem[tag])
-            atr.push(`${key}="${elem[tag][key]}"`);
+        for (let key in elem[tag]) atr.push(`${key}="${elem[tag][key]}"`);
 
         return (typeof elem == 'object') ? `<${tag} ${atr.join(' ')}> ${conteúdo} </${tag}>` : `<${elem}> ${conteúdo} </${elem}>`;
     }

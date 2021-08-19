@@ -9,7 +9,7 @@
     * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-let versão = '2.5.3';
+let versão = '2.5.5';
 
 /** 
 * @param {string} local
@@ -50,7 +50,7 @@ export class Tempus {
         setInterval(() => {
             const data = new Date(), rlg = [data.getHours(), data.getMinutes(), data.getSeconds()];
 
-            for (let x in rlg) rlg[x] < 10 ? rlg[x] = `0${rlg[x] - 1}` : '';
+            for (let x in rlg) rlg[x] < 10 ? rlg[x] = `0${rlg[x]}` : '';
 
             const rel = [rlg.join(':'), (rlg.pop(), rlg.join(':'))];
 
@@ -207,31 +207,6 @@ export function templatr() {
     });
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
-/**
-* @param {object} arguments
-* @param {string} arguments.loop 
-* @param {string} arguments.varCtrl
-* @param {number} arguments.qtde
-* @param {function} arguments.fn
-*/
-export function loopr({ loop, varCtrl, qtde, fn }) {
-    [...arguments].forEach(l => {
-        switch (l.loop) {
-            case 'for':
-                for (l.varCtrl = 0; l.varCtrl < l.qtde; l.varCtrl++)
-                    l.fn(l.varCtrl);
-                break;
-            case 'forEach':
-                [...l.varCtrl].forEach(l.fn);
-                break;
-            case 'forIn':
-                for (l.varCtrl in l.var)
-                    l.fn(l.varCtrl);
-                break;
-        }
-    });
-} /* ----------------------------------------------------------------------------------------------------------------------------------------- */
-
 /** 
 * @param {object} arguments
 * @param {string} arguments.id - local do texto 
@@ -245,7 +220,11 @@ export class Animatus {
     static barr(id, pxMax, vel) {
         const { style } = document.getElementById(id);
         let px = 0;
-        setInterval(() => (style.width != `${pxMax}px`) ? style.width = `${px++}px` : '', vel);
+        setInterval(() => {
+            arguments[3] == 'loop'
+                ? (px != pxMax) ? style.width = `${px++}px` : px = 0
+                : (style.width != `${pxMax}px`) ? style.width = `${px++}px` : '';
+        }, vel);
     }
 
     static girar(id, z, vel) {
@@ -325,6 +304,7 @@ export function criarLista([_local, _lista, _el]) {
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /*
+ * Gera um id numérico para a classe
  * Sintaxe -> [classe, id]
  */
 export function addId() {
@@ -418,17 +398,30 @@ export function addCSS([_urls]) {
 }
 
 /**
- * @param {object | string} elem 
- * @param {string} conteúdo
+* @param {object | string} elem 
 */
 export function render(elem, conteúdo) {
     for (let tag in elem) {
         let atr = [];
 
-        for (let key in elem[tag]) atr.push(`${key}="${elem[tag][key]}"`);
+        for (let key in elem[tag])
+            atr.push(`${key}="${elem[tag][key]}"`);
 
         return (typeof elem == 'object') ? `<${tag} ${atr.join(' ')}> ${conteúdo} </${tag}>` : `<${elem}> ${conteúdo} </${elem}>`;
     }
-}
+} /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+/**
+ * @param {string} local 
+ * @param {string} tag 
+ * @param {string} tipo - flex ou grid
+ */
+export function container(local, tag, qtde, tipo) {
+    const el = document.querySelector(local);
+
+    el.classList += `container ${tipo}`;
+    
+    for (let i = 0; i < qtde; i++) el.innerHTML += tag;
+} /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2021\nCriada por Josias Fontes Alves`);

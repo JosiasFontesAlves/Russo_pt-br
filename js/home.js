@@ -2,6 +2,8 @@ import { dicionário as dsk } from "./dicionário.js";
 import { addClass, criarLista, grid, kreatto, render, selek, selekFn, texto } from "./lib7.js";
 
 export default () => {
+    location.hash = '#home';
+
     kreatto(
         {
             main: [

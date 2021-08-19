@@ -1,7 +1,7 @@
 import { criarLista, kreatto, texto } from "./lib7.js";
 
 export default () => {
-    kreatto({ main: [{ div: { id: "alfabeto"} }] });
+    kreatto({ main: [{ div: { id: "alfabeto" } }] });
     texto({ id: 'ttl', texto: 'Alfabeto russo' });
 
     let alfabeto = [
@@ -10,5 +10,5 @@ export default () => {
         ['Цц Чч Шш Щщ Ъъ Ыы Ьь Ээ Юю Яя']
     ];
 
-    criarLista(['alfabeto', [...alfabeto], 'h1 class="alf"']);
+    criarLista(['alfabeto', [...alfabeto], { h1: { class: "alf" } }]);
 }

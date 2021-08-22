@@ -20,6 +20,10 @@
     padding: 3px;
 }
 
+.padd5 {
+    padding: 5px;
+}
+
 .padd7 {
     padding: var(--tam7);
 }
@@ -42,10 +46,6 @@ header {
     text-align: left;
     box-shadow: var(--neon) var(--ghost_bg);
     backdrop-filter: blur(2px);
-}
-
-#drop p {
-    padding: 3px;
 }
 
 h1 {
@@ -99,7 +99,6 @@ h1:hover, #drop a:hover {
     border: 2px solid var(--vidro);
     box-shadow: var(--sombra) var(--vidro);
     outline: none;
-    padding: 5px;
     width: 70vw;
 }
 
@@ -115,10 +114,10 @@ h1:hover, #drop a:hover {
 }
 
 #res {
+    background: var(--nardoGray);
     border: 2px solid var(--nardoGray);
     box-shadow: var(--sombra) var(--ghost_bg);
     color: black;
-    padding: 5px;
     position: inherit;
     top: 50px;
     width: 75vw;
@@ -154,6 +153,7 @@ h1:hover, #drop a:hover {
 
 footer {
     bottom: 0;
+    color: #505050;
     padding: 3px;
 }
 

@@ -13,9 +13,16 @@ export default () => {
         },
         {
             '#search': [
-                { input: { type: 'text', id: 'txt', placeholder: 'Pesquisar no dicionário' } },
+                {
+                    input: {
+                        class: 'padd5 ', 
+                        type: 'text', 
+                        id: 'txt', 
+                        placeholder: 'Pesquisar no dicionário'
+                    }
+                },
                 { button: { id: 'ok' } },
-                { p: { id: 'res' } }
+                { p: { class: 'padd5', id: 'res' } }
             ]
         }
     );
@@ -36,7 +43,7 @@ export default () => {
     for (let letra in dsk) {
         texto({ id: `bl_${ctrl++}`, texto: `${render('h2', letra)} ${render({ p: { id: 'blc_' + ctrl } }, '')}` }); // Insere as letras no começo
 
-        for (let palavra in dsk[letra]) 
+        for (let palavra in dsk[letra])
             criarLista([`blc_${ctrl}`, [`${palavra} - ${dsk[letra][palavra]}`], { p: { class: 'trad' } }]); // Insere as traduções
     }
 

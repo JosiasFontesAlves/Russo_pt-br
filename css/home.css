@@ -33,7 +33,6 @@
 }
 
 body {
-    text-align: center;
     text-shadow: var(--neon2) var(--ghost_bg);
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -48,7 +47,11 @@ header {
     backdrop-filter: blur(2px);
 }
 
-h1 {
+body, #drop {
+    text-align: center;
+}
+
+h1, #ok {
     cursor: pointer;
 }
 
@@ -65,7 +68,6 @@ h2 {
     transform: translateY(var(--tam7));
     background: var(--vidro);
     border-top: none;
-    text-align: center;
     border-radius: 0 0 10px 10px;
 }
 
@@ -95,21 +97,20 @@ h1:hover, #drop a:hover {
 }
 
 #txt {
-    position: inherit;
     border: 2px solid var(--vidro);
     box-shadow: var(--sombra) var(--vidro);
     outline: none;
+    position: inherit;
     width: 70vw;
 }
 
 #ok {
     background: var(--nardoGray);
-    border: 3px solid var(--nardoGray);
+    border: 3px solid #929292;
     border-radius: 50%;
-    box-shadow: var(--sombra) var(--ghost_bg);
     height: 45px;
     outline: none;
-    transform: translateX(35vw);
+    transform: translateX(-3vw);
     width: 45px;
 }
 

@@ -49,7 +49,7 @@ temEsc('btn_temesc', ['30px']);
 const main = sElem('main'), { style } = sElem('body');
 
 selekFn('btn_temesc', 'click', () => {
-    style.background == 'black' ? main.style.color = 'var(--nardoGray)' : main.style.color = 'black';
+    main.style.color = style.background == 'black' ? 'var(--nardoGray)' : 'black';
     localStorage.setItem('tema_body', style.background);
     localStorage.setItem('tema_color', main.style.color);
 });

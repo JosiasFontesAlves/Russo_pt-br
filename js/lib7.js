@@ -9,7 +9,7 @@
     * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-let versão = '2.5.5';
+let versão = '2.6';
 
 /** 
 * @param {string} local
@@ -244,7 +244,7 @@ export function dropDown() {
 
         local.innerHTML = items.join(' ');
 
-        document.querySelector(drop.btn).onclick = () => local.hidden == true ? local.hidden = false : local.hidden = true;
+        document.querySelector(drop.btn).onclick = () => local.hidden = local.hidden == true ? false : true;
     });
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -422,6 +422,25 @@ export function container(local, tag, qtde, tipo) {
     el.classList += `container ${tipo}`;
     
     for (let i = 0; i < qtde; i++) el.innerHTML += tag;
+} /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+/**
+ * @param {string} local 
+ */
+export function SearchBox(local) {
+    const searchBox = document.createElement('section');
+    searchBox.classList = 'searchBox';
+    searchBox.append(...['input', 'button'].map(elem => document.createElement(elem)));
+
+    document.querySelector(local).appendChild(searchBox);
+
+    if (typeof arguments[1] === "object") {
+        for (let el in arguments[1]) {
+            for (let atr in arguments[1][el]) {
+                document.querySelector(el)[atr] = arguments[1][el][atr];
+            }
+        }
+    }
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2021\nCriada por Josias Fontes Alves`);

@@ -1,3 +1,8 @@
+/*
+ 
+
+*/
+
 export const dicionário = {
     A: {
         abacate: 'авокадо', abacaxi: 'ананас', abaixar: 'опускать', abandonar: 'оставлять', aberto: 'открытый', abismo: 'бездна', abril: 'апрель',
@@ -8,10 +13,10 @@ export const dicionário = {
         arquiteto: 'архитектор', assim: 'так', atacar: 'ударить', avô: 'дедушка', avó: 'бабушка', azul: 'синий', 'azul claro': 'голубой',
     },
     B: {
-        baixo: 'короткий', balançar: 'качать', banco: 'банк', banheiro: 'ванная комната', banquisa: 'льдина', bebida: 'напиток', barba: 'борода',
-        barco: 'корабль', básico: 'основной', bastante: 'достаточно', batata: 'картошка', bebê: 'Младенец', beber: 'пить', bem: 'хорошо', bola: 'мяч',
-        bonito: 'красивый', botas: 'ботинки', branco: 'белый', Brasil: 'Бразилия', brasileiro: 'бразилец(pes)/бразильский(adj)', buraco: 'дырка',
-        buscar: 'искать',
+        baixo: 'короткий', balançar: 'качать', banco: 'банк', banheiro: 'ванная комната', banquisa: 'льдина', bar: 'бар', bebida: 'напиток', barba: 'борода',
+        barco: 'корабль', básico: 'основной', bastante: 'достаточно', batata: 'картошка', bebê: 'Младенец', beber: 'пить', bem: 'хорошо',
+        biblioteca: 'библиотека', bola: 'мяч', bonito: 'красивый', botas: 'ботинки', branco: 'белый', Brasil: 'Бразилия',
+        brasileiro: 'бразилец(pes)/бразильский(adj)', buraco: 'дырка', buscar: 'искать',
     },
     C: {
         cabeça: 'голова', cabelo: 'волос', caçar: 'ловить', cachecol: 'шарф', café: 'кофе', Canadá: 'Канада', chapéu: 'шляпа', cair: 'выпасть',
@@ -19,10 +24,10 @@ export const dicionário = {
         'carne de porco': 'свинина', carro: 'машина', carteira: 'бумажник', casa: 'дом', casaco: 'пальто', Cazaquistão: 'Казахстан', centro: 'центр',
         certo: 'правильный', cerveja: 'пиво', chá: 'чай', chamada: 'вызов', chamar: 'звать', chapéu: 'шляпа', chatear: 'наскучить', chorar: 'плакать',
         China: 'Китай', cidade: 'город', cinco: 'пять', cinza: 'серый', cliente: 'клиент', cobrir: 'накрывать', coisa: 'вещь', colega: 'коллега',
-        colher: 'ложка (subst)', comer: 'есть', comida: 'еда', como: 'как', compra: 'покупка', comprar: 'купить', conhecer: 'встречать', conseguir: 'достичь',
-        congelar: 'замерзнуть', conhecer: 'познакомиться', considerar: 'рассмотреть', consumidor: 'покупатель', conta: 'счёт', continuar: 'продолжать',
-        contra: 'против', copo: 'стакан', cor: 'цвет', coração: 'сердце', Coreia: 'Корея', cortar: 'нарезать', crescer: 'расти', criança: 'ребёнок',
-        crianças: 'дети', cume: 'Вершина', cozinha: 'кухня', cotovelo: 'локоть', costela: 'ребро',
+        colher: 'ложка (subst)', comer: 'есть', comida: 'еда', como: 'как', compra: 'покупка', comprar: 'купить', conhecer: 'встречать',
+        conseguir: 'достичь', congelar: 'замерзнуть', conhecer: 'познакомиться', considerar: 'рассмотреть', consumidor: 'покупатель', conta: 'счёт',
+        continuar: 'продолжать', contra: 'против', copo: 'стакан', cor: 'цвет', coração: 'сердце', Coreia: 'Корея', cortar: 'нарезать', crescer: 'расти',
+        criança: 'ребёнок', crianças: 'дети', cume: 'Вершина', cozinha: 'кухня', cotovelo: 'локоть', costela: 'ребро',
     },
     D: {
         daqui: 'отсюда', de: 'из', definitivamente: 'Определённо', delicioso: 'вкусный', demais: 'слишком', 'de fato': 'именно', 'de repente': 'вдруг',
@@ -76,8 +81,8 @@ export const dicionário = {
         onze: 'одиннадцать', oops: 'ой', opinar: 'высказать', opinião: 'мнение', ordem: 'приказ', ovo: 'яйцо', ou: 'или', outubro: 'октябрь', ombro: 'плечо',
     },
     P: {
-        pão: 'хлеб', pagar: 'платить', pai: 'отец', parar: 'остановить(ся)', papel: 'Бумага', pedir: 'заказывать', pegar: 'Брать', peito: 'грудь',
-        peixe: 'рыба', pele: 'Кожа', pensar: 'думать', perder: 'проиграть', perfeito: 'идеальный', pernoitar: 'ночевать', pescador: 'рыбак',
+        pão: 'хлеб', pagar: 'платить', pai: 'отец', parar: 'остановить(ся)', papel: 'Бумага', parque: 'парк', pedir: 'заказывать', pegar: 'Брать',
+        peito: 'грудь', peixe: 'рыба', pele: 'Кожа', pensar: 'думать', perder: 'проиграть', perfeito: 'идеальный', pernoitar: 'ночевать', pescador: 'рыбак',
         pessoa: 'человек', pessoas: 'люди', pequeno: 'маленький', piscina: 'бассейн', poeta: 'поэт', por: 'за', 'por favor': 'пожалуйста',
         possível: 'возможно', praça: 'площадь', prato: 'тарелка', precisar: 'должен(а/о/ы)', preto: 'чёрный', privada: 'унитаз', problema: 'проблема',
         pronto: 'готов', proteger: 'защищать', pescoço: 'шея', pulso: 'запястье',
@@ -99,7 +104,7 @@ export const dicionário = {
         sonhar: 'мечтать', sopa: 'суп', sorte: 'удача', suco: 'сок', Suécia: 'Швеция', suéter: 'свитер', supermercado: 'супермаркет',
     },
     T: {
-        taça: 'бокал', talvez: 'может быть', também: 'тоже', taxi: 'такси', tchau: 'пока пока', telefone: 'телефон', tênis: 'кроссовки',
+        taça: 'бокал', talvez: 'может быть', também: 'тоже', taxi: 'такси', tchau: 'пока пока', teatro: 'театр', telefone: 'телефон', tênis: 'кроссовки',
         tentar: 'попытаться', 'terça-feira': 'вторник', ter: 'иметь', terno: 'костюм', tocar: 'Затронуть', todo: 'любой (inteiro)', tornozelo: 'лодыжка',
         trabalhador: 'рабочий', trabalhar: 'работать', trabalho: 'работа', transportar: 'водить', tratamento: 'Лечение', trem: 'поезд', três: 'три',
         treze: 'тринадцать', trocar: 'заменить', tu: 'ты', tudo: 'всё',

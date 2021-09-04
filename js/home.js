@@ -1,5 +1,5 @@
 import { dicionário as dsk } from "./dicionário.js";
-import { addClass, criarLista, grid, kreatto, render, selek, selekFn, texto } from "./lib7.js";
+import { addClass, criarLista, grid, kreatto, render, SearchBox, selek, selekFn, texto } from "./lib7.js";
 
 export default () => {
     location.hash = '#home';
@@ -12,28 +12,25 @@ export default () => {
             ]
         },
         {
-            '#search': [
-                {
-                    input: {
-                        class: 'padd5 ', 
-                        type: 'text', 
-                        id: 'txt', 
-                        placeholder: 'Pesquisar no dicionário'
-                    }
-                },
-                { button: { id: 'ok' } },
-                { p: { class: 'padd5', id: 'res' } }
-            ]
+            '#search': [{ p: { id: 'res' } }]
         }
     );
 
+    SearchBox('#search', {
+        input: {
+            id: 'txt',
+            type: 'text',
+            placeholder: 'Pesquisar no dicionário'
+        },
+        button: { id: 'ok', innerText: '=>' }
+    });
+
     const txt = selek('txt'), res = selek('res');
 
-    addClass({ elems: [txt, res], classe: 'bg_vidro br_20' });
+    addClass({ elems: [txt, res], classe: 'padd5 bg_vidro br_20' });
 
     texto(
-        { id: 'ttl', texto: 'Dicionário de russo' },
-        { id: 'ok', texto: '=>' }
+        { id: 'ttl', texto: 'Dicionário de russo' }
     );
 
     grid('blocos', 23, 'bl_', 'container', 'div');

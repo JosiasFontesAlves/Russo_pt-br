@@ -9,7 +9,7 @@ const title = t => sElem('title').innerText = t;
 
 templatr(
     { header: { class: 'bg_vidro padd7 ' } },
-    { main: { class: 'w100 flex center' } },
+    { main: { class: 'w100 flex center ' } },
     'footer'
 );
 
@@ -49,7 +49,7 @@ temEsc('btn_temesc', ['30px']);
 const main = sElem('main'), { style } = sElem('body');
 
 selekFn('btn_temesc', 'click', () => {
-    main.style.color = style.background == 'black' ? 'var(--nardoGray)' : 'black';
+    main.style.color = (style.background == 'black') ? 'var(--nardoGray)' : 'black';
     localStorage.setItem('tema_body', style.background);
     localStorage.setItem('tema_color', main.style.color);
 });

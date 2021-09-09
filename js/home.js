@@ -1,5 +1,5 @@
 import { dicionário as dsk } from "./dicionário.js";
-import { addClass, criarLista, grid, kreatto, render, SearchBox, selek, selekFn, texto } from "./lib7.js";
+import { addClass, Container, criarLista, kreatto, render, SearchBox, selek, selekFn, texto } from "./lib7.js";
 
 export default () => {
     location.hash = '#home';
@@ -7,12 +7,13 @@ export default () => {
     kreatto(
         {
             main: [
-                { section: { id: 'search', class: 'flex center' } },
-                { section: { id: 'container' } }
+                { section: { id: 'search', class: 'flex center' } }
             ]
         },
         {
-            '#search': [{ p: { id: 'res' } }]
+            '#search': [
+                { p: { id: 'res' } }
+            ]
         }
     );
 
@@ -22,18 +23,24 @@ export default () => {
             type: 'text',
             placeholder: 'Pesquisar no dicionário'
         },
-        button: { id: 'ok', innerText: '=>' }
+        button: {
+            id: 'ok',
+            innerText: '=>'
+        }
     });
+
+    Container(['main', { div: { classList: 'blocos' } }, 23, 'container', 'bl_']);
 
     const txt = selek('txt'), res = selek('res');
 
-    addClass({ elems: [txt, res], classe: 'padd5 bg_vidro br_20' });
+    addClass(
+        { elems: [txt, res], classe: 'padd5 bg_vidro br_20' },
+        { elems: [selek('container')], classe: 'grid' }
+    );
 
     texto(
         { id: 'ttl', texto: 'Dicionário de russo' }
     );
-
-    grid('blocos', 23, 'bl_', 'container', 'div');
 
     let ctrl = 0;
 

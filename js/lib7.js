@@ -9,7 +9,7 @@
     * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-let versão = '2.6';
+let versão = '2.6.6';
 
 /** 
 * @param {string} local
@@ -55,7 +55,7 @@ export class Tempus {
             const rel = [rlg.join(':'), (rlg.pop(), rlg.join(':'))];
 
             document.getElementById(`${idRel}`).innerHTML = rel[estilo];
-        }, 500);
+        }, 1000);
     }
 
     /**
@@ -75,7 +75,7 @@ export class Tempus {
             ];
 
             document.getElementById(`${idCal}`).innerHTML = cal[estilo];
-        }, 500);
+        }, 1000);
     }
 
     /**
@@ -194,17 +194,17 @@ export function kreatto() {
 // IMPORTANTE! --> Sempre usar o templatr no topo do código!
 
 export function templatr() {
-    const { body } = document;
-    [...arguments].forEach(elem => {
-        let atr = [], res;
-        for (let tag in elem) {
-            for (let key in elem[tag])
-                atr.push(`${key}="${elem[tag][key]}"`);
-
-            res = typeof elem == 'string' ? `<${elem}></${elem}>` : `<${tag} ${atr.join(' ')}></${tag}>`;
+    const { body } = document, res = [];
+    [...arguments].forEach(elem => res.push(document.createElement(typeof elem === 'string' ? elem : Object.keys(elem))));
+    res.forEach((el, i) => {
+        if (typeof arguments[i] === 'object') {
+            for (let tag in arguments[i]) {
+                for (let atr in arguments[i][tag]) 
+                    el[atr] = arguments[i][tag][atr];
+            }
         }
-        body.innerHTML += res;
     });
+    body.append(...res);
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /** 
@@ -412,16 +412,37 @@ export function render(elem, conteúdo) {
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
- * @param {string} local 
- * @param {string} tag 
- * @param {string} tipo - flex ou grid
+ * @param {object} arguments
+ * @param {string} arguments._local 
+ * @param {string | object} arguments._tag 
+ * @param {number} arguments._qtde
  */
-export function container(local, tag, qtde, tipo) {
-    const el = document.querySelector(local);
+export function Container([_local, _tag, _qtde, _idContainer, _idComponente]) {
+    [...arguments].forEach(arg => {
+        const res = [], container = document.createElement('section');
 
-    el.classList += `container ${tipo}`;
-    
-    for (let i = 0; i < qtde; i++) el.innerHTML += tag;
+        for (let elem = 0; elem < arg[2]; elem++) // Cria os componentes
+            res.push(document.createElement(typeof arg[1] === 'string' ? arg[1] : Object.keys(arg[1])));
+
+        if (typeof arg[1] === 'object') {
+            let ctrlId = 0;
+
+            res.forEach(el => {
+                if (arg.length == 5) el.id = arg[4] + ctrlId++;
+                
+                for (let key in arg[1]) {
+                    for (let atr in arg[1][key]) 
+                        el[atr] = arg[1][key][atr];
+                }
+            });
+        }
+
+        container.classList = ' container ';
+        container.id = arg[3];
+        container.append(...res);
+
+        document.querySelector(arg[0]).appendChild(container);
+    });
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
@@ -436,9 +457,8 @@ export function SearchBox(local) {
 
     if (typeof arguments[1] === "object") {
         for (let el in arguments[1]) {
-            for (let atr in arguments[1][el]) {
+            for (let atr in arguments[1][el])
                 document.querySelector(el)[atr] = arguments[1][el][atr];
-            }
         }
     }
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */

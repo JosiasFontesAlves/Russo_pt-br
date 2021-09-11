@@ -8,8 +8,8 @@ import { addClass, criarBotão, dropDown, kreatto, render, selek, selekFn, sElem
 const title = t => sElem('title').innerText = t;
 
 templatr(
-    { header: { classList: 'bg_vidro padd7 ' } },
-    { main: { classList: 'w100 flex center ' } },
+    { header: { class: 'bg_vidro padd7 ' } },
+    { main: { class: 'w100 flex center ' } },
     'footer'
 );
 

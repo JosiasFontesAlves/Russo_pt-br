@@ -29,7 +29,7 @@ export default () => {
         }
     });
 
-    Container(['main', { div: { classList: 'blocos' } }, 23, 'container', 'bl_']);
+    Container(['main', { div: { class: 'blocos' } }, 23, 'container', 'bl_']);
 
     const txt = selek('txt'), res = selek('res');
 

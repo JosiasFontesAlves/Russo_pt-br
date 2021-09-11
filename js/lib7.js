@@ -9,7 +9,7 @@
     * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-let versão = '2.6.6';
+let versão = '2.7.3';
 
 /** 
 * @param {string} local
@@ -121,31 +121,31 @@ export class Tempus {
 /**
 * @param {string} id 
 */
-export const selek = id => document.getElementById(`${id}`);
+export const selek = id => document.getElementById(id);
 
 /**
 * @param {Element} elem 
 */
-export const sElem = elem => document.querySelector(`${elem}`);
+export const sElem = elem => document.querySelector(elem);
 
 /**
 * @param {string} id 
 * @param {EventListener} ev 
 * @param {function} fn 
 */
-export const selekFn = (id, ev, fn) => document.getElementById(`${id}`).addEventListener(`${ev}`, fn);
+export const selekFn = (id, ev, fn) => document.getElementById(id).addEventListener(ev, fn);
 
 /**
  * @param {Element} elem 
  * @param {EventListener} ev 
  * @param {function} fn 
  */
-export const sElemFn = (elem, ev, fn) => document.querySelector(`${elem}`).addEventListener(`${ev}`, fn);
+export const sElemFn = (elem, ev, fn) => document.querySelector(elem).addEventListener(ev, fn);
 
 /**
 * @param {Element} classe 
 */
-export const seleKlass = classe => document.getElementsByClassName(`${classe}`);
+export const seleKlass = classe => document.getElementsByClassName(classe);
 /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
@@ -169,23 +169,24 @@ export function temEsc(id, pos) {
 * @param {number} px 
 */
 export function menuLateral(id, px) {
-    const { style } = document.querySelector('aside'), pos = [`translateX(-${px}px)`, 'translateX(0)'];
+    const { style } = document.querySelector('aside'), pos = [`translateX(${px}px)`, 'translateX(0)'];
     style.transform = pos[0];
-    document.getElementById(id).addEventListener('click', () => style.transform == pos[0] ? style.transform = pos[1] : style.transform = pos[0]);
+    document.getElementById(id).addEventListener('click', () => style.transform = (style.transform == pos[0]) ? pos[1] : pos[0]);
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 export function kreatto() {
-    [...arguments].forEach(tag => {
-        for (let key in tag) {
-            for (let value in tag[key]) {
-                let res, atr = [];
-                for (let k in tag[key][value]) {
-                    for (let v in tag[key][value][k]) {
-                        atr.push(`${v}="${tag[key][value][k][v]}"`);
-                        res = (typeof tag[key][value] == 'object') ? `<${k} ${atr.join(' ')}></${k}>` : `<${tag[key][value]}></${tag[key][value]}>`;
+    [...arguments].forEach(arg => {
+        for (let elem in arg) {
+            const res = [];
+            for (let tag of arg[elem]) { // Cria os componentes
+                res.push(document.createElement(typeof tag === 'string' ? tag : Object.keys(tag)));
+                res.forEach((el, i) => {
+                    if (typeof arg[elem][i] === 'object') {
+                        for (let key in arg[elem][i]) // Caso sejam objetos aninhados, adiciona os atributos
+                            Object.entries(arg[elem][i][key]).forEach(([atr, val]) => el.setAttribute(atr, val));
                     }
-                }
-                document.querySelector(key).innerHTML += res;
+                });
+                document.querySelector(elem).append(...res);
             }
         }
     });
@@ -198,10 +199,8 @@ export function templatr() {
     [...arguments].forEach(elem => res.push(document.createElement(typeof elem === 'string' ? elem : Object.keys(elem))));
     res.forEach((el, i) => {
         if (typeof arguments[i] === 'object') {
-            for (let tag in arguments[i]) {
-                for (let atr in arguments[i][tag]) 
-                    el[atr] = arguments[i][tag][atr];
-            }
+            for (let tag in arguments[i])
+                Object.entries(arguments[i][tag]).forEach(([atr, val]) => el.setAttribute(atr, val));
         }
     });
     body.append(...res);
@@ -212,8 +211,8 @@ export function templatr() {
 * @param {string} arguments.id - local do texto 
 * @param {string} arguments.texto 
 */
-export function texto({ id, texto }) {
-    [...arguments].forEach(x => document.getElementById(x.id).innerHTML = x.texto);
+export function texto() {
+    [...arguments].forEach(({ id, texto }) => document.getElementById(id).innerHTML = texto);
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 export class Animatus {
@@ -317,25 +316,6 @@ export function addId() {
 /* --------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
- * @param {string} local 
- * @param {string} id 
- * @param {object} param2
- * @param {string} param2.larg
- * @param {string} param2.alt
- * @param {string[]} fotos
- * @param {number} vel
- */
-export const slider = (local, id, [larg, alt], fotos, vel) => {
-    let s = `width: ${larg}; height: ${alt}; border: 1px solid; border-radius: 7px; background-image: url(img_8.jpg); background-size: cover;`, ctrl = 0;
-    document.querySelector(local).innerHTML += `<div id="${id}" style="${s[0]}"></div>`;
-
-    setInterval(() => {
-        document.getElementById(id).style.backgroundImage = `url(${fotos[ctrl++]})`;
-        if (ctrl >= fts.length) ctrl = 0;
-    }, vel);
-} /* --------------------------------------------------------------------------------------------------------------------------------- */
-
-/**
  * @param {string} classe 
  * @param {number} qtde 
  * @param {string} id
@@ -349,23 +329,6 @@ export function grid(classe, qtde, id, local, tag) {
         el.innerHTML += `<${tag} class="${classe}"></${tag}>`;
         if (arguments.length >= 3) [...document.getElementsByClassName(arguments[0])][i].id = `${id}${i}`;
     }
-} /* --------------------------------------------------------------------------------------------------------------------------------- */
-
-/**
- * @param {string} id 
- * @param {string[]} pos 
- * @param {string} cont - conteúdo da popUp
- * @param {object} estilo 
- */
-export function popUp(id, pos, cont, estilo) {
-    let st = [], res = `<h2 id="close" style="top: -18px; right: 5px; position: fixed;">X<h2> ${cont}`;
-
-    for (let x in estilo)
-        st.push(`${x}: ${estilo[x]};`);
-
-    document.body.innerHTML += `<div id="${id}" style="position: fixed; transform: translate(${[...pos]}); ${st.join(' ')}"> ${res} </div>`;
-
-    document.getElementById('close').addEventListener('click', () => document.querySelector('body').removeChild(document.getElementById(id)));
 } /* --------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
@@ -399,14 +362,13 @@ export function addCSS([_urls]) {
 
 /**
 * @param {object | string} elem 
+* @param {string} conteúdo
 */
 export function render(elem, conteúdo) {
     for (let tag in elem) {
         let atr = [];
-
         for (let key in elem[tag])
             atr.push(`${key}="${elem[tag][key]}"`);
-
         return (typeof elem == 'object') ? `<${tag} ${atr.join(' ')}> ${conteúdo} </${tag}>` : `<${elem}> ${conteúdo} </${elem}>`;
     }
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
@@ -429,11 +391,9 @@ export function Container([_local, _tag, _qtde, _idContainer, _idComponente]) {
 
             res.forEach(el => {
                 if (arg.length == 5) el.id = arg[4] + ctrlId++;
-                
-                for (let key in arg[1]) {
-                    for (let atr in arg[1][key]) 
-                        el[atr] = arg[1][key][atr];
-                }
+
+                for (let key in arg[1])
+                    Object.entries(arg[1][key]).forEach(([atr, val]) => el.setAttribute(atr, val));
             });
         }
 

@@ -55,10 +55,13 @@ export default () => {
     res.hidden = true;
 
     const search = () => {
+
         res.hidden = false;
+        res.innerHTML = '';
+
 
         res.append(
-            `${txt.value} - ${dsk[txt.value[0].toUpperCase()][txt.value] ?? 'Ainda não temos essa palavra no dicionário'}`, 
+            `${txt.value} - ${dsk[txt.value[0].toUpperCase()][txt.value] ?? 'Ainda não temos essa palavra no dicionário'}`,
             render({ button: { id: 'close', class: 'br_20' } }, 'X')
         );
 

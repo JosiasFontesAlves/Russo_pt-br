@@ -25,28 +25,28 @@ kreatto(
 
 addClass({ elems: [sElem('header'), sElem('footer')], classe: 'w100 fix' });
 
-texto({ id: 'mts', texto: render('p', 'Josias Fontes Alves - Matsa &copy; 2021') });
+texto({ mts: 'Josias Fontes Alves - Matsa \u00A9 2021' });
 
 const listaDrop = [];
 
 [
     { "#home": "Início" }, { "#decl": "Declinação" }, { "#semana": "Dias da semana" },
-    { "#alfabeto": "Alfabeto" }, { "#decl": "Declinação" }, { "#meses": "Meses do ano" }
+    { "#alfabeto": "Alfabeto" }, { "#meses": "Meses do ano" }
 ].forEach(link => {
     for (let num in link) listaDrop.push(render({ p: { class: 'padd3' } }, render({ a: { href: num } }, link[num])));
 });
 
-dropDown({
+dropDown({  
     local: 'drop',
     btn: '#ttl',
-    lista: [...listaDrop, render({ img: { id: "lua", src: "../temesc.png", class: 'fix' } }, ''), render({ p: { id: "temesc" } }, '')],
+    lista: [...listaDrop, render({ img: { id: "lua", src: "../temesc.png", class: 'fix' } }, ''), render({ p: { id: "temesc" } })],
 });
+
+const main = sElem('main'), { style } = sElem('body');
 
 criarBotão('temesc', 'btn_temesc', 5, 'blue');
 
 temEsc('btn_temesc', ['30px']);
-
-const main = sElem('main'), { style } = sElem('body');
 
 selekFn('btn_temesc', 'click', () => {
     main.style.color = (style.background == 'black') ? 'var(--nardoGray)' : 'black';
@@ -61,7 +61,8 @@ window.onload = () => {
     main.style.color = localStorage.getItem('tema_color');
 
     window.onhashchange = () => {
-        main.innerHTML = '';
+        [main, selek('ttl')].forEach(txt => txt.innerHTML = '');
+        
         selek('drop').hidden = true;
 
         switch (location.hash) {

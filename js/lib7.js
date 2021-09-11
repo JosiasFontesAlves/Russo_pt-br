@@ -212,7 +212,7 @@ export function templatr() {
 * @param {string} arguments.texto 
 */
 export function texto() {
-    [...arguments].forEach(({ id, texto }) => document.getElementById(id).innerHTML = texto);
+    [...arguments].forEach(el => document.getElementById(Object.keys(el)).append(...Object.values(el)));
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 export class Animatus {
@@ -234,16 +234,13 @@ export class Animatus {
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 export function dropDown() {
-    [...arguments].forEach(drop => {
-        let items = [], local = document.getElementById(drop.local);
+    [...arguments].forEach(({ local, lista, btn }) => {
+        const $local = document.getElementById(local);
 
-        local.hidden = true;
+        $local.hidden = true;
+        $local.append(...lista);
 
-        for (let x in drop.lista) items.push(drop.lista[x]);
-
-        local.innerHTML = items.join(' ');
-
-        document.querySelector(drop.btn).onclick = () => local.hidden = local.hidden == true ? false : true;
+        document.querySelector(btn).onclick = () => $local.hidden = $local.hidden == true ? false : true;
     });
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -280,25 +277,20 @@ export function jacss() {
     document.head.innerHTML += `<style id="jacss">${css.join('\n')}</style>`;
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
-/**
- * @param {object} arguments
- * @param {string} arguments.local
- * @param {string[]} arguments.lista
- * @param {string | object} arguments.el
- */
-export function criarLista([_local, _lista, _el]) {
-    [...arguments].forEach(lista => {
-        let res;
-        lista[1].forEach(item => {
-            for (let tag in lista[2]) {
-                for (let key in lista[2][tag]) {
-                    res = (typeof lista[2] == 'object')
-                        ? `<${tag} ${key}="${lista[2][tag][key]}">${item}</${tag}>`
-                        : `<${lista[2]}>${item}</${lista[2]}>`;
-                }
+export function criarLista() {
+    [...arguments].forEach(([local, lista, tag]) => {
+        const res = [];
+
+        lista.forEach((item, i) => {
+            res.push(document.createElement(typeof tag === 'string' ? tag : Object.keys(tag)));
+            res[i].append(item);
+
+            if (typeof tag === 'object') {
+                for (let el in tag) Object.entries(tag[el]).forEach(([atr, val]) => res[i].setAttribute(atr, val));
             }
-            document.getElementById(lista[0]).innerHTML += res;
         });
+
+        document.getElementById(local).append(...res);
     });
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -364,13 +356,16 @@ export function addCSS([_urls]) {
 * @param {object | string} elem 
 * @param {string} conteúdo
 */
-export function render(elem, conteúdo) {
-    for (let tag in elem) {
-        let atr = [];
-        for (let key in elem[tag])
-            atr.push(`${key}="${elem[tag][key]}"`);
-        return (typeof elem == 'object') ? `<${tag} ${atr.join(' ')}> ${conteúdo} </${tag}>` : `<${elem}> ${conteúdo} </${elem}>`;
+export function render(tag, conteúdo) {
+    const elem = document.createElement(typeof tag === 'string' ? tag : Object.keys(tag));
+    
+    if (typeof tag === 'object') {
+        for (let el in tag) Object.entries(tag[el]).forEach(([atr, val]) => elem.setAttribute(atr, val));
     }
+
+    if (conteúdo) elem.append(conteúdo);
+
+    return elem;
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
@@ -380,28 +375,29 @@ export function render(elem, conteúdo) {
  * @param {number} arguments._qtde
  */
 export function Container([_local, _tag, _qtde, _idContainer, _idComponente]) {
-    [...arguments].forEach(arg => {
+
+    [...arguments].forEach(([local, tag, qtde, idContainer, idComponente], i) => {
         const res = [], container = document.createElement('section');
 
-        for (let elem = 0; elem < arg[2]; elem++) // Cria os componentes
-            res.push(document.createElement(typeof arg[1] === 'string' ? arg[1] : Object.keys(arg[1])));
+        for (let elem = 0; elem < qtde; elem++) // Cria os componentes
+            res.push(document.createElement(typeof tag === 'string' ? tag : Object.keys(tag)));
 
-        if (typeof arg[1] === 'object') {
+        if (typeof tag === 'object') {
             let ctrlId = 0;
 
             res.forEach(el => {
-                if (arg.length == 5) el.id = arg[4] + ctrlId++;
+                if (arguments[i].length == 5) el.id = idComponente + ctrlId++;
 
-                for (let key in arg[1])
-                    Object.entries(arg[1][key]).forEach(([atr, val]) => el.setAttribute(atr, val));
+                for (let key in tag)
+                    Object.entries(tag[key]).forEach(([atr, val]) => el.setAttribute(atr, val));
             });
         }
 
         container.classList = ' container ';
-        container.id = arg[3];
+        container.id = idContainer;
         container.append(...res);
 
-        document.querySelector(arg[0]).appendChild(container);
+        document.querySelector(local).appendChild(container);
     });
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 

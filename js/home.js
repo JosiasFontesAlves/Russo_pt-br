@@ -39,16 +39,17 @@ export default () => {
     );
 
     texto(
-        { id: 'ttl', texto: 'Dicionário de russo' }
+        { ttl: 'Dicionário de russo' }
     );
 
     let ctrl = 0;
 
     for (let letra in dsk) {
-        texto({ id: `bl_${ctrl++}`, texto: `${render('h2', letra)} ${render({ p: { id: 'blc_' + ctrl } }, '')}` }); // Insere as letras no começo
+        selek(`bl_${ctrl++}`).append(render('h2', letra), render({ p: { id: 'blc_' + ctrl } }));
 
         for (let palavra in dsk[letra])
-            criarLista([`blc_${ctrl}`, [`${palavra} - ${dsk[letra][palavra]}`], { p: { class: 'trad' } }]); // Insere as traduções
+            criarLista([`blc_${ctrl}`, [`${palavra} - ${dsk[letra][palavra]}`], { p: { class: 'trad' } }]);
+
     }
 
     res.hidden = true;
@@ -56,13 +57,10 @@ export default () => {
     const search = () => {
         res.hidden = false;
 
-        texto({
-            id: 'res',
-            texto: `
-                ${txt.value} - ${dsk[txt.value[0].toUpperCase()][txt.value] ?? 'Ainda não temos essa palavra no dicionário'}
-                ${render({ button: { id: 'close', class: 'br_20' } }, 'X')}
-            `
-        });
+        res.append(
+            `${txt.value} - ${dsk[txt.value[0].toUpperCase()][txt.value] ?? 'Ainda não temos essa palavra no dicionário'}`, 
+            render({ button: { id: 'close', class: 'br_20' } }, 'X')
+        );
 
         selekFn('close', 'click', () => res.hidden = true);
 

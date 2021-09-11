@@ -4,7 +4,7 @@ import { dicionário } from "./dicionário.js";
 export default () => {
     location.hash = '#semana';
 
-    texto({ id: 'ttl', texto: 'Dias da semana' });
+    texto({ ttl: 'Dias da semana' });
 
     kreatto({ main: [{ div: { id: 'semana', class: 'fix w100' } }] });
 

@@ -45,17 +45,18 @@ export default () => {
     let ctrl = 0;
 
     for (let letra in dsk) {
-        selek(`bl_${ctrl++}`).append(render('h2', letra), render({ p: { id: 'blc_' + ctrl } }));
+        selek(`bl_${ctrl++}`).append(
+            render('h2', letra),
+            render({ p: { id: 'blc_' + ctrl } })
+        );
 
         for (let palavra in dsk[letra])
             criarLista([`blc_${ctrl}`, [`${palavra} - ${dsk[letra][palavra]}`], { p: { class: 'trad' } }]);
-
     }
 
     res.hidden = true;
 
     const search = () => {
-
         res.hidden = false;
         res.innerHTML = '';
 

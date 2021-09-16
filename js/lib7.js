@@ -9,7 +9,7 @@
     * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-let versão = '2.7.3';
+let versão = '2.7.5';
 
 /** 
 * @param {string} local
@@ -18,27 +18,33 @@ let versão = '2.7.3';
 * @param {string} cor
 */
 export function criarBotão(local, idBtn, estilo, cor) {
-    const tam = ["width: 50px; height: 20px; color: rgb(80, 80, 80)", "width: 20px; height: inherit; transform: translateX(-3%)"];
-    const btn = {
-        borda: [
-            `${tam[0]}; border: 2px solid; padding: 2px; border-radius: 15px`, `${tam[0]}; border: 2px solid; padding: 2px;`,
-            `${tam[0]}; border: 1px solid; background: lightgreen; border-radius: 25px;`, `${tam[0]}; background: gray; border-radius: 5px; padding: 2px;`,
-            `width: 50px; height: 15px; background: darkred; border-radius: 25px; display: flex; align-items: center`,
-            `${tam[0]}; border-radius: 25px; background: silver; border: 1px solid`,
-        ],
-        botão: [
-            `${tam[1]}; background: ${cor}; border-radius: inherit;`, `${tam[1]}; background: ${cor};`,
-            `width: 20px; height: inherit; background: ${cor}; border-radius: 50%;`, `${tam[1]}; background: ${cor}; border-radius: inherit;`,
-            `width: 25px; height: 25px; background: red; border-radius: 50%;`,
-            `width: 10px; height: 10px; border: 5px solid ${cor}; background: none; border-radius: 50%;`,
-        ]
-    }
+    const tam = ["width: 50px; height: 20px; color: rgb(80, 80, 80)", "width: 20px; height: inherit; transform: translateX(-3%)"],
+        btn = {
+            borda: [
+                `${tam[0]}; border: 2px solid; padding: 2px; border-radius: 15px`, `${tam[0]}; border: 2px solid; padding: 2px;`,
+                `${tam[0]}; border: 1px solid; background: lightgreen; border-radius: 25px;`, 
+                `${tam[0]}; background: gray; border-radius: 5px; padding: 2px;`,
+                `width: 50px; height: 15px; background: darkred; border-radius: 25px; display: flex; align-items: center`,
+                `${tam[0]}; border-radius: 25px; background: silver; border: 1px solid`,
+            ],
+            botão: [
+                `${tam[1]}; background: ${cor}; border-radius: inherit;`, `${tam[1]}; background: ${cor};`,
+                `width: 20px; height: inherit; background: ${cor}; border-radius: 50%;`, 
+                `${tam[1]}; background: ${cor}; border-radius: inherit;`,
+                `width: 25px; height: 25px; background: red; border-radius: 50%;`,
+                `width: 10px; height: 10px; border: 5px solid ${cor}; background: none; border-radius: 50%;`,
+            ]
+        }, 
+        res = [];
 
-    document.getElementById(`${local}`).innerHTML = `
-        <div style="${btn.borda[estilo]};"> 
-            <div id="${idBtn}" style="${btn.botão[estilo]} position: fixed;"> </div> 
-        </div>
-    `;
+    while (res.length < 2) res.push(document.createElement('div'));
+
+    [btn.borda[estilo], `${btn.botão[estilo]} position: fixed;`].forEach((stl, i) => res[i].style = stl);
+
+    res[1].id = idBtn;
+    res[0].appendChild(res[1]);
+
+    document.getElementById(local).appendChild(res[0]);
 } /* ----- Lib de botões ----- */
 
 export class Tempus {
@@ -358,7 +364,7 @@ export function addCSS([_urls]) {
 */
 export function render(tag, conteúdo) {
     const elem = document.createElement(typeof tag === 'string' ? tag : Object.keys(tag));
-    
+
     if (typeof tag === 'object') {
         for (let el in tag) Object.entries(tag[el]).forEach(([atr, val]) => elem.setAttribute(atr, val));
     }
@@ -418,5 +424,23 @@ export function SearchBox(local) {
         }
     }
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+/**
+ * @param {string} local 
+ * @param {string} id 
+ */
+export function FormBox(local, idForm) {
+    const form = document.createElement('form'), inputs = [];
+    form.id = idForm;
+
+    ['text', 'password'].forEach((type, i) => {
+        inputs.push(document.createElement('input'));
+        inputs[i].type = type;
+    });
+
+    form.append(...inputs, document.createElement('button'));
+
+    document.querySelector(local).appendChild(form);
+}  /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2021\nCriada por Josias Fontes Alves`);

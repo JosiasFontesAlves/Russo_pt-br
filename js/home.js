@@ -25,7 +25,6 @@ export default () => {
         },
         button: {
             id: 'ok',
-            innerText: '=>'
         }
     });
 
@@ -39,7 +38,8 @@ export default () => {
     );
 
     texto(
-        { ttl: 'Dicionário de russo' }
+        { ttl: 'Dicionário de russo' },
+        { ok: '=>' }
     );
 
     let ctrl = 0;

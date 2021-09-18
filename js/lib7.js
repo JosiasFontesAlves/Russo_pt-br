@@ -21,7 +21,8 @@ export function criarBotão(local, idBtn, estilo, cor) {
     const tam = ["width: 50px; height: 20px; color: rgb(80, 80, 80)", "width: 20px; height: inherit; transform: translateX(-3%)"],
         btn = {
             borda: [
-                `${tam[0]}; border: 2px solid; padding: 2px; border-radius: 15px`, `${tam[0]}; border: 2px solid; padding: 2px;`,
+                `${tam[0]}; border: 2px solid; padding: 2px; border-radius: 15px`, 
+                `${tam[0]}; border: 2px solid; padding: 2px;`,
                 `${tam[0]}; border: 1px solid; background: lightgreen; border-radius: 25px;`, 
                 `${tam[0]}; background: gray; border-radius: 5px; padding: 2px;`,
                 `width: 50px; height: 15px; background: darkred; border-radius: 25px; display: flex; align-items: center`,
@@ -410,7 +411,7 @@ export function Container([_local, _tag, _qtde, _idContainer, _idComponente]) {
 /**
  * @param {string} local 
  */
-export function SearchBox(local) {
+ export function SearchBox(local) {
     const searchBox = document.createElement('section');
     searchBox.classList = 'searchBox';
     searchBox.append(...['input', 'button'].map(elem => document.createElement(elem)));
@@ -418,9 +419,11 @@ export function SearchBox(local) {
     document.querySelector(local).appendChild(searchBox);
 
     if (typeof arguments[1] === "object") {
-        for (let el in arguments[1]) {
-            for (let atr in arguments[1][el])
-                document.querySelector(el)[atr] = arguments[1][el][atr];
+        let ctrl = 0;
+
+        for (let tag in arguments[1]) {
+            Object.entries(arguments[1][tag]).forEach(([atr, val]) => searchBox.children[ctrl].setAttribute(atr, val));
+            ctrl++;
         }
     }
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */

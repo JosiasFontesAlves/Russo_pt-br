@@ -36,10 +36,10 @@ const listaDrop = [];
     for (let num in link) listaDrop.push(render({ p: { class: 'padd3' } }, render({ a: { href: num } }, link[num])));
 });
 
-dropDown({  
+dropDown({
     local: 'drop',
     btn: '#ttl',
-    lista: [...listaDrop, render({ img: { id: "lua", src: "../temesc.png", class: 'fix' } }, ''), render({ p: { id: "temesc" } })],
+    lista: [...listaDrop, render({ img: { alt: 'lua', id: "lua", src: "../temesc.png", class: 'fix' } }, ''), render({ p: { id: "temesc" } })],
 });
 
 const main = sElem('main'), { style } = sElem('body');
@@ -62,7 +62,7 @@ window.onload = () => {
 
     window.onhashchange = () => {
         [main, selek('ttl')].forEach(txt => txt.innerHTML = '');
-        
+
         selek('drop').hidden = true;
 
         switch (location.hash) {

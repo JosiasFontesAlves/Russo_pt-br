@@ -1,4 +1,4 @@
-import { dicionário as dsk } from "./dicionário.js";
+import dsk from "./dicionário.js";
 import { addClass, Container, criarLista, kreatto, render, SearchBox, selek, selekFn, texto } from "./lib7.js";
 
 export default () => {
@@ -47,11 +47,14 @@ export default () => {
     for (let letra in dsk) {
         selek(`bl_${ctrl++}`).append(
             render('h2', letra),
-            render({ p: { id: 'blc_' + ctrl } })
+            render({ p: { id: `blc_${ctrl}` } })
         );
 
-        for (let palavra in dsk[letra])
-            criarLista([`blc_${ctrl}`, [`${palavra} - ${dsk[letra][palavra]}`], { p: { class: 'trad' } }]);
+        criarLista([
+            `blc_${ctrl}`,
+            [...Object.entries(dsk[letra]).map(([pt, ru]) => `${pt} - ${ru}`)],
+            { p: { class: 'trad' } }
+        ]);
     }
 
     res.hidden = true;

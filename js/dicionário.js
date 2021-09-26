@@ -1,9 +1,4 @@
-/*
- 
-
-*/
-
-export const dicionário = {
+export default {
     A: {
         abacate: 'авокадо', abacaxi: 'ананас', abaixar: 'опускать', abandonar: 'оставлять', aberto: 'открытый', abismo: 'бездна', abril: 'апрель',
         acrescentar: 'добавить', adeus: 'до свидания', administrador: 'администратор', adoecer: 'заболеть', adormecer: 'заснуть', adulto: 'взрослый',
@@ -19,15 +14,15 @@ export const dicionário = {
         brasileiro: 'бразилец(pes)/бразильский(adj)', buraco: 'дырка', buscar: 'искать',
     },
     C: {
-        cabeça: 'голова', cabelo: 'волос', caçar: 'ловить', cachecol: 'шарф', café: 'кофе', Canadá: 'Канада', chapéu: 'шляпа', cair: 'выпасть',
+        cabeça: 'голова', cabelo: 'волос', caçar: 'ловить', cachecol: 'шарф', café: 'кофе', Canadá: 'Канада', cair: 'выпасть',
         'caixa eletrônico': 'банкомат', cama: 'кровать', caminhar: 'ходить', cardápio: 'меню', carne: 'мясо', 'carne bovina': 'говядина',
         'carne de porco': 'свинина', carro: 'машина', carteira: 'бумажник', casa: 'дом', casaco: 'пальто', Cazaquistão: 'Казахстан', centro: 'центр',
         certo: 'правильный', cerveja: 'пиво', chá: 'чай', chamada: 'вызов', chamar: 'звать', chapéu: 'шляпа', chatear: 'наскучить', chorar: 'плакать',
         China: 'Китай', cidade: 'город', cinco: 'пять', cinza: 'серый', cliente: 'клиент', cobrir: 'накрывать', coisa: 'вещь', colega: 'коллега',
-        colher: 'ложка (subst)', comer: 'есть', comida: 'еда', como: 'как', compra: 'покупка', comprar: 'купить', conhecer: 'встречать',
-        conseguir: 'достичь', congelar: 'замерзнуть', conhecer: 'познакомиться', considerar: 'рассмотреть', consumidor: 'покупатель', conta: 'счёт',
-        continuar: 'продолжать', contra: 'против', copo: 'стакан', cor: 'цвет', coração: 'сердце', Coreia: 'Корея', cortar: 'нарезать', crescer: 'расти',
-        criança: 'ребёнок', crianças: 'дети', cume: 'Вершина', cozinha: 'кухня', cotovelo: 'локоть', costela: 'ребро',
+        colher: 'ложка (subst)', comer: 'есть', comida: 'еда', como: 'как', compra: 'покупка', comprar: 'купить', conseguir: 'достичь', congelar: 'замерзнуть',
+        conhecer: 'познакомиться', considerar: 'рассмотреть', consumidor: 'покупатель', conta: 'счёт', continuar: 'продолжать', contra: 'против', copo: 'стакан', cor: 'цвет',
+        coração: 'сердце', Coreia: 'Корея', cortar: 'нарезать', crescer: 'расти', criança: 'ребёнок', crianças: 'дети', cume: 'Вершина', cozinha: 'кухня', cotovelo: 'локоть',
+        costela: 'ребро',
     },
     D: {
         daqui: 'отсюда', de: 'из', definitivamente: 'Определённо', delicioso: 'вкусный', demais: 'слишком', 'de fato': 'именно', 'de repente': 'вдруг',

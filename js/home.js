@@ -39,11 +39,11 @@ export default () => {
     for (let letra in dicionário) {
         selek(`bl_${ctrl++}`).append(
             render('h2', letra),
-            render({ div: { id: `blc_${ctrl}` } })
+            render({ p: { id: `blc_${ctrl}` } })
         );
 
         criarLista([
-            `blc_${ctrl}`, [...Object.entries(dicionário[letra]).map(([pt, ru]) => `${pt} - ${ru}`)],
+            `blc_${ctrl}`, [...Object.entries(dsk[letra]).map(([pt, ru]) => `${pt} - ${ru}`)],
             { p: { class: 'trad' } }
         ]);
     }

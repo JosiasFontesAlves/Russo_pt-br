@@ -43,7 +43,7 @@ export default () => {
         );
 
         criarLista([
-            `blc_${ctrl}`, [...Object.entries(dsk[letra]).map(([pt, ru]) => `${pt} - ${ru}`)],
+            `blc_${ctrl}`, [...Object.entries(dicionário[letra]).map(([pt, ru]) => `${pt} - ${ru}`)],
             { p: { class: 'trad' } }
         ]);
     }

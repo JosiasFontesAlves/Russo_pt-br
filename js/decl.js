@@ -1,33 +1,53 @@
 import { criarTabela, kreatto, texto } from "./lib7.js";
 
 export default () => {
-    const declinação = {
-        caso: ['nominativo', 'genitivo', 'dativo', 'acusativo', 'instrumental', 'preposicional'],
-        masculino: [
-            'consoante <br> й/ь <br> ый/ой <br> ий', 'consoante - а <br> й/ь - я <br> ый/ой - ого <br> ий - его',
-            'cons + у <br> й/ь - ю <br> ый/ой - ому <br> ий - ему', 'consoante <br> й/ь <br> ый/ой <br> ий',
-            'ом <br> ем <br> ием', 'е <br> ии',
-        ],
-        neutro: [
-            'о <br> е <br> ое <br> ее', 'о - а <br> е - я <br> ое - ого <br> ее - его',
-            'о - у <br>  е - ю <br> ое - ому <br> ее - ему', 'о <br> е <br> ое <br> ее',
-            'ом <br> ем <br> ем <br> ием', 'e',
-        ],
-        feminino: [
-            'а <br> я <br> ая <br> яя', 'а - ы <br> я/ь - и <br> ая - ой <br> яя - ей',
-            'а - e <br> я - e <br> ая - ой <br> яя - ей', 'а - у <br> я - ю <br> ая - ую <br> яя - юю',
-            'ой <br> ей <br> ией', 'e <br> ии',
-        ],
-        plural: [
-            'и <br> ы <br> а <br> я', 'cons - ов <br> й - ев <br> a - cons <br> ь - ей',
-            'и <br> ы <br> e', 'и <br> ы <br> а <br> я',
-            'ами <br> ями <br> иями', 'ах <br> ях <br> иях',
-        ]
-    }
+    const declinação = [{
+            caso: 'nominativo',
+            masculino: 'consoante -- й/ь ый/ой -- ий',
+            neutro: 'о -- е -- ое -- ее',
+            feminino: 'а -- я -- ая -- яя',
+            plural: 'и -- ы -- а -- я'
+        },
+        {
+            caso: 'genitivo',
+            masculino: 'а -- я -- ого -- его',
+            neutro: 'у -- ю -- ому -- ему',
+            feminino: 'а -- я -- ая -- яя',
+            plural: 'ов -- ев -- cons -- ей'
+        },
+        {
+            caso: 'dativo',
+            masculino: 'cons + у -- ю -- ому -- ему',
+            neutro: 'у -- ю -- ому -- ему',
+            feminino: 'e -- e -- ой -- ей',
+            plural: 'и -- ы -- e'
+        },
+        {
+            caso: 'acusativo',
+            masculino: 'consoante -- й/ь -- ый/ой -- ий',
+            neutro: 'о -- е -- ое -- ее',
+            feminino: 'у -- ю -- ую -- юю',
+            plural: 'и -- ы -- а -- я'
+        },
+        {
+            caso: 'instrumental',
+            masculino: 'ом -- ем -- ием',
+            neutro: 'ом -- ем -- ем -- ием',
+            feminino: 'ой -- ей -- ией',
+            plural: 'ами -- ями -- иями'
+        },
+        {
+            caso: 'preposicional',
+            masculino: 'е -- ии',
+            neutro: 'e',
+            feminino: 'e -- ии',
+            plural: 'ах -- ях -- иях'
+        }
+    ];
 
     texto({ ttl: 'Tabela de declinação' });
 
     kreatto({ main: [{ div: { id: "tab" } }] });
 
-    criarTabela('tab', 'col', 'fila', declinação);
+    criarTabela('#tab', declinação);
 }

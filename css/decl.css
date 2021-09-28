@@ -1,17 +1,17 @@
 #tab {
     transform: translateY(70px);
+    text-align: center;
 }
 
-.fila {
-    width: 100px;
-    height: fit-content;
+th {
+    font-family: 'roboto mono', sans-serif;
+}
+
+table,
+th,
+tr,
+td {
     border: 1px solid;
-    display: flex;
+    border-collapse: collapse;
     padding: 3px;
-    align-items: center;
-    justify-content: center;
-}
-
-.fila:not(.tabCol) {
-    height: 75px;
 }

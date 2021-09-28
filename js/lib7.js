@@ -1,41 +1,41 @@
 /*  
-    * * * * * * * * * * * * *     * * * * * * * * *    * * * * * * * * * *    * * * * * * * * *     * * * * * * * * * * 
-    * * * * * * * * * * * * *     * * * * * * * * *    * * * * * * * * * *    * * * * * * * * *     * * * * * * * * * * 
-    * *                   * *     * *           * *            * *            * *                   * *             * *  
-    * *        * *        * *     * * * * * * * * *            * *            * * * * * * * * *     * *     * *     * * 
-    * *        * *        * *     * * * * * * * * *            * *            * * * * * * * * *     * *     * *     * * 
-    * *        * *        * *     * *           * *            * *                          * *     * *             * * 
-    * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
-    * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
-*/
+ * * * * * * * * * * * * *     * * * * * * * * *    * * * * * * * * * *    * * * * * * * * *     * * * * * * * * * * 
+ * * * * * * * * * * * * *     * * * * * * * * *    * * * * * * * * * *    * * * * * * * * *     * * * * * * * * * * 
+ * *                   * *     * *           * *            * *            * *                   * *             * *  
+ * *        * *        * *     * * * * * * * * *            * *            * * * * * * * * *     * *     * *     * * 
+ * *        * *        * *     * * * * * * * * *            * *            * * * * * * * * *     * *     * *     * * 
+ * *        * *        * *     * *           * *            * *                          * *     * *             * * 
+ * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
+ * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
+ */
 
-let versão = '2.7.5';
+let versão = '2.8';
 
 /** 
-* @param {string} local
-* @param {string} idBtn - nome do botão
-* @param {number} estilo - tipo de botão
-* @param {string} cor
-*/
+ * @param {string} local
+ * @param {string} idBtn - nome do botão
+ * @param {number} estilo - tipo de botão
+ * @param {string} cor
+ */
 export function criarBotão(local, idBtn, estilo, cor) {
     const tam = ["width: 50px; height: 20px; color: rgb(80, 80, 80)", "width: 20px; height: inherit; transform: translateX(-3%)"],
         btn = {
             borda: [
-                `${tam[0]}; border: 2px solid; padding: 2px; border-radius: 15px`, 
+                `${tam[0]}; border: 2px solid; padding: 2px; border-radius: 15px`,
                 `${tam[0]}; border: 2px solid; padding: 2px;`,
-                `${tam[0]}; border: 1px solid; background: lightgreen; border-radius: 25px;`, 
+                `${tam[0]}; border: 1px solid; background: lightgreen; border-radius: 25px;`,
                 `${tam[0]}; background: gray; border-radius: 5px; padding: 2px;`,
                 `width: 50px; height: 15px; background: darkred; border-radius: 25px; display: flex; align-items: center`,
                 `${tam[0]}; border-radius: 25px; background: silver; border: 1px solid`,
             ],
             botão: [
                 `${tam[1]}; background: ${cor}; border-radius: inherit;`, `${tam[1]}; background: ${cor};`,
-                `width: 20px; height: inherit; background: ${cor}; border-radius: 50%;`, 
+                `width: 20px; height: inherit; background: ${cor}; border-radius: 50%;`,
                 `${tam[1]}; background: ${cor}; border-radius: inherit;`,
                 `width: 25px; height: 25px; background: red; border-radius: 50%;`,
                 `width: 10px; height: 10px; border: 5px solid ${cor}; background: none; border-radius: 50%;`,
             ]
-        }, 
+        },
         res = [];
 
     while (res.length < 2) res.push(document.createElement('div'));
@@ -50,12 +50,13 @@ export function criarBotão(local, idBtn, estilo, cor) {
 
 export class Tempus {
     /**
-    * @param {string} idRel 
-    * @param {number} estilo 
-    */
+     * @param {string} idRel 
+     * @param {number} estilo 
+     */
     static relógio(idRel, estilo) {
         setInterval(() => {
-            const data = new Date(), rlg = [data.getHours(), data.getMinutes(), data.getSeconds()];
+            const data = new Date(),
+                rlg = [data.getHours(), data.getMinutes(), data.getSeconds()];
 
             for (let x in rlg) rlg[x] < 10 ? rlg[x] = `0${rlg[x]}` : '';
 
@@ -66,15 +67,16 @@ export class Tempus {
     }
 
     /**
-    * @param {string} idCal 
-    * @param {number} estilo 
-    */
+     * @param {string} idCal 
+     * @param {number} estilo 
+     */
     static calendário(idCal, estilo) {
         setInterval(() => {
-            const data = new Date(), calendário = {
-                diaSem: ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SÁB"],
-                mês: ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"]
-            }
+            const data = new Date(),
+                calendário = {
+                    diaSem: ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SÁB"],
+                    mês: ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"]
+                }
 
             const cal = [
                 `${calendário.diaSem[data.getDay()]} ${data.getDate()} ${calendário.mês[data.getMonth()]} ${data.getFullYear()}`,
@@ -86,8 +88,8 @@ export class Tempus {
     }
 
     /**
-    * @param {string} idSau 
-    */
+     * @param {string} idSau 
+     */
     static saudação = idSau => {
         const hora = new Date().getHours();
 
@@ -95,13 +97,13 @@ export class Tempus {
     }
 
     static count(cond, varCtrl) { // Usar apenas nas funções de contagem
-        if (cond) clearInterval(varCtrl);
-    }
-    /**
-    * @param {number} contador
-    * @param {function} fn
-    * @param {number} vel 
-    */
+            if (cond) clearInterval(varCtrl);
+        }
+        /**
+         * @param {number} contador
+         * @param {function} fn
+         * @param {number} vel 
+         */
     static contagemRegressiva(contador, fn, vel) {
         const cont = setInterval(() => {
             fn();
@@ -111,11 +113,11 @@ export class Tempus {
     }
 
     /**
-    * @param {number} contador 
-    * @param {number} varCtrl 
-    * @param {function} fn 
-    * @param {number} vel 
-    */
+     * @param {number} contador 
+     * @param {number} varCtrl 
+     * @param {function} fn 
+     * @param {number} vel 
+     */
     static contagem(contador, varCtrl, fn, vel) {
         const c = setInterval(() => {
             fn();
@@ -126,20 +128,20 @@ export class Tempus {
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
-* @param {string} id 
-*/
+ * @param {string} id 
+ */
 export const selek = id => document.getElementById(id);
 
 /**
-* @param {Element} elem 
-*/
+ * @param {Element} elem 
+ */
 export const sElem = elem => document.querySelector(elem);
 
 /**
-* @param {string} id 
-* @param {EventListener} ev 
-* @param {function} fn 
-*/
+ * @param {string} id 
+ * @param {EventListener} ev 
+ * @param {function} fn 
+ */
 export const selekFn = (id, ev, fn) => document.getElementById(id).addEventListener(ev, fn);
 
 /**
@@ -150,31 +152,31 @@ export const selekFn = (id, ev, fn) => document.getElementById(id).addEventListe
 export const sElemFn = (elem, ev, fn) => document.querySelector(elem).addEventListener(ev, fn);
 
 /**
-* @param {Element} classe 
-*/
+ * @param {Element} classe 
+ */
 export const seleKlass = classe => document.getElementsByClassName(classe);
 /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
-* @param {string} id 
-* @param {string[]} pos 
-*/
+ * @param {string} id 
+ * @param {string[]} pos 
+ */
 export function temEsc(id, pos) {
-    document.getElementById(id).addEventListener('click', function () {
+    document.getElementById(id).addEventListener('click', function() {
         const { body } = document, { style } = this;
 
         if (pos.length <= 2) {
-            style.transform == `translate(0%)` && body.style.background == 'white'
-                ? (style.transform = `translate(${pos})`, body.style.background = 'black')
-                : (style.transform = `translate(0%)`, body.style.background = 'white');
+            style.transform == `translate(0%)` && body.style.background == 'white' ?
+                (style.transform = `translate(${pos})`, body.style.background = 'black') :
+                (style.transform = `translate(0%)`, body.style.background = 'white');
         }
     });
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
-* @param {string} id 
-* @param {number} px 
-*/
+ * @param {string} id 
+ * @param {number} px 
+ */
 export function menuLateral(id, px) {
     const { style } = document.querySelector('aside'), pos = [`translateX(${px}px)`, 'translateX(0)'];
     style.transform = pos[0];
@@ -214,10 +216,10 @@ export function templatr() {
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /** 
-* @param {object} arguments
-* @param {string} arguments.id - local do texto 
-* @param {string} arguments.texto 
-*/
+ * @param {object} arguments
+ * @param {string} arguments.id - local do texto 
+ * @param {string} arguments.texto 
+ */
 export function texto() {
     [...arguments].forEach(el => document.getElementById(Object.keys(el)).append(...Object.values(el)));
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
@@ -227,9 +229,9 @@ export class Animatus {
         const { style } = document.getElementById(id);
         let px = 0;
         setInterval(() => {
-            arguments[3] == 'loop'
-                ? (px != pxMax) ? style.width = `${px++}px` : px = 0
-                : (style.width != `${pxMax}px`) ? style.width = `${px++}px` : '';
+            arguments[3] == 'loop' ?
+                (px != pxMax) ? style.width = `${px++}px` : px = 0 :
+                (style.width != `${pxMax}px`) ? style.width = `${px++}px` : '';
         }, vel);
     }
 
@@ -252,12 +254,12 @@ export function dropDown() {
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
-* @param {object} arguments
-* @param {HTMLElement[]} arguments.elems
-* @param {string} arguments.classe
-*/
-export function addClass({ elems, classe }) {
-    [...arguments].forEach(x => [...x.elems].forEach(el => el['classList'] += x.classe));
+ * @param {object} arguments
+ * @param {HTMLElement[]} arguments.elems
+ * @param {string} arguments.classe
+ */
+export function addClass() {
+    [...arguments].forEach(({ elems, classe }) => [...elems].forEach(el => el['classList'] += classe));
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 export function replacer() {
@@ -322,34 +324,62 @@ export function addId() {
  * @param {string} tag
  */
 export function grid(classe, qtde, id, local, tag) {
-    let el = document.getElementById(local);
-    el.classList += 'grid';
+    const $grid = document.getElementById(local);
+    $grid.classList += 'grid';
+
     for (let i = 0; i < qtde; i++) {
-        el.innerHTML += `<${tag} class="${classe}"></${tag}>`;
-        if (arguments.length >= 3) [...document.getElementsByClassName(arguments[0])][i].id = `${id}${i}`;
+        const $tag = document.createElement(tag);
+        $tag.classList = classe;
+        $tag.id = `${id}${i}`;
+
+        $grid.appendChild($tag);
     }
 } /* --------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
  * @param {string} local 
- * @param {string} classeCol 
- * @param {string} classeFila 
- * @param {object[]} tabela 
+ * @param {object[]} tabela
  */
-export function criarTabela(local, classeCol, classeFila, tabela) {
-    const tab = document.getElementById(local), col = [], { style } = tab;
+export function criarTabela(local, tabela) {
+    /**
+     * @param {string} elem 
+     */
+    const $render = elem => document.createElement(elem);
 
-    for (let x in tabela) {
-        let row = [];
-        for (var y in tabela[x]) {
-            row.push(`<p class="${classeFila}">${tabela[x][y]}</p>`);
-        }
-        col.push(`<div class="${classeCol} "> <p class="${classeFila} tabCol">${x}</p> ${row.join('\n')}</div>`);
-    }
+    const [table, tbody] = ['table', 'tbody'].map(elem => $render(elem));
 
-    style.display = 'flex';
-    style.width = 'fit-content';
-    tab.innerHTML += col.join('\n');
+    const $th = Object.keys(...tabela).map(thead => {
+        const th = $render('th');
+        th.append(thead);
+
+        return th;
+    });
+
+    const $tabela = tabela.flatMap(tab => {
+        return [
+            Object.values(tab).map(dado => {
+                const td = $render('td');
+                td.append(dado);
+
+                return td;
+            })
+        ].map(tab => {
+            const tr = $render('tr');
+            tr.append(...tab);
+
+            return tr;
+        });
+    });
+
+    const tr = $render('tr');
+    tr.append(...$th);
+
+    const thead = $render('thead');
+    thead.appendChild(tr);
+
+    tbody.append(...$tabela);
+    table.append(thead, tbody);
+    document.querySelector(local).appendChild(table);
 } /* --------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
@@ -360,9 +390,9 @@ export function addCSS([_urls]) {
 }
 
 /**
-* @param {object | string} elem 
-* @param {string} conteúdo
-*/
+ * @param {object | string} elem 
+ * @param {string} conteúdo
+ */
 export function render(tag, conteúdo) {
     const elem = document.createElement(typeof tag === 'string' ? tag : Object.keys(tag));
 
@@ -384,7 +414,8 @@ export function render(tag, conteúdo) {
 export function Container([_local, _tag, _qtde, _idContainer, _idComponente]) {
 
     [...arguments].forEach(([local, tag, qtde, idContainer, idComponente], i) => {
-        const res = [], container = document.createElement('section');
+        const res = [],
+            container = document.createElement('section');
 
         for (let elem = 0; elem < qtde; elem++) // Cria os componentes
             res.push(document.createElement(typeof tag === 'string' ? tag : Object.keys(tag)));
@@ -411,7 +442,7 @@ export function Container([_local, _tag, _qtde, _idContainer, _idComponente]) {
 /**
  * @param {string} local 
  */
- export function SearchBox(local) {
+export function SearchBox(local) {
     const searchBox = document.createElement('section');
     searchBox.classList = 'searchBox';
     searchBox.append(...['input', 'button'].map(elem => document.createElement(elem)));
@@ -433,17 +464,19 @@ export function Container([_local, _tag, _qtde, _idContainer, _idComponente]) {
  * @param {string} id 
  */
 export function FormBox(local, idForm) {
-    const form = document.createElement('form'), inputs = [];
-    form.id = idForm;
+    const form = document.createElement('form');
+    if (idForm) form.id = idForm;
 
-    ['text', 'password'].forEach((type, i) => {
-        inputs.push(document.createElement('input'));
-        inputs[i].type = type;
+    const inputs = ['text', 'password'].map(type => {
+        const input = document.createElement('input');
+        input.type = type;
+
+        return input;
     });
 
     form.append(...inputs, document.createElement('button'));
 
     document.querySelector(local).appendChild(form);
-}  /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+} /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2021\nCriada por Josias Fontes Alves`);

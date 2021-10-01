@@ -9,7 +9,7 @@
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
  */
 
-let versão = '2.8';
+let versão = '2.8.2';
 
 /** 
  * @param {string} local
@@ -379,6 +379,7 @@ export function criarTabela(local, tabela) {
 
     tbody.append(...$tabela);
     table.append(thead, tbody);
+
     document.querySelector(local).appendChild(table);
 } /* --------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -411,8 +412,7 @@ export function render(tag, conteúdo) {
  * @param {string | object} arguments._tag 
  * @param {number} arguments._qtde
  */
-export function Container([_local, _tag, _qtde, _idContainer, _idComponente]) {
-
+export function Container() {
     [...arguments].forEach(([local, tag, qtde, idContainer, idComponente], i) => {
         const res = [],
             container = document.createElement('section');
@@ -478,5 +478,15 @@ export function FormBox(local, idForm) {
 
     document.querySelector(local).appendChild(form);
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+/**
+ * @param {string} url 
+ * @param {function} fn 
+ */
+export function consumirAPI(url, fn) {
+    fetch(url)
+        .then(res => res.json())
+        .then(fn);
+}
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2021\nCriada por Josias Fontes Alves`);

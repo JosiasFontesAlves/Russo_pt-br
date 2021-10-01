@@ -15,3 +15,7 @@ td {
     border-collapse: collapse;
     padding: 3px;
 }
+
+td {
+    height: 70px;
+}

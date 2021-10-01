@@ -3,25 +3,20 @@ import decl from "./decl.js";
 import alfabeto from "./alfabeto.js";
 import dias_semana from "./dias_semana.js";
 import meses from "./meses.js";
-import { addClass, criarBotão, dropDown, kreatto, render, selek, selekFn, sElem, temEsc, templatr, texto } from "./lib7.js"; // lib 7 v2.4.8
+import { addClass, criarBotão, dropDown, kreatto, render, selek, selekFn, sElem, temEsc, templatr, texto } from "./lib7.js"; // lib 7 v2.8
 
 const title = t => sElem('title').innerText = t;
 
-templatr(
-    { header: { class: 'bg_vidro padd7 ' } },
-    { main: { class: 'w100 flex center ' } },
+templatr({ header: { class: 'bg_vidro padd7 ' } }, { main: { class: 'w100 flex center ' } },
     'footer'
 );
 
-kreatto(
-    {
-        header: [
-            { h1: { id: "ttl" } },
-            { div: { id: "drop", class: "fix" } }
-        ]
-    },
-    { footer: [{ p: { id: "mts" } }] }
-);
+kreatto({
+    header: [
+        { h1: { id: "ttl" } },
+        { div: { id: "drop", class: "fix" } }
+    ]
+}, { footer: [{ p: { id: "mts" } }] });
 
 addClass({ elems: [sElem('header'), sElem('footer')], classe: 'w100 fix' });
 
@@ -39,10 +34,22 @@ const listaDrop = [];
 dropDown({
     local: 'drop',
     btn: '#ttl',
-    lista: [...listaDrop, render({ img: { alt: 'lua', id: "lua", src: "../temesc.png", class: 'fix' } }, ''), render({ p: { id: "temesc" } })],
+    lista: [
+        ...listaDrop,
+        render({
+            img: {
+                alt: 'lua',
+                id: "lua",
+                src: "../temesc.png",
+                class: 'fix'
+            }
+        }, ''),
+        render({ p: { id: "temesc" } })
+    ],
 });
 
-const main = sElem('main'), { style } = sElem('body');
+const main = sElem('main'),
+    { style } = sElem('body');
 
 criarBotão('temesc', 'btn_temesc', 5, 'blue');
 

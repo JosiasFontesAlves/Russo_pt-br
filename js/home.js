@@ -4,15 +4,18 @@ import { addClass, Container, criarLista, kreatto, render, SearchBox, selek, sel
 export default () => {
     location.hash = '#home';
 
-    kreatto({
-        main: [
-            { section: { id: 'search', class: 'flex center' } }
-        ]
-    }, {
-        '#search': [
-            { p: { id: 'res' } }
-        ]
-    });
+    kreatto(
+        {
+            main: [
+                { section: { id: 'search', class: 'flex center' } }
+            ]
+        },
+        {
+            '#search': [
+                { p: { id: 'res' } }
+            ]
+        }
+    );
 
     SearchBox('#search', {
         input: {

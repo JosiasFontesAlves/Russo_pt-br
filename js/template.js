@@ -3,11 +3,12 @@ import decl from "./decl.js";
 import alfabeto from "./alfabeto.js";
 import dias_semana from "./dias_semana.js";
 import meses from "./meses.js";
-import { addClass, criarBotão, dropDown, kreatto, render, selek, selekFn, sElem, temEsc, templatr, texto } from "./lib7.js"; // lib 7 v2.8
+import { addClass, criarBotão, dropDown, kreatto, render, selek, selekFn, sElem, temEsc, templatr, texto } from "./lib7.js"; // lib 7 v2.8.2
 
-const title = t => sElem('title').innerText = t;
-
-templatr({ header: { class: 'bg_vidro padd7 ' } }, { main: { class: 'w100 flex center ' } },
+templatr(
+    { header: { class: 'bg_vidro padd7 ' } },
+    { main: { class: 'w100 flex center ' } },
+    { div: { id: 'drop2' } },
     'footer'
 );
 
@@ -22,13 +23,13 @@ addClass({ elems: [sElem('header'), sElem('footer')], classe: 'w100 fix' });
 
 texto({ mts: 'Josias Fontes Alves - Matsa \u00A9 2021' });
 
-const listaDrop = [];
-
-[
+const listaDrop = [
     { "#home": "Início" }, { "#decl": "Declinação" }, { "#semana": "Dias da semana" },
     { "#alfabeto": "Alfabeto" }, { "#meses": "Meses do ano" }
-].forEach(link => {
-    for (let num in link) listaDrop.push(render({ p: { class: 'padd3' } }, render({ a: { href: num } }, link[num])));
+].map(links => {
+    for (let link in links) {
+        return render({ p: { class: 'padd3' } }, render({ a: { href: link } }, links[link]))
+    }
 });
 
 dropDown({
@@ -38,14 +39,13 @@ dropDown({
         ...listaDrop,
         render({
             img: {
-                alt: 'lua',
-                id: "lua",
+                alt: 'lua', id: "lua",
                 src: "../temesc.png",
                 class: 'fix'
             }
-        }, ''),
+        }),
         render({ p: { id: "temesc" } })
-    ],
+    ]
 });
 
 const main = sElem('main'),
@@ -64,6 +64,14 @@ selekFn('btn_temesc', 'click', () => {
 window.onload = () => {
     home();
 
+    const pages = {
+        '#alfabeto': alfabeto,
+        '#decl': decl,
+        '#home': home,
+        '#meses': meses,
+        '#semana': dias_semana,
+    }
+
     style.background = localStorage.getItem('tema_body');
     main.style.color = localStorage.getItem('tema_color');
 
@@ -72,27 +80,6 @@ window.onload = () => {
 
         selek('drop').hidden = true;
 
-        switch (location.hash) {
-            case '#home':
-                home();
-                title('Dicionário de russo');
-                break;
-            case '#decl':
-                decl();
-                title('Tabela de declinação');
-                break;
-            case '#alfabeto':
-                alfabeto();
-                title('Alfabeto russo');
-                break;
-            case '#semana':
-                dias_semana();
-                title('Dias da semana');
-                break;
-            case '#meses':
-                meses();
-                title('Meses do ano');
-                break;
-        }
+        pages[location.hash]();
     }
 }

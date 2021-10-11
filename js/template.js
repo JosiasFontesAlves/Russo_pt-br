@@ -8,7 +8,6 @@ import { addClass, criarBotão, dropDown, kreatto, render, selek, selekFn, sElem
 templatr(
     { header: { class: 'bg_vidro padd7 ' } },
     { main: { class: 'w100 flex center ' } },
-    { div: { id: 'drop2' } },
     'footer'
 );
 

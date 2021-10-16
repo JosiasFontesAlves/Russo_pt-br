@@ -1,5 +1,6 @@
 import dicionário from "../dicionário.js";
-import { addClass, Card, insertChilds, kreatto, render, SearchBox, selek, selekFn, texto } from "../lib7.js";
+import { addClass, Card, insertChilds, kreatto, render, SearchBox, selek, texto } from "../lib7.js";
+import search from "../search.js";
 
 export default () => {
     location.hash = '#home';
@@ -45,21 +46,5 @@ export default () => {
 
     res.hidden = true;
 
-    // TODO -> criar um arquivo novo pra função search 
-
-    const search = () => {
-        res.hidden = false;
-        res.innerHTML = '';
-
-        insertChilds('#res', [
-            `${txt.value} - ${dicionário[txt.value[0].toUpperCase()][txt.value] ?? 'Ainda não temos essa palavra no dicionário'}`,
-            render({ button: { id: 'close', class: 'br_20' } }, 'X')
-        ]);
-
-        selekFn('close', 'click', () => res.hidden = true);
-
-        txt.value = '';
-    }
-
-    selekFn('ok', 'click', () => (res.hidden == true && txt.value != '') ? search() : res.hidden = true);
+    search();
 }

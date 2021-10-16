@@ -1,4 +1,4 @@
-import { criarLista, kreatto, texto } from "./lib7.js";
+import { criarLista, kreatto, texto } from "../lib7.js";
 
 export default () => {
     kreatto({ main: [{ div: { id: "alfabeto" } }] });

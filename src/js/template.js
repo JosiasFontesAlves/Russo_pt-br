@@ -1,35 +1,41 @@
-import home from "./home.js";
-import decl from "./decl.js";
-import alfabeto from "./alfabeto.js";
-import dias_semana from "./dias_semana.js";
-import meses from "./meses.js";
-import { addClass, criarBotão, dropDown, kreatto, render, selek, selekFn, sElem, temEsc, templatr, texto } from "./lib7.js"; // lib 7 v2.8.2
+import home from "./pages/home.js";
+import decl from "./pages/decl.js";
+import alfabeto from "./pages/alfabeto.js";
+import dias_semana from "./pages/dias_semana.js";
+import meses from "./pages/meses.js";
+import { addClass, criarBotão, dropDown, kreatto, render, selek, selekFn, sElem, temEsc, templatr, texto } from "./lib7.js"; // lib 7 v2.8.7
 
 templatr(
-    { header: { class: 'bg_vidro padd7 ' } },
-    { main: { class: 'w100 flex center ' } },
+    { header: { class: 'bg_vidro padd7' } },
+    { main: { class: 'w100 flex center' } },
     'footer'
 );
 
-kreatto({
-    header: [
-        { h1: { id: "ttl" } },
-        { div: { id: "drop", class: "fix" } }
-    ]
-}, { footer: [{ p: { id: "mts" } }] });
+kreatto(
+    {
+        header: [
+            { h1: { id: "ttl" } },
+            { div: { id: "drop", class: "fix" } }
+        ]
+    },
+    {
+        footer: [
+            { h6: { id: "mts" } }
+        ]
+    }
+);
 
-addClass({ elems: [sElem('header'), sElem('footer')], classe: 'w100 fix' });
+addClass({ elems: [sElem('header'), sElem('footer')], classe: ' w100 fix' });
 
 texto({ mts: 'Josias Fontes Alves - Matsa \u00A9 2021' });
 
-const listaDrop = [
-    { "#home": "Início" }, { "#decl": "Declinação" }, { "#semana": "Dias da semana" },
-    { "#alfabeto": "Alfabeto" }, { "#meses": "Meses do ano" }
-].map(links => {
-    for (let link in links) {
-        return render({ p: { class: 'padd3' } }, render({ a: { href: link } }, links[link]))
-    }
-});
+const listaDrop = Object.entries({
+    "#home": "Início",
+    "#decl": "Declinação",
+    "#semana": "Dias da semana",
+    "#alfabeto": "Alfabeto",
+    "#meses": "Meses do ano"
+}).map(([link, txt]) => render({ p: { class: 'padd3' } }, render({ a: { href: link } }, txt)));
 
 dropDown({
     local: 'drop',
@@ -47,8 +53,8 @@ dropDown({
     ]
 });
 
-const main = sElem('main'),
-    { style } = sElem('body');
+const [main, body] = ['main', 'body'].map(elem => sElem(elem));
+const { style } = body;
 
 criarBotão('temesc', 'btn_temesc', 5, 'blue');
 

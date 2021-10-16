@@ -1,0 +1,20 @@
+{
+  "name": "russo_pt-br",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JosiasFontesAlves/Russo_pt-br.git"
+  },
+  "keywords": [],
+  "author": "Josias Fontes Alves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JosiasFontesAlves/Russo_pt-br/issues"
+  },
+  "homepage": "https://github.com/JosiasFontesAlves/Russo_pt-br#readme"
+}

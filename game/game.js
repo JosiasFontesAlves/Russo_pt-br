@@ -1,5 +1,5 @@
-import { render, selek, selekFn, seleKlass } from "../lib7.js";
-import dicionário from "../dicionário.js";
+import { render, selek, selekFn, seleKlass } from "../src/js/lib7.js";
+import dicionário from "../src/js/dicionário.js";
 
 export default () => {
     const game = [];

@@ -1,4 +1,4 @@
-import { grid, kreatto, SearchBox, templatr, texto } from "../lib7.js";
+import { grid, kreatto, SearchBox, templatr, texto } from "../src/js/lib7.js";
 import game from "./game.js";
 
 templatr({

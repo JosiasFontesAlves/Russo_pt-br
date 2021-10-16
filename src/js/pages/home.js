@@ -1,5 +1,5 @@
-import dicionário from "./dicionário.js";
-import { addClass, Container, criarLista, kreatto, render, SearchBox, selek, selekFn, texto } from "./lib7.js";
+import dicionário from "../dicionário.js";
+import { addClass, Card, insertChilds, kreatto, render, SearchBox, selek, selekFn, texto } from "../lib7.js";
 
 export default () => {
     location.hash = '#home';
@@ -7,7 +7,8 @@ export default () => {
     kreatto(
         {
             main: [
-                { section: { id: 'search', class: 'flex center' } }
+                { section: { id: 'search', class: 'flex center' } },
+                { div: { class: 'grid', id: 'container' } }
             ]
         },
         {
@@ -28,39 +29,32 @@ export default () => {
         }
     });
 
-    Container(['main', { div: { class: 'blocos' } }, 23, 'container', 'bl_']);
+    const [txt, res] = ['txt', 'res'].map(id => selek(id));
 
-    const txt = selek('txt'),
-        res = selek('res');
-
-    addClass({ elems: [txt, res], classe: 'padd5 bg_vidro br_20' }, { elems: [selek('container')], classe: 'grid' });
+    addClass({ elems: [txt, res], classe: 'padd5 bg_vidro br_20' });
 
     texto({ ttl: 'Dicionário de russo' }, { ok: '=>' });
 
-    let ctrl = 0;
+    for (let [letra, palavras] of Object.entries(dicionário)) {
+        const trads = [...Object.entries(palavras)].map(([pt, ru]) => render({ p: { class: 'trad' } }, `${pt} - ${ru}`));
 
-    for (let letra in dicionário) {
-        selek(`bl_${ctrl++}`).append(
-            render('h2', letra),
-            render({ p: { id: `blc_${ctrl}` } })
-        );
-
-        criarLista([
-            `blc_${ctrl}`, [...Object.entries(dicionário[letra]).map(([pt, ru]) => `${pt} - ${ru}`)],
-            { p: { class: 'trad' } }
+        insertChilds('#container', [
+            Card({ class: 'blocos' }, [render({ h2: { class: `letra_${letra}` } }, letra), ...trads])
         ]);
     }
 
     res.hidden = true;
 
+    // TODO -> criar um arquivo novo pra função search 
+
     const search = () => {
         res.hidden = false;
         res.innerHTML = '';
 
-        res.append(
+        insertChilds('#res', [
             `${txt.value} - ${dicionário[txt.value[0].toUpperCase()][txt.value] ?? 'Ainda não temos essa palavra no dicionário'}`,
             render({ button: { id: 'close', class: 'br_20' } }, 'X')
-        );
+        ]);
 
         selekFn('close', 'click', () => res.hidden = true);
 

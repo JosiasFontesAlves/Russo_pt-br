@@ -9,7 +9,7 @@
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
  */
 
-let versão = '2.8.5';
+let versão = '2.8.7';
 
 /** 
  * @param {string} local
@@ -90,20 +90,20 @@ export class Tempus {
     /**
      * @param {string} idSau 
      */
-    static saudação = idSau => {
+    static saudação(idSau) {
         const hora = new Date().getHours();
 
         document.getElementById(`${idSau}`).innerHTML = (hora <= 12) ? "Bom dia!" : (hora >= 18) ? "Boa noite!" : "Boa tarde!";
     }
 
     static count(cond, varCtrl) { // Usar apenas nas funções de contagem
-            if (cond) clearInterval(varCtrl);
-        }
-        /**
-         * @param {number} contador
-         * @param {function} fn
-         * @param {number} vel 
-         */
+        if (cond) clearInterval(varCtrl);
+    }
+    /**
+     * @param {number} contador
+     * @param {function} fn
+     * @param {number} vel 
+     */
     static contagemRegressiva(contador, fn, vel) {
         const cont = setInterval(() => {
             fn();
@@ -162,7 +162,7 @@ export const seleKlass = classe => document.getElementsByClassName(classe);
  * @param {string[]} pos 
  */
 export function temEsc(id, pos) {
-    document.getElementById(id).addEventListener('click', function() {
+    document.getElementById(id).addEventListener('click', function () {
         const { body } = document, { style } = this;
 
         if (pos.length <= 2) {
@@ -205,13 +205,13 @@ export function kreatto() {
 
 export function templatr() {
     [...arguments].forEach(elem => {
-		const el = document.createElement(typeof elem === 'string' ? elem : Object.keys(elem)[0]);
-		if (typeof elem === 'object') {
+        const el = document.createElement(typeof elem === 'string' ? elem : Object.keys(elem)[0]);
+        if (typeof elem === 'object') {
             for (let tag in elem)
                 Object.entries(elem[tag]).forEach(([atr, val]) => el.setAttribute(atr, val));
         }
-		document.body.appendChild(el);
-	});
+        document.body.appendChild(el);
+    });
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /** 
@@ -406,10 +406,7 @@ export function render(tag, conteúdo) {
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
- * @param {object} arguments
- * @param {string} arguments._local 
- * @param {string | object} arguments._tag 
- * @param {number} arguments._qtde
+ * Container([local, tag, qtde, idContainer, idComponente])
  */
 export function Container() {
     [...arguments].forEach(([local, tag, qtde, idContainer, idComponente], i) => {
@@ -430,7 +427,7 @@ export function Container() {
             });
         }
 
-        container.classList = ' container ';
+        container.classList.add('container');
         container.id = idContainer;
         container.append(...res);
 
@@ -486,6 +483,39 @@ export function consumirAPI(url, fn) {
     fetch(url)
         .then(res => res.json())
         .then(fn);
+} /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+/**
+ * @param {{string: function}} pages 
+ * @param {function} fn - CallBack opcional
+ */
+export function SPA(pages, fn) {
+    window.onhashchange = () => {
+        if (fn) fn();
+
+        pages[location.hash]();
+    }
 }
+
+/**
+ * @param {{string: string}} props 
+ * @param {HTMLElement[]} elems 
+ */
+export function Card(props, elems) {
+    const card = document.createElement('div');
+
+    Object.entries(props).forEach(([atr, val]) => card.setAttribute(atr, val));
+
+    card.classList.add('card');
+    card.append(...elems);
+
+    return card;
+}
+
+/**
+ * @param {string} local 
+ * @param {HTMLElement[]} childs 
+ */
+export const insertChilds = (local, childs) => document.querySelector(local).append(...childs);
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2021\nCriada por Josias Fontes Alves`);

@@ -1,7 +1,8 @@
-import { criarTabela, kreatto, texto } from "./lib7.js";
+import { criarTabela, kreatto, texto } from "../lib7.js";
 
 export default () => {
-    const declinação = [{
+    const declinação = [
+        {
             caso: 'nominativo',
             masculino: 'consoante -- й/ь ый/ой -- ий',
             neutro: 'о -- е -- ое -- ее',

@@ -1,4 +1,4 @@
-import { criarTabela, kreatto, texto } from "../lib7.js";
+import { Tabela, kreatto, texto, selek } from "../lib7.js";
 
 export default () => {
     const declinação = [
@@ -50,5 +50,5 @@ export default () => {
 
     kreatto({ main: [{ div: { id: "tab" } }] });
 
-    criarTabela('#tab', declinação);
+    selek('tab').appendChild(Tabela(declinação));
 }

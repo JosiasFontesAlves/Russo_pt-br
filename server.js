@@ -1,6 +1,6 @@
 const express = require('express');
-const app = express();
 const { writeFile } = require('fs');
+const app = express();
 
 app.use(express.static('src'));
 app.use(express.json());

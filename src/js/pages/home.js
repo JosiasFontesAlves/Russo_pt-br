@@ -1,5 +1,5 @@
 import dicionário from "../dicionário.js";
-import { addClass, Card, insertChilds, kreatto, render, SearchBox, selek, texto } from "../lib7.js";
+import { addClass, Card, kreatto, render, SearchBox, selek, texto } from "../lib7.js";
 import search from "../search.js";
 
 export default () => {
@@ -39,9 +39,7 @@ export default () => {
     for (let [letra, palavras] of Object.entries(dicionário)) {
         const trads = [...Object.entries(palavras)].map(([pt, ru]) => render({ p: { class: 'trad' } }, `${pt} - ${ru}`));
 
-        insertChilds('#container', [
-            Card({ class: 'blocos' }, [render({ h2: { class: `letra_${letra}` } }, letra), ...trads])
-        ]);
+        selek('container').appendChild(Card({ class: 'blocos' }, [render({ h2: { class: `letra_${letra}` } }, letra), ...trads]));
     }
 
     res.hidden = true;

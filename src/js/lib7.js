@@ -9,7 +9,7 @@
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
  */
 
-let versão = '2.8.7';
+let versão = '2.9.3';
 
 /** 
  * @param {string} local
@@ -48,82 +48,61 @@ export function criarBotão(local, idBtn, estilo, cor) {
     document.getElementById(local).appendChild(res[0]);
 } /* ----- Lib de botões ----- */
 
-export class Tempus {
+export const Tempus = {
+    p: () => document.createElement('p'),
+    setAtr(el, id, innerHTML) {
+        el.id = id;
+        el.innerHTML = innerHTML;
+    },
     /**
-     * @param {string} idRel 
+     * @param {string} id 
      * @param {number} estilo 
      */
-    static relógio(idRel, estilo) {
+    relógio(id, estilo) {
+        const rel = this.p();
+
         setInterval(() => {
-            const data = new Date(),
-                rlg = [data.getHours(), data.getMinutes(), data.getSeconds()];
+            const date = new Date(),
+                rlg = [date.getHours(), date.getMinutes(), date.getSeconds() + 1];
 
             for (let x in rlg) rlg[x] < 10 ? rlg[x] = `0${rlg[x]}` : '';
 
-            const rel = [rlg.join(':'), (rlg.pop(), rlg.join(':'))];
-
-            document.getElementById(`${idRel}`).innerHTML = rel[estilo];
+            this.setAtr(rel, id, (estilo === 0) ? rlg.join(':') : (rlg.pop(), rlg.join(':')));
         }, 1000);
-    }
 
+        return rel;
+    },
     /**
-     * @param {string} idCal 
+     * @param {string} id 
      * @param {number} estilo 
      */
-    static calendário(idCal, estilo) {
+    calendário(id, estilo) {
+        const cal = this.p();
+
         setInterval(() => {
-            const data = new Date(),
+            const date = new Date(),
                 calendário = {
                     diaSem: ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SÁB"],
                     mês: ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"]
-                }
+                },
+                estilos = [
+                    `${calendário.diaSem[date.getDay()]} ${date.getDate()} ${calendário.mês[date.getMonth()]} ${date.getFullYear()}`,
+                    `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+                ];
 
-            const cal = [
-                `${calendário.diaSem[data.getDay()]} ${data.getDate()} ${calendário.mês[data.getMonth()]} ${data.getFullYear()}`,
-                `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()}`
-            ];
-
-            document.getElementById(`${idCal}`).innerHTML = cal[estilo];
+            this.setAtr(cal, id, estilos[estilo]);
         }, 1000);
-    }
 
-    /**
-     * @param {string} idSau 
-     */
-    static saudação(idSau) {
-        const hora = new Date().getHours();
+        return cal;
+    },
+    saudação(id) {
+        const sdc = this.p(),
+            hora = new Date().getHours();
 
-        document.getElementById(`${idSau}`).innerHTML = (hora <= 12) ? "Bom dia!" : (hora >= 18) ? "Boa noite!" : "Boa tarde!";
-    }
+        sdc.id = id;
+        sdc.innerHTML = (hora <= 12) ? "Bom dia!" : (hora >= 18) ? "Boa noite!" : "Boa tarde!";
 
-    static count(cond, varCtrl) { // Usar apenas nas funções de contagem
-        if (cond) clearInterval(varCtrl);
-    }
-    /**
-     * @param {number} contador
-     * @param {function} fn
-     * @param {number} vel 
-     */
-    static contagemRegressiva(contador, fn, vel) {
-        const cont = setInterval(() => {
-            fn();
-            contador--;
-            this.count(contador == 0, cont);
-        }, vel);
-    }
-
-    /**
-     * @param {number} contador 
-     * @param {number} varCtrl 
-     * @param {function} fn 
-     * @param {number} vel 
-     */
-    static contagem(contador, varCtrl, fn, vel) {
-        const c = setInterval(() => {
-            fn();
-            contador++;
-            this.count(contador >= varCtrl, c);
-        }, vel);
+        return sdc;
     }
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -336,50 +315,46 @@ export function grid(classe, qtde, id, local, tag) {
 } /* --------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
- * @param {string} local 
  * @param {object[]} tabela
+ * @returns {HTMLTableElement}
  */
-export function criarTabela(local, tabela) {
-    /**
-     * @param {string} elem 
-     */
-    const $render = elem => document.createElement(elem);
+export const Tabela = tabela => {
+    const [table, thead, tbody] = ['table', 'thead', 'tbody'].map(el => document.createElement(el));
 
-    const [table, tbody] = ['table', 'tbody'].map(elem => $render(elem));
+    const tr = cont => {
+        const row = document.createElement('tr');
+        row.append(...cont);
 
-    const $th = Object.keys(...tabela).map(thead => {
-        const th = $render('th');
-        th.append(thead);
+        return row;
+    }
 
-        return th;
+    [thead, tbody].forEach(elem => table.appendChild(elem));
+
+    const head = Object.keys(...tabela).map(th => {
+        const $th = document.createElement('th');
+        $th.textContent = th;
+
+        return $th;
     });
 
-    const $tabela = tabela.flatMap(tab => {
-        return [
-            Object.values(tab).map(dado => {
-                const td = $render('td');
-                td.append(dado);
+    thead.append(tr(head));
 
-                return td;
-            })
-        ].map(tab => {
-            const tr = $render('tr');
-            tr.append(...tab);
+    const $tabela = tabela.flatMap(tab => [
+        Object.values(tab).map(dado => {
+            const td = document.createElement('td');
+            td.append(dado);
 
-            return tr;
-        });
-    });
+            return td;
+        })
+    ].map(tab => {
+        const row = tr(tab);
 
-    const tr = $render('tr');
-    tr.append(...$th);
-
-    const thead = $render('thead');
-    thead.appendChild(tr);
+        return row;
+    }));
 
     tbody.append(...$tabela);
-    table.append(thead, tbody);
 
-    document.querySelector(local).appendChild(table);
+    return table;
 } /* --------------------------------------------------------------------------------------------------------------------------------- */
 
 /**

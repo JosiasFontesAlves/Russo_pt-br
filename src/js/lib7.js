@@ -9,7 +9,7 @@
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
  */
 
-let versão = '3.0.3';
+let versão = '3.0.6';
 
 /** 
  * @param {string} local
@@ -137,18 +137,17 @@ export const seleKlass = classe => document.getElementsByClassName(classe);
 /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
+ * @param {string} btn - Botão que será responsável pelo evento
+ * @param {string[]} elems - Elementos que serão alterados pelo toggle
  * @param {string} toggle - Classe CSS que será responsável pelo tema escuro
- * @param {object} props - Propriedades opcionais do botão
+ * @param {function} fn - Callback opcional
  */
-export const temEsc = (toggle, props) => {
-    const btn = document.createElement('button');
+export const temEsc = (btn, elems, toggle, fn) => document.getElementById(btn).addEventListener('click', ev => {
+    [...elems].map(elem => document.querySelector(elem).classList.toggle(toggle));
 
-    if (typeof props === 'object') Object.entries(props).map(([atr, val]) => btn.setAttribute(atr, val));
-
-    btn.addEventListener('click', () => document.body.classList.toggle(toggle));
-
-    return btn;
-} /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+    if (fn) fn(ev);
+});
+/* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
  * @param {string} id 
@@ -406,23 +405,22 @@ export function Container() {
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
- * @param {string} local 
+ * @param {object} props
  */
-export function SearchBox(local) {
+export function SearchBox(...props) {
     const searchBox = document.createElement('section');
-    searchBox.classList = 'searchBox';
-    searchBox.append(...['input', 'button'].map(elem => document.createElement(elem)));
+    searchBox.classList.add('searchBox');
 
-    document.querySelector(local).appendChild(searchBox);
+    ['input', 'button'].map((el, i) => {
+        const child = document.createElement(el);
 
-    if (typeof arguments[1] === "object") {
-        let ctrl = 0;
+        if (Array.isArray(props))
+            Object.entries(props[i]).map(([atr, val]) => child.setAttribute(atr, val));
 
-        for (let tag in arguments[1]) {
-            Object.entries(arguments[1][tag]).forEach(([atr, val]) => searchBox.children[ctrl].setAttribute(atr, val));
-            ctrl++;
-        }
-    }
+        searchBox.appendChild(child);
+    });
+
+    return searchBox;
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**

@@ -8,27 +8,39 @@ export default () => {
     kreatto(
         {
             main: [
-                { section: { id: 'search', class: 'flex center' } },
-                { div: { class: 'grid', id: 'container' } }
+                {
+                    section: {
+                        id: 'search',
+                        class: 'flex center'
+                    }
+                },
+                {
+                    div: {
+                        class: 'grid',
+                        id: 'container'
+                    }
+                }
             ]
         },
         {
             '#search': [
-                { p: { id: 'res' } }
+                {
+                    p: { id: 'res' }
+                }
             ]
         }
     );
 
-    SearchBox('#search', {
-        input: {
-            id: 'txt',
-            type: 'text',
-            placeholder: 'Pesquisar no dicionário'
-        },
-        button: {
-            id: 'ok',
-        }
-    });
+    selek('search').appendChild(
+        SearchBox(
+            {
+                id: 'txt',
+                type: 'text',
+                placeholder: 'Pesquisar no dicionário'
+            },
+            { id: 'ok' }
+        )
+    );
 
     const [txt, res] = ['txt', 'res'].map(id => selek(id));
 

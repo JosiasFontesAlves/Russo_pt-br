@@ -32,19 +32,24 @@
     border-radius: 20px;
 }
 
+.temEsc {
+    background: black;
+    color: var(--nardoGray);
+}
+
 body {
     text-shadow: var(--neon2) var(--ghost_bg);
     font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
-    top: 0;
-    left: 0;
-    border: 1px solid var(--vidro);
-    z-index: 1;
-    text-align: left;
-    box-shadow: var(--neon) var(--ghost_bg);
     backdrop-filter: blur(2px);
+    border: 1px solid var(--vidro);
+    box-shadow: var(--neon) var(--ghost_bg);
+    text-align: left;
+    left: 0;
+    top: 0;
+    z-index: 1;
 }
 
 body, #drop {
@@ -66,7 +71,6 @@ h2 {
 #drop {
     padding: 10px;
     transform: translateY(var(--tam7));
-    background: var(--vidro);
     border-top: none;
     border-radius: 0 0 10px 10px;
 }
@@ -83,6 +87,10 @@ h2 {
 
 #temesc {
     transform: translateX(5px);
+}
+
+.posX_30 {
+    transform: translateX(30px);
 }
 
 h1:hover, #drop a:hover {

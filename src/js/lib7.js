@@ -9,7 +9,7 @@
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
  */
 
-let versão = '2.9.3';
+let versão = '3.0.3';
 
 /** 
  * @param {string} local
@@ -121,14 +121,14 @@ export const sElem = elem => document.querySelector(elem);
  * @param {EventListener} ev 
  * @param {function} fn 
  */
-export const selekFn = (id, ev, fn) => document.getElementById(id).addEventListener(ev, fn);
+export const selekFn = (id, ev, fn) => document.getElementById(id).addEventListener(ev, fn, false);
 
 /**
  * @param {Element} elem 
  * @param {EventListener} ev 
  * @param {function} fn 
  */
-export const sElemFn = (elem, ev, fn) => document.querySelector(elem).addEventListener(ev, fn);
+export const sElemFn = (elem, ev, fn) => document.querySelector(elem).addEventListener(ev, fn, false);
 
 /**
  * @param {Element} classe 
@@ -137,19 +137,17 @@ export const seleKlass = classe => document.getElementsByClassName(classe);
 /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
- * @param {string} id 
- * @param {string[]} pos 
+ * @param {string} toggle - Classe CSS que será responsável pelo tema escuro
+ * @param {object} props - Propriedades opcionais do botão
  */
-export function temEsc(id, pos) {
-    document.getElementById(id).addEventListener('click', function () {
-        const { body } = document, { style } = this;
+export const temEsc = (toggle, props) => {
+    const btn = document.createElement('button');
 
-        if (pos.length <= 2) {
-            style.transform == `translate(0%)` && body.style.background == 'white' ?
-                (style.transform = `translate(${pos})`, body.style.background = 'black') :
-                (style.transform = `translate(0%)`, body.style.background = 'white');
-        }
-    });
+    if (typeof props === 'object') Object.entries(props).map(([atr, val]) => btn.setAttribute(atr, val));
+
+    btn.addEventListener('click', () => document.body.classList.toggle(toggle));
+
+    return btn;
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
@@ -163,20 +161,18 @@ export function menuLateral(id, px) {
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 export function kreatto() {
-    [...arguments].forEach(arg => {
-        for (let elem in arg) {
-            const res = [];
-            for (let tag of arg[elem]) { // Cria os componentes
-                res.push(document.createElement(typeof tag === 'string' ? tag : Object.keys(tag)[0]));
-                res.forEach((el, i) => {
-                    if (typeof arg[elem][i] === 'object') {
-                        for (let key in arg[elem][i]) // Caso sejam objetos aninhados, adiciona os atributos
-                            Object.entries(arg[elem][i][key]).forEach(([atr, val]) => el.setAttribute(atr, val));
-                    }
-                });
-                document.querySelector(elem).append(...res);
-            }
-        }
+    [...arguments].forEach(local => {
+        Object.entries(local).map(([tag, childs]) => {
+            const res = [], setElem = child => res.push(document.createElement(typeof child === 'string' ? child : Object.keys(child)[0]));
+            Array.isArray(childs) ? childs.map(child => setElem(child)) : setElem(childs); // Cria os componentes
+            res.forEach((el, i) => {
+                if (typeof childs[i] === 'object') {
+                    for (let key in childs[i]) // Caso sejam objetos aninhados, adiciona os atributos
+                        Object.entries(childs[i][key]).map(([atr, val]) => el.setAttribute(atr, val));
+                }
+            });
+            document.querySelector(tag).append(...res);
+        });
     });
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -316,7 +312,6 @@ export function grid(classe, qtde, id, local, tag) {
 
 /**
  * @param {object[]} tabela
- * @returns {HTMLTableElement}
  */
 export const Tabela = tabela => {
     const [table, thead, tbody] = ['table', 'thead', 'tbody'].map(el => document.createElement(el));
@@ -473,13 +468,17 @@ export function SPA(pages, fn) {
 }
 
 /**
- * @param {{string: string}} props 
+ * @param {{string: {string: string}}} props 
  * @param {HTMLElement[]} elems 
  */
 export function Card(props, elems) {
-    const card = document.createElement('div');
+    const card = document.createElement(typeof props === 'string' ? props : Object.keys(props)[0]);
 
-    Object.entries(props).forEach(([atr, val]) => card.setAttribute(atr, val));
+    if (typeof props === 'object') {
+        for (let prop of Object.values(props)) {
+            Object.entries(prop).forEach(([atr, val]) => card.setAttribute(atr, val));
+        }
+    }
 
     card.classList.add('card');
     card.append(...elems);

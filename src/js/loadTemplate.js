@@ -3,27 +3,32 @@ import decl from "./pages/decl.js";
 import alfabeto from "./pages/alfabeto.js";
 import dias_semana from "./pages/dias_semana.js";
 import meses from "./pages/meses.js";
-import { consumirAPI, selek, selekFn, sElem, SPA, temEsc } from "./lib7.js"; // lib 7 v2.8.7
+import { consumirAPI, selek, selekFn, sElem, SPA } from "./lib7.js"; // lib 7 v3.0.3
 
 export default () => {
-    const [main, body] = ['main', 'body'].map(elem => sElem(elem)), { style } = body;
+    const [main, body, btn_temesc] = ['main', 'body', '#btn_temesc'].map(elem => sElem(elem));
 
-    temEsc('btn_temesc', ['30px']);
+    selekFn('btn_temesc', 'click', ({ target }) => {
+        target.classList.toggle('posX_30');
 
-    selekFn('btn_temesc', 'click', () => {
-        main.style.color = (style.background == 'black') ? 'var(--nardoGray)' : 'black';
+        [main, body].map(({ classList }) => classList.toggle('temEsc'));
 
         fetch('/tema', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 'tema_body': style.background, 'tema_color': main.style.color }, null, 4)
+            body: JSON.stringify({ temEsc: target.classList.contains('posX_30') }, null, 4)
         });
     });
 
     window.onload = () => {
         home();
 
-        consumirAPI('/tema', ({ tema_body, tema_color }) => [style.background, main.style.color] = [tema_body, tema_color]);
+        consumirAPI('/tema', ({ temEsc }) => {
+            if (temEsc) {
+                btn_temesc.classList.add('posX_30');
+                [main, body].map(({ classList }) => classList.add('temEsc'));
+            }
+        });
 
         SPA({
             '#alfabeto': alfabeto,

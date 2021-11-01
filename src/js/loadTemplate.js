@@ -3,12 +3,12 @@ import decl from "./pages/decl.js";
 import alfabeto from "./pages/alfabeto.js";
 import dias_semana from "./pages/dias_semana.js";
 import meses from "./pages/meses.js";
-import { consumirAPI, selek, sElem, SPA, temEsc } from "./lib7.js"; // lib 7 v3.0.3
+import { consumirAPI, selek, sElem, SPA, temEsc } from "./lib7.js"; // lib 7 v3.1.2
 
 export default () => {
     const [main, body, btn_temesc] = ['main', 'body', '#btn_temesc'].map(elem => sElem(elem));
 
-    temEsc('btn_temesc', ['main', 'body'], 'temEsc', ({ target }) => {
+    temEsc('btn_temesc', ['main'], 'temEsc', ({ target }) => {
         target.classList.toggle('posX_30');
 
         fetch('/tema', {

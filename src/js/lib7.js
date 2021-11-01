@@ -7,9 +7,9 @@
  * *        * *        * *     * *           * *            * *                          * *     * *             * * 
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
- */
+*/
 
-let versão = '3.0.6';
+let versão = '3.1.2';
 
 /** 
  * @param {string} local
@@ -143,7 +143,7 @@ export const seleKlass = classe => document.getElementsByClassName(classe);
  * @param {function} fn - Callback opcional
  */
 export const temEsc = (btn, elems, toggle, fn) => document.getElementById(btn).addEventListener('click', ev => {
-    [...elems].map(elem => document.querySelector(elem).classList.toggle(toggle));
+    elems.map(elem => document.querySelector(elem).classList.toggle(toggle));
 
     if (fn) fn(ev);
 });
@@ -375,33 +375,32 @@ export function render(tag, conteúdo) {
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
- * Container([local, tag, qtde, idContainer, idComponente])
+ * @param {object | string} propsContainer
+ * @param {object | string} propsChilds
+ * @param {string} idChilds
+ * @param {number} qtde
  */
-export function Container() {
-    [...arguments].forEach(([local, tag, qtde, idContainer, idComponente], i) => {
-        const res = [],
-            container = document.createElement('section');
+export const Container = (propsContainer, propsChilds, idChilds, qtde) => {
+    const $render = props => {
+        const el = document.createElement(typeof props === 'string' ? props : Object.keys(props)[0]);
 
-        for (let elem = 0; elem < qtde; elem++) // Cria os componentes
-            res.push(document.createElement(typeof tag === 'string' ? tag : Object.keys(tag)[0]));
-
-        if (typeof tag === 'object') {
-            let ctrlId = 0;
-
-            res.forEach(el => {
-                if (arguments[i].length == 5) el.id = idComponente + ctrlId++;
-
-                for (let key in tag)
-                    Object.entries(tag[key]).forEach(([atr, val]) => el.setAttribute(atr, val));
-            });
+        if (typeof props === 'object') {
+            for (let prop of Object.values(props))
+                Object.entries(prop).forEach(([atr, val]) => el.setAttribute(atr, val));
         }
 
-        container.classList.add('container');
-        container.id = idContainer;
-        container.append(...res);
+        return el;
+    }
 
-        document.querySelector(local).appendChild(container);
-    });
+    const container = $render(propsContainer);
+    container.classList.add('container');
+
+    for (let x = 0; x < qtde; x++) {
+        container.appendChild($render(propsChilds));
+        container.children[x].id = `${idChilds + x}`;
+    }
+
+    return container;
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
@@ -463,10 +462,10 @@ export function SPA(pages, fn) {
 
         pages[location.hash]();
     }
-}
+} /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
- * @param {{string: {string: string}}} props 
+ * @param {object} props 
  * @param {HTMLElement[]} elems 
  */
 export function Card(props, elems) {
@@ -482,12 +481,58 @@ export function Card(props, elems) {
     card.append(...elems);
 
     return card;
-}
+} /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
  * @param {string} local 
  * @param {HTMLElement[]} childs 
  */
 export const insertChilds = (local, childs) => document.querySelector(local).append(...childs);
+/* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+/**
+ * @param {object | string} props 
+ * @param {string[]} urlFotos 
+ */
+export const Slider = (props, urlFotos) => {
+    const $render = el => document.createElement(el),
+        setStyle = (el, props) => Object.entries(props).map(([atr, val]) => el.style[atr] = val),
+        setFtAtual = ft => {
+            img.src = urlFotos[ft];
+            [[prev, (ftAtual === 0)], [next, (ftAtual >= urlFotos.length - 1)]].forEach(([btn, cond]) => btn.disabled = cond ? true : false);
+        }
+
+    const [slider, img] = ['section', 'img'].map(el => $render(el));
+
+    if (typeof props === 'object')
+        Object.entries(props).map(([atr, val]) => slider.setAttribute(atr, val));
+
+    setStyle(slider, {
+        display: 'flex',
+        alignItems: 'center'
+    });
+
+    const [prev, next] = [['prev', '<', 35], ['next', '>', -35]].map(([id, txt, pos]) => {
+        const btn = $render('button');
+        setStyle(btn, {
+            transform: `translateX(${pos}px)`,
+            height: 'fit-content'
+        });
+
+        [['textContent', txt], ['id', id], ['classList', 'btn_slider']].map(([atr, val]) => btn[atr] = val);
+
+        return btn;
+    });
+
+    let ftAtual = 0;
+
+    setFtAtual(ftAtual);
+
+    slider.append(prev, img, next);
+
+    [[prev, -1], [next, 1]].map(([btn, fn]) => btn.addEventListener('click', () => setFtAtual(ftAtual += fn)));
+
+    return slider;
+} /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2021\nCriada por Josias Fontes Alves`);

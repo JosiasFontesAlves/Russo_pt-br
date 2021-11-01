@@ -46,6 +46,7 @@ header {
     backdrop-filter: blur(2px);
     border: 1px solid var(--vidro);
     box-shadow: var(--neon) var(--ghost_bg);
+    color: black;
     text-align: left;
     left: 0;
     top: 0;

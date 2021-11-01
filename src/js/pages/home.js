@@ -49,9 +49,11 @@ export default () => {
     texto({ ttl: 'Dicionário de russo' }, { ok: '=>' });
 
     for (let [letra, palavras] of Object.entries(dicionário)) {
-        const trads = [...Object.entries(palavras)].map(([pt, ru]) => render({ p: { class: 'trad' } }, `${pt} - ${ru}`));
+        const trads = Object.entries(palavras).map(([pt, ru]) => render({ p: { class: 'trad' } }, `${pt} - ${ru}`));
 
-        selek('container').appendChild(Card({ div: { class: 'blocos' } }, [render({ h2: { class: `letra_${letra}` } }, letra), ...trads]));
+        selek('container').appendChild(
+            Card({ div: { class: 'blocos' } }, [render({ h2: { class: `letra_${letra}` } }, letra), ...trads])
+        );
     }
 
     res.hidden = true;

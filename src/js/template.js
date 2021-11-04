@@ -1,8 +1,8 @@
-import { addClass, criarBotão, dropDown, kreatto, render, selek, sElem, temEsc, templatr, texto } from './lib7.js'; // lib 7 v2.8.7
+import { addClass, criarBotão, dropDown, kreatto, render, sElem, templatr, texto } from './lib7.js'; // lib 7 v3.1.5
 import loadTemplate from './loadTemplate.js';
 
 templatr(
-    { header: { class: 'bg_vidro padd7' } },
+    { header: { class: 'bg_vidro center flex padd7' } },
     { main: { class: 'w100 flex center' } },
     'footer'
 );
@@ -10,6 +10,7 @@ templatr(
 kreatto(
     {
         header: [
+            { button: { id: 'btn-menu', class: 'fix' } },
             { h1: { id: 'ttl' } },
             { div: { id: 'drop', class: 'bg_vidro fix' } }
         ]
@@ -31,7 +32,7 @@ const listaDrop = Object.entries({
 
 dropDown({
     local: 'drop',
-    btn: '#ttl',
+    btn: '#btn-menu',
     lista: [
         ...listaDrop,
         render({

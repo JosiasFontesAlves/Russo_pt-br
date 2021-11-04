@@ -8,7 +8,7 @@ import { consumirAPI, selek, sElem, SPA, temEsc } from "./lib7.js"; // lib 7 v3.
 export default () => {
     const [main, body, btn_temesc] = ['main', 'body', '#btn_temesc'].map(elem => sElem(elem));
 
-    temEsc('btn_temesc', ['main'], 'temEsc', ({ target }) => {
+    temEsc('btn_temesc', ['body', 'main'], 'temEsc', ({ target }) => {
         target.classList.toggle('posX_30');
 
         fetch('/tema', {

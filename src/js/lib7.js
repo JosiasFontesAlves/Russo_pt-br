@@ -9,7 +9,7 @@
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-let versão = '3.1.2';
+let versão = '3.1.5';
 
 /** 
  * @param {string} local
@@ -95,6 +95,9 @@ export const Tempus = {
 
         return cal;
     },
+    /**
+     * @param {string} id 
+     */
     saudação(id) {
         const sdc = this.p(),
             hora = new Date().getHours();
@@ -150,14 +153,13 @@ export const temEsc = (btn, elems, toggle, fn) => document.getElementById(btn).a
 /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
- * @param {string} id 
- * @param {number} px 
+ * @param {string} id - id do menu
+ * @param {string} btn - Botão que será responsável pelo evento
+ * @param {string} toggle - Classe CSS que será responsável por esconder o menu
  */
-export function menuLateral(id, px) {
-    const { style } = document.querySelector('aside'), pos = [`translateX(${px}px)`, 'translateX(0)'];
-    style.transform = pos[0];
-    document.getElementById(id).addEventListener('click', () => style.transform = (style.transform == pos[0]) ? pos[1] : pos[0]);
-} /* ----------------------------------------------------------------------------------------------------------------------------------------- */
+export const menuLateral = (id, btn, toggle) =>
+    document.getElementById(btn).addEventListener('click', () => document.querySelector(id).classList.toggle(toggle));
+/* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 export function kreatto() {
     [...arguments].forEach(local => {

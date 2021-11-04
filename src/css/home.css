@@ -3,6 +3,7 @@
 @import url('alfabeto.css');
 @import url('semana.css');
 @import url('meses.css');
+@import url('drop.css');
 
 :root {
     --tam7: 7px;
@@ -53,12 +54,12 @@ header {
     z-index: 1;
 }
 
-body, #drop {
-    text-align: center;
+#ttl {
+    margin-left: 35px;
 }
 
-h1, #ok {
-    cursor: pointer;
+body, #drop {
+    text-align: center;
 }
 
 header, h2 {
@@ -70,8 +71,9 @@ h2 {
 }
 
 #drop {
+    left: 10px;
     padding: 10px;
-    transform: translateY(var(--tam7));
+    transform: translateY(115px);
     border-top: none;
     border-radius: 0 0 10px 10px;
 }
@@ -94,7 +96,7 @@ h2 {
     transform: translateX(30px);
 }
 
-h1:hover, #drop a:hover {
+#drop a:hover {
     color: blue;
     text-shadow: var(--neon2) blue;
 }
@@ -118,6 +120,7 @@ h1:hover, #drop a:hover {
     border: 3px solid #929292;
     border-radius: 50%;
     box-shadow: -5px 2px 7px #42424252;
+    cursor: pointer;
     height: 45px;
     outline: none;
     transform: translateX(-3vw);

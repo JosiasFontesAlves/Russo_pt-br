@@ -15,7 +15,9 @@ kreatto(
             { div: { id: 'drop', class: 'bg_vidro fix' } }
         ]
     },
-    { footer: [{ h6: { id: 'mts' } }] }
+    {
+        footer: [{ h6: { id: 'mts' } }]
+    }
 );
 
 addClass({ elems: [sElem('header'), sElem('footer')], classe: ' w100 fix' });

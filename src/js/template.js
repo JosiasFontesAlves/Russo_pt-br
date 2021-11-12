@@ -1,4 +1,4 @@
-import { addClass, criarBotão, dropDown, kreatto, render, sElem, templatr, texto } from './lib7.js'; // lib 7 v3.1.5
+import { addClass, Btn, dropDown, kreatto, render, sElem, templatr, texto } from './lib7.js'; // lib 7 v3.1.5
 import loadTemplate from './loadTemplate.js';
 
 templatr(
@@ -44,10 +44,9 @@ dropDown({
                 class: 'fix'
             }
         }),
-        render({ p: { id: 'temesc' } })
+        render({ p: { id: 'temesc' } }),
+        Btn('btn_temesc', 4, 'blue')
     ]
 });
-
-criarBotão('temesc', 'btn_temesc', 5, 'blue');
 
 loadTemplate();

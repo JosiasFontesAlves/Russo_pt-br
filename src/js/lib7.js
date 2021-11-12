@@ -9,51 +9,53 @@
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-let versão = '3.1.5';
+let versão = '3.2';
 
-/** 
- * @param {string} local
- * @param {string} idBtn - nome do botão
- * @param {number} estilo - tipo de botão
- * @param {string} cor
+/**
+ * @param {string} idBtn
+ * @param {number} estilo 
+ * @param {string | string[]} cor
  */
-export function criarBotão(local, idBtn, estilo, cor) {
-    const tam = ["width: 50px; height: 20px; color: rgb(80, 80, 80)", "width: 20px; height: inherit; transform: translateX(-3%)"],
+export function Btn(idBtn, estilo, cor) {
+    const setCor = (i, bg) => Array.isArray(cor) ? cor[i] : bg,
+        props = [
+            `background: ${cor[1]}; border: 2px solid; padding: 2px; height: 20px; width: 50px;`,
+            `background: ${setCor(0, cor)}; border: none; height: inherit; width: 20px;`,
+            `background: ${setCor(1, '#d8d8d8')};`
+        ],
         btn = {
-            borda: [
-                `${tam[0]}; border: 2px solid; padding: 2px; border-radius: 15px`,
-                `${tam[0]}; border: 2px solid; padding: 2px;`,
-                `${tam[0]}; border: 1px solid; background: lightgreen; border-radius: 25px;`,
-                `${tam[0]}; background: gray; border-radius: 5px; padding: 2px;`,
-                `width: 50px; height: 15px; background: darkred; border-radius: 25px; display: flex; align-items: center`,
-                `${tam[0]}; border-radius: 25px; background: silver; border: 1px solid`,
+            div: [
+                `${props[0]} border-radius: 15px;`, props[0], `${props[0]} border-radius: 7px;`,
+                `${props[2]}; height: 15px; border-radius: 10px; display: flex; align-items: center; width: 50px;`,
+                `${props[2]}; border-radius: 25px; border: 1px solid; height: 20px; width: 50px;`,
             ],
-            botão: [
-                `${tam[1]}; background: ${cor}; border-radius: inherit;`, `${tam[1]}; background: ${cor};`,
-                `width: 20px; height: inherit; background: ${cor}; border-radius: 50%;`,
-                `${tam[1]}; background: ${cor}; border-radius: inherit;`,
-                `width: 25px; height: 25px; background: red; border-radius: 50%;`,
-                `width: 10px; height: 10px; border: 5px solid ${cor}; background: none; border-radius: 50%;`,
+            button: [
+                `${props[1]} border-radius: inherit;`, props[1], `${props[1]} border-radius: 5px`,
+                `background: ${setCor(0, cor)}; border: none; border-radius: 50%; height: 25px; width: 25px`,
+                `width: 20px; border: 5px solid ${setCor(0, cor)}; background: none; border-radius: 50%; height: inherit;`
             ]
         },
-        res = [];
+        [borda, botão] = ['div', 'button'].map(elem => {
+            const el = document.createElement(elem);
+            el.style = btn[elem][estilo];
+            return el;
+        });
 
-    while (res.length < 2) res.push(document.createElement('div'));
+    botão.id = idBtn;
 
-    [btn.borda[estilo], `${btn.botão[estilo]} position: fixed;`].forEach((stl, i) => res[i].style = stl);
+    Object.entries({
+        cursor: 'pointer',
+        position: 'fixed'
+    }).forEach(([prop, val]) => botão.style[prop] = val);
 
-    res[1].id = idBtn;
-    res[0].appendChild(res[1]);
+    borda.appendChild(botão);
 
-    document.getElementById(local).appendChild(res[0]);
+    return borda;
 } /* ----- Lib de botões ----- */
 
 export const Tempus = {
     p: () => document.createElement('p'),
-    setAtr(el, id, innerHTML) {
-        el.id = id;
-        el.innerHTML = innerHTML;
-    },
+    setAtr: (el, id, innerHTML) => [['id', id], ['innerHTML', innerHTML]].forEach(([prop, val]) => el[prop] = val),
     /**
      * @param {string} id 
      * @param {number} estilo 
@@ -63,7 +65,7 @@ export const Tempus = {
 
         setInterval(() => {
             const date = new Date(),
-                rlg = [date.getHours(), date.getMinutes(), date.getSeconds() + 1];
+                rlg = [date.getHours(), date.getMinutes(), date.getSeconds()];
 
             for (let x in rlg) rlg[x] < 10 ? rlg[x] = `0${rlg[x]}` : '';
 
@@ -102,8 +104,7 @@ export const Tempus = {
         const sdc = this.p(),
             hora = new Date().getHours();
 
-        sdc.id = id;
-        sdc.innerHTML = (hora <= 12) ? "Bom dia!" : (hora >= 18) ? "Boa noite!" : "Boa tarde!";
+        this.setAtr(sdc, id ?? 'tempus-sdc', (hora <= 12) ? "Bom dia!" : (hora >= 18) ? "Boa noite!" : "Boa tarde!");
 
         return sdc;
     }

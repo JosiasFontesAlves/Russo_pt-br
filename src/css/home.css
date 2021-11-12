@@ -85,11 +85,11 @@ h2 {
 
 #lua {
     width: 25px;
-    transform: translateX(-50px);
+    transform: translateX(-52px);
 }
 
-#temesc {
-    transform: translateX(5px);
+#btn_temesc {
+    left: 57px;
 }
 
 .posX_30 {

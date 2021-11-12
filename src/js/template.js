@@ -1,50 +1,23 @@
 import { addClass, Btn, dropDown, kreatto, render, sElem, templatr, texto } from './lib7.js'; // lib 7 v3.1.5
+import { body_childs, copyright, kreatto_childs, lista_drop, lua, padd3, temesc } from "./setTemplate.js";
 import loadTemplate from './loadTemplate.js';
 
-templatr(
-    { header: { class: 'bg_vidro center flex padd7' } },
-    { main: { class: 'w100 flex center' } },
-    'footer'
-);
+templatr(...body_childs);
 
-kreatto(
-    {
-        header: [
-            { button: { id: 'btn-menu', class: 'fix' } },
-            { h1: { id: 'ttl' } },
-            { div: { id: 'drop', class: 'bg_vidro fix' } }
-        ]
-    },
-    {
-        footer: [{ h6: { id: 'mts' } }]
-    }
-);
+Object.entries(kreatto_childs).forEach(([tag, childs]) => kreatto({ [tag]: childs }));
 
 addClass({ elems: [sElem('header'), sElem('footer')], classe: ' w100 fix' });
 
-texto({ mts: 'Josias Fontes Alves - Matsa \u00A9 2021' });
+texto(copyright);
 
-const listaDrop = Object.entries({
-    '#home': 'Início',
-    '#decl': 'Declinação',
-    '#semana': 'Dias da semana',
-    '#alfabeto': 'Alfabeto',
-    '#meses': 'Meses do ano'
-}).map(([link, txt]) => render({ p: { class: 'padd3' } }, render({ a: { href: link } }, txt)));
+const listaDrop = Object.entries(lista_drop).map(([link, txt]) => render(padd3, render({ a: { href: link } }, txt)));
 
 dropDown({
     local: 'drop',
     btn: '#btn-menu',
     lista: [
         ...listaDrop,
-        render({
-            img: {
-                alt: 'lua', id: 'lua',
-                src: './temesc.png',
-                class: 'fix'
-            }
-        }),
-        render({ p: { id: 'temesc' } }),
+        ...[lua, temesc].map(elem => render(elem)),
         Btn('btn_temesc', 4, 'blue')
     ]
 });

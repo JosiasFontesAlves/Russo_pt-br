@@ -42,9 +42,11 @@ export function Btn(idBtn, estilo, cor) {
         });
 
     botão.id = idBtn;
+    borda.style.display = 'flex';
 
     Object.entries({
         cursor: 'pointer',
+        'margin-left': '-1px',
         position: 'fixed'
     }).forEach(([prop, val]) => botão.style[prop] = val);
 

@@ -1,5 +1,6 @@
-export default body => fetch('/res', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: body
-});
+export default res => [
+    'Português', 'Russo', 'Resposta'
+].reduce((key, val, i) => {
+    key[val] = res[i];
+    return key;
+}, {});

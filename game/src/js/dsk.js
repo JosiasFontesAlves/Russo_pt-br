@@ -95,7 +95,7 @@ export default {
     S: {
         Saber: 'знать', Saia: 'юбка', Sal: 'соль', Salada: 'салат', Sandálias: 'тапки', Sauna: 'баня', Shorts: 'шорты', Sair: 'выйти', Sábado: 'суббота',
         'Segunda - feira': 'понедельник', Sapatos: 'обувь', Saudade: 'тоска', Secretário: 'Секретарь', Selo: 'марка', Seis: 'шесть', Sem: 'без',
-        Senhor: 'господин', Senhora: 'госпожа', Ser: 'Быть', Sete: 'семь', Setembro: 'сентябрь', 'Sexta - feira': 'пятница', Sim: 'да', Sobremesa: 'десерт',
+        Senhor: 'господин', Senhora: 'госпожа', Ser: 'Быть', Sete: 'семь', Setembro: 'сентябрь', 'Sexta-feira': 'пятница', Sim: 'да', Sobremesa: 'десерт',
         Sonhar: 'мечтать', Sopa: 'суп', Sorte: 'удача', Suco: 'сок', Suécia: 'Швеция', Suéter: 'свитер', Supermercado: 'супермаркет',
     },
     T: {

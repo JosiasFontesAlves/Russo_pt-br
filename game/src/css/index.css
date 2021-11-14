@@ -10,6 +10,10 @@
     transition: 0.3s;
 }
 
+body {
+    text-align: center;
+}
+
 header {
     background: linear-gradient(45deg, var(--mainColor));
     box-shadow: var(--mainShadow);
@@ -39,4 +43,9 @@ header {
     font-size: 25px;
     padding: 20px;
     text-align: center;
+}
+
+#reload {
+    color: blue;
+    text-decoration: none;
 }

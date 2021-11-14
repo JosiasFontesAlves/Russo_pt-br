@@ -1,0 +1,35 @@
+.neon {
+    box-shadow: var(--neon) var(--vidro);
+}
+
+.searchBox {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#txt {
+    border: 1px solid var(--vidro);
+    border-radius: 25px;
+    outline: none;
+    padding: 5px;
+    width: 90vw;
+}
+
+#txt:focus {
+    background: var(--vidro);
+}
+
+#btn-res {
+    background: var(--nardoGray);
+    border: 3px solid var(--oceanicBlue);
+    border-radius: 50%;
+    cursor: pointer;
+    height: 40px;
+    transform: translateX(45vw);
+    width: 40px;
+}
+
+#btn-res:hover {
+    background: var(--oceanicBlue);
+}

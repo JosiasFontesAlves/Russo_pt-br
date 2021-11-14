@@ -1,0 +1,42 @@
+:root {
+    --mainColor: #00ff73, var(--oceanicBlue);
+    --mainShadow: var(--neon) var(--ghost_bg);
+    --tam10: 10px;
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: var(--neon2) var(--vidro);
+    transition: 0.3s;
+}
+
+header {
+    background: linear-gradient(45deg, var(--mainColor));
+    box-shadow: var(--mainShadow);
+    font-family: 'quantico', sans-serif;
+    top: 0;
+}
+
+#ttl {
+    margin-left: var(--tam10);
+}
+
+#container-blocos {
+    right: var(--tam10);
+}
+
+.blocos {
+    background: var(--nardoGray);
+    border: 1px solid var(--ghost_bg);
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px var(--ghost_bg);
+    height: var(--tam10);
+    margin: 5px;
+    width: 50px;
+}
+
+#pergunta {
+    font-size: 25px;
+    padding: 20px;
+    text-align: center;
+}

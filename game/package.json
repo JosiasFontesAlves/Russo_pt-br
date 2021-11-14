@@ -1,0 +1,12 @@
+{
+  "name": "matsa_game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "author": "Josias Fontes Alves",
+  "license": "ISC",
+  "type": "module"
+}

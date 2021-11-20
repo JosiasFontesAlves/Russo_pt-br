@@ -1,14 +1,13 @@
-const express = require('express');
-const { writeFile } = require('fs');
+import express from 'express';
+import { writeFile } from 'fs';
+
 const app = express();
 
 app.use(express.static('src'));
 app.use(express.json());
 
-app.get('/tema', (_req, res) => res.sendFile(`${__dirname}/temEsc.json`));
-
 app.post('/tema', (req, res) => {
-    writeFile('./temEsc.json', JSON.stringify(req.body, null, 4), err => err ? console.log(err) : '');
+    writeFile('./src/temEsc.json', JSON.stringify(req.body, null, 4), err => err ? console.log(err) : '');
     res.end();
 });
 

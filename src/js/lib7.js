@@ -9,7 +9,7 @@
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-let versão = '3.2';
+let versão = '3.2.6';
 
 /**
  * @param {string} idBtn
@@ -183,13 +183,15 @@ export function kreatto() {
 // IMPORTANTE! --> Sempre usar o templatr no topo do código!
 
 export function templatr() {
-    [...arguments].forEach(elem => {
+    const { body } = document;
+
+    (Array.isArray(arguments[0])) ? body.append(...arguments[0]) : [...arguments].forEach(elem => {
         const el = document.createElement(typeof elem === 'string' ? elem : Object.keys(elem)[0]);
         if (typeof elem === 'object') {
             for (let tag in elem)
                 Object.entries(elem[tag]).forEach(([atr, val]) => el.setAttribute(atr, val));
         }
-        document.body.appendChild(el);
+        body.appendChild(el);
     });
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
@@ -458,7 +460,7 @@ export function consumirAPI(url, fn) {
 } /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
- * @param {{string: function}} pages 
+ * @param {{hash: function}} pages 
  * @param {function} fn - CallBack opcional
  */
 export function SPA(pages, fn) {
@@ -496,7 +498,7 @@ export const insertChilds = (local, childs) => document.querySelector(local).app
 /* ----------------------------------------------------------------------------------------------------------------------------------------- */
 
 /**
- * @param {object | string} props 
+ * @param {{ prop: string }} props - props do slider
  * @param {string[]} urlFotos 
  */
 export const Slider = (props, urlFotos) => {
@@ -504,7 +506,10 @@ export const Slider = (props, urlFotos) => {
         setStyle = (el, props) => Object.entries(props).map(([atr, val]) => el.style[atr] = val),
         setFtAtual = ft => {
             img.src = urlFotos[ft];
-            [[prev, (ftAtual === 0)], [next, (ftAtual >= urlFotos.length - 1)]].forEach(([btn, cond]) => btn.disabled = cond ? true : false);
+
+            [
+                [prev, (ftAtual === 0)], [next, (ftAtual >= urlFotos.length - 1)]
+            ].forEach(([btn, cond]) => btn.disabled = cond ? true : false);
         }
 
     const [slider, img] = ['section', 'img'].map(el => $render(el));
@@ -512,19 +517,17 @@ export const Slider = (props, urlFotos) => {
     if (typeof props === 'object')
         Object.entries(props).map(([atr, val]) => slider.setAttribute(atr, val));
 
-    setStyle(slider, {
-        display: 'flex',
-        alignItems: 'center'
-    });
+    setStyle(slider, { display: 'flex', alignItems: 'center' });
 
     const [prev, next] = [['prev', '<', 35], ['next', '>', -35]].map(([id, txt, pos]) => {
         const btn = $render('button');
-        setStyle(btn, {
-            transform: `translateX(${pos}px)`,
-            height: 'fit-content'
-        });
+        setStyle(btn, { transform: `translateX(${pos}px)`, height: 'fit-content' });
 
-        [['textContent', txt], ['id', id], ['classList', 'btn_slider']].map(([atr, val]) => btn[atr] = val);
+        Object.entries({
+            textContent: txt,
+            classList: 'btn_slider',
+            id: id
+        }).map(([atr, val]) => btn[atr] = val);
 
         return btn;
     });

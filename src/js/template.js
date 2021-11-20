@@ -1,25 +1,91 @@
-import { addClass, Btn, dropDown, kreatto, render, sElem, templatr, texto } from './lib7.js'; // lib 7 v3.1.5
-import { body_childs, copyright, kreatto_childs, lista_drop, lua, padd3, temesc } from "./setTemplate.js";
-import loadTemplate from './loadTemplate.js';
-
-templatr(...body_childs);
-
-Object.entries(kreatto_childs).forEach(([tag, childs]) => kreatto({ [tag]: childs }));
-
-addClass({ elems: [sElem('header'), sElem('footer')], classe: ' w100 fix' });
-
-texto(copyright);
-
-const listaDrop = Object.entries(lista_drop).map(([link, txt]) => render(padd3, render({ a: { href: link } }, txt)));
-
-dropDown({
-    local: 'drop',
-    btn: '#btn-menu',
-    lista: [
-        ...listaDrop,
-        ...[lua, temesc].map(elem => render(elem)),
-        Btn('btn_temesc', 4, 'blue')
-    ]
-});
-
-loadTemplate();
+export const header = {
+    header: {
+        class: 'vidro_neon center flex fix padd3 w100'
+    }
+},
+    header_childs = [
+        {
+            button: {
+                id: 'btn-menu',
+                class: 'fix'
+            }
+        },
+        {
+            h1: {
+                id: 'ttl'
+            }
+        },
+        {
+            div: {
+                id: 'drop',
+                class: 'vidro_neon fix grid padd3'
+            }
+        }
+    ],
+    temesc = {
+        div:
+        {
+            id: 'temesc',
+            class: 'center flex'
+        }
+    },
+    lista_drop = {
+        '#home': 'Início',
+        '#decl': 'Declinação',
+        '#semana': 'Dias da semana',
+        '#alfabeto': 'Alfabeto',
+        '#meses': 'Meses do ano'
+    },
+    lua = {
+        img: {
+            alt: 'lua', id: 'lua',
+            src: './img/temesc.png'
+        }
+    },
+    main = {
+        main: {
+            class: 'center flex w100'
+        }
+    },
+    main_childs = [
+        {
+            section: {
+                id: 'search',
+                class: 'center flex'
+            }
+        },
+        {
+            div: {
+                id: 'container',
+                class: 'grid'
+            }
+        }
+    ],
+    res = {
+        p: {
+            id: 'res',
+            class: 'br_20 padd5 vidro_neon'
+        }
+    },
+    searchBox = [
+        {
+            id: 'txt', type: 'text', class: 'br_20 padd5',
+            placeholder: 'Pesquisar no dicionário'
+        },
+        { id: 'ok' }
+    ],
+    blocos = {
+        div: {
+            class: 'blocos'
+        }
+    },
+    footer = {
+        footer: {
+            class: 'center flex fix w100'
+        }
+    },
+    copyright = {
+        h6: {
+            id: 'copyright'
+        }
+    }

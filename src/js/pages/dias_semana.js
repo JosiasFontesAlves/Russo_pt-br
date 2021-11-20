@@ -1,14 +1,15 @@
-import { criarLista, kreatto, texto } from "../lib7.js";
-import dicionário  from "../dicionário.js";
+import { render } from "../lib7.js";
+import dicionário from "../dicionário.js";
+import ttl from "../ttl.js";
+import setMain from "../setMain.js";
 
 export default () => {
-    location.hash = '#semana';
+    ttl('Dias da semana');
 
-    texto({ ttl: 'Dias da semana' });
+    const diaSem = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'].map((dia, i) => render(
+        { p: { id: `dia_${i}`, class: 'diaSem' } },
+        `${dia} - ${dicionário[dia[0].toUpperCase()][dia]}`
+    ));
 
-    kreatto({ main: [{ div: { id: 'semana', class: 'fix w100' } }] });
-
-    ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'].forEach((dia, i) => {
-        criarLista(['semana', [`${dia} - ${dicionário[dia[0].toUpperCase()][dia]}`], { p: { id: `dia_${i}`, class: 'diaSem' } }]);
-    });
+    setMain({ div: { id: 'semana', class: 'fix w100' } }, diaSem);
 }

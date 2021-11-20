@@ -15,7 +15,7 @@ export default () => {
         ]
     });
 
-    ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'].forEach(mês => {
+    ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'].forEach(mês => {
         criarLista(['meses', [`${mês} - ${dicionário[mês[0].toUpperCase()][mês]}`], { p: { class: "meses_ano" } }]);
     });
 }

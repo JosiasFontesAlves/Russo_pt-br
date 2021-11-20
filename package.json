@@ -1,6 +1,6 @@
 {
   "name": "russo_pt-br",
-  "version": "1.0.0",
+  "version": "1.5",
   "description": "",
   "main": "server.js",
   "scripts": {
@@ -16,5 +16,6 @@
   "bugs": {
     "url": "https://github.com/JosiasFontesAlves/Russo_pt-br/issues"
   },
-  "homepage": "https://github.com/JosiasFontesAlves/Russo_pt-br#readme"
+  "homepage": "https://github.com/JosiasFontesAlves/Russo_pt-br#readme",
+  "type": "module"
 }

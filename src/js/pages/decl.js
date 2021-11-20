@@ -1,6 +1,9 @@
-import { Tabela, kreatto, texto, selek } from "../lib7.js";
+import { Tabela, sElem, render } from "../lib7.js";
+import ttl from "../ttl.js";
 
 export default () => {
+    ttl('Tabela de declinação');
+
     const declinação = [
         {
             caso: 'nominativo',
@@ -45,10 +48,8 @@ export default () => {
             plural: 'ах -- ях -- иях'
         }
     ];
-
-    texto({ ttl: 'Tabela de declinação' });
-
-    kreatto({ main: [{ div: { id: "tab" } }] });
-
-    selek('tab').appendChild(Tabela(declinação));
+    
+    sElem('main').appendChild(
+        render({ div: { id: 'tab' } }, Tabela(declinação))
+    );
 }

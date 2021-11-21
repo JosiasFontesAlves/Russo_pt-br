@@ -1,21 +1,15 @@
-import { criarLista, kreatto, texto } from "../lib7.js";
 import dicionário from "../dicionário.js";
+import { render } from "../lib7.js";
+import setMain from "../setMain.js";
+import { meses } from "../template.js";
+import ttl from "../ttl.js";
 
 export default () => {
-    texto({ ttl: 'Meses do ano' });
-    
-    kreatto({
-        main: [
-            {
-                div: {
-                    id: 'meses',
-                    class: 'fix w100'
-                }
-            }
-        ]
-    });
+    ttl('Meses do ano');
 
-    ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'].forEach(mês => {
-        criarLista(['meses', [`${mês} - ${dicionário[mês[0].toUpperCase()][mês]}`], { p: { class: "meses_ano" } }]);
-    });
+    const Meses = [
+        'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+    ].map(mês => render({ p: { class: "meses_ano" } }, `${mês} - ${dicionário[mês[0]][mês]}`));
+
+    setMain(meses, Meses);
 }

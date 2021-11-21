@@ -88,4 +88,10 @@ export const header = {
         h6: {
             id: 'copyright'
         }
+    },
+    meses = {
+        div: {
+            id: 'meses',
+            class: 'fix w100'
+        }
     }

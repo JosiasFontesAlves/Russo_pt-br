@@ -6,11 +6,6 @@ import home from "./pages/home.js";
 import meses from "./pages/meses.js";
 import search from "./search.js";
 
-const fn = {
-    limparTela: () => ['#ttl', 'main'].map(el => sElem(el).innerHTML = ''),
-    drop_hidden: () => selek('drop').classList.toggle('drop_hidden')
-}
-
 consumirAPI('/temesc.json', ({ temEsc }) => {
     const [btnTemesc, main, body] = ['#btn-temesc', 'main', 'body'].map(el => sElem(el));
 
@@ -29,9 +24,9 @@ export default () => {
         '#semana': dias_semana,
         '#alfabeto': alfabeto,
         '#meses': meses
-    }, fn.limparTela);
+    }, () => ['#ttl', 'main'].map(el => sElem(el).innerHTML = ''));
 
-    selekFn('btn-menu', 'click', fn.drop_hidden);
+    selekFn('btn-menu', 'click', () => selek('drop').classList.toggle('drop_hidden'));
 
     temEsc('btn-temesc', ['body', 'main'], 'temEsc', ({ target }) => {
         target.classList.toggle('posX_30');

@@ -44,7 +44,7 @@ export default () => {
         resultado = () => {
             limpar('root');
 
-            consumirAPI('/res', res => insertChilds('#root', [
+            consumirAPI('res.json', res => insertChilds('#root', [
                 render({ h1: { id: 'resultado' } }, 'Seus resultados:'),
                 Tabela(res),
                 render({ a: { href: '', id: 'reload' } }, 'Tentar novamente')

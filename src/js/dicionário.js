@@ -18,17 +18,17 @@ export default {
         'Caixa eletrônico': 'банкомат', Cama: 'кровать', Caminhar: 'ходить', Cardápio: 'меню', Carne: 'мясо', 'Carne bovina': 'говядина',
         'Carne de porco': 'свинина', Carro: 'машина', Carteira: 'бумажник', Casa: 'дом', Casaco: 'пальто', Cazaquistão: 'Казахстан', Centro: 'центр',
         Certo: 'правильный', Cerveja: 'пиво', Chá: 'чай', Chamada: 'вызов', Chamar: 'звать', Chatear: 'наскучить', Chorar: 'плакать', China: 'Китай',
-        Cidade: 'город', Cinco: 'пять', Cinza: 'серый', Cliente: 'клиент', Cobrir: 'накрывать', Coisa: 'вещь', Colega: 'коллега', Colher: 'ложка (subst)',
-        Comer: 'есть', Comida: 'еда', Como: 'как', Compra: 'покупка', Comprar: 'купить', Conhecer: 'встречать', Conseguir: 'достичь',
-        Congelar: 'замерзнуть', Considerar: 'рассмотреть', Consumidor: 'покупатель', Conta: 'счёт', Continuar: 'продолжать', Contra: 'против',
-        Copo: 'стакан', Cor: 'цвет', Coração: 'сердце', Coreia: 'Корея', Cortar: 'нарезать', Crescer: 'расти', Criança: 'ребёнок', Crianças: 'дети',
-        Cume: 'Вершина', Cozinha: 'кухня', Cotovelo: 'локоть', Costela: 'ребро',
+        Cidade: 'город', Cinco: 'пять', Cinza: 'серый', Cliente: 'клиент', Cobrir: 'накрывать', Coisa: 'вещь', Coleção: 'подборка', Colega: 'коллега',
+        Colher: 'ложка (subst)', Comer: 'есть', Comida: 'еда', Como: 'как', Compra: 'покупка', Comprar: 'купить', Conhecer: 'встречать',
+        Conseguir: 'достичь', Congelar: 'замерзнуть', Considerar: 'рассмотреть', Consumidor: 'покупатель', Conta: 'счёт', Continuar: 'продолжать',
+        Contra: 'против', Copo: 'стакан', Cor: 'цвет', Coração: 'сердце', Coreia: 'Корея', Cortar: 'нарезать', Crescer: 'расти', Criança: 'ребёнок',
+        Crianças: 'дети', Cotovelo: 'локоть', Costela: 'ребро', Cozinha: 'кухня', Cume: 'Вершина',
     },
     D: {
-        Daqui: 'отсюда', De: 'из', Definitivamente: 'Определённо', Delicioso: 'вкусный', Demais: 'слишком', 'De fato': 'именно', ' De repente': 'вдруг',
-        'De onde': 'откуда', Desgraça: 'бедa', Despedir: 'прощать', Dez: 'десять', Dezembro: 'декабрь', Dezoito: 'восемнадцать', Dezenove: 'девятнадцать',
-        Dezesseis: 'шестнадцать', Dezessete: 'семнадцать', Dizer: 'сказать', Dois: 'два', Doente: 'больной/болен', Domingo: 'воскресенье',
-        Doze: 'двенадцать', Durante: 'в течение'
+        Daqui: 'отсюда', De: 'из', Definitivamente: 'Определённо', Delicioso: 'вкусный', Demais: 'слишком', 'De fato': 'именно', 'De repente': 'вдруг',
+        'De onde': 'откуда', Derrotado: 'побеждённый', Desgraça: 'бедa', Despedir: 'прощать', Dez: 'десять', Dezembro: 'декабрь', Dezoito: 'восемнадцать',
+        Dezenove: 'девятнадцать', Dezesseis: 'шестнадцать', Dezessete: 'семнадцать', Dizer: 'сказать', Dois: 'два', Doente: 'больной/болен',
+        Domingo: 'воскресенье', Doze: 'двенадцать', Durante: 'в течение'
     },
     E: {
         E: 'и', 'É claro': 'конечно', Economia: 'экономика', Egito: 'Египет', Ela: 'она', Ele: 'он', Eles: 'они', Em: 'в / на', Endereço: 'Адрес',

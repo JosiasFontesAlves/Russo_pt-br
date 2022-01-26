@@ -3,28 +3,25 @@ export const header = {
         class: 'vidro_neon center flex fix padd3 w100'
     }
 },
-    header_childs = [
-        {
-            button: {
-                id: 'btn-menu',
-                class: 'fix'
-            }
-        },
-        {
-            h1: {
-                id: 'ttl'
-            }
-        },
-        {
-            div: {
-                id: 'drop',
-                class: 'vidro_neon fix grid padd3'
-            }
+    btn_menu = {
+        button: {
+            id: 'btn-menu',
+            class: 'fix'
         }
-    ],
+    },
+    ttl = {
+        h1: {
+            id: 'ttl'
+        }
+    },
+    drop = {
+        div: {
+            id: 'drop',
+            class: 'vidro_neon fix grid padd3 drop_hidden'
+        }
+    },
     temesc = {
-        div:
-        {
+        div: {
             id: 'temesc',
             class: 'center flex'
         }
@@ -47,24 +44,22 @@ export const header = {
             class: 'center flex w100'
         }
     },
-    main_childs = [
-        {
-            section: {
-                id: 'search',
-                class: 'center flex'
-            }
-        },
-        {
-            div: {
-                id: 'container',
-                class: 'grid'
-            }
+    search = {
+        section: {
+            id: 'search',
+            class: 'center flex'
         }
-    ],
+    },
+    container = {
+        div: {
+            id: 'container',
+            class: 'grid'
+        }
+    },
     res = {
         p: {
-            id: 'res',
-            class: 'br_20 padd5 vidro_neon'
+            class: 'br_20 padd5 vidro_neon',
+            hidden: true, id: 'res'
         }
     },
     searchBox = [
@@ -90,8 +85,12 @@ export const header = {
         }
     },
     meses = {
-        div: {
-            id: 'meses',
-            class: 'fix w100'
+        section: {
+            id: 'meses'
+        }
+    },
+    meses_ano = {
+        p: {
+            class: 'meses_ano'
         }
     }

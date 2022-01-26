@@ -1,11 +1,12 @@
-@import 'lib.css';
-@import 'decl.css';
-@import 'alfabeto.css';
-@import 'semana.css';
-@import 'meses.css';
+@import "lib.css";
+@import "alfabeto.css";
+@import "decl.css";
+@import 'drop.css';
+@import "home.css";
+@import 'search.css';
 
 * {
-    transition: 0.3s;
+    transition: all 0.3s;
 }
 
 .temEsc {
@@ -14,132 +15,32 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'work sans', sans-serif;
     text-align: center;
-    text-shadow: var(--neon_ghost);
 }
 
 header {
     color: black;
-    font-family: 'roboto mono';
+    font-family: 'roboto mono', sans-serif;
     top: 0;
     z-index: 1;
 }
-
-header, h2 {
-    font-family: 'roboto mono', sans-serif;
-}
-
-h2 {
-    margin: 10px;
-}
-
-/* - - - - - drop - - - - - */
 
 .posX_30 {
     transform: translateX(30px);
 }
 
-.drop_hidden {
-    top: 52px !important;
+#semana {
+    transform: translateY(150px);
 }
 
-#btn-menu::before {
-    transform: translateY(-11px);
+#meses {
+    transform: translateY(15px);
 }
 
-#btn-menu,
-#btn-menu::after,
-#btn-menu::before {
-    background: black;
-    border: none;
-    box-shadow: var(--neon_ghost);
-    cursor: pointer;
-    height: 5px;
-    left: 15px;
-    width: 25px;
-}
-
-#btn-menu::before, #btn-menu::after {
-    content: '';
-    position: fixed;
-}
-
-#btn-menu::after {
-    transform: translateY(5px);
-}
-
-#drop {
-    border-radius: 0 0 25px 25px;
-    left: 10px;
-    top: -250px;
-    z-index: 1;
-}
-
-#drop a {
-    color: black;
-    padding: 5px;
-    text-decoration: none;
-}
-
-#drop a:hover {
-    color: blue;
-}
-
-#lua {
-    margin-right: 15px;
-    width: 30px;
-}
-
-/* - - - - - Main - - - - - */
-
-#search {
-    flex-wrap: wrap;
-    position: absolute;
-    top: 66px;
-    z-index: 0;
-}
-
-#txt {
-    background: var(--nardoGray);
-    border: 2px solid var(--vidro);
-    box-shadow: var(--sombra) var(--vidro);
-    outline: none;
-    position: inherit;
-    width: 70vw;
-}
-
-#ok {
-    background: var(--nardoGray);
-    border: 3px solid #929292;
-    border-radius: 50%;
-    box-shadow: -5px 2px 7px #42424252;
-    cursor: pointer;
-    height: 45px;
-    outline: none;
-    transform: translateX(-3vw);
-    width: 45px;
-}
-
-#res {
-    background: var(--nardoGray);
-    border: 2px solid var(--nardoGray);
-    box-shadow: var(--sombra) var(--ghost_bg);
-    color: black;
-    position: inherit;
-    top: 50px;
-    width: 75vw;
-}
-
-#close {
-    border: 2px solid var(--ghost_bg);
-    box-shadow: var(--sombra) var(--ghost_bg);
-    cursor: pointer;
-    float: right;
-}
-
-#close:hover {
-    background: var(--ghost_bg);
+.diaSem,
+.meses_ano {
+    padding: 10px;
 }
 
 #container {

@@ -1,0 +1,25 @@
+#container {
+    margin-top: 110px;
+    grid-template-columns: repeat(2, auto);
+}
+
+.blocos {
+    border: 2px solid var(--vidro);
+    border-radius: 5px;
+    box-shadow: var(--neon) var(--vidro);
+    margin: 7px;
+    padding: 10px;
+    text-shadow: var(--neon2) var(--ghost_bg);
+}
+
+.trad {
+    padding: 3px;
+}
+
+.br_20 {
+    border-radius: 20px;
+}
+
+.padd5 {
+    padding: 5px;
+}

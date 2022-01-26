@@ -1,0 +1,50 @@
+#btn-menu::before {
+    transform: translateY(-11px);
+}
+
+#btn-menu,
+#btn-menu::after,
+#btn-menu::before {
+    background: black;
+    border: none;
+    box-shadow: var(--neon_ghost);
+    cursor: pointer;
+    height: 5px;
+    left: 15px;
+    width: 25px;
+}
+
+#btn-menu::before,
+#btn-menu::after {
+    content: '';
+    position: fixed;
+}
+
+#btn-menu::after {
+    transform: translateY(5px);
+}
+
+.drop_hidden {
+    top: -50vh !important;
+}
+
+#drop {
+    border-radius: 0 0 25px 25px;
+    left: 10px;
+    top: 47px;
+}
+
+#drop a {
+    color: black;
+    padding: 5px;
+    text-decoration: none;
+}
+
+#drop a:hover {
+    color: blue;
+}
+
+#lua {
+    margin-right: 15px;
+    width: 30px;
+}

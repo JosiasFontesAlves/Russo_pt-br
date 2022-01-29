@@ -69,6 +69,11 @@ export const header = {
         },
         { id: 'ok' }
     ],
+    close = {
+        button: {
+            id: 'close', class: 'br_20'
+        }
+    },
     blocos = {
         div: {
             class: 'blocos'

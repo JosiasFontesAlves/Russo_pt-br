@@ -3,7 +3,11 @@ import dicionário from "./dicionário.js";
 import { close } from "./template.js";
 
 export default () => {
-    const [txt, res] = selek('txt', 'res');
+    const [txt, res] = selek('txt', 'res'), search = {};
+
+    Object.values(dicionário).forEach(trads => {
+        Object.entries(trads).forEach(([pt, ru]) => search[pt] = ru);
+    });
 
     const fn = {
         ok: () => {
@@ -15,7 +19,7 @@ export default () => {
                 res.hidden = false;
 
                 insertChilds('#res', [
-                    `${txt.value} - ${dicionário[str[0]][str] ?? 'Ainda não temos essa palavra no dicionário'}`,
+                    `${txt.value} - ${search[str] ?? 'Ainda não temos essa palavra no dicionário'}`,
                     render(close, 'X')
                 ]);
             }

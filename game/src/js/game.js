@@ -25,6 +25,8 @@ export default () => {
             Tabela('respostas', respostas),
             render({ button: { id: 'reload' } }, 'Jogar novamente')
         ]);
+
+        selekFn('reload', 'click', () => location.reload());
     }
 
     init();

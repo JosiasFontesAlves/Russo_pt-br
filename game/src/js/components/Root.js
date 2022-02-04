@@ -1,16 +1,9 @@
-import { Card, render, SearchBox } from "../lib7.js";
+import { render, SearchBox } from "../lib7.js";
 
-export default Card({ div: { id: 'root' } }, [
+export default render({ div: { id: 'root' } }, [
     render({ p: { id: 'pergunta' } }),
-    SearchBox(
-        {
-            id: 'txt',
-            class: 'neon',
-            placeholder: 'Digite a resposta'
-        },
-        {
-            id: 'btn-res',
-            class: 'fix neon'
-        }
-    )
+    SearchBox({
+        class: 'padd5', id: 'txt',
+        placeholder: 'Digite a resposta'
+    }, { id: 'btn-ok' })
 ]);

@@ -1,19 +1,6 @@
-import { Card, Container, render } from "../lib7.js";
+import { render } from "../lib7.js";
+import Barr from "./Barr.js";
 
-export default Card({ header: { class: 'center fix flex w100' } }, [
-    render({ h1: { id: 'ttl' } }, 'Matsa'),
-    Container(
-        {
-            section: {
-                id: 'container-blocos',
-                class: 'flex fix'
-            }
-        },
-        {
-            div: {
-                class: 'blocos'
-            }
-        }, 
-        'blc_', 5
-    )
+export default render({ header: { class: 'flex fix w100' } }, [
+    render({ h1: { id: 'ttl' } }, 'Matsa'), Barr
 ]);

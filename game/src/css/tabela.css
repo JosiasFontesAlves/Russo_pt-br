@@ -1,6 +1,28 @@
-table, th, td {
-    border: 1px solid;
+h3 {
+    padding: 25px;
+}
+
+#respostas {
     border-collapse: collapse;
-    padding: 5px;
-    text-align: center;
+}
+
+#respostas,
+th,
+td {
+    border: 1px solid;
+    padding: 15px;
+}
+
+#reload {
+    background: var(--nardoGray);
+    border: 2px solid var(--oceanicBlue);
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px;
+    padding: 10px;
+}
+
+#reload:hover {
+    background: var(--oceanicBlue);
+    box-shadow: var(--neon2) var(--oceanicBlue);
 }

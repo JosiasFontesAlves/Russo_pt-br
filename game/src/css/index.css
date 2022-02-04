@@ -1,13 +1,10 @@
-:root {
-    --mainColor: #00ff73, var(--oceanicBlue);
-    --mainShadow: var(--neon) var(--ghost_bg);
-    --tam10: 10px;
-}
+@import 'lib.css';
+@import 'tabela.css';
 
 * {
-    font-family: Arial, Helvetica, sans-serif;
-    text-shadow: var(--neon2) var(--vidro);
-    transition: 0.3s;
+    font-family: 'ubuntu', sans-serif;
+    text-shadow: var(--ghost_neon);
+    transition: 0.5s;
 }
 
 body {
@@ -15,37 +12,44 @@ body {
 }
 
 header {
-    background: linear-gradient(45deg, var(--mainColor));
-    box-shadow: var(--mainShadow);
-    font-family: 'quantico', sans-serif;
+    background: linear-gradient(45deg, #0099ff, #00cfc5);
+    box-shadow: var(--neon2) #909090;
     top: 0;
 }
 
 #ttl {
-    margin-left: var(--tam10);
+    margin-left: 10px;
 }
 
-#container-blocos {
-    right: var(--tam10);
+#container-barr {
+    margin: 10px;
 }
 
-.blocos {
-    background: var(--nardoGray);
-    border: 1px solid var(--ghost_bg);
+.barr {
+    border: 2px solid var(--nardoGray);
     border-radius: 3px;
-    box-shadow: 2px 2px 2px var(--ghost_bg);
-    height: var(--tam10);
-    margin: 5px;
-    width: 50px;
+    height: 25px;
+    margin: 3px;
+    width: 7px;
 }
 
-#pergunta {
-    font-size: 25px;
-    padding: 20px;
-    text-align: center;
+.searchBox {
+    transform: translateY(130px);
 }
 
-#reload {
-    color: blue;
-    text-decoration: none;
+#txt {
+    border-radius: 7px 0 0 7px;
+    box-shadow: 5px 3px 5px #202020;
+    width: 50vw;
+}
+
+#btn-ok {
+    background: var(--nardoGray);
+    border: 3px solid var(--oceanicBlue);
+    border-radius: 15px;
+    box-shadow: var(--neon2);
+    cursor: pointer;
+    height: 45px;
+    transform: translateX(-5px);
+    width: 45px;
 }

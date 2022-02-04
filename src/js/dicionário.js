@@ -99,7 +99,7 @@ export default {
         Sonhar: 'мечтать', Sopa: 'суп', Sorte: 'удача', Suco: 'сок', Suécia: 'Швеция', Suéter: 'свитер', Supermercado: 'супермаркет',
     },
     T: {
-        Taça: 'бокал', Talvez: 'может быть', Também: 'тоже', Taxi: 'такси', Tchau: 'пока пока', Teatro: 'театр', Telefone: 'телефон', Tênis: 'кроссовки',
+        Taça: 'бокал', Talvez: 'может быть', Também: 'тоже', Táxi: 'такси', Tchau: 'пока пока', Teatro: 'театр', Telefone: 'телефон', Tênis: 'кроссовки',
         Tentar: 'попытаться', 'Terça-feira': 'вторник', Ter: 'иметь', Terno: 'костюм', Tocar: 'Затронуть', Todo: 'любой(inteiro)', Tornozelo: 'лодыжка',
         Trabalhador: 'рабочий', Trabalhar: 'работать', Trabalho: 'работа', Transportar: 'водить', Tratamento: 'Лечение', Trem: 'поезд', Três: 'три',
         Treze: 'тринадцать', Trocar: 'заменить', Tu: 'ты', Tudo: 'всё',

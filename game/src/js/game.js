@@ -1,57 +1,54 @@
-import { consumirAPI, insertChilds, render, selek, selekFn, seleKlass, Tabela } from "./lib7.js";
-import dsk from "./dsk.js";
-import setRes from "./setRes.js";
-import salvarRes from "./salvarRes.js";
-import setTrad from "./setTrad.js";
+import { insertChilds, render, selek, selekFn, seleKlass, Tabela } from './lib7.js';
+import dicionário from './dicionário.js';
+import setRes from './setRes.js';
 
 export default () => {
-    const game = [],
-        txt = selek('txt'),
-        respostas = [];
+    const dsk = [], respostas = [];
+    let num = 0, pt, ru;
 
-    for (let obj of Object.values(dsk)) // injeta todas as palavras do dicionário dentro de um array
-        game.push(...Object.entries(obj))
+    Object.values(dicionário).forEach(trads => {
+        dsk.push(...Object.entries(trads))
+    });
 
-    let res, ctrl = 0, { value } = txt;
+    function init() {
+        [pt, ru] = dsk[Math.floor(Math.random() * dsk.length)];
 
-    const limpar = id => selek(id).innerHTML = '';
+        selek('pergunta').innerHTML = '';
 
-    const init = () => {
-        limpar('pergunta');
+        insertChilds('#pergunta', ['Qual é o significado de ', render({ b: { id: 'res' } }, ru), ' em russo?']);
+    }
 
-        res = game[Math.floor(Math.random() * game.length)];
+    function resultado() {
+        selek('root').innerHTML = '';
 
-        setTrad(res[1]);
-    },
-        setCor = () => {
-            const blocos = seleKlass('blocos');
-
-            blocos[ctrl++].style.background = (res[2] === res[0].toLowerCase()) ? 'green' : 'red';
-        },
-        setGame = () => {
-            res.push(txt.value);
-
-            txt.value = '';
-
-            respostas.push(setRes(res));
-
-            salvarRes(JSON.stringify(respostas));
-
-            setCor();
-
-            init();
-        },
-        resultado = () => {
-            limpar('root');
-
-            consumirAPI('res.json', res => insertChilds('#root', [
-                render({ h1: { id: 'resultado' } }, 'Seus resultados:'),
-                Tabela(res),
-                render({ a: { href: '', id: 'reload' } }, 'Tentar novamente')
-            ]));
-        }
+        insertChilds('#root', [
+            render('h3', 'Fim de Jogo!'),
+            Tabela('respostas', respostas),
+            render({ button: { id: 'reload' } }, 'Jogar novamente')
+        ]);
+    }
 
     init();
 
-    selekFn('btn-res', 'click', () => (value == '' && ctrl < 4) ? setGame() : resultado());
+    selekFn('btn-ok', 'click', () => {
+        const txt = selek('txt');
+        const str = txt.value.replace(txt.value[0], txt.value[0].toUpperCase());
+        const barr = seleKlass('barr');
+
+        if (txt.value !== '') {
+            respostas.push({
+                Russo: ru,
+                Português: pt,
+                Resposta: str
+            });
+
+            setRes(respostas);
+
+            barr[num++].style.background = (str === pt) ? 'green' : 'red';
+
+            (num < 5) ? init() : resultado();
+
+            txt.value = '';
+        }
+    });
 }

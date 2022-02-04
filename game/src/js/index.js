@@ -1,11 +1,14 @@
-import { templatr } from "./lib7.js"; // v3.2.2
-import Header from "./components/Header.js";
-import Root from "./components/Root.js";
-import salvarRes from "./salvarRes.js";
-import App from "./App.js";
+import { templatr, texto } from './lib7.js';
+import Header from './components/Header.js';
+import Root from './components/Root.js';
+import Footer from './components/Footer.js';
+import setRes from './setRes.js';
+import game from './game.js';
 
-templatr([Header, Root]);
+templatr([Header, Root, Footer]);
 
-salvarRes('');
+texto({ 'btn-ok': '=>' });
 
-App();
+setRes([]);
+
+game();

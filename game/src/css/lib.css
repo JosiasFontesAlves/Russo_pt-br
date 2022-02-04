@@ -33,6 +33,14 @@
     --nardoGray: #d3d3d3;
     --oceanicBlue: #00ccff;
     --oceanicGreen: #01f870;
+    --ghost_neon: 3px 3px 3px var(--ghost_bg);
+}
+
+.vidro_neon {
+    backdrop-filter: blur(5px);
+    background: var(--vidro);
+    border: 2px solid var(--vidro);
+    box-shadow: 3px 3px 7px var(--ghost_bg);
 }
 
 .blur {
@@ -63,6 +71,14 @@
 
 .h100 {
     height: 100vh;
+}
+
+.padd5 {
+    padding: 5px;
+}
+
+.padd10 {
+    padding: 10px;
 }
 
 .w50 {

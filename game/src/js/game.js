@@ -1,6 +1,5 @@
 import { insertChilds, render, selek, selekFn, seleKlass, Tabela } from './lib7.js';
 import dicionário from './dicionário.js';
-import setRes from './setRes.js';
 
 export default () => {
     const dsk = [], respostas = [];
@@ -41,8 +40,6 @@ export default () => {
                 Português: pt,
                 Resposta: str
             });
-
-            setRes(respostas);
 
             barr[num++].style.background = (str === pt) ? 'green' : 'red';
 

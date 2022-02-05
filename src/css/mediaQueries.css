@@ -1,21 +1,17 @@
 @media only screen and (max-width: 520px) {
+    body {
+        display: flex;
+    }
+
     #ttl {
         font-size: 27px;
     }
-
+    
     #container {
         grid-template-columns: auto;
     }
-}
 
-@media only screen and (min-width: 720px) {
-    #container {
-        grid-template-columns: repeat(3, auto);
-    }
-}
-
-@media only screen and (min-width: 920px) {
-    #container {
-        grid-template-columns: repeat(4, auto);
+    .blocos {
+        width: 85vw;
     }
 }

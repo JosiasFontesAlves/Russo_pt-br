@@ -39,11 +39,6 @@ export const header = {
             src: './img/temesc.png'
         }
     },
-    main = {
-        main: {
-            class: 'center flex w100'
-        }
-    },
     search = {
         section: {
             id: 'search',
@@ -54,6 +49,11 @@ export const header = {
         div: {
             id: 'container',
             class: 'grid'
+        }
+    },
+    trad = {
+        p: {
+            class: 'trad'
         }
     },
     res = {

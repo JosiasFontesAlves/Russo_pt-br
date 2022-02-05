@@ -9,7 +9,7 @@
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-let versão = '3.6.7';
+let versão = '3.7';
 
 /**
  * @param {string} idBtn
@@ -259,12 +259,13 @@ export function jacss(...args) {
  * @param {{prop: string}} [props]
  */
 export const Lista = (id, lista, props) => {
-    const { createElement } = document;
-    const $lista = createElement('ul');
+    const $render = el => document.createElement(el);
+
+    const $lista = $render('ul');
     $lista.id = id;
 
     lista.forEach((item, i) => {
-        const li = createElement('li');
+        const li = $render('li');
         li.id = `${id}-${i}`;
         li.append(item);
 
@@ -476,5 +477,12 @@ export const Link = (href, textContent, props) => {
 
     return link;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
+ * @param {{item: *}} items 
+ * @param {function} callBack 
+ */
+export const mapEntries = (items, callBack) => Object.entries(items).map(callBack);
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2020 - ${new Date().getFullYear()}\nCriada por Josias Fontes Alves`);

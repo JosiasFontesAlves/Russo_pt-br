@@ -8,6 +8,8 @@ const setRoot = child => {
     const root = selek('root');
     root.innerHTML = '';
     root.appendChild(child);
+
+    document.body.classList = (location.hash !== '#home') ? 'center flex h100' : '';
 }
 
 export default () => {

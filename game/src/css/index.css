@@ -34,7 +34,7 @@ header {
 }
 
 .searchBox {
-    transform: translateY(130px);
+    transform: translateY(50px);
 }
 
 #txt {

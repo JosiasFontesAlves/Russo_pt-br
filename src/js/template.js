@@ -39,6 +39,11 @@ export const header = {
             src: './img/temesc.png'
         }
     },
+    root = {
+        div: {
+            id: 'root'
+        }
+    },
     search = {
         section: {
             id: 'search',

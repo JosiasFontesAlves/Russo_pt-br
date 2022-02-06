@@ -1,13 +1,11 @@
-import { insertChilds, render, selek, selekFn } from "./lib7.js";
+import { insertChilds, mapEntries, render, selek, selekFn } from "./lib7.js";
 import dicionário from "./dicionário.js";
 import { close } from "./template.js";
 
 export default () => {
     const [txt, res] = selek('txt', 'res'), search = {};
 
-    Object.values(dicionário).forEach(trads => {
-        Object.entries(trads).forEach(([pt, ru]) => search[pt] = ru);
-    });
+    Object.values(dicionário).forEach(trads => mapEntries(trads, ([pt, ru]) => search[pt] = ru));
 
     const fn = {
         ok: () => {

@@ -6,7 +6,7 @@ const app = express();
 app.use(express.static('src'));
 app.use(express.json());
 
-app.put('/tema', (req, res) => {
+app.post('/tema', (req, res) => {
     writeFile('src/temesc.json', JSON.stringify(req.body, null, 4), err => console.log(err ? err : ''));
     res.end();
 });

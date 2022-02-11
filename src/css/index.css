@@ -9,6 +9,10 @@
     transition: all 0.3s;
 }
 
+.posX_30 {
+    transform: translateX(30px);
+}
+
 .temEsc {
     background: black;
     color: var(--nardoGray);
@@ -26,12 +30,8 @@ header {
     z-index: 1;
 }
 
-.posX_30 {
-    transform: translateX(30px);
-}
-
 #meses {
-    transform: translateY(15px);
+    transform: translateY(75px);
 }
 
 .diaSem,

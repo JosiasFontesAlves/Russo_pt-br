@@ -6,6 +6,6 @@ import { root } from "./template.js";
 
 templatr([Header, render(root), Footer]);
 
-location.hash = '#home';
+location.hash = '#decl';
 
 App();

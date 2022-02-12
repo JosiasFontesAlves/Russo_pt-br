@@ -9,7 +9,7 @@
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-let versão = '3.7';
+let versão = '3.7.7';
 
 /**
  * @param {string} idBtn
@@ -64,7 +64,7 @@ export const Tempus = {
      */
     relógio(id, estilo) {
         const rel = document.createElement('p');
-        rel.id = id ?? 'tempus-rlg';
+        rel.id = id;
 
         setInterval(() => {
             const date = new Date();
@@ -85,7 +85,7 @@ export const Tempus = {
      */
     calendário(id, estilo) {
         const cal = document.createElement('p');
-        cal.id = id ?? 'tempus-cal';
+        cal.id = id;
 
         setInterval(() => {
             const date = new Date();
@@ -194,21 +194,49 @@ export const templatr = elems => elems.forEach(tag => document.body.appendChild(
 export const texto = tags => Object.entries(tags).forEach(([tag, texto]) => document.getElementById(tag).textContent = texto);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-export class Animatus {
-    static barr(id, pxMax, vel) {
-        const { style } = document.getElementById(id);
+export const Animatus = {
+    /**
+     * @param {string} id 
+     * @param {object} props
+     * @param {string} props.background
+     * @param {string} props.border
+     * @param {number} props.height
+     * @param {number} props.width
+     * @param {number} vel
+     */
+    barr(id, { background, border, height, width }, vel) {
+        const $render = () => document.createElement('div');
+        const barr = $render(), innerBarr = $render();
         let px = 0;
-        setInterval(() => {
-            arguments[3] == 'loop' ?
-                (px != pxMax) ? style.width = `${px++}px` : px = 0 :
-                (style.width != `${pxMax}px`) ? style.width = `${px++}px` : '';
-        }, vel);
-    }
 
-    static girar(id, z, vel) {
+        barr.style.border = border;
+        barr.id = id;
+
+        Object.entries({
+            background,
+            float: 'left',
+            height: 'inherit'
+        }).forEach(([prop, val]) => innerBarr.style[prop] = val);
+
+        const { style } = innerBarr;
+
+        Object.entries({ height, width }).forEach(([prop, val]) => barr.style[prop] = `${val}px`);
+
+        const count = setInterval(() => style.width = (style.width != `${width}px`) ? `${px++}px` : clearInterval(count), vel);
+
+        barr.appendChild(innerBarr);
+
+        return barr;
+    },
+    /**
+     * @param {string} id 
+     * @param {number} z 
+     * @param {number} vel 
+     */
+    girar(id, z, vel) {
         const { style } = document.getElementById(id);
         let ang = 0;
-        setInterval(() => (ang != z) ? style.transform = `rotateZ(${ang++}deg)` : ang = 0, vel);
+        const count = setInterval(() => (ang <= z) ? style.transform = `rotateZ(${ang++}deg)` : clearInterval(count), vel);
     }
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
@@ -269,9 +297,8 @@ export const Lista = (id, lista, props) => {
         li.id = `${id}-${i}`;
         li.append(item);
 
-        if (props) {
+        if (props)
             Object.entries(props).forEach(([prop, val]) => li.setAttribute(prop, val));
-        }
 
         $lista.appendChild(li);
     });
@@ -322,13 +349,11 @@ export const Tabela = (id, tabela) => {
 export function render(tag, conteúdo) {
     const elem = document.createElement(typeof tag === 'string' ? tag : Object.keys(tag)[0]);
 
-    if (typeof tag === 'object') {
+    if (typeof tag === 'object')
         for (let el in tag) Object.entries(tag[el]).forEach(([atr, val]) => elem.setAttribute(atr, val));
-    }
 
-    if (conteúdo) {
+    if (conteúdo)
         Array.isArray(conteúdo) ? conteúdo.map(item => elem.append(item)) : elem.append(conteúdo);
-    }
 
     return elem;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -349,15 +374,18 @@ export function SearchBox(...props) {
         searchBox.appendChild(child);
     });
 
+    searchBox.children[1].textContent = '=>';
+
     return searchBox;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
  * @param {string} idForm
+ * @param {{prop: string}[]} [propsChilds]
  */
-export function FormBox(idForm) {
+export function FormBox(idForm, propsChilds) {
     const form = document.createElement('form');
-    if (idForm) form.id = idForm;
+    form.id = idForm;
 
     const inputs = ['text', 'password'].map(type => {
         const input = document.createElement('input');
@@ -367,6 +395,12 @@ export function FormBox(idForm) {
     });
 
     form.append(...inputs, document.createElement('button'));
+
+    if (propsChilds && propsChilds.length <= 3) {
+        propsChilds.forEach((child, i) => {
+            Object.entries(child).forEach(([prop, val]) => form.children[i].setAttribute(prop, val));
+        });
+    }
 
     return form;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -384,10 +418,19 @@ export async function consumirAPI(url, fn) {
 
 /**
  * @param {{ hash: HTMLElement | function }} pages
- * @param {function} fn
+ * @param {string} elem - componente que será atualizado
  */
-export const SPA = (pages, fn) => window.addEventListener('hashchange', e => fn(pages, e));
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+export const SPA = (pages, elem) => {
+    const parent = document.querySelector(elem);
+    const setParent = () => {
+        parent.innerHTML = '';
+        parent.appendChild(pages[location.hash]);
+    }
+
+    setParent();
+
+    window.addEventListener('hashchange', setParent);
+} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
  * @param {string} local 
@@ -423,9 +466,8 @@ export const Slider = (props, urlFotos) => {
         setStyle(btn, { transform: `translateX(${pos}px)`, height: 'fit-content' });
 
         Object.entries({
-            textContent: txt,
-            classList: 'btn_slider',
-            id: id
+            textContent: txt, id,
+            classList: 'btn_slider'
         }).map(([atr, val]) => btn[atr] = val);
 
         return btn;
@@ -471,18 +513,49 @@ export const Link = (href, textContent, props) => {
     link.textContent = textContent;
     link.href = href;
 
-    if (props && typeof props === 'object') {
+    if (props && typeof props === 'object')
         Object.entries(props).forEach(([prop, val]) => link.setAttribute(prop, val));
-    }
 
     return link;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {{item: *}} items 
+ * @param {{item: *}} obj 
  * @param {function} callBack 
  */
-export const mapEntries = (items, callBack) => Object.entries(items).map(callBack);
+export const mapEntries = (obj, callBack) => Object.entries(obj).map(callBack);
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
+ * @param {{item: *}} obj 
+ * @param {function} callBack 
+ */
+export const mapKeys = (obj, callBack) => Object.keys(obj).map(callBack);
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
+ * @param {{item: *}} obj 
+ * @param {function} callBack 
+ */
+export const mapValues = (obj, callBack) => Object.values(obj).map(callBack);
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
+ * @param {object} obj
+ */
+export const getEntries = obj => Object.entries(obj);
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
+ * @param {string} url 
+ * @param {{} | *[]} body 
+ */
+export const httpPost = (url, body) => fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+});
+
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2020 - ${new Date().getFullYear()}\nCriada por Josias Fontes Alves`);

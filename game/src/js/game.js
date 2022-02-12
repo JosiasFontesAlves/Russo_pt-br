@@ -1,13 +1,11 @@
-import { insertChilds, render, selek, selekFn, seleKlass, Tabela } from './lib7.js';
+import { getEntries, httpPost, insertChilds, mapValues, render, selek, selekFn, seleKlass, Tabela } from './lib7.js';
 import dicionário from './dicionário.js';
 
 export default () => {
     const dsk = [], respostas = [];
     let num = 0, pt, ru;
 
-    Object.values(dicionário).forEach(trads => {
-        dsk.push(...Object.entries(trads))
-    });
+    mapValues(dicionário, trads => dsk.push(...getEntries(trads)));
 
     function init() {
         [pt, ru] = dsk[Math.floor(Math.random() * dsk.length)];
@@ -29,12 +27,10 @@ export default () => {
         selekFn('reload', 'click', () => location.reload());
     }
 
-    init();
-
     selekFn('btn-ok', 'click', () => {
-        const txt = selek('txt');
-        const str = txt.value.replace(txt.value[0], txt.value[0].toUpperCase());
-        const barr = seleKlass('barr');
+        const txt = selek('txt'),
+            str = txt.value.replace(txt.value[0], txt.value[0].toUpperCase()),
+            barr = seleKlass('barr');
 
         if (txt.value !== '') {
             respostas.push({
@@ -48,6 +44,10 @@ export default () => {
             (num < 5) ? init() : resultado();
 
             txt.value = '';
+
+            httpPost('res', respostas);
         }
     });
+
+    init();
 }

@@ -1,9 +1,6 @@
 import { render } from "../lib7.js";
 import Container from "../components/Container.js";
 import SearchBox from '../components/SearchBox.js';
+import { home } from "../template.js";
 
-export default render({
-    section: {
-        id: 'home'
-    }
-}, [SearchBox, Container]);
+export default render(home, [SearchBox, Container]);

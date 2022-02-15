@@ -44,6 +44,11 @@ export const header = {
             id: 'root'
         }
     },
+    home = {
+        section: {
+            id: 'home'
+        }
+    },
     search = {
         section: {
             id: 'search',
@@ -92,6 +97,18 @@ export const header = {
     copyright = {
         h6: {
             id: 'copyright'
+        }
+    },
+    alfabeto = {
+        section: {
+            class: 'grid',
+            id: 'alfabeto'
+        }
+
+    },
+    alf = {
+        h1: {
+            class: 'alf'
         }
     },
     meses = {

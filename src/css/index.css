@@ -30,10 +30,6 @@ header {
     z-index: 1;
 }
 
-#meses {
-    transform: translateY(75px);
-}
-
 .diaSem,
 .meses_ano {
     padding: 10px;

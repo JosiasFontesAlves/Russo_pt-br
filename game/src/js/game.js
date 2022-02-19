@@ -1,5 +1,9 @@
-import { consumirAPI, getEntries, httpPost, insertChilds, mapValues, render, selek, selekFn, seleKlass, Tabela } from './lib7.js';
+import { consumirAPI, getEntries, httpPost, insertChilds, mapValues, render, selek, selekFn, seleKlass } from './lib7.js';
 import dicionário from './dicionário.js';
+import Resultado from './components/Resultado.js';
+import { res } from './template.js';
+
+const limpar = (/** @type {string} */ id) => selek(id).innerHTML = '';
 
 export default () => consumirAPI('api.json', api => {
     const dsk = [], respostas = [];
@@ -7,22 +11,18 @@ export default () => consumirAPI('api.json', api => {
 
     mapValues(dicionário, trads => dsk.push(...getEntries(trads)));
 
-    function init() {
+    const init = () => {
+        limpar('pergunta');
+
         [pt, ru] = dsk[Math.floor(Math.random() * dsk.length)];
 
-        selek('pergunta').innerHTML = '';
-
-        insertChilds('#pergunta', ['Qual é o significado de ', render({ b: { id: 'res' } }, ru), ' em russo?']);
+        insertChilds('#pergunta', ['Qual é o significado de ', render(res, ru), ' em russo?']);
     }
 
     function resultado() {
-        selek('root').innerHTML = '';
+        limpar('root');
 
-        insertChilds('#root', [
-            render('h3', 'Fim de Jogo!'),
-            Tabela('respostas', respostas),
-            render({ button: { id: 'reload' } }, 'Jogar novamente')
-        ]);
+        insertChilds('#root', Resultado(respostas));
 
         api.respostas[new Date().toLocaleString()] = respostas;
         
@@ -32,11 +32,12 @@ export default () => consumirAPI('api.json', api => {
     }
 
     selekFn('btn-ok', 'click', () => {
-        const txt = selek('txt'),
-            str = txt.value.replace(txt.value[0], txt.value[0].toUpperCase()),
-            barr = seleKlass('barr');
+        const txt = selek('txt');
 
         if (txt.value !== '') {
+            const str = txt.value.replace(txt.value[0], txt.value[0].toUpperCase()),
+                barr = seleKlass('barr');
+
             respostas.push({
                 Russo: ru,
                 Português: pt,
@@ -48,8 +49,6 @@ export default () => consumirAPI('api.json', api => {
             (num < 5) ? init() : resultado();
 
             txt.value = '';
-
-            
         }
     });
 

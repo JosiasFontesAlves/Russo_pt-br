@@ -3,7 +3,7 @@ import dicionário from "./dicionário.js";
 import { close } from "./template.js";
 
 export default () => {
-    const [txt, res] = selek('txt', 'res'), search = {};
+    const [txt, res] = selek(['txt', 'res']), search = {};
 
     Object.values(dicionário).forEach(trads => mapEntries(trads, ([pt, ru]) => search[pt] = ru));
 

@@ -20,11 +20,13 @@ export default () => consumirAPI('api.json', api => {
     }
 
     function resultado() {
+        const data = new Date(), rlg = [data.getHours(), data.getMinutes()];
+
         limpar('root');
 
         insertChilds('#root', Resultado(respostas));
 
-        api.respostas[new Date().toLocaleString()] = respostas;
+        api.respostas[`${data.toLocaleDateString()} - ${rlg.join(':')}`] = respostas;
         
         httpPost('api', api);
 

@@ -13,6 +13,14 @@ export const header = {
     div: {
         id: 'root'
     }
+}, home = {
+    div: {
+        id: 'home'
+    }
+}, resultado = {
+    div: {
+        id: 'resultado'
+    }
 }, perguntas = {
     p: {
         id: 'pergunta'
@@ -42,18 +50,23 @@ export const header = {
     }
 }, linkBox = {
     section: {
-        class: 'flex fix',
+        class: 'flex fix vidro_neon x100',
         id: 'linkBox'
     }
 }, links = {
+    '#home': 'Home',
     '#res': 'Resultados anteriores'
 }, btnLinkBox = {
     button: {
-        class: 'z45',
+        class: 'fix',
         id: 'btn-linkBox'
     }
 }, copyright = {
     h6: {
         id: 'copyright'
+    }
+}, tabRes = {
+    div: {
+        class: 'tab-res'
     }
 }

@@ -1,6 +1,5 @@
-import { render, SearchBox } from "../lib7.js";
-import { perguntas, root, searchbox } from "../template.js";
+import { render } from "../lib7.js";
+import Home from "../pages/Home.js";
+import { root } from "../template.js";
 
-export default render(root, [
-    render(perguntas), SearchBox(...searchbox)
-]);
+export default render(root);

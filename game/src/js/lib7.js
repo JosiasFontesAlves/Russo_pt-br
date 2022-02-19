@@ -569,6 +569,7 @@ export const LinkBar = (links, props) => {
         const link = document.createElement('a');
         link.href = href;
         link.textContent = txt;
+        link.classList.add('link');
 
         return link;
     });
@@ -607,6 +608,13 @@ export const Img = (src, alt, props) => {
     if (props) for (let prop in props) img.setAttribute(prop, props[prop]);
 
     return img;
-}
+} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
+ * @param {string} el
+ * @param {string} toggle 
+ */
+export const toggle = (el, toggle) => document.querySelector(el).classList.toggle(toggle);
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2020 - ${new Date().getFullYear()}\nCriada por Josias Fontes Alves`);

@@ -1,10 +1,6 @@
 @import 'lib.css';
 @import 'tabela.css';
 
-.x30 {
-    transform: translateX(30px);
-}
-
 * {
     font-family: 'ubuntu', sans-serif;
     text-shadow: var(--ghost_neon);
@@ -64,22 +60,31 @@ footer {
 
 #linkBox {
     border: 1px solid;
-    border-radius: 23px;
-    bottom: 15px;
-    right: 15px;
+    border-radius: 23px 0 0 23px;
+    bottom: 18px;
+    right: 47px;
+}
+
+#btn-linkBox {
+    border: 1px solid !important;
+    right: 20px;
+}
+
+#temesc, #linkBox {
+    padding-right: 7px;
 }
 
 #temesc {
     border-right: 1px solid;
-    padding-right: 7px;
 }
 
 .linkBar {
-    padding: 5px;
+    padding: 8px;
 }
 
 a {
     color: inherit;
+    padding: 5px;
 }
 
 a:hover {
@@ -89,8 +94,9 @@ a:hover {
 #btn-linkBox {
     border: inherit;
     border-radius: 50%;
+    bottom: 15px;
     float: right;
     font-size: 20px;
     height: 40px;
-    width:  40px;
+    width: 40px;
 }

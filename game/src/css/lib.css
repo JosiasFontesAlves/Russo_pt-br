@@ -31,6 +31,17 @@ button {
     cursor: pointer;
 }
 
+table {
+    border-collapse: collapse;
+}
+
+table,
+th,
+td {
+    border: 1px solid;
+    padding: 15px;
+}
+
 :root {
     --sand: #fadcb0;
     --neon: 1px 1px 10px 2px;
@@ -120,4 +131,12 @@ button {
 .temesc {
     background: black;
     color: var(--nardoGray);
+}
+
+.x30 {
+    transform: translateX(30px);
+}
+
+.x100 {
+    transform: translateX(100vw);
 }

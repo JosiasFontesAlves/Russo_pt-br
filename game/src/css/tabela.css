@@ -2,17 +2,6 @@ h3 {
     padding: 25px;
 }
 
-#respostas {
-    border-collapse: collapse;
-}
-
-#respostas,
-th,
-td {
-    border: 1px solid;
-    padding: 15px;
-}
-
 #reload {
     background: var(--nardoGray);
     border: 2px solid var(--oceanicBlue);
@@ -25,4 +14,8 @@ td {
 #reload:hover {
     background: var(--oceanicBlue);
     box-shadow: var(--neon2) var(--oceanicBlue);
+}
+
+#resultado {
+    margin: 70px;
 }

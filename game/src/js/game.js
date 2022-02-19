@@ -1,7 +1,7 @@
 import { consumirAPI, getEntries, httpPost, insertChilds, mapValues, render, selek, selekFn, seleKlass, Tabela } from './lib7.js';
 import dicionário from './dicionário.js';
 
-export default () => consumirAPI('/api.json', api => {
+export default () => consumirAPI('api.json', api => {
     const dsk = [], respostas = [];
     let num = 0, pt, ru;
 

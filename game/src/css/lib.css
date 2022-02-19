@@ -23,6 +23,10 @@
     margin: auto;
 }
 
+a {
+    text-decoration: none;
+}
+
 button {
     cursor: pointer;
 }
@@ -103,4 +107,17 @@ button {
     height: 45px;
     right: 15px;
     width: 45px;
+}
+
+.br15 {
+    border-radius: 15px;
+}
+
+.z45 {
+    transform: rotateZ(45deg);
+}
+
+.temesc {
+    background: black;
+    color: var(--nardoGray);
 }

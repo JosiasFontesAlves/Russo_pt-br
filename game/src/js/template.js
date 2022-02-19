@@ -22,7 +22,7 @@ export const header = {
         class: 'padd5', id: 'txt',
         placeholder: 'Digite a resposta'
     },
-    { id: 'btn-ok' }
+    { class: 'br15', id: 'btn-ok' }
 ], btnReload = {
     button: {
         id: 'reload'
@@ -34,6 +34,23 @@ export const header = {
 }, footer = {
     footer: {
         class: 'fix'
+    }
+}, temesc = {
+    section: {
+        class: 'flex',
+        id: 'temesc'
+    }
+}, linkBox = {
+    section: {
+        class: 'flex fix',
+        id: 'linkBox'
+    }
+}, links = {
+    '#res': 'Resultados anteriores'
+}, btnLinkBox = {
+    button: {
+        class: 'z45',
+        id: 'btn-linkBox'
     }
 }, copyright = {
     h6: {

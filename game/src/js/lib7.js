@@ -9,7 +9,7 @@
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-let versão = '3.8.5';
+let versão = '3.8.7';
 
 /**
  * @param {string} idBtn
@@ -436,9 +436,9 @@ export const insertChilds = (local, childs) => document.querySelector(local).app
  * @param {string[]} urlFotos 
  */
 export const Slider = (props, urlFotos) => {
-    const $render = el => document.createElement(el),
+    const $render = (/** @type {string} */ el) => document.createElement(el),
         setStyle = (el, props) => Object.entries(props).map(([atr, val]) => el.style[atr] = val),
-        setFtAtual = ft => {
+        setFtAtual = (/** @type {number} */ ft) => {
             img.src = urlFotos[ft];
 
             [
@@ -489,7 +489,7 @@ export const Cookr = id => {
          */
         getData: item => data[item] || data,
         /**
-         * @param {{data}} content - chave a ser inserida no objeto
+         * @param {{data: any}} content - chave a ser inserida no objeto
          */
         setData: content => Object.entries(content).forEach(([key, val]) => data[key] = val)
     }
@@ -558,9 +558,12 @@ export const httpPost = (url, body) => fetch(url, {
 
 /**
  * @param {{href: string}} links 
+ * @param {{prop: string}} [props]
  */
-export const LinkBar = links => {
+export const LinkBar = (links, props) => {
     const linkBarr = document.createElement('div');
+
+    if (props) for (let prop in props) linkBarr.setAttribute(prop, props[prop])
 
     const $links = Object.entries(links).map(([href, txt]) => {
         const link = document.createElement('a');
@@ -570,6 +573,7 @@ export const LinkBar = links => {
         return link;
     });
 
+    linkBarr.classList.add('linkBar');
     linkBarr.append(...$links);
 
     return linkBarr;
@@ -589,5 +593,20 @@ export const Title = (title, props) => {
 
     return h1;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
+ * @param {string} src 
+ * @param {string} alt 
+ * @param {prop: string}} props 
+ * @returns 
+ */
+export const Img = (src, alt, props) => {
+    const img = document.createElement('img');
+    Object.entries({ src, alt }).forEach(([prop, val]) => img.setAttribute(prop, val));
+
+    if (props) for (let prop in props) img.setAttribute(prop, props[prop]);
+
+    return img;
+}
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2020 - ${new Date().getFullYear()}\nCriada por Josias Fontes Alves`);

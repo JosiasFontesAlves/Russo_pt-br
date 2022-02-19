@@ -9,7 +9,7 @@
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-let versão = '3.7.7';
+let versão = '3.8.5';
 
 /**
  * @param {string} idBtn
@@ -17,18 +17,22 @@ let versão = '3.7.7';
  * @param {string | string[]} cor
  */
 export function Btn(idBtn, estilo, cor) {
+    /**
+     * @param {number} i 
+     * @param {string | string[]} bg 
+     */
     const setCor = (i, bg) => Array.isArray(cor) ? cor[i] : bg,
         props = [
             `background: ${cor[1]}; border: 2px solid; padding: 2px; height: 20px; width: 50px;`,
             `background: ${setCor(0, cor)}; border: none; height: inherit; width: 20px;`,
-            `background: ${setCor(1, '#d8d8d8')};`
+            `background: ${setCor(1, '#d8d8d8')};`, 'border-radius: 25px; height: 20px;'
         ],
         btn = {
             div: [
                 `${props[0]} border-radius: 15px;`, props[0], `${props[0]} border-radius: 7px;`,
                 `${props[2]}; height: 15px; border-radius: 10px; display: flex; align-items: center; width: 50px;`,
-                `${props[2]}; border-radius: 25px; border: 1px solid; height: 20px; width: 50px;`,
-                `${props[2]}; border: 2px solid; border-radius: 25px; height: 20px; padding: 5px; width: 55px;`
+                `${props[2]}; ${props[3]}; border: 1px solid; width: 50px;`,
+                `${props[2]}; border: 2px solid; ${props[3]} padding: 5px; width: 55px;`
             ],
             button: [
                 `${props[1]} border-radius: inherit;`, props[1], `${props[1]} border-radius: 5px`,
@@ -39,7 +43,8 @@ export function Btn(idBtn, estilo, cor) {
         },
         [borda, botão] = ['div', 'button'].map(elem => {
             const el = document.createElement(elem);
-            el.style = btn[elem][estilo];
+            el.setAttribute('style', btn[elem][estilo])
+
             return el;
         });
 
@@ -117,13 +122,12 @@ export const Tempus = {
         return sdc;
     },
     /**
-     * @param {number} start
-     * @param {number} end
+     * @param {number[]} startEnd
      * @param {number} vel
      */
     contador([start, end], vel) {
         const res = document.createElement('p'),
-            count = setInterval(() => (start <= end) ? res.textContent = start++ : clearInterval(count), vel);
+            count = setInterval(() => (start <= end) ? res.textContent = String(start++) : clearInterval(count), vel);
 
         return res;
     }
@@ -133,24 +137,24 @@ export const Tempus = {
  * @param {string | string[]} id 
  * @returns {HTMLElement | HTMLElement[]}
  */
-export const selek = (...id) => id.length > 1 ? id.map(el => document.getElementById(el)) : document.getElementById(id);
+export const selek = id => Array.isArray(id) ? id.map(el => document.getElementById(el)) : document.getElementById(id);
 
 /**
- * @param {Element} elem 
+ * @param {string} elem 
  */
 export const sElem = elem => document.querySelector(elem);
 
 /**
  * @param {string} id 
- * @param {EventListener} ev 
- * @param {function} fn 
+ * @param {string} ev 
+ * @param {EventListener} fn 
  */
-export const selekFn = (id, ev, fn) => document.getElementById(id).addEventListener(ev, fn, false);
+export const selekFn = (id, ev, fn) => document.getElementById(id).addEventListener(ev, fn)
 
 /**
- * @param {Element} elem 
- * @param {EventListener} ev 
- * @param {function} fn 
+ * @param {string} elem 
+ * @param {string} ev 
+ * @param {EventListener} fn 
  */
 export const sElemFn = (elem, ev, fn) => document.querySelector(elem).addEventListener(ev, fn, false);
 
@@ -222,7 +226,7 @@ export const Animatus = {
 
         Object.entries({ height, width }).forEach(([prop, val]) => barr.style[prop] = `${val}px`);
 
-        const count = setInterval(() => style.width = (style.width != `${width}px`) ? `${px++}px` : clearInterval(count), vel);
+        const count = setInterval(() => (style.width != `${width}px`) ? style.width = `${px++}px` : clearInterval(count), vel);
 
         barr.appendChild(innerBarr);
 
@@ -270,24 +274,13 @@ export function replacer() {
     });
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-export function jacss(...args) {
-    args.forEach(elems => {
-        Object.entries(elems).forEach(([tag, props]) => {
-            const el = document.querySelector(tag);
-
-            for (let prop in props)
-                el.style[prop] = props[prop];
-        });
-    });
-} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
 /**
  * @param {string} id 
  * @param {string[]} lista 
  * @param {{prop: string}} [props]
  */
 export const Lista = (id, lista, props) => {
-    const $render = el => document.createElement(el);
+    const $render = (/** @type {string} */ el) => document.createElement(el);
 
     const $lista = $render('ul');
     $lista.id = id;
@@ -308,18 +301,18 @@ export const Lista = (id, lista, props) => {
 
 /**
  * @param {string} id
- * @param {object[]} tabela
+ * @param {{}[]} tabela
  */
 export const Tabela = (id, tabela) => {
     const [table, thead, tbody] = ['table', 'thead', 'tbody'].map(el => document.createElement(el));
-    const $render = (tag, content) => {
+    const $render = (/** @type {string} */ tag, /** @type {string} */ content) => {
         const el = document.createElement(tag);
         el.append(...content);
 
         return el;
     }
 
-    const Tr = data => $render('tr', data);
+    const Tr = (/** @type {*} */ data) => $render('tr', data);
 
     table.id = id;
 
@@ -413,7 +406,7 @@ export async function consumirAPI(url, fn) {
     const api = await fetch(url);
     const res = await api.json();
 
-    fn(res);
+    return fn(res);
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
@@ -547,6 +540,12 @@ export const getEntries = obj => Object.entries(obj);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
+ * @param {object} obj
+ */
+export const getValues = obj => Object.values(obj);
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
  * @param {string} url 
  * @param {{} | *[]} body 
  */
@@ -557,5 +556,39 @@ export const httpPost = (url, body) => fetch(url, {
 });
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
+ * @param {{href: string}} links 
+ */
+export const LinkBar = links => {
+    const linkBarr = document.createElement('div');
+
+    const $links = Object.entries(links).map(([href, txt]) => {
+        const link = document.createElement('a');
+        link.href = href;
+        link.textContent = txt;
+
+        return link;
+    });
+
+    linkBarr.append(...$links);
+
+    return linkBarr;
+} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
+ * @param {string} title 
+ * @param {{prop: string}} [props] 
+ */
+export const Title = (title, props) => {
+    const h1 = document.createElement('h1');
+    h1.textContent = title;
+
+    if (props) {
+        Object.entries(props).forEach(([prop, val]) => h1.setAttribute(prop, val));
+    }
+
+    return h1;
+} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2020 - ${new Date().getFullYear()}\nCriada por Josias Fontes Alves`);

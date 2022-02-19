@@ -53,3 +53,7 @@ header {
     transform: translateX(-5px);
     width: 45px;
 }
+
+footer {
+    bottom: 3px;
+}

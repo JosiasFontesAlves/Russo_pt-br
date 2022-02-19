@@ -1,7 +1,7 @@
-import { getEntries, httpPost, insertChilds, mapValues, render, selek, selekFn, seleKlass, Tabela } from './lib7.js';
+import { consumirAPI, getEntries, httpPost, insertChilds, mapValues, render, selek, selekFn, seleKlass, Tabela } from './lib7.js';
 import dicionário from './dicionário.js';
 
-export default () => {
+export default () => consumirAPI('/api.json', api => {
     const dsk = [], respostas = [];
     let num = 0, pt, ru;
 
@@ -24,6 +24,10 @@ export default () => {
             render({ button: { id: 'reload' } }, 'Jogar novamente')
         ]);
 
+        api.respostas[new Date().toLocaleString()] = respostas;
+        
+        httpPost('api', api);
+
         selekFn('reload', 'click', () => location.reload());
     }
 
@@ -45,9 +49,9 @@ export default () => {
 
             txt.value = '';
 
-            httpPost('res', respostas);
+            
         }
     });
 
     init();
-}
+});

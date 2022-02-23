@@ -9,7 +9,7 @@
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-let versão = '3.8.5';
+let versão = '3.8.7';
 
 /**
  * @param {string} idBtn
@@ -29,9 +29,7 @@ export function Btn(idBtn, estilo, cor) {
         ],
         btn = {
             div: [
-                `${props[0]} border-radius: 15px;`,
-                props[0],
-                `${props[0]} border-radius: 7px;`,
+                `${props[0]} border-radius: 15px;`, props[0], `${props[0]} border-radius: 7px;`,
                 `${props[2]}; height: 15px; border-radius: 10px; display: flex; align-items: center; width: 50px;`,
                 `${props[2]}; ${props[3]}; border: 1px solid; width: 50px;`,
                 `${props[2]}; border: 2px solid; ${props[3]} padding: 5px; width: 55px;`
@@ -96,7 +94,6 @@ export const Tempus = {
 
         setInterval(() => {
             const date = new Date();
-
             const calendário = {
                 diaSem: ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SÁB"],
                 mês: ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"]
@@ -439,13 +436,14 @@ export const insertChilds = (local, childs) => document.querySelector(local).app
  * @param {string[]} urlFotos 
  */
 export const Slider = (props, urlFotos) => {
-    const $render = el => document.createElement(el),
+    const $render = (/** @type {string} */ el) => document.createElement(el),
         setStyle = (el, props) => Object.entries(props).map(([atr, val]) => el.style[atr] = val),
-        setFtAtual = ft => {
+        setFtAtual = (/** @type {number} */ ft) => {
             img.src = urlFotos[ft];
 
             [
-                [prev, (ftAtual === 0)], [next, (ftAtual >= urlFotos.length - 1)]
+                [prev, (ftAtual === 0)], 
+                [next, (ftAtual >= urlFotos.length - 1)]
             ].forEach(([btn, cond]) => btn.disabled = cond ? true : false);
         }
 
@@ -474,7 +472,9 @@ export const Slider = (props, urlFotos) => {
 
     slider.append(prev, img, next);
 
-    [[prev, -1], [next, 1]].map(([btn, fn]) => btn.addEventListener('click', () => setFtAtual(ftAtual += fn)));
+    [
+        [prev, -1], [next, 1]
+    ].map(([btn, fn]) => btn.addEventListener('click', () => setFtAtual(ftAtual += fn)));
 
     return slider;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -492,7 +492,7 @@ export const Cookr = id => {
          */
         getData: item => data[item] || data,
         /**
-         * @param {{data}} content - chave a ser inserida no objeto
+         * @param {{data: any}} content - chave a ser inserida no objeto
          */
         setData: content => Object.entries(content).forEach(([key, val]) => data[key] = val)
     }
@@ -561,18 +561,23 @@ export const httpPost = (url, body) => fetch(url, {
 
 /**
  * @param {{href: string}} links 
+ * @param {{prop: string}} [props]
  */
-export const LinkBar = links => {
+export const LinkBar = (links, props) => {
     const linkBarr = document.createElement('div');
+
+    if (props) for (let prop in props) linkBarr.setAttribute(prop, props[prop])
 
     const $links = Object.entries(links).map(([href, txt]) => {
         const link = document.createElement('a');
         link.href = href;
         link.textContent = txt;
+        link.classList.add('link');
 
         return link;
     });
 
+    linkBarr.classList.add('linkBar');
     linkBarr.append(...$links);
 
     return linkBarr;
@@ -586,11 +591,30 @@ export const Title = (title, props) => {
     const h1 = document.createElement('h1');
     h1.textContent = title;
 
-    if (props) {
-        Object.entries(props).forEach(([prop, val]) => h1.setAttribute(prop, val));
-    }
+    if (props) Object.entries(props).forEach(([prop, val]) => h1.setAttribute(prop, val));
 
     return h1;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
+ * @param {string} src 
+ * @param {string} alt 
+ * @param {{prop: string}} [props] 
+ */
+export const Img = (src, alt, props) => {
+    const img = document.createElement('img');
+    Object.entries({ src, alt }).forEach(([prop, val]) => img.setAttribute(prop, val));
+
+    if (props) for (let prop in props) img.setAttribute(prop, props[prop]);
+
+    return img;
+} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
+ * @param {string} el
+ * @param {string} toggle 
+ */
+export const toggle = (el, toggle) => document.querySelector(el).classList.toggle(toggle);
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2020 - ${new Date().getFullYear()}\nCriada por Josias Fontes Alves`);

@@ -21,10 +21,26 @@
 
 * {
     margin: auto;
+    transition: all 0.3s;
+}
+
+a {
+    text-decoration: none;
 }
 
 button {
     cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table,
+th,
+td {
+    border: 1px solid;
+    padding: 15px;
 }
 
 :root {
@@ -103,4 +119,29 @@ button {
     height: 45px;
     right: 15px;
     width: 45px;
+}
+
+.br15 {
+    border-radius: 15px;
+}
+
+.z45 {
+    transform: rotateZ(45deg);
+}
+
+.temesc {
+    background: black;
+    color: var(--nardoGray);
+}
+
+.x30 {
+    transform: translateX(30px);
+}
+
+.x100 {
+    transform: translateX(100vw);
+}
+
+.bs_neon {
+    box-shadow: 5px 5px 25px #acacac;
 }

@@ -9,15 +9,6 @@
     transition: all 0.3s;
 }
 
-.posX_30 {
-    transform: translateX(30px);
-}
-
-.temEsc {
-    background: black;
-    color: var(--nardoGray);
-}
-
 body {
     font-family: 'work sans', sans-serif;
     text-align: center;
@@ -43,4 +34,8 @@ footer {
     bottom: 0;
     color: #505050;
     padding: 3px;
+}
+
+#copyright {
+    font-size: 10px;
 }

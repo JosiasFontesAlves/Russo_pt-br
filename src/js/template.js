@@ -95,7 +95,7 @@ export const header = {
         }
     },
     copyright = {
-        h6: {
+        span: {
             id: 'copyright'
         }
     },

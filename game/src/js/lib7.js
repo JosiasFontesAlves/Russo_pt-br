@@ -442,7 +442,8 @@ export const Slider = (props, urlFotos) => {
             img.src = urlFotos[ft];
 
             [
-                [prev, (ftAtual === 0)], [next, (ftAtual >= urlFotos.length - 1)]
+                [prev, (ftAtual === 0)], 
+                [next, (ftAtual >= urlFotos.length - 1)]
             ].forEach(([btn, cond]) => btn.disabled = cond ? true : false);
         }
 
@@ -471,7 +472,9 @@ export const Slider = (props, urlFotos) => {
 
     slider.append(prev, img, next);
 
-    [[prev, -1], [next, 1]].map(([btn, fn]) => btn.addEventListener('click', () => setFtAtual(ftAtual += fn)));
+    [
+        [prev, -1], [next, 1]
+    ].map(([btn, fn]) => btn.addEventListener('click', () => setFtAtual(ftAtual += fn)));
 
     return slider;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -588,9 +591,7 @@ export const Title = (title, props) => {
     const h1 = document.createElement('h1');
     h1.textContent = title;
 
-    if (props) {
-        Object.entries(props).forEach(([prop, val]) => h1.setAttribute(prop, val));
-    }
+    if (props) Object.entries(props).forEach(([prop, val]) => h1.setAttribute(prop, val));
 
     return h1;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -598,8 +599,7 @@ export const Title = (title, props) => {
 /**
  * @param {string} src 
  * @param {string} alt 
- * @param {prop: string}} props 
- * @returns 
+ * @param {{prop: string}} [props] 
  */
 export const Img = (src, alt, props) => {
     const img = document.createElement('img');

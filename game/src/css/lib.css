@@ -21,6 +21,7 @@
 
 * {
     margin: auto;
+    transition: all 0.3s;
 }
 
 a {
@@ -139,4 +140,8 @@ td {
 
 .x100 {
     transform: translateX(100vw);
+}
+
+.bs_neon {
+    box-shadow: 5px 5px 25px #acacac;
 }

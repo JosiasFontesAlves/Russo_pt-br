@@ -19,7 +19,7 @@ export default () => consumirAPI('api.json', api => {
         insertChilds('#pergunta', ['Qual é o significado de ', render(res, ru), ' em russo?']);
     }
 
-    function resultado() {
+    const resultado = () => {
         const data = new Date(), rlg = [data.getHours(), data.getMinutes()];
 
         limpar('root');

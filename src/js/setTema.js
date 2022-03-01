@@ -1,4 +1,4 @@
-import { consumirAPI, httpPost, sElem, temEsc } from "./lib7.js";
+import { consumirAPI, httpPost, sElem, temEsc, toggle } from "./lib7.js";
 
 export default () => {
     consumirAPI('/temesc.json', ({ temEsc }) => {
@@ -11,7 +11,7 @@ export default () => {
     });
 
     temEsc('btn-temesc', ['body'], 'temesc', ({ target }) => {
-        target.classList.toggle('x30');
+        toggle(`#${target.id}`,'x30');
 
         httpPost('/tema', { temEsc: target.classList.contains('x30') });
     });

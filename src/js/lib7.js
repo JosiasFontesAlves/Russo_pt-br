@@ -9,7 +9,7 @@
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-let versão = '3.8.7';
+let versão = '3.9';
 
 /**
  * @param {string} idBtn
@@ -262,16 +262,17 @@ export function DropDown(id, lista) {
     return drop;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-export function replacer() {
-    [...arguments].forEach(pesq => {
-        for (let local in pesq) {
-            for (let res in pesq[local]) {
-                let str = document.querySelector(local);
-                str.innerHTML = str.innerHTML.replace(`{{${res}}}`, pesq[local][res]);
-            }
+/**
+ * @param {...{local: {pesq: [res: string]}}} args 
+ */
+export const replacer = (...args) => Object.values(args).forEach((arg) => {
+    for (const [local, res] of Object.entries(arg)) {
+        for (const pesq in res) {
+            const $local = document.querySelector(local);
+            $local.textContent = $local.textContent.replace(`{{${pesq}}}`, res[pesq]);
         }
-    });
-} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+    }
+}); /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
  * @param {string} id 
@@ -351,7 +352,7 @@ export function render(tag, conteúdo) {
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {object} props
+ * @param {{prop: [val: string]}} props
  */
 export function SearchBox(...props) {
     const searchBox = document.createElement('section');
@@ -442,7 +443,7 @@ export const Slider = (props, urlFotos) => {
             img.src = urlFotos[ft];
 
             [
-                [prev, (ftAtual === 0)], 
+                [prev, (ftAtual === 0)],
                 [next, (ftAtual >= urlFotos.length - 1)]
             ].forEach(([btn, cond]) => btn.disabled = cond ? true : false);
         }
@@ -615,6 +616,9 @@ export const Img = (src, alt, props) => {
  * @param {string} toggle 
  */
 export const toggle = (el, toggle) => document.querySelector(el).classList.toggle(toggle);
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+export const getRandomNumber = (/** @type {string | any[]} */ arr) => arr[Math.floor(Math.random() * arr.length)];
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2020 - ${new Date().getFullYear()}\nCriada por Josias Fontes Alves`);

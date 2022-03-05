@@ -9,7 +9,7 @@
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-let versão = '3.9';
+let versão = '3.9.5';
 
 /**
  * @param {string} idBtn
@@ -134,28 +134,15 @@ export const Tempus = {
 
 /**
  * @param {string | string[]} id 
- * @returns {HTMLElement | HTMLElement[]}
  */
-export const selek = id => Array.isArray(id) ? id.map(el => document.getElementById(el)) : document.getElementById(id);
-
-/**
- * @param {string} elem 
- */
-export const sElem = elem => document.querySelector(elem);
+export const selek = id => Array.isArray(id) ? id.map(el => document.querySelector(el)) : document.querySelector(id);
 
 /**
  * @param {string} id 
  * @param {string} ev 
  * @param {EventListener} fn 
  */
-export const selekFn = (id, ev, fn) => document.getElementById(id).addEventListener(ev, fn)
-
-/**
- * @param {string} elem 
- * @param {string} ev 
- * @param {EventListener} fn 
- */
-export const sElemFn = (elem, ev, fn) => document.querySelector(elem).addEventListener(ev, fn, false);
+export const selekFn = (id, ev, fn) => document.querySelector(id).addEventListener(ev, fn)
 
 /**
  * @param {string} classe 
@@ -277,7 +264,7 @@ export const replacer = (...args) => Object.values(args).forEach((arg) => {
 /**
  * @param {string} id 
  * @param {string[]} lista 
- * @param {{prop: string}} [props]
+ * @param {{[prop: string]: string}} [props]
  */
 export const Lista = (id, lista, props) => {
     const $render = (/** @type {string} */ el) => document.createElement(el);
@@ -313,11 +300,11 @@ export const Tabela = (id, tabela) => {
     }
 
     const Tr = (/** @type {*} */ data) => $render('tr', data);
+    const keys = tabela.map(key => Object.keys(key));
 
     table.id = id;
 
-    const Head = Tr(Object.keys(...tabela).map(th => $render('th', th)));
-    thead.appendChild(Head);
+    thead.appendChild(Tr(keys[0].map(th => $render('th', th))));
 
     const Body = tabela.flatMap(tab => [
         Object.values(tab).map(dado => {
@@ -336,7 +323,7 @@ export const Tabela = (id, tabela) => {
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param { { tag: { prop: string } } | string} tag
+ * @param {{[tag: string]: {[prop: string]: string}} | string} tag
  * @param {HTMLElement | HTMLElement[] | string} [conteúdo]
  */
 export function render(tag, conteúdo) {
@@ -352,7 +339,7 @@ export function render(tag, conteúdo) {
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {{prop: [val: string]}} props
+ * @param {{[prop: string]: string}[]} props
  */
 export function SearchBox(...props) {
     const searchBox = document.createElement('section');
@@ -374,9 +361,10 @@ export function SearchBox(...props) {
 
 /**
  * @param {string} idForm
- * @param {{prop: string}[]} [propsChilds]
+ * @param {string} txtBtn
+ * @param {{[prop: string]: string}[]} [propsChilds]
  */
-export function FormBox(idForm, propsChilds) {
+export function FormBox(idForm, txtBtn, propsChilds) {
     const form = document.createElement('form');
     form.id = idForm;
 
@@ -388,6 +376,7 @@ export function FormBox(idForm, propsChilds) {
     });
 
     form.append(...inputs, document.createElement('button'));
+    form.children[2].textContent = txtBtn;
 
     if (propsChilds && propsChilds.length <= 3) {
         propsChilds.forEach((child, i) => {
@@ -410,7 +399,7 @@ export async function consumirAPI(url, fn) {
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {{ hash: HTMLElement | function }} pages
+ * @param {{hash: HTMLElement}} pages
  * @param {string} elem - componente que será atualizado
  */
 export const SPA = (pages, elem) => {
@@ -431,54 +420,6 @@ export const SPA = (pages, elem) => {
  */
 export const insertChilds = (local, childs) => document.querySelector(local).append(...childs);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-/**
- * @param {{ prop: string }} props - props do slider
- * @param {string[]} urlFotos 
- */
-export const Slider = (props, urlFotos) => {
-    const $render = (/** @type {string} */ el) => document.createElement(el),
-        setStyle = (el, props) => Object.entries(props).map(([atr, val]) => el.style[atr] = val),
-        setFtAtual = (/** @type {number} */ ft) => {
-            img.src = urlFotos[ft];
-
-            [
-                [prev, (ftAtual === 0)],
-                [next, (ftAtual >= urlFotos.length - 1)]
-            ].forEach(([btn, cond]) => btn.disabled = cond ? true : false);
-        }
-
-    const [slider, img] = ['section', 'img'].map(el => $render(el));
-
-    if (typeof props === 'object')
-        Object.entries(props).map(([atr, val]) => slider.setAttribute(atr, val));
-
-    setStyle(slider, { display: 'flex', alignItems: 'center' });
-
-    const [prev, next] = [['prev', '<', 35], ['next', '>', -35]].map(([id, txt, pos]) => {
-        const btn = $render('button');
-        setStyle(btn, { transform: `translateX(${pos}px)`, height: 'fit-content' });
-
-        Object.entries({
-            textContent: txt, id,
-            classList: 'btn_slider'
-        }).map(([atr, val]) => btn[atr] = val);
-
-        return btn;
-    });
-
-    let ftAtual = 0;
-
-    setFtAtual(ftAtual);
-
-    slider.append(prev, img, next);
-
-    [
-        [prev, -1], [next, 1]
-    ].map(([btn, fn]) => btn.addEventListener('click', () => setFtAtual(ftAtual += fn)));
-
-    return slider;
-} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
  * @param {string} id
@@ -502,7 +443,7 @@ export const Cookr = id => {
 /**
  * @param {string} href 
  * @param {string} textContent
- * @param {{ prop: string}} [props] 
+ * @param {{[prop: string]: string}} [props] 
  */
 export const Link = (href, textContent, props) => {
     const link = document.createElement('a');
@@ -516,22 +457,22 @@ export const Link = (href, textContent, props) => {
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {{item: *}} obj 
- * @param {function} callBack 
+ * @param {{[item: string]: any}} obj 
+ * @param {(value: [string, any], index: number, array: [string, any][]) => any} callBack 
  */
 export const mapEntries = (obj, callBack) => Object.entries(obj).map(callBack);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {{item: *}} obj 
- * @param {function} callBack 
+ * @param {{[item: string]: any}} obj 
+ * @param {(value: string, index: number, array: string[]) => any} callBack
  */
 export const mapKeys = (obj, callBack) => Object.keys(obj).map(callBack);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {{item: *}} obj 
- * @param {function} callBack 
+ * @param {{[item: string]: any}} obj 
+ * @param {(value: [string, any], index: number, array: [string, any][]) => any} callBack 
  */
 export const mapValues = (obj, callBack) => Object.values(obj).map(callBack);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -541,6 +482,11 @@ export const mapValues = (obj, callBack) => Object.values(obj).map(callBack);
  */
 export const getEntries = obj => Object.entries(obj);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
+ * @param {object} obj
+ */
+export const getKeys = obj => Object.keys(obj);
 
 /**
  * @param {object} obj
@@ -556,13 +502,11 @@ export const httpPost = (url, body) => fetch(url, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body)
-});
-
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+}); /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
  * @param {{href: string}} links 
- * @param {{prop: string}} [props]
+ * @param {{[prop: string]: string}} [props]
  */
 export const LinkBar = (links, props) => {
     const linkBarr = document.createElement('div');
@@ -586,7 +530,7 @@ export const LinkBar = (links, props) => {
 
 /**
  * @param {string} title 
- * @param {{prop: string}} [props] 
+ * @param {{[prop: string]: string}} [props] 
  */
 export const Title = (title, props) => {
     const h1 = document.createElement('h1');
@@ -600,7 +544,7 @@ export const Title = (title, props) => {
 /**
  * @param {string} src 
  * @param {string} alt 
- * @param {{prop: string}} [props] 
+ * @param {{[prop: string]: string}} [props] 
  */
 export const Img = (src, alt, props) => {
     const img = document.createElement('img');
@@ -618,7 +562,42 @@ export const Img = (src, alt, props) => {
 export const toggle = (el, toggle) => document.querySelector(el).classList.toggle(toggle);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-export const getRandomNumber = (/** @type {string | any[]} */ arr) => arr[Math.floor(Math.random() * arr.length)];
+export const getRandomNumber = (/** @type {number} */ numMax) => Math.floor(Math.random() * numMax);
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
+ * @param {{[prop: string]: string}} [props] 
+ */
+export const Burger = props => {
+    const burger = document.createElement('div');
+    burger.style.display = 'grid';
+    burger.style.gap = '2px';
+
+    if (props && typeof props === 'object') {
+        Object.entries(props).forEach(([prop, val]) => burger.setAttribute(prop, val));
+    }
+
+    for (let i = 0; i < 3; i++) {
+        const btn = document.createElement('button');
+        btn.classList.add('btn_burger');
+
+        burger.appendChild(btn);
+    }
+
+    return burger
+} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
+ * Retorna um item aleatório de um array
+ */
+export const getRandomItem = (/** @type {any[]} */ arr) => arr[Math.floor(Math.random() * arr.length)];
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
+ * @param {string} el 
+ * @param {string[]} classes
+ */
+export const addClass = (el, classes) => document.querySelector(el).classList.add(...classes);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2020 - ${new Date().getFullYear()}\nCriada por Josias Fontes Alves`);

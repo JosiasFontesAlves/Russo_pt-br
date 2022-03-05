@@ -1,27 +1,5 @@
-#btn-menu::before {
-    transform: translateY(-11px);
-}
-
-#btn-menu,
-#btn-menu::after,
-#btn-menu::before {
-    background: black;
-    border: none;
-    box-shadow: var(--neon_ghost);
-    cursor: pointer;
-    height: 5px;
+#btn-menu {
     left: 15px;
-    width: 25px;
-}
-
-#btn-menu::before,
-#btn-menu::after {
-    content: '';
-    position: fixed;
-}
-
-#btn-menu::after {
-    transform: translateY(5px);
 }
 
 .drop_hidden {

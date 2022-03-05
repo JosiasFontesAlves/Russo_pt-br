@@ -71,7 +71,15 @@ td {
 }
 
 #copyright {
+    background: none;
     font-size: 7px;
+}
+
+.btn_burger {
+    background: black;
+    border: none;
+    height: 5px;
+    width: 30px;
 }
 
 /* classes utilitárias */
@@ -81,12 +89,8 @@ td {
     backdrop-filter: blur(2px);
 }
 
-.br_15 {
+.br15 {
     border-radius: 15px;
-}
-
-.br_20 {
-    border-radius: 20px;
 }
 
 .bs_neon {
@@ -114,6 +118,10 @@ td {
     padding: 5px;
 }
 
+.padd7 {
+    padding: 7px;
+}
+
 .padd10 {
     padding: 10px;
 }
@@ -123,6 +131,14 @@ td {
     background: var(--vidro);
     border: 2px solid var(--vidro);
     box-shadow: 3px 3px 7px var(--ghost_bg);
+}
+
+.brd_nardo {
+    border: 1px solid var(--nardoGray);
+}
+
+.bs_neon2 {
+    box-shadow: 3px 5px 10px #acacac;
 }
 
 /* classes de tamanho */

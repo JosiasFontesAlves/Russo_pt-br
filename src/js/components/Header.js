@@ -1,9 +1,8 @@
-import { render } from '../lib7.js';
+import { Burger, render, Title } from '../lib7.js';
+import { header } from '../template.js';
 import Drop from './Drop.js';
-import { btn_menu, header, ttl } from '../template.js';
-
-const BtnMenu = render(btn_menu);
 
 export default render(header, [
-    BtnMenu, Drop, render(ttl, 'Dicionário de russo')
+    Burger({ class: 'fix', id: 'btn-menu' }),
+    Drop, Title('Dicionário de russo', { id: 'ttl' })
 ]);

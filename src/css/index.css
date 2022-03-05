@@ -31,7 +31,6 @@ header {
 }
 
 footer {
-    bottom: 0;
+    bottom: 3px;
     color: #505050;
-    padding: 3px;
 }

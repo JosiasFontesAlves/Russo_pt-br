@@ -3,17 +3,6 @@ export const header = {
         class: 'vidro_neon center flex fix padd3 w100'
     }
 },
-    btn_menu = {
-        button: {
-            id: 'btn-menu',
-            class: 'fix'
-        }
-    },
-    ttl = {
-        h1: {
-            id: 'ttl'
-        }
-    },
     drop = {
         div: {
             id: 'drop',
@@ -68,25 +57,25 @@ export const header = {
     },
     res = {
         p: {
-            class: 'br_20 padd5 vidro_neon',
+            class: 'br15 padd5 vidro_neon',
             hidden: true, id: 'res'
         }
     },
     searchBox = [
         {
-            id: 'txt', type: 'text', class: 'br_20 padd5',
+            id: 'txt', type: 'text', class: 'br15 padd5',
             placeholder: 'Pesquisar no dicionário'
         },
         { id: 'ok' }
     ],
     close = {
         button: {
-            id: 'close', class: 'br_20'
+            id: 'close', class: 'br15'
         }
     },
     blocos = {
         div: {
-            class: 'blocos'
+            class: 'brd_nardo bs_neon2 blocos'
         }
     },
     footer = {

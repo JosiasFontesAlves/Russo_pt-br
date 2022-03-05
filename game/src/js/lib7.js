@@ -592,8 +592,8 @@ export const Burger = props => {
  */
 export const getRandomItem = (/** @type {any[]} */ arr) => arr[Math.floor(Math.random() * arr.length)];
 
-
 export const addClass = (el, classes) => document.querySelector(el).classList.add(...classes);
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2020 - ${new Date().getFullYear()}\nCriada por Josias Fontes Alves`);

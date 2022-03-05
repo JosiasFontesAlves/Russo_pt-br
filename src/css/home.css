@@ -4,9 +4,7 @@
 }
 
 .blocos {
-    border: 2px solid var(--vidro);
     border-radius: 5px;
-    box-shadow: var(--neon) var(--vidro);
     margin: 7px;
     padding: 10px;
     text-shadow: var(--neon2) var(--ghost_bg);

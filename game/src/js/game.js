@@ -3,7 +3,7 @@ import dicionário from './dicionário.js';
 import Resultado from './components/Resultado.js';
 import { res } from './template.js';
 
-const limpar = (/** @type {string} */ id) => selek(id).innerHTML = '';
+const limpar = (/** @type {string} */ id) => selek(`#${id}`).innerHTML = '';
 
 export default () => consumirAPI('api.json', api => {
     const dsk = [], respostas = [];
@@ -30,11 +30,11 @@ export default () => consumirAPI('api.json', api => {
         
         httpPost('api', api);
 
-        selekFn('reload', 'click', () => location.reload());
+        selekFn('#reload', 'click', () => location.reload());
     }
 
-    selekFn('btn-ok', 'click', () => {
-        const txt = selek('txt');
+    selekFn('#btn-ok', 'click', () => {
+        const txt = selek('#txt');
 
         if (txt.value !== '') {
             const str = txt.value.replace(txt.value[0], txt.value[0].toUpperCase()),

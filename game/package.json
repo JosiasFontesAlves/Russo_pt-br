@@ -1,6 +1,6 @@
 {
   "name": "matsa_game",
-  "version": "1.5.3",
+  "version": "1.5.7",
   "description": "",
   "main": "server.js",
   "scripts": {

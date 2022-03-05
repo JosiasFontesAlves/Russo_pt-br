@@ -38,8 +38,8 @@ header {
 }
 
 #txt {
+    background: none;
     border-radius: 7px 0 0 7px;
-    box-shadow: 5px 3px 5px #202020;
     width: 50vw;
 }
 
@@ -53,29 +53,21 @@ header {
     width: 45px;
 }
 
+#btn-ok:hover,
+#btn-linkBox:hover {
+    background: var(--oceanicBlue);
+}
+
 footer {
-    background: white;
     bottom: 3px;
 }
 
-#linkBox {
+#temesc {
     border: 1px solid;
     border-radius: 23px 0 0 23px;
     bottom: 18px;
-    right: 47px;
-}
-
-#btn-linkBox {
-    border: 1px solid !important;
-    right: 20px;
-}
-
-#temesc, #linkBox {
-    padding-right: 7px;
-}
-
-#temesc {
-    border-right: 1px solid;
+    right: 50px;
+    padding-right: 15px;
 }
 
 .linkBar {
@@ -92,11 +84,11 @@ a:hover {
 }
 
 #btn-linkBox {
-    border: inherit;
+    background: #c7c7c7;
     border-radius: 50%;
     bottom: 15px;
-    float: right;
     font-size: 20px;
     height: 40px;
+    right: 20px;
     width: 40px;
 }

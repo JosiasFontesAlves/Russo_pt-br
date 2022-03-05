@@ -1,14 +1,15 @@
-import { consumirAPI, httpPost, selek, sElem, temEsc } from './lib7.js';
+import { addClass, consumirAPI, httpPost, temEsc, toggle } from './lib7.js';
 
 export default () => consumirAPI('api.json', api => {
     if (api.temEsc) {
-        selek('btn-temesc').classList.add('x30');
+        addClass('#btn-temesc', ['x30']);
 
-        ['body', '#copyright'].forEach(el => sElem(el).classList.add('temesc'));
+        ['body', '#copyright'].forEach(el => addClass(el, ['temesc']));
     }
 
-    temEsc('btn-temesc', ['body', 'footer'], 'temesc', ({ target }) => {
-        api.temEsc = target.classList.toggle('x30');
+    temEsc('btn-temesc', ['body', 'footer', '#copyright'], 'temesc', ({ target: { id } }
+        ) => {
+        api.temEsc = toggle(`#${id}`, 'x30');
 
         httpPost('api', api);
     });

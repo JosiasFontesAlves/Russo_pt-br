@@ -16,8 +16,8 @@ game();
 
 setTema();
 
-selekFn('btn-linkBox', 'click', ({ target }) => {
+selekFn('#btn-linkBox', 'click', ({ target }) => {
     mapEntries({
-        x100: 'linkBox', z45: target.id
+        x100: 'temesc', z45: target.id
     }, ([classe, el]) => toggle(`#${el}`, classe));
 });

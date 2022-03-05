@@ -27,7 +27,7 @@ export const header = {
     }
 }, searchbox = [
     {
-        class: 'padd5', id: 'txt',
+        class: 'brd_nardo bs_neon padd5', id: 'txt',
         placeholder: 'Digite a resposta'
     },
     { class: 'br15', id: 'btn-ok' }
@@ -45,24 +45,16 @@ export const header = {
     }
 }, temesc = {
     section: {
-        class: 'flex',
+        class: 'fix flex vidro_neon x100',
         id: 'temesc'
     }
-}, linkBox = {
-    section: {
-        class: 'flex fix vidro_neon x100',
-        id: 'linkBox'
-    }
-}, links = {
-    '#home': 'Home',
-    '#res': 'Resultados anteriores'
 }, btnLinkBox = {
     button: {
-        class: 'fix',
+        class: 'brd_nardo fix',
         id: 'btn-linkBox'
     }
 }, copyright = {
-    h6: {
+    span: {
         id: 'copyright'
     }
 }, tabRes = {

@@ -6,7 +6,7 @@ export const header = {
     drop = {
         div: {
             id: 'drop',
-            class: 'vidro_neon fix grid padd3 drop_hidden'
+            class: 'bs_neon drop_hidden fix grid padd3 vidro_neon'
         }
     },
     temesc = {
@@ -97,7 +97,7 @@ export const header = {
     },
     alf = {
         h1: {
-            class: 'alf'
+            class: 'alf padd7'
         }
     },
     meses = {

@@ -9,7 +9,7 @@
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-let versão = '3.9.5';
+let versão = '4.0';
 
 /**
  * @param {string} idBtn
@@ -399,7 +399,7 @@ export async function consumirAPI(url, fn) {
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {{hash: HTMLElement}} pages
+ * @param {{[hash: string]: HTMLElement}} pages
  * @param {string} elem - componente que será atualizado
  */
 export const SPA = (pages, elem) => {
@@ -505,16 +505,27 @@ export const httpPost = (url, body) => fetch(url, {
 }); /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {{href: string}} links 
- * @param {{[prop: string]: string}} [props]
+ * @param {{[href: string]: string}} links 
+ * @param {object} props
+ * @param {{[prop: string]: string}} [props.propsNav]
+ * @param {{[prop: string]: string}} [props.propsChilds]
  */
-export const LinkBar = (links, props) => {
-    const linkBarr = document.createElement('div');
+export const LinkBar = (links, { propsNav, propsChilds }) => {
+    const linkBarr = document.createElement('nav');
+    
+    const setProps = (/** @type {HTMLElement} */ el, /** @type {{ [prop: string]: string; }} */ props) => {
+        if (props) {
+            for (let prop in props) el.setAttribute(prop, props[prop]);
+        }
+    }
 
-    if (props) for (let prop in props) linkBarr.setAttribute(prop, props[prop])
+    setProps(linkBarr, propsNav);
 
     const $links = Object.entries(links).map(([href, txt]) => {
         const link = document.createElement('a');
+        
+        setProps(link, propsChilds);
+
         link.href = href;
         link.textContent = txt;
         link.classList.add('link');
@@ -584,7 +595,7 @@ export const Burger = props => {
         burger.appendChild(btn);
     }
 
-    return burger
+    return burger;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**

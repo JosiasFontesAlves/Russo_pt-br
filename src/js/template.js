@@ -17,10 +17,11 @@ export const header = {
     },
     lista_drop = {
         '#home': 'Início',
-        '#decl': 'Declinação',
-        '#semana': 'Dias da semana',
         '#alfabeto': 'Alfabeto',
-        '#meses': 'Meses do ano'
+        '#decl': 'Declinação',
+        '#meses': 'Meses do ano',
+        '#num': 'Números',
+        '#semana': 'Dias da semana'
     },
     lua = {
         img: {
@@ -108,5 +109,10 @@ export const header = {
     meses_ano = {
         p: {
             class: 'meses_ano'
+        }
+    },
+    num = {
+        section: {
+            id: 'num'
         }
     }

@@ -4,6 +4,7 @@
 @import 'drop.css';
 @import "home.css";
 @import 'search.css';
+@import 'num.css';
 
 * {
     transition: all 0.3s;

@@ -110,7 +110,7 @@ export default {
     V: {
         Vaca: 'корова', Verificar: 'проверить', Velho: 'старый', Vender: 'продать', Verde: 'зелёный', 'Verde claro': 'светло-зелёный',
         Vermelho: 'красный', 'Vermelho escuro': 'тёмно-красный', Vestido: 'платье', Vestir: 'надевать', Vinho: 'вино', Visão: 'зрение',
-        'Video game': 'видеоигра', Vinte: 'двадцать', Você: 'вы', Votar: 'голосовать',
+        'Video game': 'видеоигра', Vinte: 'двадцать', Você: 'вы', Vós: 'вы', Votar: 'голосовать',
     },
     X: {
         Xícara: 'чашка',

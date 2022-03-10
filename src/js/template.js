@@ -76,7 +76,7 @@ export const header = {
     },
     blocos = {
         div: {
-            class: 'brd_nardo bs_neon2 blocos'
+            class: 'brd_nardo bs_neon3 blocos'
         }
     },
     footer = {

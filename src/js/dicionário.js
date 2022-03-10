@@ -19,9 +19,9 @@ export default {
         'Carne de porco': 'свинина', Carro: 'машина', Carteira: 'бумажник', Casa: 'дом', Casaco: 'пальто', Cazaquistão: 'Казахстан', Centro: 'центр',
         Certo: 'правильный', Cerveja: 'пиво', Chá: 'чай', Chamada: 'вызов', Chamar: 'звать', Chatear: 'наскучить', Chorar: 'плакать', China: 'Китай',
         Cidade: 'город', Cinco: 'пять', Cinza: 'серый', Cliente: 'клиент', Cobrir: 'накрывать', Coisa: 'вещь', Coleção: 'подборка', Colega: 'коллега',
-        Colher: 'ложка (subst)', Comer: 'есть', Comida: 'еда', Como: 'как', Compra: 'покупка', Comprar: 'купить', Confundir: 'спутать', 
-        Conhecer: 'встречать', Conseguir: 'достичь', Congelar: 'замерзнуть', Considerar: 'рассмотреть', Consumidor: 'покупатель', Conta: 'счёт', 
-        Continuar: 'продолжать', Contra: 'против', Copo: 'стакан', Cor: 'цвет', Coração: 'сердце', Coreia: 'Корея', Cortar: 'нарезать', Crescer: 'расти', 
+        Colher: 'ложка (subst)', Comer: 'есть', Comida: 'еда', Como: 'как', Compra: 'покупка', Comprar: 'купить', Confundir: 'спутать',
+        Conhecer: 'встречать', Conseguir: 'достичь', Congelar: 'замерзнуть', Considerar: 'рассмотреть', Consumidor: 'покупатель', Conta: 'счёт',
+        Continuar: 'продолжать', Contra: 'против', Copo: 'стакан', Cor: 'цвет', Coração: 'сердце', Coreia: 'Корея', Cortar: 'нарезать', Crescer: 'расти',
         Criança: 'ребёнок', Crianças: 'дети', Cotovelo: 'локоть', Costela: 'ребро', Cozinha: 'кухня', Cume: 'Вершина',
     },
     D: {
@@ -77,9 +77,9 @@ export default {
     },
     P: {
         Pão: 'хлеб', Pagar: 'платить', Pai: 'отец', Parar: 'остановить(ся)', Papel: 'Бумага', Parque: 'парк', Pedir: 'заказывать', Pegar: 'Брать',
-        Peito: 'грудь', Peixe: 'рыба', Pele: 'Кожа', Pensar: 'думать', Perder: 'проиграть', Perfeito: 'идеальный', Pernoitar: 'ночевать',
-        Pescador: 'рыбак', Pessoa: 'человек', Pessoas: 'люди', Pequeno: 'маленький', Piscina: 'бассейн', Poeta: 'поэт', Por: 'за',
-        'Por favor': 'пожалуйста', Possível: 'возможно', Praça: 'площадь', Prato: 'тарелка', Precisar: 'должен(а / о / ы)', Preto: 'чёрный',
+        Peito: 'грудь', Peixe: 'рыба', Pele: 'Кожа', Pensar: 'думать', Perceber: 'проводить', Perder: 'проиграть', Perfeito: 'идеальный',
+        Pernoitar: 'ночевать', Pescador: 'рыбак', Pessoa: 'человек', Pessoas: 'люди', Pequeno: 'маленький', Piscina: 'бассейн', Poeta: 'поэт',
+        Por: 'за', 'Por favor': 'пожалуйста', Possível: 'возможно', Praça: 'площадь', Prato: 'тарелка', Precisar: 'должен(а / о / ы)', Preto: 'чёрный',
         Privada: 'унитаз', Problema: 'проблема', Pronto: 'готов', Proteger: 'защищать', Pescoço: 'шея', Pulso: 'запястье',
     },
     Q: {

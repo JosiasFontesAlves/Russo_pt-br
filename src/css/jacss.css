@@ -114,6 +114,10 @@ td {
     display: grid;
 }
 
+.padd3 {
+    padding: 3px;
+}
+
 .padd5 {
     padding: 5px;
 }
@@ -138,7 +142,11 @@ td {
 }
 
 .bs_neon2 {
-    box-shadow: 3px 5px 10px #acacac;
+    box-shadow: 5px 5px 15px #acacac;
+}
+
+.bs_neon3 {
+    box-shadow: 3px 3px 10px #acacac;
 }
 
 /* classes de tamanho */

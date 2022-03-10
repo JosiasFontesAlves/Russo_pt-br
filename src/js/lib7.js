@@ -9,7 +9,7 @@
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-let versão = '4.0';
+let versão = '4.0.2';
 
 /**
  * @param {string} idBtn
@@ -512,7 +512,7 @@ export const httpPost = (url, body) => fetch(url, {
  */
 export const LinkBar = (links, { propsNav, propsChilds }) => {
     const linkBarr = document.createElement('nav');
-    
+
     const setProps = (/** @type {HTMLElement} */ el, /** @type {{ [prop: string]: string; }} */ props) => {
         if (props) {
             for (let prop in props) el.setAttribute(prop, props[prop]);
@@ -523,7 +523,7 @@ export const LinkBar = (links, { propsNav, propsChilds }) => {
 
     const $links = Object.entries(links).map(([href, txt]) => {
         const link = document.createElement('a');
-        
+
         setProps(link, propsChilds);
 
         link.href = href;
@@ -559,6 +559,7 @@ export const Title = (title, props) => {
  */
 export const Img = (src, alt, props) => {
     const img = document.createElement('img');
+    
     Object.entries({ src, alt }).forEach(([prop, val]) => img.setAttribute(prop, val));
 
     if (props) for (let prop in props) img.setAttribute(prop, props[prop]);
@@ -595,6 +596,8 @@ export const Burger = props => {
         burger.appendChild(btn);
     }
 
+    burger.classList.add('burger');
+
     return burger;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
@@ -610,5 +613,16 @@ export const getRandomItem = (/** @type {any[]} */ arr) => arr[Math.floor(Math.r
  */
 export const addClass = (el, classes) => document.querySelector(el).classList.add(...classes);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+export const Video = (/** @type {string} */ src, /** @type {{ [prop: string]: string }} */ props) => {
+    const video = document.createElement('video');
+    video.src = src;
+
+    if (props && typeof props === 'object') {
+        Object.entries(props).forEach(([prop, val]) => video.setAttribute(prop, val));
+    }
+
+    return video;
+}
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2020 - ${new Date().getFullYear()}\nCriada por Josias Fontes Alves`);

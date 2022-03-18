@@ -1,121 +1,121 @@
 export default {
     A: {
-        Abacate: 'авокадо', Abacaxi: 'ананас', Abaixar: 'опускать', Abandonar: 'оставлять', Aberto: 'открытый', Abismo: 'бездна', Abril: 'апрель',
-        Acrescentar: 'добавить', Adeus: 'до свидания', Administrador: 'администратор', Adoecer: 'заболеть', Adormecer: 'заснуть', Adulto: 'взрослый',
-        Aeroporto: 'Аэропорт', Agosto: 'август', Agradecer: 'благдарить', 'Água': 'вода', Ajuda: 'помощь', Alcançar: 'достать', Alegrar: 'радовать',
-        Alegremente: 'всело', Além: 'дальше', Alemanha: 'Германия', Algo: 'что-нибудь', Ali: 'там', Alimentar: 'кормить', Amarelo: 'жёлтый',
-        Amigo: 'друг', Amizade: 'дружба', Aparecer: 'появиться', Aprender: 'учить', Aquele: 'тот', Aqui: 'тут / здесь', Arremessar: 'бросить',
-        Arroz: 'рис', Arquiteto: 'архитектор', Assim: 'так', Atacar: 'ударить', Avô: 'дедушка', Avó: 'бабушка', Azul: 'синий', 'Azul claro': 'голубой',
+        Abacate: 'Авокадо', Abacaxi: 'Ананас', Abaixar: 'Опускать', Abandonar: 'Оставлять', Aberto: 'Открытый', Abismo: 'Бездна', Abril: 'Апрель',
+        Acrescentar: 'Добавить', Adeus: 'До свидания', Administrador: 'Администратор', Adoecer: 'Заболеть', Adormecer: 'Заснуть', Adulto: 'Взрослый',
+        Aeroporto: 'Аэропорт', Agosto: 'Август', Agradecer: 'Благдарить', 'Água': 'Вода', Ajuda: 'Помощь', Alcançar: 'Достать', Alegrar: 'Радовать',
+        Alegremente: 'Всело', Além: 'Дальше', Alemanha: 'Германия', Algo: 'Что-нибудь', Ali: 'Там', Alimentar: 'Кормить', Amarelo: 'жёлтый',
+        Amigo: 'Друг', Amizade: 'Дружба', Aparecer: 'Появиться', Aprender: 'Учить', Aquele: 'Тот', Aqui: 'Тут / здесь', Arremessar: 'Бросить',
+        Arroz: 'Рис', Arquiteto: 'Архитектор', Assim: 'Так', Atacar: 'Ударить', Avô: 'Дедушка', Avó: 'Бабушка', Azul: 'Синий', 'Azul claro': 'Голубой',
     },
     B: {
-        Baixo: 'короткий', Balançar: 'качать', Banco: 'банк', Banheiro: 'ванная комната', Banquisa: 'льдина', Bar: 'бар', Bebida: 'напиток',
-        Barba: 'борода', Barco: 'корабль', Básico: 'основной', Bastante: 'достаточно', Batata: 'картошка', Bebê: 'Младенец', Beber: 'пить',
-        Bem: 'хорошо', Biblioteca: 'библиотека', Bola: 'мяч', Bonito: 'красивый', Botas: 'ботинки', Branco: 'белый', Brasil: 'Бразилия',
-        Brasileiro: 'бразилец(pes)/бразильский(adj)', Buraco: 'дырка', Buscar: 'искать'
+        Baixo: 'Короткий', Balançar: 'Качать', Banco: 'Банк', Banheiro: 'Ванная комната', Banquisa: 'Льдина', Bar: 'Бар', Bebida: 'Напиток',
+        Barba: 'Борода', Barco: 'Корабль', Básico: 'Основной', Bastante: 'Достаточно', Batata: 'Картошка', Bebê: 'Младенец', Beber: 'Пить',
+        Bem: 'Хорошо', Biblioteca: 'Библиотека', Bola: 'Мяч', Bonito: 'Красивый', Botas: 'Ботинки', Branco: 'Белый', Brasil: 'Бразилия',
+        Brasileiro: 'Бразилец(pes)/бразильский(adj)', Buraco: 'Дырка', Buscar: 'Искать'
     },
     C: {
-        Cabeça: 'голова', Cabelo: 'волос', Caçar: 'ловить', Cachecol: 'шарф', Café: 'кофе', Canadá: 'Канада', Chapéu: 'шляпа', Cair: 'выпасть',
-        'Caixa eletrônico': 'банкомат', Cama: 'кровать', Caminhar: 'ходить', Cardápio: 'меню', Carne: 'мясо', 'Carne bovina': 'говядина',
-        'Carne de porco': 'свинина', Carro: 'машина', Carteira: 'бумажник', Casa: 'дом', Casaco: 'пальто', Cazaquistão: 'Казахстан', Centro: 'центр',
-        Certo: 'правильный', Cerveja: 'пиво', Chá: 'чай', Chamada: 'вызов', Chamar: 'звать', Chatear: 'наскучить', Chorar: 'плакать', China: 'Китай',
-        Cidade: 'город', Cinco: 'пять', Cinza: 'серый', Cliente: 'клиент', Cobrir: 'накрывать', Coisa: 'вещь', Coleção: 'подборка', Colega: 'коллега',
-        Colher: 'ложка (subst)', Comer: 'есть', Comida: 'еда', Como: 'как', Compra: 'покупка', Comprar: 'купить', Confundir: 'спутать',
-        Conhecer: 'встречать', Conseguir: 'достичь', Congelar: 'замерзнуть', Considerar: 'рассмотреть', Consumidor: 'покупатель', Conta: 'счёт',
-        Continuar: 'продолжать', Contra: 'против', Copo: 'стакан', Cor: 'цвет', Coração: 'сердце', Coreia: 'Корея', Cortar: 'нарезать', Crescer: 'расти',
-        Criança: 'ребёнок', Crianças: 'дети', Cotovelo: 'локоть', Costela: 'ребро', Cozinha: 'кухня', Cume: 'Вершина',
+        Cabeça: 'Голова', Cabelo: 'Волос', Caçar: 'Ловить', Cachecol: 'Шарф', Café: 'Кофе', Canadá: 'Канада', Chapéu: 'Шляпа', Cair: 'Выпасть',
+        'Caixa eletrônico': 'Банкомат', Cama: 'Кровать', Caminhar: 'Ходить', Cardápio: 'Меню', Carne: 'Мясо', 'Carne bovina': 'Говядина',
+        'Carne de porco': 'Свинина', Carro: 'Машина', Carteira: 'Бумажник', Casa: 'Дом', Casaco: 'Пальто', Cazaquistão: 'Казахстан', Centro: 'Центр',
+        Certo: 'Правильный', Cerveja: 'Пиво', Chá: 'Чай', Chamada: 'Вызов', Chamar: 'Звать', Chatear: 'Наскучить', Chorar: 'Плакать', China: 'Китай',
+        Cidade: 'Город', Cinco: 'Пять', Cinza: 'Серый', Cliente: 'Клиент', Cobrir: 'Накрывать', Coisa: 'Вещь', Coleção: 'Подборка', Colega: 'Коллега',
+        Colher: 'Ложка (subst)', Comer: 'есть', Comida: 'еда', Como: 'Как', Compra: 'Покупка', Comprar: 'Купить', Confundir: 'Спутать',
+        Conhecer: 'Встречать', Conseguir: 'Достичь', Congelar: 'Замерзнуть', Considerar: 'Рассмотреть', Consumidor: 'Покупатель', Conta: 'Счёт',
+        Continuar: 'Продолжать', Contra: 'Против', Copo: 'Стакан', Cor: 'Цвет', Coração: 'Сердце', Coreia: 'Корея', Cortar: 'Нарезать', Crescer: 'Расти',
+        Criança: 'Ребёнок', Crianças: 'Дети', Cotovelo: 'Локоть', Costela: 'Ребро', Cozinha: 'Кухня', Cume: 'Вершина',
     },
     D: {
-        Daqui: 'отсюда', De: 'из', Definitivamente: 'Определённо', Delicioso: 'вкусный', Demais: 'слишком', 'De fato': 'именно', 'De repente': 'вдруг',
-        'De onde': 'откуда', Derrotado: 'побеждённый', Desgraça: 'бедa', Despedir: 'прощать', Dez: 'десять', Dezembro: 'декабрь', Dezoito: 'восемнадцать',
-        Dezenove: 'девятнадцать', Dezesseis: 'шестнадцать', Dezessete: 'семнадцать', Dizer: 'сказать', Dois: 'два', Doente: 'больной/болен',
-        Domingo: 'воскресенье', Doze: 'двенадцать', Durante: 'в течение'
+        Daqui: 'Отсюда', De: 'Из', Definitivamente: 'Определённо', Delicioso: 'Вкусный', Demais: 'Слишком', 'De fato': 'Именно', 'De repente': 'Вдруг',
+        'De onde': 'Откуда', Derrotado: 'Побеждённый', Desgraça: 'Бедa', Despedir: 'Прощать', Dez: 'Десять', Dezembro: 'Декабрь', Dezoito: 'Восемнадцать',
+        Dezenove: 'Девятнадцать', Dezesseis: 'Шестнадцать', Dezessete: 'Семнадцать', Dizer: 'Сказать', Dois: 'Два', Doente: 'Больной/болен',
+        Domingo: 'Воскресенье', Doze: 'Двенадцать', Durante: 'В течение'
     },
     E: {
-        E: 'и', 'É claro': 'конечно', Economia: 'экономика', Egito: 'Египет', Ela: 'она', Ele: 'он', Eles: 'они', Em: 'в / на', Endereço: 'Адрес',
-        Entender: 'понимать', Errado: 'неправый', Escócia: 'Шотландия', Escola: 'школа', Escrever: 'писать', Escritório: 'офис', Escuro: 'тёмный',
-        Especialmente: 'особенно', Esporte: 'спорт', Espanha: 'Испания', Esposa: 'жeнa', Estádio: 'стадион', Estação: 'станция', Estante: 'Шкаф',
-        Este: 'этот', Estômago: 'желудок', Evidência: 'доказательство', Evitar: 'избегать', Eu: 'я', Exatamente: 'точно',
+        E: 'И', 'É claro': 'Конечно', Economia: 'экономика', Egito: 'Египет', Ela: 'Она', Ele: 'Он', Eles: 'Они', Em: 'В / на', Endereço: 'Адрес',
+        Entender: 'Понимать', Errado: 'Неправый', Escócia: 'Шотландия', Escola: 'Школа', Escrever: 'Писать', Escritório: 'Офис', Escuro: 'Тёмный',
+        Especialmente: 'Особенно', Esporte: 'Спорт', Espanha: 'Испания', Esposa: 'жeнa', Estádio: 'Стадион', Estação: 'Станция', Estante: 'Шкаф',
+        Este: 'этот', Estômago: 'желудок', Evidência: 'Доказательство', Evitar: 'Избегать', Eu: 'Я', Exatamente: 'Точно',
     },
     F: {
-        Fábrica: 'завод', Faca: 'нож', Falar: 'говорить', Falso: 'Неверный(ая)', Faminto: 'голодный', Família: 'семья', Fantástico: 'потрясающий',
-        Farmácia: 'аптека', Favorito: 'любимый', Fazenda: 'ферма', Fechado: 'закрытый', Feio: 'некрасивый', Feliz: 'счастливый', Fevereiro: 'февраль',
-        Ficar: 'Остаться', Filha: 'дочь', Filho: 'сын', Fino: 'тонкий', Forte: 'сильный', Fraco: 'слабый', França: 'Франция', Frango: 'курица',
-        Fruta: 'фрукт'
+        Fábrica: 'Завод', Faca: 'Нож', Falar: 'Говорить', Falso: 'Неверный(ая)', Faminto: 'Голодный', Família: 'Семья', Fantástico: 'Потрясающий',
+        Farmácia: 'Аптека', Favorito: 'Любимый', Fazenda: 'Ферма', Fechado: 'Закрытый', Feio: 'Некрасивый', Feliz: 'Счастливый', Fevereiro: 'Февраль',
+        Ficar: 'Остаться', Filha: 'Дочь', Filho: 'Сын', Fino: 'Тонкий', Forte: 'Сильный', Fraco: 'Слабый', França: 'Франция', Frango: 'Курица',
+        Fruta: 'Фрукт'
     },
     G: {
-        Ganhar: 'выиграть', Garçom: 'официант', Garçonete: 'официантка', Garfo: 'вилка', Garganta: 'горло / глотка', Garrafa: 'бутылка',
-        Garota: 'девочка ', Garoto: 'мальчик ', Gênio: 'гений', Genitor: 'родитель', Gordo: 'толстый', Gorro: 'шапка', Gostar: 'нравится',
-        Grande: 'большой', Gramado: 'газон', Gravata: 'галстук', Grito: 'крик', 'Guarda-chuva': 'зонт',
+        Ganhar: 'Выиграть', Garçom: 'Официант', Garçonete: 'Официантка', Garfo: 'Вилка', Garganta: 'Горло / глотка', Garrafa: 'Бутылка',
+        Garota: 'Девочка ', Garoto: 'Мальчик ', Gênio: 'Гений', Genitor: 'Родитель', Gordo: 'Толстый', Gorro: 'Шапка', Gostar: 'Нравится',
+        Grande: 'Большой', Gramado: 'Газон', Gravata: 'Галстук', Grito: 'Крик', 'Guarda-chuva': 'Зонт',
     },
     H: {
-        Homem: 'мужчина', Hora: 'час', Hospital: 'больница'
+        Homem: 'Мужчина', Hora: 'Час', Hospital: 'Больница'
     },
     I: {
-        Imaginação: 'воображение', Inglês: 'английский(idioma e adjetivo)', Índia: 'Индия', Infecção: 'инфекция', Insanamente: 'безумно',
-        Injusto: 'нечестный', Irmã: 'сестра', Irmão: 'брат', Irritado: 'злой', Irritar: 'бесить', Isso: 'оно', Itália: 'Италия',
+        Imaginação: 'Воображение', Inglês: 'Английский(idioma e adjetivo)', Índia: 'Индия', Infecção: 'Инфекция', Insanamente: 'Безумно',
+        Injusto: 'Нечестный', Irmã: 'Сестра', Irmão: 'Брат', Irritado: 'Злой', Irritar: 'Бесить', Isso: 'Оно', Itália: 'Италия',
     },
     J: {
-        Janeiro: 'январь', Jaqueta: 'пиджак', Japão: 'Япония', Joelho: 'Колень', Junho: 'июнь', Julho: 'июль',
+        Janeiro: 'Январь', Jaqueta: 'Пиджак', Japão: 'Япония', Joelho: 'Колень', Junho: 'Июнь', Julho: 'Июль',
     },
     L: {
-        Laranja: 'апельсин', Laranjado: 'оранжевый', Legal: 'классный', Legume: 'овощ', Leite: 'молоко', Lembrar: 'вспоминать', Levantar: 'вставать',
-        Ligar: 'включать', Livraria: 'книжный магазин', Livro: 'книга', Limão: 'лимон', Longo: 'длинный', Loja: 'магазин', Luvas: 'перчатки'
+        Laranja: 'Апельсин', Laranjado: 'Оранжевый', Legal: 'Классный', Legume: 'Овощ', Leite: 'Молоко', Lembrar: 'Вспоминать', Levantar: 'Вставать',
+        Ligar: 'Включать', Livraria: 'Книжный магазин', Livro: 'Книга', Limão: 'Лимон', Longo: 'Длинный', Loja: 'Магазин', Luvas: 'Перчатки'
     },
     M: {
-        Mãe: 'мать', Macarrão: 'макароны', Maçã: 'яблоко', Magro: 'худой', Maio: 'май', Manteiga: 'масло', Março: 'март', Maravilhoso: 'чудесный',
-        Maravilhosamente: 'чудесно', Marido: 'муж', Marrom: 'коричневый', Matar: 'убить', Meias: 'носки', Melhorar: 'поправиться', Mercado: 'рынок ',
-        Merda: 'гавно(adj)', Mesa: 'стол', Mexer: 'двигаться', Molho: 'соус', Mudar: 'изменить', Muito: 'очень', Mulher: 'женщина'
+        Mãe: 'Мать', Macarrão: 'Макароны', Maçã: 'Яблоко', Magro: 'Худой', Maio: 'Май', Manteiga: 'Масло', Março: 'Март', Maravilhoso: 'Чудесный',
+        Maravilhosamente: 'Чудесно', Marido: 'Муж', Marrom: 'Коричневый', Matar: 'Убить', Meias: 'Носки', Melhorar: 'Поправиться', Mercado: 'Рынок ',
+        Merda: 'Гавно(adj)', Mesa: 'Стол', Mexer: 'Двигаться', Molho: 'Соус', Mudar: 'Изменить', Muito: 'Очень', Mulher: 'женщина'
     },
     N: {
-        Não: 'не / нет', Nada: 'ничего', Namorada: 'девушка', Naturalmente: 'естественно', Nativo: 'местный', 'Na verdade': 'вообще-то',
-        Necessário: 'Необходимо', Nojento: 'отвратительный', Nome: 'имя', Normal: 'нормально', Noruega: 'Норвегия', Nós: 'мы', Nove: 'девять',
-        Novembro: 'ноябрь', Novo: 'новый ', Número: 'номер',
+        Não: 'Не / нет', Nada: 'Ничего', Namorada: 'Девушка', Naturalmente: 'естественно', Nativo: 'Местный', 'Na verdade': 'Вообще-то',
+        Necessário: 'Необходимо', Nojento: 'Отвратительный', Nome: 'Имя', Normal: 'Нормально', Noruega: 'Норвегия', Nós: 'Мы', Nove: 'Девять',
+        Novembro: 'Ноябрь', Novo: 'Новый ', Número: 'Номер',
     },
     O: {
-        Obrigado: 'спасибо', Observar: 'наблюдать', Oferecer: 'предложить', Oi: 'привет(informal)', Oito: 'восемь', Onde: 'где', Ônibus: 'автобус',
-        Onze: 'одиннадцать', Oops: 'ой', Opinar: 'высказать', Opinião: 'мнение', Ordem: 'приказ', Ovo: 'яйцо', Ou: 'или', Outubro: 'октябрь', Ombro: 'плечо',
+        Obrigado: 'Спасибо', Observar: 'Наблюдать', Oferecer: 'Предложить', Oi: 'Привет(informal)', Oito: 'Восемь', Onde: 'Где', Ônibus: 'Автобус',
+        Onze: 'Одиннадцать', Oops: 'Ой', Opinar: 'Высказать', Opinião: 'Мнение', Ordem: 'Приказ', Ovo: 'Яйцо', Ou: 'Или', Outubro: 'Октябрь', Ombro: 'Плечо',
     },
     P: {
-        Pão: 'хлеб', Pagar: 'платить', Pai: 'отец', Parar: 'остановить(ся)', Papel: 'Бумага', Parque: 'парк', Pedir: 'заказывать', Pegar: 'Брать',
-        Peito: 'грудь', Peixe: 'рыба', Pele: 'Кожа', Pensar: 'думать', Perceber: 'проводить', Perder: 'проиграть', Perfeito: 'идеальный',
-        Pernoitar: 'ночевать', Pescador: 'рыбак', Pessoa: 'человек', Pessoas: 'люди', Pequeno: 'маленький', Piscina: 'бассейн', Poeta: 'поэт',
-        Por: 'за', 'Por favor': 'пожалуйста', Possível: 'возможно', Praça: 'площадь', Prato: 'тарелка', Precisar: 'должен(а / о / ы)', Preto: 'чёрный',
-        Privada: 'унитаз', Problema: 'проблема', Pronto: 'готов', Proteger: 'защищать', Pescoço: 'шея', Pulso: 'запястье',
+        Pão: 'Хлеб', Pagar: 'Платить', Pai: 'Отец', Parar: 'Остановить(ся)', Papel: 'Бумага', Parque: 'Парк', Pedir: 'Заказывать', Pegar: 'Брать',
+        Peito: 'Грудь', Peixe: 'Рыба', Pele: 'Кожа', Pensar: 'Думать', Perceber: 'Проводить', Perder: 'Проиграть', Perfeito: 'Идеальный',
+        Pernoitar: 'Ночевать', Pescador: 'Рыбак', Pessoa: 'Человек', Pessoas: 'Люди', Pequeno: 'Маленький', Piscina: 'Бассейн', Poeta: 'Поэт',
+        Por: 'За', 'Por favor': 'Пожалуйста', Possível: 'Возможно', Praça: 'Площадь', Prato: 'Тарелка', Precisar: 'Должен(а / о / ы)', Preto: 'Чёрный',
+        Privada: 'Унитаз', Problema: 'Проблема', Pronto: 'Готов', Proteger: 'Защищать', Pescoço: 'Шея', Pulso: 'Запястье',
     },
     Q: {
-        Quadris: 'бëдра', Quadro: 'портрет', 'Quarta-feira': 'среда', Quatorze: 'четырнадцать', Quatro: 'четыре', Que: 'что', Quebrar: 'сломать',
-        Queijo: 'сыр', Quem: 'кто', Querer: 'хотеть', 'Quinta-feira': 'четверг', Quinze: 'пятнадцать',
+        Quadris: 'Бëдра', Quadro: 'Портрет', 'Quarta-feira': 'Среда', Quatorze: 'Четырнадцать', Quatro: 'Четыре', Que: 'Что', Quebrar: 'Сломать',
+        Queijo: 'Сыр', Quem: 'Кто', Querer: 'Хотеть', 'Quinta-feira': 'Четверг', Quinze: 'Пятнадцать',
     },
     R: {
-        Rainha: 'королева', Rasgar: 'рвать', Realizar: 'выполнить', Realmente: 'действительно', Receber: 'получать', Reclamar: 'жаловаться',
-        Remédio: 'лекарство', Rei: 'король', Relatório: 'доклад', Reserva: 'бронирование', Reservar: 'бронировать', Respeitar: 'уважать',
-        Restaurante: 'ресторан', Rodoviária: 'Автовокзал', Rosa: 'розовый', Roxo: 'фиолетовый', Roubar: 'украсть', Roupas: 'одежда',
-        'Roupas íntimas': 'трусы', Russo: 'русский / русская(idioma e adjetivo)',
+        Rainha: 'Королева', Rasgar: 'Рвать', Realizar: 'Выполнить', Realmente: 'Действительно', Receber: 'Получать', Reclamar: 'жаловаться',
+        Remédio: 'Лекарство', Rei: 'Король', Relatório: 'Доклад', Reserva: 'Бронирование', Reservar: 'Бронировать', Respeitar: 'Уважать',
+        Restaurante: 'Ресторан', Rodoviária: 'Автовокзал', Rosa: 'Розовый', Roxo: 'Фиолетовый', Roubar: 'Украсть', Roupas: 'Одежда',
+        'Roupas íntimas': 'Трусы', Russo: 'Русский / русская(idioma e adjetivo)',
     },
     S: {
-        Saber: 'знать', Saia: 'юбка', Sal: 'соль', Salada: 'салат', Sandálias: 'тапки', Sauna: 'баня', Shorts: 'шорты', Sair: 'выйти', Sábado: 'суббота',
-        'Segunda-feira': 'понедельник', Sapatos: 'обувь', Saudade: 'тоска', Secretário: 'Секретарь', Selo: 'марка', Seis: 'шесть', Sem: 'без',
-        Senhor: 'господин', Senhora: 'госпожа', Ser: 'Быть', Sete: 'семь', Setembro: 'сентябрь', 'Sexta-feira': 'пятница', Sim: 'да', Sobremesa: 'десерт',
-        Sonhar: 'мечтать', Sopa: 'суп', Sorte: 'удача', Suco: 'сок', Suécia: 'Швеция', Suéter: 'свитер', Supermercado: 'супермаркет',
+        Saber: 'Знать', Saia: 'юбка', Sal: 'Соль', Salada: 'Салат', Sandálias: 'Тапки', Sauna: 'Баня', Shorts: 'Шорты', Sair: 'Выйти', Sábado: 'Суббота',
+        'Segunda-feira': 'Понедельник', Sapatos: 'Обувь', Saudade: 'Тоска', Secretário: 'Секретарь', Selo: 'Марка', Seis: 'Шесть', Sem: 'Без',
+        Senhor: 'Господин', Senhora: 'Госпожа', Ser: 'Быть', Sete: 'Семь', Setembro: 'Сентябрь', 'Sexta-feira': 'Пятница', Sim: 'Да', Sobremesa: 'Десерт',
+        Sonhar: 'Мечтать', Sopa: 'Суп', Sorte: 'Удача', Suco: 'Сок', Suécia: 'Швеция', Suéter: 'Свитер', Supermercado: 'Супермаркет',
     },
     T: {
-        Taça: 'бокал', Talvez: 'может быть', Também: 'тоже', Táxi: 'такси', Tchau: 'пока пока', Teatro: 'театр', Telefone: 'телефон', Tênis: 'кроссовки',
-        Tentar: 'попытаться', 'Terça-feira': 'вторник', Ter: 'иметь', Terno: 'костюм', Tocar: 'Затронуть', Todo: 'любой(inteiro)', Tornozelo: 'лодыжка',
-        Trabalhador: 'рабочий', Trabalhar: 'работать', Trabalho: 'работа', Transportar: 'водить', Tratamento: 'Лечение', Trem: 'поезд', Três: 'три',
-        Treze: 'тринадцать', Trocar: 'заменить', Tu: 'ты', Tudo: 'всё',
+        Taça: 'Бокал', Talvez: 'Может быть', Também: 'Тоже', Táxi: 'Такси', Tchau: 'Пока пока', Teatro: 'Театр', Telefone: 'Телефон', Tênis: 'Кроссовки',
+        Tentar: 'Попытаться', 'Terça-feira': 'Вторник', Ter: 'Иметь', Terno: 'Костюм', Tocar: 'Затронуть', Todo: 'Любой(inteiro)', Tornozelo: 'Лодыжка',
+        Trabalhador: 'Рабочий', Trabalhar: 'Работать', Trabalho: 'Работа', Transportar: 'Водить', Tratamento: 'Лечение', Trem: 'Поезд', Três: 'Три',
+        Treze: 'Тринадцать', Trocar: 'Заменить', Tu: 'Ты', Tudo: 'Всё',
     },
     U: {
-        Ucrânia: 'Украина', Último: 'последний', Um: 'один', Uniforme: 'форма', 'Um pouco': 'немного', Urinar: 'пописать', Usar: 'использовать',
+        Ucrânia: 'Украина', Último: 'Последний', Um: 'Один', Uniforme: 'Форма', 'Um pouco': 'Немного', Urinar: 'Пописать', Usar: 'Использовать',
     },
     V: {
-        Vaca: 'корова', Verificar: 'проверить', Velho: 'старый', Vender: 'продать', Verde: 'зелёный', 'Verde claro': 'светло-зелёный',
-        Vermelho: 'красный', 'Vermelho escuro': 'тёмно-красный', Vestido: 'платье', Vestir: 'надевать', Vinho: 'вино', Visão: 'зрение',
-        'Video game': 'видеоигра', Vinte: 'двадцать', Você: 'вы', Vós: 'вы', Votar: 'голосовать',
+        Vaca: 'Корова', Verificar: 'Проверить', Velho: 'Старый', Vender: 'Продать', Verde: 'Зелёный', 'Verde claro': 'Светло-зелёный',
+        Vermelho: 'Красный', 'Vermelho escuro': 'Тёмно-красный', Vestido: 'Платье', Vestir: 'Надевать', Vinho: 'Вино', Visão: 'Зрение',
+        'Video game': 'Видеоигра', Vinte: 'Двадцать', Você: 'Вы', Vós: 'Вы', Votar: 'Голосовать',
     },
     X: {
-        Xícara: 'чашка',
+        Xícara: 'Чашка',
     },
     Z: {
-        Zero: 'нуль',
+        Zero: 'Нуль',
     }
 }

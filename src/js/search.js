@@ -1,13 +1,15 @@
-import { insertChilds, mapEntries, mapValues, render, selek, selekFn } from "./lib7.js";
+import { getEntries, getValues, insertChilds, render, selek, selekFn, Span } from "./lib7.js";
 import dicionário from "./dicionário.js";
 import { close } from "./template.js";
 
 export default () => {
-    const [txt, res] = selek(['#txt', '#res']), search = {};
+    const [txt, res] = selek(['#txt', '#res']);
 
-    mapValues(dicionário, trads => mapEntries(trads, ([pt, ru]) => search[pt] = ru));
+    const search = getValues(dicionário)
+        .flatMap(trads => getEntries(trads))
+        .reduce((acc, [pt, ru]) => ({ ...acc, [pt]: ru }), {});
 
-    selekFn('#search', 'click', ({ target: { localName, id } }) => {
+    selekFn('#search', 'click', ({ target }) => {
         const fn = {
             ok: () => {
                 res.innerHTML = '';
@@ -18,16 +20,15 @@ export default () => {
                     res.hidden = false;
 
                     insertChilds('#res', [
-                        `${txt.value} - ${search[str] ?? 'Ainda não temos essa palavra no dicionário'}`,
+                        Span(`${txt.value} - ${search[str] ?? 'Ainda não temos essa palavra no dicionário'}`),
                         render(close, 'X')
                     ]);
                 }
 
                 txt.value = '';
-            },
-            close: () => res.hidden = true
+            }, close: () => res.hidden = true
         };
 
-        if (localName === 'button') fn[id]();
+        if (target.localName === 'button') fn[target.id]();
     });
 }

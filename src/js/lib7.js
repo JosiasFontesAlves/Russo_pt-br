@@ -477,18 +477,18 @@ export const mapValues = (obj, callBack) => Object.values(obj).map(callBack);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {object} obj
+ * @param {{}} obj
  */
 export const getEntries = obj => Object.entries(obj);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {object} obj
+ * @param {{}} obj
  */
 export const getKeys = obj => Object.keys(obj);
 
 /**
- * @param {object} obj
+ * @param {{}} obj
  */
 export const getValues = obj => Object.values(obj);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -637,7 +637,7 @@ export const Span = (texto, props) => {
 
     if (props) Object.entries(props).forEach(([prop, val]) => span.setAttribute(prop, val));
 
-    return span
+    return span;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2020 - ${new Date().getFullYear()}\nCriada por Josias Fontes Alves`);

@@ -23,12 +23,17 @@ export const header = {
         '#num': 'Números',
         '#semana': 'Dias da semana'
     },
+    props_linkBar = [{ class: 'grid' }, { class: 'padd5' }],
     lua = {
         img: {
             alt: 'lua', id: 'lua',
             src: './img/temesc.png'
         }
     },
+    btn_drop = [
+        'btn-temesc', 4, 'blue',
+        { height: 20, width: 20 }
+    ],
     root = {
         div: {
             id: 'root'

@@ -14,12 +14,12 @@ export default {
         Brasileiro: 'Бразилец(pes)/бразильский(adj)', Buraco: 'Дырка', Buscar: 'Искать'
     },
     C: {
-        Cabeça: 'Голова', Cabelo: 'Волос', Caçar: 'Ловить', Cachecol: 'Шарф', Café: 'Кофе', Canadá: 'Канада', Chapéu: 'Шляпа', Cair: 'Выпасть',
-        'Caixa eletrônico': 'Банкомат', Cama: 'Кровать', Caminhar: 'Ходить', Cardápio: 'Меню', Carne: 'Мясо', 'Carne bovina': 'Говядина',
+        Cabeça: 'Голова', Cabelo: 'Волос', Caçar: 'Ловить', Cachecol: 'Шарф', Cachorro: 'Собака', Café: 'Кофе', Canadá: 'Канада', Chapéu: 'Шляпа',
+        Cair: 'Выпасть', 'Caixa eletrônico': 'Банкомат', Cama: 'Кровать', Caminhar: 'Ходить', Cardápio: 'Меню', Carne: 'Мясо', 'Carne bovina': 'Говядина',
         'Carne de porco': 'Свинина', Carro: 'Машина', Carteira: 'Бумажник', Casa: 'Дом', Casaco: 'Пальто', Cazaquistão: 'Казахстан', Centro: 'Центр',
         Certo: 'Правильный', Cerveja: 'Пиво', Chá: 'Чай', Chamada: 'Вызов', Chamar: 'Звать', Chatear: 'Наскучить', Chorar: 'Плакать', China: 'Китай',
         Cidade: 'Город', Cinco: 'Пять', Cinza: 'Серый', Cliente: 'Клиент', Cobrir: 'Накрывать', Coisa: 'Вещь', Coleção: 'Подборка', Colega: 'Коллега',
-        Colher: 'Ложка (subst)', Comer: 'есть', Comida: 'еда', Como: 'Как', Compra: 'Покупка', Comprar: 'Купить', Confundir: 'Спутать',
+        Colher: 'Ложка (subst)', Comer: 'Есть', Comida: 'Еда', Como: 'Как', Compra: 'Покупка', Comprar: 'Купить', Confundir: 'Спутать',
         Conhecer: 'Встречать', Conseguir: 'Достичь', Congelar: 'Замерзнуть', Considerar: 'Рассмотреть', Consumidor: 'Покупатель', Conta: 'Счёт',
         Continuar: 'Продолжать', Contra: 'Против', Copo: 'Стакан', Cor: 'Цвет', Coração: 'Сердце', Coreia: 'Корея', Cortar: 'Нарезать', Crescer: 'Расти',
         Criança: 'Ребёнок', Crianças: 'Дети', Cotovelo: 'Локоть', Costela: 'Ребро', Cozinha: 'Кухня', Cume: 'Вершина',
@@ -31,10 +31,10 @@ export default {
         Domingo: 'Воскресенье', Doze: 'Двенадцать', Durante: 'В течение'
     },
     E: {
-        E: 'И', 'É claro': 'Конечно', Economia: 'экономика', Egito: 'Египет', Ela: 'Она', Ele: 'Он', Eles: 'Они', Em: 'В / на', Endereço: 'Адрес',
+        E: 'И', 'É claro': 'Конечно', Economia: 'Экономика', Egito: 'Египет', Ela: 'Она', Ele: 'Он', Eles: 'Они', Em: 'В / на', Endereço: 'Адрес',
         Entender: 'Понимать', Errado: 'Неправый', Escócia: 'Шотландия', Escola: 'Школа', Escrever: 'Писать', Escritório: 'Офис', Escuro: 'Тёмный',
         Especialmente: 'Особенно', Esporte: 'Спорт', Espanha: 'Испания', Esposa: 'жeнa', Estádio: 'Стадион', Estação: 'Станция', Estante: 'Шкаф',
-        Este: 'этот', Estômago: 'желудок', Evidência: 'Доказательство', Evitar: 'Избегать', Eu: 'Я', Exatamente: 'Точно',
+        Este: 'Этот', Estômago: 'желудок', Evidência: 'Доказательство', Evitar: 'Избегать', Eu: 'Я', Exatamente: 'Точно',
     },
     F: {
         Fábrica: 'Завод', Faca: 'Нож', Falar: 'Говорить', Falso: 'Неверный(ая)', Faminto: 'Голодный', Família: 'Семья', Fantástico: 'Потрясающий',
@@ -44,8 +44,8 @@ export default {
     },
     G: {
         Ganhar: 'Выиграть', Garçom: 'Официант', Garçonete: 'Официантка', Garfo: 'Вилка', Garganta: 'Горло / глотка', Garrafa: 'Бутылка',
-        Garota: 'Девочка ', Garoto: 'Мальчик ', Gênio: 'Гений', Genitor: 'Родитель', Gordo: 'Толстый', Gorro: 'Шапка', Gostar: 'Нравится',
-        Grande: 'Большой', Gramado: 'Газон', Gravata: 'Галстук', Grito: 'Крик', 'Guarda-chuva': 'Зонт',
+        Garota: 'Девочка ', Garoto: 'Мальчик ', Gato: 'Кот / Кошка', Gênio: 'Гений', Genitor: 'Родитель', Gordo: 'Толстый', Gorro: 'Шапка',
+        Gostar: 'Нравится', Grande: 'Большой', Gramado: 'Газон', Gravata: 'Галстук', Grito: 'Крик', 'Guarda-chuva': 'Зонт',
     },
     H: {
         Homem: 'Мужчина', Hora: 'Час', Hospital: 'Больница'
@@ -63,13 +63,13 @@ export default {
     },
     M: {
         Mãe: 'Мать', Macarrão: 'Макароны', Maçã: 'Яблоко', Magro: 'Худой', Maio: 'Май', Manteiga: 'Масло', Março: 'Март', Maravilhoso: 'Чудесный',
-        Maravilhosamente: 'Чудесно', Marido: 'Муж', Marrom: 'Коричневый', Matar: 'Убить', Meias: 'Носки', Melhorar: 'Поправиться', Mercado: 'Рынок ',
-        Merda: 'Гавно(adj)', Mesa: 'Стол', Mexer: 'Двигаться', Molho: 'Соус', Mudar: 'Изменить', Muito: 'Очень', Mulher: 'женщина'
+        Maravilhosamente: 'Чудесно', Marido: 'Муж', Marrom: 'Коричневый', Matar: 'Убить', Meias: 'Носки', Melhorar: 'Поправиться', Mercado: 'Рынок',
+        Merda: 'Гавно(adj)', Mesa: 'Стол', Mexer: 'Двигаться', Molho: 'Соус', Mudar: 'Изменить', Muito: 'Очень', Mulher: 'Женщина'
     },
     N: {
-        Não: 'Не / нет', Nada: 'Ничего', Namorada: 'Девушка', Naturalmente: 'естественно', Nativo: 'Местный', 'Na verdade': 'Вообще-то',
-        Necessário: 'Необходимо', Nojento: 'Отвратительный', Nome: 'Имя', Normal: 'Нормально', Noruega: 'Норвегия', Nós: 'Мы', Nove: 'Девять',
-        Novembro: 'Ноябрь', Novo: 'Новый ', Número: 'Номер',
+        Não: 'Не / нет', Nada: 'Ничего', Namorada: 'Девушка', Naturalmente: 'Естественно', Nativo: 'Местный', 'Na verdade': 'Вообще-то',
+        Necessário: 'Необходимо', Ninguém: 'Никто', Nojento: 'Отвратительный', Nome: 'Имя', Normal: 'Нормально', Noruega: 'Норвегия', Nós: 'Мы', 
+        Nove: 'Девять', Novembro: 'Ноябрь', Novo: 'Новый', Número: 'Номер',
     },
     O: {
         Obrigado: 'Спасибо', Observar: 'Наблюдать', Oferecer: 'Предложить', Oi: 'Привет(informal)', Oito: 'Восемь', Onde: 'Где', Ônibus: 'Автобус',

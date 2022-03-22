@@ -10,5 +10,5 @@ export default () => {
 
     setTema();
 
-    search();
+   search();
 }

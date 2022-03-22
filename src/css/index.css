@@ -33,6 +33,10 @@ td {
     padding: 3px;
 }
 
+#title-tab-pronomes {
+    margin: 25px;
+}
+
 footer {
     bottom: 3px;
     color: #505050;

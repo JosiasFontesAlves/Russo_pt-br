@@ -1,5 +1,4 @@
 //@ts-check
-
 /*  
  * * * * * * * * * * * * *     * * * * * * * * *    * * * * * * * * * *    * * * * * * * * *     * * * * * * * * * * 
  * * * * * * * * * * * * *     * * * * * * * * *    * * * * * * * * * *    * * * * * * * * *     * * * * * * * * * * 
@@ -186,11 +185,7 @@ export const texto = tags => Object.entries(tags).forEach(([tag, texto]) => docu
 export const Animatus = {
     /**
      * @param {string} id 
-     * @param {object} props
-     * @param {string} props.background
-     * @param {string} props.border
-     * @param {number} props.height
-     * @param {number} props.width
+     * @param {{background: string, border: string, height: number, width: number }} props
      * @param {number} vel
      */
     barr(id, { background, border, height, width }, vel) {
@@ -229,11 +224,7 @@ export const Animatus = {
     }
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/**
- * @param {string} id 
- * @param {string[]} lista
- */
-export function DropDown(id, lista) {
+export const DropDown = (/** @type {string} */ id, /** @type {string[]} */ lista) => {
     const drop = document.createElement('select');
     drop.id = id;
     drop.classList.add('drop');
@@ -260,12 +251,7 @@ export const replacer = (...args) => Object.values(args).forEach((arg) => {
     }
 }); /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/**
- * @param {string} id 
- * @param {string[]} lista 
- * @param {{[prop: string]: string}} [props]
- */
-export const Lista = (id, lista, props) => {
+export const Lista = (/** @type {string} */ id, /** @type {any[]} */ lista, /** @type {{ [prop: string]: string; }} */ props) => {
     const $render = (/** @type {string} */ el) => document.createElement(el);
 
     const $lista = $render('ul');
@@ -285,11 +271,7 @@ export const Lista = (id, lista, props) => {
     return $lista;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/**
- * @param {string} id
- * @param {{}[]} tabela
- */
-export const Tabela = (id, tabela) => {
+export const Tabela = (/** @type {string} */ id, /** @type {Array.<object>} */ tabela) => {
     const [table, thead, tbody] = ['table', 'thead', 'tbody'].map(el => document.createElement(el));
     const $render = (/** @type {string} */ tag, /** @type {string} */ content) => {
         const el = document.createElement(tag);
@@ -325,7 +307,7 @@ export const Tabela = (id, tabela) => {
  * @param {{[tag: string]: {[prop: string]: string}} | string} tag
  * @param {HTMLElement | HTMLElement[] | string} [conteúdo]
  */
-export function render(tag, conteúdo) {
+export const render = (tag, conteúdo) => {
     const elem = document.createElement(typeof tag === 'string' ? tag : Object.keys(tag)[0]);
 
     if (typeof tag === 'object')
@@ -340,7 +322,7 @@ export function render(tag, conteúdo) {
 /**
  * @param {{[prop: string]: string}[]} props
  */
-export function SearchBox(...props) {
+export const SearchBox = (...props) => {
     const searchBox = document.createElement('section');
     searchBox.classList.add('searchBox');
 
@@ -363,7 +345,7 @@ export function SearchBox(...props) {
  * @param {string} txtBtn
  * @param {{[prop: string]: string}[]} [propsChilds]
  */
-export function FormBox(idForm, txtBtn, propsChilds) {
+export const FormBox = (idForm, txtBtn, propsChilds) => {
     const form = document.createElement('form');
     form.id = idForm;
 
@@ -390,7 +372,7 @@ export function FormBox(idForm, txtBtn, propsChilds) {
  * @param {string} url 
  * @param {function} fn 
  */
-export async function consumirAPI(url, fn) {
+export const consumirAPI = async (url, fn) => {
     const api = await fetch(url);
     const res = await api.json();
 
@@ -415,7 +397,7 @@ export const SPA = (pages, elem) => {
 
 /**
  * @param {string} local 
- * @param {HTMLElement[]} childs 
+ * @param {HTMLElement[] | string[]} childs 
  */
 export const insertChilds = (local, childs) => document.querySelector(local).append(...childs);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -508,7 +490,7 @@ export const httpPost = (url, body) => fetch(url, {
  * @param {{[prop: string]: string}} [propsNav]
  * @param {{[prop: string]: string}} [propsChilds]
  */
-export const LinkBar = (links, /** @type {{ [x: string]: string; }} */ propsNav, /** @type {{ [x: string]: string; }} */ propsChilds) => {
+export const LinkBar = (links, /** @type {{ [prop: string]: string; }} */ propsNav, /** @type {{ [prop: string]: string; }} */ propsChilds) => {
     const linkBarr = document.createElement('nav');
 
     const setProps = (/** @type {HTMLElement} */ el, /** @type {{ [prop: string]: string; }} */ props) => {
@@ -551,14 +533,14 @@ export const Title = (title, props) => {
 /**
  * @param {string} src 
  * @param {string} alt 
- * @param {{[prop: string]: string}} [props] 
+ * @param {{[prop: string]: string | number}} [props] 
  */
 export const Img = (src, alt, props) => {
     const img = document.createElement('img');
 
     Object.entries({ src, alt }).forEach(([prop, val]) => img.setAttribute(prop, val));
 
-    if (props) for (let prop in props) img.setAttribute(prop, props[prop]);
+    if (props) for (let prop in props) img[prop] = props[prop];
 
     return img;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

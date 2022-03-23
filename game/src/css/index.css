@@ -23,6 +23,7 @@ header {
 }
 
 #txt-search {
+    background: none;
     border-radius: 8.5px;
     outline: none;
 }
@@ -32,6 +33,7 @@ header {
 }
 
 #btn-search {
+    background: var(--nardoGray);
     height: 40px;
     transform: translateX(-15px);
     width: 40px;

@@ -1,6 +1,6 @@
 import { insertChilds, render, selek, selekFn, Tabela } from './lib7.js';
 
-export default respostas => {
+export default (/** @type {{}[]} */ respostas) => {
     selek('#root').innerHTML = '';
 
     insertChilds('#root', [

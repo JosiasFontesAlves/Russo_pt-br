@@ -1,5 +1,8 @@
-import { render } from "../lib7.js";
-import Home from "../pages/Home.js";
-import { root } from "../template.js";
+import { render } from '../lib7.js';
+import Search from './SearchBox.js';
 
-export default render(root);
+export default render({
+    div: {
+        id: 'root'
+    }
+}, [render({ p: { class: 'padd10', id: 'pergunta' } }), Search]);

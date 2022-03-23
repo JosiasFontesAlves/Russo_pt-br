@@ -1,8 +1,9 @@
-import { render } from "../lib7.js";
-import { btnLinkBox, copyright, footer } from "../template.js";
-import TemEsc from "./TemEsc.js";
+import { render } from '../lib7.js';
+import Copyright  from './Copyright.js';
+import Temesc  from './Temesc.js';
 
-export default render(footer, [
-    TemEsc, render(btnLinkBox, '+'),
-    render(copyright, 'Matsa \u00A9 2022')
-]);
+export default render({
+    footer: {
+        class: 'fix grid w100'
+    }
+}, [Temesc, Copyright]);

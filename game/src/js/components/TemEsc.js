@@ -1,7 +1,11 @@
-import { Btn, Img, render } from "../lib7.js";
-import { temesc } from "../template.js";
+import { Btn, Img, render } from '../lib7.js';
 
-export default render(temesc, [
+export default render({
+    section: {
+        class: 'fix flex',
+        id: 'temesc'
+    }
+}, [
     Img('img/lua.png', 'lua', { width: 30 }),
-    Btn('btn-temesc', 4, '#0055ff')
+    Btn('btn-temesc', 3, 'blue', { height: 20, width: 20 })
 ]);

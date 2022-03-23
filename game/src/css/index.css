@@ -1,94 +1,65 @@
-@import 'lib.css';
-@import 'tabela.css';
-
 * {
     font-family: 'ubuntu', sans-serif;
-    text-shadow: var(--ghost_neon);
-    transition: 0.5s;
-}
-
-body {
-    text-align: center;
 }
 
 header {
-    background: linear-gradient(45deg, #0099ff, #00cfc5);
-    box-shadow: var(--neon2) #909090;
-    top: 0;
-}
-
-#ttl {
-    margin-left: 10px;
+    background: linear-gradient(45deg, #15fc00a1, #00b7ff9a);
 }
 
 #container-barr {
-    margin: 10px;
+    right: 5px;
 }
 
 .barr {
-    border: 2px solid var(--nardoGray);
-    border-radius: 3px;
-    height: 25px;
-    margin: 3px;
-    width: 7px;
-}
-
-.searchBox {
-    transform: translateY(50px);
-}
-
-#txt {
-    background: none;
-    border-radius: 7px 0 0 7px;
-    width: 50vw;
-}
-
-#btn-ok {
     background: var(--nardoGray);
-    border: 3px solid var(--oceanicBlue);
-    box-shadow: var(--neon2);
-    cursor: pointer;
-    height: 45px;
-    transform: translateX(-5px);
-    width: 45px;
+    border-radius: 5px;
+    height: 25px;
+    margin: 5px;
+    width: 10px;
 }
 
-#btn-ok:hover,
-#btn-linkBox:hover {
+#root {
+    text-align: center;
+}
+
+#txt-search {
+    border-radius: 8.5px;
+    outline: none;
+}
+
+#txt-search:focus {
+    background: #e7e7e7;
+}
+
+#btn-search {
+    height: 40px;
+    transform: translateX(-15px);
+    width: 40px;
+}
+
+#btn-search:hover {
     background: var(--oceanicBlue);
+    border: 1px solid var(--oceanicBlue);
+    box-shadow: var(--neon2) var(--oceanicBlue);
+}
+
+#btn-reload {
+    background: var(--oceanicBlue);
+    border: none;
+    border-radius: 7.5px;
+    box-shadow: 5px 3px 5px var(--nardoGray);
+    margin-top: 25px;
+}
+
+#btn-reload:hover {
+    box-shadow: 5px 3px 5px var(--oceanicBlue);
 }
 
 footer {
-    bottom: 3px;
+    bottom: 0;
 }
 
 #temesc {
-    border: 1px solid;
-    border-radius: 23px 0 0 23px;
-    bottom: 18px;
-    right: 50px;
-    padding-right: 15px;
-}
-
-.linkBar {
-    padding: 8px;
-}
-
-a {
-    color: inherit;
-    padding: 5px;
-}
-
-a:hover {
-    color: #00cfc5;
-}
-
-#btn-linkBox {
-    background: #c7c7c7;
-    border-radius: 50%;
-    bottom: 15px;
-    font-size: 20px;
-    height: 40px;
-    right: 20px;
-    width: 40px;
+    bottom: 10px;
+    right: 10px;
 }

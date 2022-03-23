@@ -1,5 +1,8 @@
-import { render, Title } from "../lib7.js";
-import { header, ttl } from "../template.js";
-import Barr from "./Barr.js";
+import { render, Title } from '../lib7.js';
+import ContainerBarr from './ContainerBarr.js';
 
-export default render(header, [Title('Matsa', ttl), Barr]);
+export default render({
+    header: {
+        class: 'center fix flex w100'
+    }
+}, [Title('Matsa'), ContainerBarr]);

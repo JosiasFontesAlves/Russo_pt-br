@@ -1,4 +1,4 @@
-import { addClass, consumirAPI, getEntries, getRandomItem, getValues, httpPost, mapEntries, selek, selekFn, seleKlass, temEsc, toggle } from './lib7.js';
+import { addClass, consumirAPI, getEntries, getRandomItem, getValues, httpPost, mapEntries, selek, selekFn, seleKlass, temEsc, Tempus, toggle } from './lib7.js';
 import russo_ptbr from './dicionário.js';
 import Pergunta from './components/Pergunta.js';
 import resultado from './resultado.js';
@@ -9,25 +9,39 @@ export default () => consumirAPI('api.json', api => {
     const respostas = [], Barr = seleKlass('barr');
     const search = getValues(russo_ptbr).flatMap(trads => getEntries(trads));
 
-    if (api.temEsc) mapEntries({
-        temesc: 'body',
-        x30: '#btn-temesc'
-    }, ([classe, el]) => addClass(el, [classe]));
-
-
     const init = () => {
         [pt, ru] = getRandomItem(search);
 
         Pergunta(ru);
     }
 
-    temEsc('btn-temesc', ['body'], 'temesc', ({ target }) => {
-        api.temEsc = toggle(`#${target.id}`, 'x30');
+    const setTema = () => {
+        if (api.temEsc) mapEntries({
+            temesc: 'body',
+            x30: '#btn-temesc'
+        }, ([classe, el]) => addClass(el, [classe]));
+
+        temEsc('btn-temesc', ['body'], 'temesc', ({ target }) => {
+            api.temEsc = toggle(`#${target.id}`, 'x30');
+
+            setAPI();
+        });
+    }
+
+    const setResultado = () => {
+        const data = new Date();
+        const cal = `${data.getDate()} ${Tempus.getCal.mês[data.getMonth()]} ${data.getFullYear()}`;
+        
+        api.respostas[`${cal} - ${Tempus.getRlg().join(':')}`] = respostas;
+
+        resultado(respostas);
 
         setAPI();
-    });
+    }
 
     init();
+
+    setTema();
 
     selekFn('#btn-search', 'click', () => {
         const resposta = selek('#txt-search');
@@ -43,7 +57,9 @@ export default () => consumirAPI('api.json', api => {
 
             resposta.value = '';
 
-            ctrl < 5 ? init() : resultado(respostas);
+            ctrl < 5 ? init() : setResultado();
         }
     });
+
+
 });

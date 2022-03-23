@@ -45,18 +45,6 @@ header {
     box-shadow: var(--neon2) var(--oceanicBlue);
 }
 
-#btn-reload {
-    background: var(--oceanicBlue);
-    border: none;
-    border-radius: 7.5px;
-    box-shadow: 5px 3px 5px var(--nardoGray);
-    margin-top: 25px;
-}
-
-#btn-reload:hover {
-    box-shadow: 5px 3px 5px var(--oceanicBlue);
-}
-
 footer {
     bottom: 0;
 }

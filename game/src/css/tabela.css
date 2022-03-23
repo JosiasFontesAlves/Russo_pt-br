@@ -1,17 +1,15 @@
-h3 {
+h2 {
     padding: 25px;
 }
 
-#reload {
-    background: var(--nardoGray);
+#btn-reload {
+    background: var(--oceanicBlue);
     border: 2px solid var(--oceanicBlue);
-    border-radius: 5px;
-    cursor: pointer;
+    border-radius: 7.5px;
     margin: 20px;
-    padding: 10px;
 }
 
-#reload:hover {
+#btn-reload:hover {
     background: var(--oceanicBlue);
     box-shadow: var(--neon2) var(--oceanicBlue);
 }

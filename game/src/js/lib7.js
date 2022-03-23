@@ -10,7 +10,7 @@
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-let versão = '4.0.8';
+let versão = '4.1';
 
 /**
  * @param {string} idBtn
@@ -64,19 +64,28 @@ export function Btn(idBtn, estilo, cor, { height, width }) {
 } /* ----- Lib de botões ----- */
 
 export const Tempus = {
+    getCal: {
+        diaSem: ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SÁB"],
+        mês: ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"]
+    },
+    getRlg: () => {
+        const date = new Date();
+        
+        return [
+            date.getHours(), date.getMinutes(), date.getSeconds()
+        ].map(num => num < 10 ? `0${num}` : num);
+    },
     /**
      * @param {string} id 
      * @param {number} [estilo] 
      */
     relógio(id, estilo) {
+
         const rel = document.createElement('p');
         rel.id = id;
 
         setInterval(() => {
-            const date = new Date();
-            const rlg = [
-                date.getHours(), date.getMinutes(), date.getSeconds()
-            ].map(num => num < 10 ? `0${num}` : num);
+            const rlg = this.getRlg();
 
             if (estilo === 1) rlg.pop();
 
@@ -95,11 +104,8 @@ export const Tempus = {
 
         setInterval(() => {
             const date = new Date();
-            const calendário = {
-                diaSem: ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SÁB"],
-                mês: ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"]
-            }, estilos = [
-                `${calendário.diaSem[date.getDay()]} ${date.getDate()} ${calendário.mês[date.getMonth()]} ${date.getFullYear()}`,
+            const estilos = [
+                `${this.getCal.diaSem[date.getDay()]} ${date.getDate()} ${this.getCal.mês[date.getMonth()]} ${date.getFullYear()}`,
                 `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
             ];
 

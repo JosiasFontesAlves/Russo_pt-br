@@ -4,6 +4,11 @@
 
 header {
     background: linear-gradient(45deg, #15fc00a1, #00b7ff9a);
+    color: black;
+}
+
+.burger {
+    left: 10px;
 }
 
 #container-barr {

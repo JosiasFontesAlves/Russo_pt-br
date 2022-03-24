@@ -1,51 +1,30 @@
 {
     "respostas": {
-        "23 MAR 2022 - 01:40:50": [
+        "23 MAR 2022 - 17:32:08": [
             {
-                "Português": "Onde",
-                "Russo": "Где",
-                "Resposta": "onde"
+                "Português": "Possível",
+                "Russo": "Возможно",
+                "Resposta": "possível"
             },
             {
-                "Português": "Bola",
-                "Russo": "Мяч",
-                "Resposta": "bola"
-            }
-        ],
-        "23 MAR 2022 - 01:41:05": [
-            {
-                "Português": "Gramado",
-                "Russo": "Газон",
-                "Resposta": "erg"
+                "Português": "Sonhar",
+                "Russo": "Мечтать",
+                "Resposta": "sonhar"
             },
             {
-                "Português": "Maçã",
-                "Russo": "Яблоко",
-                "Resposta": "maçã"
-            }
-        ],
-        "23 MAR 2022 - 01:41:39": [
-            {
-                "Português": "Ônibus",
-                "Russo": "Автобус",
-                "Resposta": "ônibus"
+                "Português": "Demais",
+                "Russo": "Слишком",
+                "Resposta": "demais"
             },
             {
-                "Português": "Balançar",
-                "Russo": "Качать",
-                "Resposta": "escorregar"
-            }
-        ],
-        "23 MAR 2022 - 01:42:58": [
-            {
-                "Português": "Roxo",
-                "Russo": "Фиолетовый",
-                "Resposta": "ergerg"
+                "Português": "Tchau",
+                "Russo": "Пока пока",
+                "Resposta": "tchau"
             },
             {
-                "Português": "Escócia",
-                "Russo": "Шотландия",
-                "Resposta": "ergerg"
+                "Português": "Pernoitar",
+                "Russo": "Ночевать",
+                "Resposta": "anoitecer"
             }
         ]
     },

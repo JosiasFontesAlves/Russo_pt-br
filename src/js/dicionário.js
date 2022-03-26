@@ -62,18 +62,20 @@ export default {
         Ligar: 'Включать', Livraria: 'Книжный магазин', Livro: 'Книга', Limão: 'Лимон', Longo: 'Длинный', Loja: 'Магазин', Luvas: 'Перчатки'
     },
     M: {
-        Mãe: 'Мать', Macarrão: 'Макароны', Maçã: 'Яблоко', Magro: 'Худой', Maio: 'Май', Manteiga: 'Масло', Março: 'Март', Maravilhoso: 'Чудесный',
-        Maravilhosamente: 'Чудесно', Marido: 'Муж', Marrom: 'Коричневый', Matar: 'Убить', Meias: 'Носки', Melhorar: 'Поправиться', Mercado: 'Рынок',
-        Merda: 'Гавно(adj)', Mesa: 'Стол', Mexer: 'Двигаться', Molho: 'Соус', Mudar: 'Изменить', Muito: 'Очень', Mulher: 'Женщина'
+        Mãe: 'Мать', Macarrão: 'Макароны', Maçã: 'Яблоко', Magro: 'Худой', Maio: 'Май', Maior: 'Побольше', Manteiga: 'Масло', Março: 'Март',
+        Maravilhoso: 'Чудесный', Maravilhosamente: 'Чудесно', Marido: 'Муж', Marrom: 'Коричневый', Matar: 'Убить', Meias: 'Носки',
+        Melhorar: 'Поправиться', Menor: 'Поменьше', Mercado: 'Рынок', Merda: 'Гавно(adj)', Mesa: 'Стол', Mexer: 'Двигаться', Molho: 'Соус',
+        Mudar: 'Изменить', Muito: 'Очень', Mulher: 'Женщина'
     },
     N: {
         Não: 'Не / нет', Nada: 'Ничего', Namorada: 'Девушка', Naturalmente: 'Естественно', Nativo: 'Местный', 'Na verdade': 'Вообще-то',
-        Necessário: 'Необходимо', Ninguém: 'Никто', Nojento: 'Отвратительный', Nome: 'Имя', Normal: 'Нормально', Noruega: 'Норвегия', Nós: 'Мы', 
+        Necessário: 'Необходимо', Ninguém: 'Никто', Nojento: 'Отвратительный', Nome: 'Имя', Normal: 'Нормально', Noruega: 'Норвегия', Nós: 'Мы',
         Nove: 'Девять', Novembro: 'Ноябрь', Novo: 'Новый', Número: 'Номер',
     },
     O: {
         Obrigado: 'Спасибо', Observar: 'Наблюдать', Oferecer: 'Предложить', Oi: 'Привет(informal)', Oito: 'Восемь', Onde: 'Где', Ônibus: 'Автобус',
-        Onze: 'Одиннадцать', Oops: 'Ой', Opinar: 'Высказать', Opinião: 'Мнение', Ordem: 'Приказ', Ovo: 'Яйцо', Ou: 'Или', Outubro: 'Октябрь', Ombro: 'Плечо',
+        Onze: 'Одиннадцать', Oops: 'Ой', Opinar: 'Высказать', Opinião: 'Мнение', Ordem: 'Приказ', Ovo: 'Яйцо', Ou: 'Или', Outubro: 'Октябрь', 
+        Ombro: 'Плечо',
     },
     P: {
         Pão: 'Хлеб', Pagar: 'Платить', Pai: 'Отец', Parar: 'Остановить(ся)', Papel: 'Бумага', Parque: 'Парк', Pedir: 'Заказывать', Pegar: 'Брать',
@@ -99,10 +101,10 @@ export default {
         Sonhar: 'Мечтать', Sopa: 'Суп', Sorte: 'Удача', Suco: 'Сок', Suécia: 'Швеция', Suéter: 'Свитер', Supermercado: 'Супермаркет',
     },
     T: {
-        Taça: 'Бокал', Talvez: 'Может быть', Também: 'Тоже', Táxi: 'Такси', Tchau: 'Пока пока', Teatro: 'Театр', Telefone: 'Телефон', Tênis: 'Кроссовки',
-        Tentar: 'Попытаться', 'Terça-feira': 'Вторник', Ter: 'Иметь', Terno: 'Костюм', Tocar: 'Затронуть', Todo: 'Любой(inteiro)', Tornozelo: 'Лодыжка',
-        Trabalhador: 'Рабочий', Trabalhar: 'Работать', Trabalho: 'Работа', Transportar: 'Водить', Tratamento: 'Лечение', Trem: 'Поезд', Três: 'Три',
-        Treze: 'Тринадцать', Trocar: 'Заменить', Tu: 'Ты', Tudo: 'Всё',
+        Taça: 'Бокал', Talvez: 'Может быть', Também: 'Тоже', Tamanho: 'Размер', Táxi: 'Такси', Tchau: 'Пока пока', Teatro: 'Театр', Telefone: 'Телефон',
+        Tênis: 'Кроссовки', Tentar: 'Попытаться', 'Terça-feira': 'Вторник', Ter: 'Иметь', Terno: 'Костюм', Tocar: 'Затронуть', Todo: 'Любой(inteiro)',
+        Tornozelo: 'Лодыжка', Trabalhador: 'Рабочий', Trabalhar: 'Работать', Trabalho: 'Работа', Transportar: 'Водить', Tratamento: 'Лечение',
+        Trem: 'Поезд', Três: 'Три', Treze: 'Тринадцать', Trocar: 'Заменить', Tu: 'Ты', Tudo: 'Всё',
     },
     U: {
         Ucrânia: 'Украина', Último: 'Последний', Um: 'Один', Uniforme: 'Форма', 'Um pouco': 'Немного', Urinar: 'Пописать', Usar: 'Использовать',

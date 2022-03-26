@@ -10,7 +10,7 @@
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
 */
 
-let versão = '4.0.8';
+let versão = '4.1';
 
 /**
  * @param {string} idBtn
@@ -64,19 +64,28 @@ export function Btn(idBtn, estilo, cor, { height, width }) {
 } /* ----- Lib de botões ----- */
 
 export const Tempus = {
+    getCal: {
+        diaSem: ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SÁB"],
+        mês: ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"]
+    },
+    getRlg: () => {
+        const date = new Date();
+
+        return [
+            date.getHours(), date.getMinutes(), date.getSeconds()
+        ].map(num => num < 10 ? `0${num}` : num);
+    },
     /**
      * @param {string} id 
      * @param {number} [estilo] 
      */
     relógio(id, estilo) {
+
         const rel = document.createElement('p');
         rel.id = id;
 
         setInterval(() => {
-            const date = new Date();
-            const rlg = [
-                date.getHours(), date.getMinutes(), date.getSeconds()
-            ].map(num => num < 10 ? `0${num}` : num);
+            const rlg = this.getRlg();
 
             if (estilo === 1) rlg.pop();
 
@@ -95,11 +104,8 @@ export const Tempus = {
 
         setInterval(() => {
             const date = new Date();
-            const calendário = {
-                diaSem: ["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SÁB"],
-                mês: ["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"]
-            }, estilos = [
-                `${calendário.diaSem[date.getDay()]} ${date.getDate()} ${calendário.mês[date.getMonth()]} ${date.getFullYear()}`,
+            const estilos = [
+                `${this.getCal.diaSem[date.getDay()]} ${date.getDate()} ${this.getCal.mês[date.getMonth()]} ${date.getFullYear()}`,
                 `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
             ];
 
@@ -185,7 +191,7 @@ export const texto = tags => Object.entries(tags).forEach(([tag, texto]) => docu
 export const Animatus = {
     /**
      * @param {string} id 
-     * @param {{background: string, border: string, height: number, width: number }} props
+     * @param {{background: string, border: string, height: string, width: string }} props
      * @param {number} vel
      */
     barr(id, { background, border, height, width }, vel) {
@@ -224,7 +230,7 @@ export const Animatus = {
     }
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-export const DropDown = (/** @type {string} */ id, /** @type {string[]} */ lista) => {
+export const DropDown = (/** @type {string} */ id, /** @type {any[]} */ lista) => {
     const drop = document.createElement('select');
     drop.id = id;
     drop.classList.add('drop');
@@ -251,7 +257,12 @@ export const replacer = (...args) => Object.values(args).forEach((arg) => {
     }
 }); /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-export const Lista = (/** @type {string} */ id, /** @type {any[]} */ lista, /** @type {{ [prop: string]: string; }} */ props) => {
+/**
+ * @param {string} id 
+ * @param {string[]} lista 
+ * @param {{[prop: string]: string}} [props]
+ */
+export const Lista = (id, lista, props) => {
     const $render = (/** @type {string} */ el) => document.createElement(el);
 
     const $lista = $render('ul');
@@ -271,7 +282,7 @@ export const Lista = (/** @type {string} */ id, /** @type {any[]} */ lista, /** 
     return $lista;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-export const Tabela = (/** @type {string} */ id, /** @type {Array.<object>} */ tabela) => {
+export const Tabela = (/** @type {string} */ id, /** @type {{}[]} */ tabela) => {
     const [table, thead, tbody] = ['table', 'thead', 'tbody'].map(el => document.createElement(el));
     const $render = (/** @type {string} */ tag, /** @type {string} */ content) => {
         const el = document.createElement(tag);
@@ -307,7 +318,7 @@ export const Tabela = (/** @type {string} */ id, /** @type {Array.<object>} */ t
  * @param {{[tag: string]: {[prop: string]: string}} | string} tag
  * @param {HTMLElement | HTMLElement[] | string} [conteúdo]
  */
-export const render = (tag, conteúdo) => {
+export function render(tag, conteúdo) {
     const elem = document.createElement(typeof tag === 'string' ? tag : Object.keys(tag)[0]);
 
     if (typeof tag === 'object')
@@ -322,7 +333,7 @@ export const render = (tag, conteúdo) => {
 /**
  * @param {{[prop: string]: string}[]} props
  */
-export const SearchBox = (...props) => {
+export function SearchBox(...props) {
     const searchBox = document.createElement('section');
     searchBox.classList.add('searchBox');
 
@@ -345,7 +356,7 @@ export const SearchBox = (...props) => {
  * @param {string} txtBtn
  * @param {{[prop: string]: string}[]} [propsChilds]
  */
-export const FormBox = (idForm, txtBtn, propsChilds) => {
+export function FormBox(idForm, txtBtn, propsChilds) {
     const form = document.createElement('form');
     form.id = idForm;
 
@@ -372,7 +383,7 @@ export const FormBox = (idForm, txtBtn, propsChilds) => {
  * @param {string} url 
  * @param {function} fn 
  */
-export const consumirAPI = async (url, fn) => {
+export async function consumirAPI(url, fn) {
     const api = await fetch(url);
     const res = await api.json();
 
@@ -397,7 +408,7 @@ export const SPA = (pages, elem) => {
 
 /**
  * @param {string} local 
- * @param {HTMLElement[] | string[]} childs 
+ * @param {HTMLElement[]} childs 
  */
 export const insertChilds = (local, childs) => document.querySelector(local).append(...childs);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -458,21 +469,13 @@ export const mapKeys = (obj, callBack) => Object.keys(obj).map(callBack);
 export const mapValues = (obj, callBack) => Object.values(obj).map(callBack);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/**
- * @param {{}} obj
- */
-export const getEntries = obj => Object.entries(obj);
+
+export const getEntries = (/** @type {{ [s: string]: any; } | ArrayLike<any>} */ obj) => Object.entries(obj);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/**
- * @param {{}} obj
- */
-export const getKeys = obj => Object.keys(obj);
+export const getKeys = (/** @type {{}} */ obj) => Object.keys(obj);
 
-/**
- * @param {{}} obj
- */
-export const getValues = obj => Object.values(obj);
+export const getValues = (/** @type {{ [s: string]: any; } | ArrayLike<any>} */ obj) => Object.values(obj);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
@@ -582,7 +585,7 @@ export const Burger = props => {
 /**
  * Retorna um item aleatório de um array
  */
-export const getRandomItem = (/** @type {any[]} */ arr) => arr[Math.floor(Math.random() * arr.length)];
+export const getRandomItem = (/** @type {string | any[]} */ arr) => arr[Math.floor(Math.random() * arr.length)];
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
@@ -607,7 +610,7 @@ export const Video = (src, props) => {
     return video;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-export const getSubstring = (/** @type {string} */ str, /** @type {string[]} */[start, end]) => str.substring(str.indexOf(start), str.indexOf(end));
+export const getSubstring = (/** @type {string} */ str, /** @type {string[]} */ [start, end]) => str.substring(str.indexOf(start), str.indexOf(end));
 
 /**
  * @param {string} texto 

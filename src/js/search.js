@@ -1,11 +1,11 @@
 import { getEntries, getValues, insertChilds, render, selek, selekFn, Span } from "./lib7.js";
-import russo from "./russo.js";
+import dicionário from "./dicionário.js";
 import { close } from "./template.js";
 
 export default () => {
     const [txt, res] = selek(['#txt', '#res']);
 
-    const search = getValues(russo)
+    const search = getValues(dicionário)
         .flatMap(trads => getEntries(trads))
         .reduce((acc, [pt, ru]) => ({ ...acc, [pt]: ru }), {});
 
@@ -20,7 +20,7 @@ export default () => {
                     res.hidden = false;
 
                     insertChilds('#res', [
-                        Span(`${txt.value} - ${search[str] ?? 'Ainda não temos essa palavra no russo'}`),
+                        Span(`${txt.value} - ${search[str] ?? 'Ainda não temos essa palavra no dicionário'}`),
                         render(close, 'X')
                     ]);
                 }

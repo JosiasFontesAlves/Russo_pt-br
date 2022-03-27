@@ -1,5 +1,5 @@
 import { consumirAPI, getEntries, getRandomItem, getValues, selek, selekFn, seleKlass } from './lib7.js';
-import russo_ptbr from './dicionário.js';
+import russo_ptbr from './russo.js';
 import Pergunta from './components/Pergunta.js';
 import setResultado from './setResultado.js';
 import setTema from './setTema.js';

@@ -1,4 +1,4 @@
-import russo from "../russo.js";
+import dicionário from "../dicionário.js";
 import { render } from "../lib7.js";
 
 export default render({ section: { id: 'semana' } }, [
@@ -6,5 +6,5 @@ export default render({ section: { id: 'semana' } }, [
     'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'
 ].map((dia, i) => render(
     { p: { id: `dia_${i}`, class: 'diaSem' } },
-    `${dia} - ${russo[dia[0].toUpperCase()][dia]}`
+    `${dia} - ${dicionário[dia[0].toUpperCase()][dia]}`
 )));

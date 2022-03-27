@@ -1,5 +1,5 @@
 import { render, Tabela } from '../lib7.js';
-import russo from '../russo.js';
+import dicionário from '../dicionário.js';
 
 const $num = [
     'Zero', 'Um', 'Dois', 'Três', 
@@ -7,7 +7,7 @@ const $num = [
     'Sete', 'Oito', 'Nove', 'Dez'
 ].map((n, i) => ({
     Número: i,
-    Russo: russo[n[0]][n]
+    Russo: dicionário[n[0]][n]
 }));
 
 export default render('div', Tabela('tab-num', $num));

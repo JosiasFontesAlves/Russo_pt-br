@@ -131,31 +131,31 @@ export const header = {
         {
             Pronome: "Eu", Nominativo: "Я", Genitivo: "Меня",
             Dativo: "Мне", Acusativo: "Меня",
-            Instrumental: "мной", Preposicional: "oбо мне"
+            Instrumental: "мной", Preposicional: "(oбо) мне"
         },
         {
             Pronome: "Tu", Nominativo: "Ты", Genitivo: "Тебя",
             Dativo: "Тебе", Acusativo: "Тебя",
-            Instrumental: "тобой", Preposicional: "o тебе"
+            Instrumental: "тобой", Preposicional: "(o) тебе"
         },
         {
             Pronome: "Nós", Nominativo: "Мы", Genitivo: "Нас",
             Dativo: "Нам", Acusativo: "Вас",
-            Instrumental: "нами", Preposicional: "o нас"
+            Instrumental: "нами", Preposicional: "(o) нас"
         },
         {
             Pronome: "Nós", Nominativo: "Мы", Genitivo: "Нас",
             Dativo: "Нам", Acusativo: "Вас",
-            Instrumental: "нами", Preposicional: "o нас"
+            Instrumental: "нами", Preposicional: "(o) нас"
         },
         {
             Pronome: "Vós", Nominativo: "Вы", Genitivo: "Вас",
             Dativo: "Вам", Acusativo: "Их",
-            Instrumental: "вами", Preposicional: "о вас"
+            Instrumental: "вами", Preposicional: "(o) вас"
         },
         {
             Pronome: "Eles / Elas", Nominativo: "Они",
             Genitivo: "Их", Dativo: "Им", Acusativo: "Их",
-            Instrumental: "ими", Preposicional: "о них",
+            Instrumental: "ими", Preposicional: "(o) них",
         }
     ];

@@ -94,6 +94,11 @@ td {
     backdrop-filter: blur(2px);
 }
 
+.blur3 {
+    background: #ffffff85;
+    backdrop-filter: blur(2px);
+}
+
 .br15 {
     border-radius: 15px;
 }

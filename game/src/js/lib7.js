@@ -1,5 +1,5 @@
 //@ts-check
-/*  
+/**
  * * * * * * * * * * * * *     * * * * * * * * *    * * * * * * * * * *    * * * * * * * * *     * * * * * * * * * * 
  * * * * * * * * * * * * *     * * * * * * * * *    * * * * * * * * * *    * * * * * * * * *     * * * * * * * * * * 
  * *                   * *     * *           * *            * *            * *                   * *             * *  
@@ -8,9 +8,26 @@
  * *        * *        * *     * *           * *            * *                          * *     * *             * * 
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
  * *        * *        * *     * *           * *            * *            * * * * * * * * *     * *             * * 
+ * @author Josias Fontes Alves
 */
 
-let versão = '4.1';
+let versão = '4.1.5';
+
+/**
+ * @param {{[tag: string]: {[prop: string]: string | number}} | string} elem
+ * @param {HTMLElement | HTMLElement[] | string} [content]
+ */
+const Component = (elem, content) => {
+    const $elem = document.createElement(typeof elem === 'string' ? elem : Object.keys(elem)[0]);
+
+    if (typeof elem === 'object')
+        for (let el in elem) Object.entries(elem[el]).forEach(([atr, val]) => $elem.setAttribute(atr, String(val)));
+
+    if (content)
+        Array.isArray(content) ? content.map(item => $elem.append(item)) : $elem.append(content);
+
+    return $elem;
+}
 
 /**
  * @param {string} idBtn
@@ -24,7 +41,7 @@ export function Btn(idBtn, estilo, cor, { height, width }) {
     const w25 = `width: ${width ?? 25}px;`, w25px = `width: ${width * 2.5}px;`;
 
     const props = [
-        `background: ${cor[1]}; border: 2px solid; padding: 2px; height: 20px; ${w25px}`,
+        `background: ${cor[1]}; border: 2px solid; padding: 2px; height: ${height ?? 20}px; ${w25px}`,
         `background: ${setCor(0, cor)}; border: none; height: inherit; ${w25}`,
         `background: ${setCor(1, '#d8d8d8')};`, `border-radius: ${height ?? 25}px; ${h25}`
     ],
@@ -42,12 +59,11 @@ export function Btn(idBtn, estilo, cor, { height, width }) {
                 `${props[1]} border-radius: 50%;`
             ]
         },
-        [borda, botão] = ['div', 'button'].map(elem => {
-            const el = document.createElement(elem);
-            el.setAttribute('style', btn[elem][estilo])
-
-            return el;
-        });
+        [borda, botão] = ['div', 'button'].map(elem => Component({
+            [elem]: {
+                style: btn[elem][estilo]
+            }
+        }));
 
     botão.id = idBtn;
     borda.style.display = 'flex';
@@ -70,7 +86,7 @@ export const Tempus = {
     },
     getRlg: () => {
         const date = new Date();
-        
+
         return [
             date.getHours(), date.getMinutes(), date.getSeconds()
         ].map(num => num < 10 ? `0${num}` : num);
@@ -81,7 +97,7 @@ export const Tempus = {
      */
     relógio(id, estilo) {
 
-        const rel = document.createElement('p');
+        const rel = Component('p');
         rel.id = id;
 
         setInterval(() => {
@@ -99,7 +115,7 @@ export const Tempus = {
      * @param {number} [estilo]
      */
     calendário(id, estilo) {
-        const cal = document.createElement('p');
+        const cal = Component('p');
         cal.id = id;
 
         setInterval(() => {
@@ -119,7 +135,7 @@ export const Tempus = {
      * @param {string} id 
      */
     saudação(id) {
-        const sdc = document.createElement('p'),
+        const sdc = Component('p'),
             hora = new Date().getHours();
 
         sdc.id = id ?? 'tempus-sdc';
@@ -132,7 +148,7 @@ export const Tempus = {
      * @param {number} vel
      */
     contador([start, end], vel) {
-        const res = document.createElement('p'),
+        const res = Component('p'),
             count = setInterval(() => (start <= end) ? res.textContent = String(start++) : clearInterval(count), vel);
 
         return res;
@@ -191,16 +207,13 @@ export const texto = tags => Object.entries(tags).forEach(([tag, texto]) => docu
 export const Animatus = {
     /**
      * @param {string} id 
-     * @param {object} props
-     * @param {string} props.background
-     * @param {string} props.border
-     * @param {number} props.height
-     * @param {number} props.width
+     * @param {{background: string, border: string, height: number, width: number }} props
      * @param {number} vel
      */
     barr(id, { background, border, height, width }, vel) {
-        const $render = () => document.createElement('div');
+        const $render = () => Component('div');
         const barr = $render(), innerBarr = $render();
+
         let px = 0;
 
         barr.style.border = border;
@@ -234,17 +247,13 @@ export const Animatus = {
     }
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/**
- * @param {string} id 
- * @param {string[]} lista
- */
-export function DropDown(id, lista) {
-    const drop = document.createElement('select');
+export const DropDown = (/** @type {string} */ id, /** @type {any[]} */ lista) => {
+    const drop = Component('select');
     drop.id = id;
     drop.classList.add('drop');
 
     lista.forEach(item => {
-        const option = document.createElement('option');
+        const option = Component('option');
         option.textContent = item;
 
         drop.appendChild(option);
@@ -271,13 +280,11 @@ export const replacer = (...args) => Object.values(args).forEach((arg) => {
  * @param {{[prop: string]: string}} [props]
  */
 export const Lista = (id, lista, props) => {
-    const $render = (/** @type {string} */ el) => document.createElement(el);
-
-    const $lista = $render('ul');
+    const $lista = Component('ul');
     $lista.id = id;
 
     lista.forEach((item, i) => {
-        const li = $render('li');
+        const li = Component('li');
         li.id = `${id}-${i}`;
         li.append(item);
 
@@ -290,29 +297,19 @@ export const Lista = (id, lista, props) => {
     return $lista;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/**
- * @param {string} id
- * @param {{}[]} tabela
- */
-export const Tabela = (id, tabela) => {
-    const [table, thead, tbody] = ['table', 'thead', 'tbody'].map(el => document.createElement(el));
-    const $render = (/** @type {string} */ tag, /** @type {string} */ content) => {
-        const el = document.createElement(tag);
-        el.append(...content);
+export const Tabela = (/** @type {string} */ id, /** @type {{}[]} */ tabela) => {
+    const [table, thead, tbody] = ['table', 'thead', 'tbody'].map(el => Component(el));
 
-        return el;
-    }
-
-    const Tr = (/** @type {*} */ data) => $render('tr', data);
+    const Tr = (/** @type {*} */ data) => Component('tr', data);
     const keys = tabela.map(key => Object.keys(key));
 
     table.id = id;
 
-    thead.appendChild(Tr(keys[0].map(th => $render('th', th))));
+    thead.appendChild(Tr(keys[0].map(th => Component('th', th))));
 
     const Body = tabela.flatMap(tab => [
         Object.values(tab).map(dado => {
-            const Td = document.createElement('td');
+            const Td = Component('td');
             Td.append(dado);
 
             return Td;
@@ -330,35 +327,23 @@ export const Tabela = (id, tabela) => {
  * @param {{[tag: string]: {[prop: string]: string}} | string} tag
  * @param {HTMLElement | HTMLElement[] | string} [conteúdo]
  */
-export function render(tag, conteúdo) {
-    const elem = document.createElement(typeof tag === 'string' ? tag : Object.keys(tag)[0]);
-
-    if (typeof tag === 'object')
-        for (let el in tag) Object.entries(tag[el]).forEach(([atr, val]) => elem.setAttribute(atr, val));
-
-    if (conteúdo)
-        Array.isArray(conteúdo) ? conteúdo.map(item => elem.append(item)) : elem.append(conteúdo);
-
-    return elem;
-} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+export const render = (tag, conteúdo) => Component(tag, conteúdo);
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
  * @param {{[prop: string]: string}[]} props
  */
 export function SearchBox(...props) {
-    const searchBox = document.createElement('section');
+    const searchBox = Component('section');
     searchBox.classList.add('searchBox');
 
     ['input', 'button'].map((el, i) => {
-        const child = document.createElement(el);
-
-        if (Array.isArray(props))
-            Object.entries(props[i]).map(([atr, val]) => child.setAttribute(atr, val));
+        const child = Component({ [el]: props[i] });
 
         searchBox.appendChild(child);
     });
 
-    searchBox.children[1].textContent = '=>';
+    searchBox.children[1].textContent = props[1].value ?? '=>';
 
     return searchBox;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -369,7 +354,7 @@ export function SearchBox(...props) {
  * @param {{[prop: string]: string}[]} [propsChilds]
  */
 export function FormBox(idForm, txtBtn, propsChilds) {
-    const form = document.createElement('form');
+    const form = Component('form');
     form.id = idForm;
 
     const inputs = ['text', 'password'].map(type => {
@@ -379,7 +364,7 @@ export function FormBox(idForm, txtBtn, propsChilds) {
         return input;
     });
 
-    form.append(...inputs, document.createElement('button'));
+    form.append(...inputs, Component('button'));
     form.children[2].textContent = txtBtn;
 
     if (propsChilds && propsChilds.length <= 3) {
@@ -426,28 +411,9 @@ export const insertChilds = (local, childs) => document.querySelector(local).app
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {string} id
- */
-export const Cookr = id => {
-    const data = {};
-
-    return {
-        id,
-        /**
-         * @param {string} [item] - nome da chave a ser pesquisada
-         */
-        getData: item => data[item] || data,
-        /**
-         * @param {{data: any}} content - chave a ser inserida no objeto
-         */
-        setData: content => Object.entries(content).forEach(([key, val]) => data[key] = val)
-    }
-} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-/**
  * @param {string} href 
  * @param {string} textContent
- * @param {{[prop: string]: string}} [props] 
+ * @param {{[prop: string]: string}} [props]
  */
 export const Link = (href, textContent, props) => {
     const link = document.createElement('a');
@@ -481,21 +447,12 @@ export const mapKeys = (obj, callBack) => Object.keys(obj).map(callBack);
 export const mapValues = (obj, callBack) => Object.values(obj).map(callBack);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/**
- * @param {{}} obj
- */
-export const getEntries = obj => Object.entries(obj);
+export const getEntries = (/** @type {{ [s: string]: any; } | ArrayLike<any>} */ obj) => Object.entries(obj);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/**
- * @param {{}} obj
- */
-export const getKeys = obj => Object.keys(obj);
+export const getKeys = (/** @type {{}} */ obj) => Object.keys(obj);
 
-/**
- * @param {{}} obj
- */
-export const getValues = obj => Object.values(obj);
+export const getValues = (/** @type {{ [s: string]: any; } | ArrayLike<any>} */ obj) => Object.values(obj);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
@@ -514,18 +471,14 @@ export const httpPost = (url, body) => fetch(url, {
  * @param {{[prop: string]: string}} [propsChilds]
  */
 export const LinkBar = (links, /** @type {{ [prop: string]: string; }} */ propsNav, /** @type {{ [prop: string]: string; }} */ propsChilds) => {
-    const linkBarr = document.createElement('nav');
-
-    const setProps = (/** @type {HTMLElement} */ el, /** @type {{ [prop: string]: string; }} */ props) => {
-        if (props) for (let prop in props) el.setAttribute(prop, props[prop]);
-    }
-
-    setProps(linkBarr, propsNav);
+    const linkBarr = Component({ nav: { ...propsNav } });
 
     const $links = Object.entries(links).map(([href, txt]) => {
         const link = document.createElement('a');
 
-        setProps(link, propsChilds);
+        if (propsChilds) {
+            for (let prop in propsChilds) link.setAttribute(prop, propsChilds[prop]);
+        }
 
         link.href = href;
         link.textContent = txt;
@@ -542,13 +495,11 @@ export const LinkBar = (links, /** @type {{ [prop: string]: string; }} */ propsN
 
 /**
  * @param {string} title 
- * @param {{[prop: string]: string}} [props] 
+ * @param {{[prop: string]: string}} [props]
  */
 export const Title = (title, props) => {
-    const h1 = document.createElement('h1');
+    const h1 = Component({ h1: { ...props } });
     h1.textContent = title;
-
-    if (props) Object.entries(props).forEach(([prop, val]) => h1.setAttribute(prop, val));
 
     return h1;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -556,14 +507,12 @@ export const Title = (title, props) => {
 /**
  * @param {string} src 
  * @param {string} alt 
- * @param {{[prop: string]: string | number}} [props] 
+ * @param {{[prop: string]: string | number}} [props]
  */
 export const Img = (src, alt, props) => {
-    const img = document.createElement('img');
+    const img = Component({ img: { ...props } });
 
     Object.entries({ src, alt }).forEach(([prop, val]) => img.setAttribute(prop, val));
-
-    if (props) for (let prop in props) img[prop] = props[prop];
 
     return img;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -579,19 +528,15 @@ export const getRandomNumber = (/** @type {number} */ numMax) => Math.floor(Math
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {{[prop: string]: string}} [props] 
+ * @param {{[prop: string]: string}} [props]
  */
 export const Burger = props => {
-    const burger = document.createElement('div');
+    const burger = Component({ div: { ...props } });
     burger.style.display = 'grid';
     burger.style.gap = '2px';
 
-    if (props && typeof props === 'object') {
-        Object.entries(props).forEach(([prop, val]) => burger.setAttribute(prop, val));
-    }
-
     for (let i = 0; i < 3; i++) {
-        const btn = document.createElement('button');
+        const btn = Component('button');
         btn.classList.add('btn_burger');
 
         burger.appendChild(btn);
@@ -605,7 +550,7 @@ export const Burger = props => {
 /**
  * Retorna um item aleatório de um array
  */
-export const getRandomItem = (/** @type {any[]} */ arr) => arr[Math.floor(Math.random() * arr.length)];
+export const getRandomItem = (/** @type {string | any[]} */ arr) => arr[Math.floor(Math.random() * arr.length)];
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
@@ -617,14 +562,14 @@ export const addClass = (el, classes) => document.querySelector(el).classList.ad
 
 /**
  * @param {string} src 
- * @param {{ [prop: string]: string }} props
+ * @param {{ [prop: string]: string | number }} props
  */
 export const Video = (src, props) => {
     const video = document.createElement('video');
     video.src = src;
 
     if (props && typeof props === 'object') {
-        Object.entries(props).forEach(([prop, val]) => video.setAttribute(prop, val));
+        Object.entries(props).forEach(([prop, val]) => video.setAttribute(prop, String(val)));
     }
 
     return video;
@@ -637,10 +582,8 @@ export const getSubstring = (/** @type {string} */ str, /** @type {string[]} */[
  * @param {{ [prop: string]: string; }} [props]
  */
 export const Span = (texto, props) => {
-    const span = document.createElement('span');
+    const span = Component({ span: { ...props } });
     span.innerText = texto;
-
-    if (props) Object.entries(props).forEach(([prop, val]) => span.setAttribute(prop, val));
 
     return span;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */

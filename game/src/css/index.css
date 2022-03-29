@@ -3,8 +3,9 @@
 }
 
 header {
-    background: linear-gradient(45deg, #15fc00a1, #00b7ff9a);
+    background: linear-gradient(45deg, #15fc00c2, #00b7ffb2);
     color: black;
+    z-index: 1;
 }
 
 .burger {
@@ -21,6 +22,24 @@ header {
     height: 25px;
     margin: 5px;
     width: 10px;
+}
+
+#menu-lateral {
+    background: #e0e0e0b2;
+    transform: translateX(-100vw);
+}
+
+.show_menu {
+    transform: translateX(0) !important;
+}
+
+.link {
+    color: black;
+}
+
+.link:hover {
+    border-bottom: 1px dashed;
+    color: blue;
 }
 
 #root {

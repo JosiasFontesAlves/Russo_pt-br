@@ -6,6 +6,6 @@ export default render({
         class: 'center fix flex w100'
     }
 }, [
-    Burger({ class: 'fix' }), 
+    Burger({ class: 'fix', id: 'burger' }), 
     Title('Matsa'), ContainerBarr
 ]);

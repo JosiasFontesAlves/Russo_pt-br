@@ -1,4 +1,4 @@
-import { consumirAPI, getEntries, getRandomItem, getValues, selek, selekFn, seleKlass } from './lib7.js';
+import { consumirAPI, getEntries, getRandomItem, getValues, menuLateral, selek, selekFn, seleKlass } from './lib7.js';
 import russo_ptbr from './russo.js';
 import Pergunta from './components/Pergunta.js';
 import setResultado from './setResultado.js';
@@ -36,4 +36,6 @@ export default () => consumirAPI('api.json', api => {
             ctrl < 5 ? init() : setResultado(api, respostas);
         }
     });
+
+    menuLateral('#menu-lateral', 'burger', 'show_menu');
 });

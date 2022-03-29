@@ -10,6 +10,6 @@ templatr([Header, Aside, Root, Footer]);
 
 App();
 
-location.hash = '#home';
+location.hash = '#resultados';
 
 SPA(routes, '#root');

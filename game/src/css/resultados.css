@@ -1,0 +1,9 @@
+#resultados {
+    margin: 25px 0;
+}
+
+.ttl_res {
+    border-bottom: 1px dashed;
+    border-top: 1px dashed;
+    margin: 15px 0;
+}

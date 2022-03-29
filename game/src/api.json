@@ -26,7 +26,115 @@
                 "Russo": "Ночевать",
                 "Resposta": "anoitecer"
             }
+        ],
+        "28 MAR 2022 - 23:55:30": [
+            {
+                "Português": "Barba",
+                "Russo": "Борода",
+                "Resposta": "barba"
+            },
+            {
+                "Português": "Derrotado",
+                "Russo": "Побеждённый",
+                "Resposta": "vencedor"
+            },
+            {
+                "Português": "Necessário",
+                "Russo": "Необходимо",
+                "Resposta": "desnecessário"
+            },
+            {
+                "Português": "Economia",
+                "Russo": "Экономика",
+                "Resposta": "economia"
+            },
+            {
+                "Português": "Preto",
+                "Russo": "Чёрный",
+                "Resposta": "preto"
+            }
+        ],
+        "28 MAR 2022 - 23:56:57": [
+            {
+                "Português": "Muito",
+                "Russo": "Очень",
+                "Resposta": "muito"
+            },
+            {
+                "Português": "Cozinha",
+                "Russo": "Кухня",
+                "Resposta": "cozinha"
+            },
+            {
+                "Português": "Sair",
+                "Russo": "Выйти",
+                "Resposta": "sair"
+            },
+            {
+                "Português": "Forte",
+                "Russo": "Сильный",
+                "Resposta": "forte"
+            },
+            {
+                "Português": "Cotovelo",
+                "Russo": "Локоть",
+                "Resposta": "joelho"
+            }
+        ],
+        "28 MAR 2022 - 23:57:45": [
+            {
+                "Português": "Espanha",
+                "Russo": "Испания",
+                "Resposta": "espanha"
+            },
+            {
+                "Português": "Quatro",
+                "Russo": "Четыре",
+                "Resposta": "quatro"
+            },
+            {
+                "Português": "Legal",
+                "Russo": "Классный",
+                "Resposta": "legal"
+            },
+            {
+                "Português": "Hospital",
+                "Russo": "Больница",
+                "Resposta": "hospital"
+            },
+            {
+                "Português": "Cinza",
+                "Russo": "Серый",
+                "Resposta": "cinza"
+            }
+        ],
+        "28 MAR 2022 - 23:58:39": [
+            {
+                "Português": "Não",
+                "Russo": "Не / нет",
+                "Resposta": "não"
+            },
+            {
+                "Português": "Rasgar",
+                "Russo": "Рвать",
+                "Resposta": "rasgar"
+            },
+            {
+                "Português": "Ucrânia",
+                "Russo": "Украина",
+                "Resposta": "ucrânia"
+            },
+            {
+                "Português": "Normal",
+                "Russo": "Нормально",
+                "Resposta": "normal"
+            },
+            {
+                "Português": "Chá",
+                "Russo": "Чай",
+                "Resposta": "chá"
+            }
         ]
     },
-    "temEsc": false
+    "temEsc": true
 }

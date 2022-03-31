@@ -1,11 +1,11 @@
 import { getEntries, getValues, insertChilds, render, selek, selekFn, Span } from "./lib7.js";
-import dicionário from "./dicionário.js";
+import russo from "./russo.js";
 import { close } from "./template.js";
 
 export default () => {
     const [txt, res] = selek(['#txt', '#res']);
 
-    const search = getValues(dicionário)
+    const search = getValues(russo)
         .flatMap(trads => getEntries(trads))
         .reduce((acc, [pt, ru]) => ({ ...acc, [pt]: ru }), {});
 

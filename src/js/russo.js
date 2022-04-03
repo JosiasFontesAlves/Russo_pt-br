@@ -11,10 +11,10 @@ export default {
         Avô       : 'Дедушка'     , Avó          : 'Бабушка'      , Azul       : 'Синий'     , 'Azul claro': 'Голубой' ,
     },
     B: {
-        Baixo : 'Короткий', Balançar: 'Качать' , Banco : 'Банк'    , Banheiro  : 'Ванная комната'      , Banquisa: 'Льдина'    , Bar    : 'Бар'     , 
-        Bebida: 'Напиток' , Barba   : 'Борода' , Barco : 'Корабль' , Básico    : 'Основной'            , Bastante: 'Достаточно', Batata : 'Картошка',
-        Bebê  : 'Младенец', Beber   : 'Пить'   , Bem   : 'Хорошо'  , Biblioteca: 'Библиотека'          , Bola    : 'Мяч'       , Bonito : 'Красивый', 
-        Botas : 'Ботинки' , Branco  : 'Белый'  , Brasil: 'Бразилия', Brasileiro: 'Бразилец/бразильский', Buraco  : 'Дырка'     , Buscar : 'Искать'  ,
+        Baixo : 'Короткий', Balançar: 'Качать' , Banco : 'Банк'    , Banheiro  : 'Ванная комната'      , Banquisa: 'Льдина'    , Bar   : 'Бар'     , 
+        Bebida: 'Напиток' , Barba   : 'Борода' , Barco : 'Корабль' , Básico    : 'Основной'            , Bastante: 'Достаточно', Batata: 'Картошка',
+        Bebê  : 'Младенец', Beber   : 'Пить'   , Bem   : 'Хорошо'  , Biblioteca: 'Библиотека'          , Bola    : 'Мяч'       , Bonito: 'Красивый', 
+        Botas : 'Ботинки' , Branco  : 'Белый'  , Brasil: 'Бразилия', Brasileiro: 'Бразилец/бразильский', Buraco  : 'Дырка'     , Buscar: 'Искать'  ,
     },
     C: {
         Cabeça  : 'Голова'    , Cabelo            : 'Волос'        , Caçar           : 'Ловить'    , Cachecol: 'Шарф'     , Cachorro : 'Собака'    , 
@@ -53,9 +53,9 @@ export default {
         Forte     : 'Сильный'    , Fraco    : 'Слабый' , França  : 'Франция' , Frango : 'Курица'      , Fruta  : 'Фрукт'
     },
     G: {
-        Ganhar        : 'Выиграть', Garçom: 'Официант', Garçonete: 'Официантка' , Garfo  : 'Вилка', Garganta: 'Горло / глотка', Garrafa: 'Бутылка',
-        Garota        : 'Девочка ', Garoto: 'Мальчик ', Gato     : 'Кот / Кошка', Gênio  : 'Гений', Genitor : 'Родитель'      , Gordo  : 'Толстый', 
-        Gorro         : 'Шапка'   , Gostar: 'Нравится', Grande   : 'Большой'    , Gramado: 'Газон', Gravata : 'Галстук'       , Grito  : 'Крик'   , 
+        Ganhar        : 'Выиграть', Garçom: 'Официант' , Garçonete: 'Официантка' , Garfo  : 'Вилка', Garganta: 'Горло / глотка', Garrafa: 'Бутылка',
+        Garota        : 'Девочка ', Garoto: 'Мальчик ' , Gato     : 'Кот / Кошка', Gênio  : 'Гений', Genitor : 'Родитель'      , Gordo  : 'Толстый', 
+        Gorro         : 'Шапка'   , Gostar: 'Нравиться', Grande   : 'Большой'    , Gramado: 'Газон', Gravata : 'Галстук'       , Grito  : 'Крик'   , 
         'Guarda-chuva': 'Зонт'    ,
     },
     H: {

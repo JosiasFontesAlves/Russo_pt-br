@@ -90,13 +90,17 @@ td {
 }
 
 .blur2 {
-    background: #ffffffa5;
+    background: #bbbbbb8c;
     backdrop-filter: blur(2px);
 }
 
 .blur3 {
-    background: #ffffff85;
+    background: #ffffffa5;
     backdrop-filter: blur(2px);
+}
+
+.br7 {
+    border-radius: 7px;
 }
 
 .br15 {
@@ -105,6 +109,10 @@ td {
 
 .br20 {
     border-radius: 20px;
+}
+
+.br50 {
+    border-radius: 50%;
 }
 
 .bs_neon {
@@ -175,6 +183,10 @@ td {
 
 .h100 {
     height: 100vh;
+}
+
+.w35 {
+    width: 35vw;
 }
 
 .w50 {

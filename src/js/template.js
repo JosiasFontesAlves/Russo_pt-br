@@ -1,6 +1,6 @@
 export const header = {
     header: {
-        class: 'vidro_neon center flex fix padd3 w100'
+        class: 'blur2 center flex fix w100'
     }
 },
     drop = {
@@ -48,7 +48,7 @@ export const header = {
     search = {
         section: {
             id: 'search',
-            class: 'center flex'
+            class: 'fix w100'
         }
     },
     container = {
@@ -59,21 +59,22 @@ export const header = {
     },
     trad = {
         p: {
-            class: 'trad'
+            class: 'trad padd3'
         }
     },
     res = {
         p: {
-            class: 'br15 padd5 vidro_neon',
+            class: 'blur2 br15 padd5',
             hidden: true, id: 'res'
         }
     },
     searchBox = [
         {
-            id: 'txt', type: 'text', class: 'br15 padd5',
+            id: 'txt', type: 'text',
+            class: 'blur2 br15 padd5 w70',
             placeholder: 'Pesquisar no dicionário'
         },
-        { id: 'ok' }
+        {class: 'br50', id: 'ok' }
     ],
     close = {
         button: {
@@ -82,7 +83,7 @@ export const header = {
     },
     blocos = {
         div: {
-            class: 'brd_nardo bs_neon3 blocos'
+            class: 'brd_nardo bs_neon3 blocos padd10'
         }
     },
     footer = {

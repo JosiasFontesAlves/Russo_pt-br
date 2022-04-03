@@ -11,7 +11,7 @@
  * @author Josias Fontes Alves
 */
 
-let versão = '4.1.5';
+let versão = '4.2';
 
 /**
  * @param {{[tag: string]: {[prop: string]: string | number}} | string} elem
@@ -33,30 +33,40 @@ const Component = (elem, content) => {
  * @param {string} idBtn
  * @param {number} estilo 
  * @param {string | string[]} cor
- * @param {{ height?: number, width?: number }} props - tamanho em px
+ * @param {{ height?: number, value?: string, props?: {[prop: string]: string}, width?: number }} propsBtn - tamanho em px
+ * 
  */
-export function Btn(idBtn, estilo, cor, { height, width }) {
+export const Btn = (idBtn, estilo, cor, { height, value, props, width }) => {
     const setCor = (/** @type {number} */ i, /** @type {string | string[]} */ bg) => Array.isArray(cor) ? cor[i] : bg;
     const [h25, h_inherit] = [25, 'inherit'].map(h => `height: ${height ?? h}px;`);
     const w25 = `width: ${width ?? 25}px;`, w25px = `width: ${width * 2.5}px;`;
 
-    const props = [
+    if (estilo === 7) {
+        return Component({
+            button: {
+                id: idBtn,
+                ...props
+            }
+        }, value);
+    }
+
+    const atrs = [
         `background: ${cor[1]}; border: 2px solid; padding: 2px; height: ${height ?? 20}px; ${w25px}`,
         `background: ${setCor(0, cor)}; border: none; height: inherit; ${w25}`,
         `background: ${setCor(1, '#d8d8d8')};`, `border-radius: ${height ?? 25}px; ${h25}`
     ],
         btn = {
             div: [
-                `${props[0]} border-radius: 15px;`, props[0], `${props[0]} border-radius: 7px;`,
-                `${props[2]}; height: 15px; border-radius: 10px; display: flex; align-items: center; width: ${width * 2.2}px`,
-                `${props[2]} ${props[3]} border: 1px solid; ${w25px}`,
-                `${props[2]}; border: 2px solid; ${props[3]} padding: 5px; ${w25px}`
+                `${atrs[0]} border-radius: 15px;`, atrs[0], `${atrs[0]} border-radius: 7px;`,
+                `${atrs[2]}; height: 15px; border-radius: 10px; display: flex; align-items: center; width: ${width * 2.2}px`,
+                `${atrs[2]} ${atrs[3]} border: 1px solid; ${w25px}`,
+                `${atrs[2]}; border: 2px solid; ${atrs[3]} padding: 5px; ${w25px}`
             ],
             button: [
-                `${props[1]} border-radius: inherit;`, props[1], `${props[1]} border-radius: 5px`,
+                `${atrs[1]} border-radius: inherit;`, atrs[1], `${atrs[1]} border-radius: 5px`,
                 `background: ${setCor(0, cor)}; border: none; border-radius: 50%; ${h25} ${w25}`,
                 `border: 5px solid ${setCor(0, cor)}; background: none; border-radius: 50%; ${h_inherit} ${w25}`,
-                `${props[1]} border-radius: 50%;`
+                `${atrs[1]} border-radius: 50%;`
             ]
         },
         [borda, botão] = ['div', 'button'].map(elem => Component({
@@ -93,11 +103,11 @@ export const Tempus = {
     },
     /**
      * @param {string} id 
-     * @param {number} [estilo] 
+     * @param {number} estilo - 0: relógio completo; 1: horas e minutos;
+     * @param {{[prop: string]: string}} [props]
      */
-    relógio(id, estilo) {
-
-        const rel = Component('p');
+    relógio(id, estilo, props) {
+        const rel = Component({ p: { ...props } });
         rel.id = id;
 
         setInterval(() => {
@@ -113,9 +123,10 @@ export const Tempus = {
     /**
      * @param {string} id 
      * @param {number} [estilo]
+     * @param {{[prop: string]: string}} [props]
      */
-    calendário(id, estilo) {
-        const cal = Component('p');
+    calendário(id, estilo, props) {
+        const cal = Component({ p: { ...props } });
         cal.id = id;
 
         setInterval(() => {
@@ -133,13 +144,17 @@ export const Tempus = {
     },
     /**
      * @param {string} id 
+     * @param {{[prop: string]: string}} [props]
      */
-    saudação(id) {
-        const sdc = Component('p'),
-            hora = new Date().getHours();
+    saudação(id, props) {
+        const sdc = Component({ p: { ...props } });
 
-        sdc.id = id ?? 'tempus-sdc';
-        sdc.textContent = (hora <= 12) ? "Bom dia!" : (hora >= 18) ? "Boa noite!" : "Boa tarde!";
+        setInterval(() => {
+            const hora = new Date().getHours();
+
+            sdc.id = id ?? 'tempus-sdc';
+            sdc.textContent = (hora <= 12) ? "Bom dia!" : (hora >= 18) ? "Boa noite!" : "Boa tarde!";
+        }, 1000);
 
         return sdc;
     },
@@ -333,7 +348,7 @@ export const render = (tag, conteúdo) => Component(tag, conteúdo);
 /**
  * @param {{[prop: string]: string}[]} props
  */
-export function SearchBox(...props) {
+export const SearchBox = (...props) => {
     const searchBox = Component('section');
     searchBox.classList.add('searchBox');
 
@@ -353,7 +368,7 @@ export function SearchBox(...props) {
  * @param {string} txtBtn
  * @param {{[prop: string]: string}[]} [propsChilds]
  */
-export function FormBox(idForm, txtBtn, propsChilds) {
+export const FormBox = (idForm, txtBtn, propsChilds) => {
     const form = Component('form');
     form.id = idForm;
 
@@ -380,7 +395,7 @@ export function FormBox(idForm, txtBtn, propsChilds) {
  * @param {string} url 
  * @param {function} fn 
  */
-export async function consumirAPI(url, fn) {
+export const consumirAPI = async (url, fn) => {
     const api = await fetch(url);
     const res = await api.json();
 
@@ -389,13 +404,14 @@ export async function consumirAPI(url, fn) {
 
 /**
  * @param {{[hash: string]: HTMLElement}} pages
- * @param {string} elem - componente que será atualizado
+ * @param {string} parent - componente que será atualizado
  */
-export const SPA = (pages, elem) => {
-    const parent = document.querySelector(elem);
+export const SPA = (pages, parent) => {
+    const $parent = document.querySelector(parent);
+    
     const setParent = () => {
-        parent.innerHTML = '';
-        parent.appendChild(pages[location.hash]);
+        $parent.innerHTML = '';
+        $parent.appendChild(pages[location.hash]);
     }
 
     setParent();

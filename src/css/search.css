@@ -1,29 +1,26 @@
 #search {
-    margin-top: 60px;
+    top: 50px;
 }
 
-button {
-    cursor: pointer;
-}
-
-#txt, #ok, #res {
-    background: var(--nardoGray);
+#txt, #ok {
     outline: none;
 }
 
 #txt {
     border: 2px solid var(--vidro);
     box-shadow: var(--sombra) var(--vidro);
-    outline: none;
-    width: 70vw;
 }
 
 #ok {
+    background: var(--nardoGray);
     border: 3px solid #929292;
-    border-radius: 50%;
     box-shadow: -5px 2px 7px #42424252;
     height: 45px;
     width: 45px;
+}
+
+#ok:hover {
+    background: #929292;
 }
 
 #ok, #res {
@@ -34,8 +31,7 @@ button {
     border: 2px solid var(--nardoGray);
     box-shadow: var(--sombra) var(--ghost_bg);
     color: black;
-    position: absolute;
-    top: 110px;
+    margin-top: 10px;
     width: 75vw;
 }
 

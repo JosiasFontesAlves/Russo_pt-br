@@ -1,16 +1,11 @@
 #container {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    margin-bottom: 7px;
+    margin: 100px 0 10px;
     width: 97vw;
 }
 
 .blocos {
     border-radius: 5px;
     margin: 7px;
-    padding: 10px;
     text-shadow: var(--neon2) var(--ghost_bg);
-}
-
-.trad {
-    padding: 3px;
 }

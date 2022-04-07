@@ -9,5 +9,5 @@ export default render({
     LinkBar({
         '#home': 'Início',
         '#resultados': 'Resultados anteriores'
-    }, { class: 'grid ' }, { class: 'padd10' })
+    }, { class: 'grid' }, { class: 'padd10' })
 ]);

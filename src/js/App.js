@@ -6,9 +6,9 @@ import setTema from "./setTema.js";
 export default () => {
     SPA(routes, '#root');
 
-    selekFn('#btn-menu', 'click', () => toggle('#drop', 'drop_hidden'));
+    selekFn('#btn-menu', 'click', () => toggle({ '#drop': 'drop_hidden' }));
 
     setTema();
 
-   search();
+    search();
 }

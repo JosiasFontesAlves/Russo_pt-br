@@ -19,7 +19,7 @@ export default () => consumirAPI('api.json', api => {
     init();
 
     selekFn('#btn-search', 'click', () => {
-        const resposta = selek('#txt-search');
+        const resposta = selek('#txt-search'), barr = seleKlass('barr');
     
         if (resposta.value !== '') {
             const str = resposta.value.replace(resposta.value[0], resposta.value[0].toUpperCase());
@@ -29,7 +29,7 @@ export default () => consumirAPI('api.json', api => {
                 Resposta: resposta.value
             });
 
-            seleKlass('barr')[ctrl++].style.background = (str === pt) ? 'green' : 'red';
+            barr[ctrl++].style.background = (str === pt) ? 'green' : 'red';
 
             resposta.value = '';
 

@@ -11,7 +11,7 @@
  * @author Josias Fontes Alves
 */
 
-let versão = '4.2.2';
+let versão = '4.2.7';
 
 /**
  * @param {{[tag: string]: {[prop: string]: string | number}} | string} elem
@@ -74,7 +74,7 @@ export const Btn = (idBtn, estilo, cor, { height, value, props, width }) => {
                 `${atrs[1]} border-radius: inherit;`, atrs[1], `${atrs[1]} border-radius: 5px`,
                 `background: ${setCor(0, cor)}; border: none; border-radius: 50%; ${h25} ${w25}`,
                 `border: 5px solid ${setCor(0, cor)}; background: none; border-radius: 50%; ${h_inherit} ${w25}`,
-                `${atrs[1]} border-radius: 50%;`, 
+                `${atrs[1]} border-radius: 50%;`,
                 `background: ${setCor(0, cor)}; border: none; border-radius: ${h15} 0 0 ${h15}; height: ${h15}; width: ${width ?? 15}px;`
             ]
         },
@@ -86,6 +86,8 @@ export const Btn = (idBtn, estilo, cor, { height, value, props, width }) => {
 
     botão.id = idBtn;
     borda.style.display = 'flex';
+
+    if (props && estilo !== 7) Object.entries(props).forEach(([prop, val]) => botão.setAttribute(prop, val));
 
     Object.entries({
         cursor: 'pointer',
@@ -265,8 +267,8 @@ export const Animatus = {
      * @param {number} vel 
      */
     girar(id, z, vel) {
-        const { style } = document.getElementById(id);
         let ang = 0;
+        const { style } = document.getElementById(id);
         const count = setInterval(() => (ang <= z) ? style.transform = `rotateZ(${ang++}deg)` : clearInterval(count), vel);
     }
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -287,16 +289,17 @@ export const DropDown = (/** @type {string} */ id, /** @type {any[]} */ lista) =
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {...{local: {[pesq: string]: string}}} args 
+ * @param {{[local: string]: {[pesq: string]: string | number}}} args 
  */
-export const replacer = (...args) => Object.values(args).forEach((arg) => {
-    for (const [local, res] of Object.entries(arg)) {
-        for (const pesq in res) {
-            const $local = document.querySelector(local);
-            $local.textContent = $local.textContent.replace(`{{${pesq}}}`, res[pesq]);
-        }
-    }
-}); /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+export const replacer = args => {
+    Object.entries(args).forEach(([local, res]) => {
+        const $local = document.querySelector(local);
+
+        Object.entries(res).forEach(
+            ([search, textContent]) => $local.textContent = $local.textContent.replace(search, String(textContent))
+        );
+    });
+} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
  * @param {string} id 
@@ -312,8 +315,7 @@ export const Lista = (id, lista, props) => {
         li.id = `${id}-${i}`;
         li.append(item);
 
-        if (props)
-            Object.entries(props).forEach(([prop, val]) => li.setAttribute(prop, val));
+        if (props) Object.entries(props).forEach(([prop, val]) => li.setAttribute(prop, val));
 
         $lista.appendChild(li);
     });
@@ -370,34 +372,6 @@ export const SearchBox = (...props) => {
     searchBox.children[1].textContent = props[1].value ?? '=>';
 
     return searchBox;
-} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-/**
- * @param {string} idForm
- * @param {string} txtBtn
- * @param {{[prop: string]: string}[]} [propsChilds]
- */
-export const FormBox = (idForm, txtBtn, propsChilds) => {
-    const form = Component('form');
-    form.id = idForm;
-
-    const inputs = ['text', 'password'].map(type => {
-        const input = document.createElement('input');
-        input.type = type;
-
-        return input;
-    });
-
-    form.append(...inputs, Component('button'));
-    form.children[2].textContent = txtBtn;
-
-    if (propsChilds && propsChilds.length <= 3) {
-        propsChilds.forEach((child, i) => {
-            Object.entries(child).forEach(([prop, val]) => form.children[i].setAttribute(prop, val));
-        });
-    }
-
-    return form;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
@@ -466,7 +440,7 @@ export const mapKeys = (obj, callBack) => Object.keys(obj).map(callBack);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {{[item: string]: any}} obj 
+ * @param {{[item: string]: any} | *[]} obj 
  * @param {(value: [string, any], index: number, array: [string, any][]) => any} callBack 
  */
 export const mapValues = (obj, callBack) => Object.values(obj).map(callBack);
@@ -542,11 +516,8 @@ export const Img = (src, alt, props) => {
     return img;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/**
- * @param {string} el
- * @param {string} toggle 
- */
-export const toggle = (el, toggle) => document.querySelector(el).classList.toggle(toggle);
+export const toggle = (/** @type {{[elem: string]: string}} */ elems) =>
+    Object.entries(elems).forEach(([el, toggle]) => document.querySelector(el).classList.toggle(toggle));
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 export const getRandomNumber = (/** @type {number} */ numMax) => Math.floor(Math.random() * numMax);

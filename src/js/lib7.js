@@ -11,7 +11,7 @@
  * @author Josias Fontes Alves
 */
 
-let versão = '4.2.7';
+let versão = '4.3';
 
 /**
  * @param {{[tag: string]: {[prop: string]: string | number}} | string} elem
@@ -378,7 +378,7 @@ export const SearchBox = (...props) => {
  * @param {string} url 
  * @param {function} fn 
  */
-export const consumirAPI = async (url, fn) => {
+export const AJAX = async (url, fn) => {
     const api = await fetch(url);
     const res = await api.json();
 
@@ -440,7 +440,7 @@ export const mapKeys = (obj, callBack) => Object.keys(obj).map(callBack);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {{[item: string]: any}} obj 
+ * @param {{[item: string]: any} | *[]} obj 
  * @param {(value: [string, any], index: number, array: [string, any][]) => any} callBack 
  */
 export const mapValues = (obj, callBack) => Object.values(obj).map(callBack);
@@ -549,11 +549,10 @@ export const Burger = props => {
 export const getRandomItem = (/** @type {string | any[]} */ arr) => arr[Math.floor(Math.random() * arr.length)];
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/**
- * @param {string} el 
- * @param {string[]} classes
- */
-export const addClass = (el, classes) => document.querySelector(el).classList.add(...classes);
+export const addClass = (/** @type {{[el: string]: string[]}} */ el) =>
+    Object.entries(el).forEach(([tag, classes]) => {
+        document.querySelectorAll(tag).forEach(item => item.classList.add(...classes));
+    });
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
@@ -571,17 +570,15 @@ export const Video = (src, props) => {
     return video;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-export const getSubstring = (/** @type {string} */ str, /** @type {string[]} */[start, end]) => str.substring(str.indexOf(start), str.indexOf(end));
+export const getSubstring = (/** @type {string} */ str, /** @type {string} */ start, /** @type {string} */ end) =>
+    end ? str.substring(str.indexOf(start), str.indexOf(end)) : str.substring(str.indexOf(start));
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
  * @param {string} texto 
  * @param {{ [prop: string]: string; }} [props]
  */
-export const Span = (texto, props) => {
-    const span = Component({ span: { ...props } });
-    span.innerText = texto;
-
-    return span;
-} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+export const Span = (texto, props) => Component({ span: { ...props } }, texto);
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2020 - ${new Date().getFullYear()}\nCriada por Josias Fontes Alves`);

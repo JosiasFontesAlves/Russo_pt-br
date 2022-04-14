@@ -1,7 +1,7 @@
-import { consumirAPI, httpPost, temEsc, toggle } from "./lib7.js";
+import { AJAX, httpPost, temEsc, toggle } from "./lib7.js";
 
 export default () => {
-    consumirAPI('temesc.json', ({ temEsc }) => {
+    AJAX('temesc.json', ({ temEsc }) => {
         if (temEsc) toggle({ body: 'temesc', '#btn-temesc': 'x30' });
     });
 

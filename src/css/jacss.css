@@ -87,6 +87,16 @@ td {
     backdrop-filter: blur(2px);
 }
 
+.blur4 {
+    background: #ffffff46;
+    backdrop-filter: blur(3px);
+}
+
+.blur5 {
+    background: linear-gradient(45deg, #ffffff8c, #7c7c7c8c);
+    backdrop-filter: blur(3px);
+}
+
 .br7 {
     border-radius: 7px;
 }
@@ -130,6 +140,7 @@ td {
 
 .flex {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .grid {

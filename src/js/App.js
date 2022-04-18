@@ -1,4 +1,4 @@
-import { addClass, AJAX, httpPost, selekFn, SPA, temEsc, toggle } from './lib7.js';
+import { AJAX, httpPost, selekFn, SPA, temEsc, toggle } from './lib7.js';
 import routes from './routes.js';
 import search from './search.js';
 
@@ -6,8 +6,6 @@ location.hash = '#home';
 
 export default () => {
     const dropHidden = () => toggle({ '#drop': 'drop_hidden' });
-
-    addClass({ '.btn_burger': ['fn'] })
 
     SPA(routes, '#root', dropHidden);
 

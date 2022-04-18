@@ -1,99 +1,90 @@
 export const header = {
     header: {
-        class: 'blur2 center flex fix w100'
+        class: 'blur2 bs_neon3 center fix flex w100'
     }
 },
     drop = {
-        div: {
-            id: 'drop',
-            class: 'bs_neon drop_hidden fix grid padd3 vidro_neon'
-        }
-    },
-    temesc = {
-        div: {
-            id: 'temesc',
-            class: 'center flex'
+        section: {
+            class: 'blur2 bs_neon2 drop_hidden fix grid',
+            id: 'drop'
         }
     },
     lista_drop = {
+        '#home': 'Início',
         '#alfabeto': 'Alfabeto',
         '#decl': 'Declinação',
-        '#home': 'Início',
         '#meses': 'Meses do ano',
         '#num': 'Números',
         '#semana': 'Dias da semana',
         '#pronomes': 'Pronomes pessoais'
     },
-    props_linkBar = [{ class: 'grid' }, { class: 'padd5' }],
-    lua = {
-        img: {
-            alt: 'lua', id: 'lua',
-            src: './img/temesc.png'
+    props_linkBarr = [
+        { class: 'grid' },
+        { class: 'hover_float padd5' }
+    ],
+    temesc = {
+        div: {
+            class: 'flex',
+            id: 'temesc'
         }
     },
-    btn_drop = [
-        'btn-temesc', 4, 'blue',
-        { height: 20, width: 20 }
-    ],
     root = {
         div: {
             id: 'root'
         }
     },
-    home = {
-        section: {
-            id: 'home'
-        }
-    },
     search = {
         section: {
-            id: 'search',
-            class: 'fix w100'
+            class: 'fix w100',
+            id: 'search'
         }
     },
-    container = {
-        div: {
-            id: 'container',
-            class: 'grid'
-        }
-    },
-    trad = {
-        p: {
-            class: 'trad padd3'
-        }
-    },
+    props_searchBox = [
+        {
+            class: 'blur2 brd_nardo br15 bs_neon2 padd5 w70',
+            id: 'txt-search'
+        },
+        {
+            class: 'br50 bs_neon3',
+            id: 'btn-search'
+        },
+    ],
     res = {
         p: {
-            class: 'blur2 br15 padd5',
+            class: 'blur2 br7 brd_nardo padd7 w70',
             hidden: true, id: 'res'
         }
     },
-    searchBox = [
-        {
-            id: 'txt', type: 'text',
-            class: 'blur2 br15 padd5 w70',
-            placeholder: 'Pesquisar no dicionário'
-        },
-        {class: 'br50', id: 'ok' }
-    ],
-    close = {
+    btn_close = {
         button: {
-            id: 'close', class: 'br15'
+            class: 'br7',
+            id: 'btn-res'
+        }
+    },
+    container = {
+        section: {
+            class: 'grid',
+            id: 'container'
         }
     },
     blocos = {
         div: {
-            class: 'brd_nardo bs_neon3 blocos padd10'
+            class: 'blocos br7 brd_nardo bs_neon3 padd5'
+        }
+    },
+    h2_letra = {
+        h2: {
+            class: 'letra padd5'
+        }
+    },
+    p_trads = {
+        p: {
+            class: 'padd5 trads'
         }
     },
     footer = {
         footer: {
-            class: 'center flex fix w100'
-        }
-    },
-    copyright = {
-        span: {
-            id: 'copyright'
+            class: 'fix grid w100'
         }
     },
     alfabeto = {
@@ -159,7 +150,7 @@ export const header = {
     },
     meses_ano = {
         p: {
-            class: 'meses_ano'
+            class: 'meses_ano padd7'
         }
     },
     num = {

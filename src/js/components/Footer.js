@@ -1,4 +1,4 @@
-import { render } from "../lib7.js";
-import { copyright, footer } from "../template.js";
+import { render, Span } from '../lib7.js';
+import { footer } from '../template.js';
 
-export default render(footer, render(copyright, `Josias Fontes Alves - Matsa \u00A9 ${new Date().getFullYear()}`));
+export default render(footer, Span('Matsa © 2022', { id: 'copyright' }));

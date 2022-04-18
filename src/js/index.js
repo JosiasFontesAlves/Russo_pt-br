@@ -1,11 +1,9 @@
-import App from "./App.js";
-import Footer from "./components/Footer.js";
-import Header from "./components/Header.js";
-import { render, templatr } from "./lib7.js";
-import { root } from "./template.js";
+import { templatr } from './lib7.js';
+import Header from './components/Header.js';
+import Root from './components/Root.js';
+import Footer from './components/Footer.js';
+import App from './App.js';
 
-templatr([Header, render(root), Footer]);
-
-location.hash = '#home';
+templatr([Header, Root, Footer]);
 
 App();

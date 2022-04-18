@@ -1,9 +1,9 @@
 import { getEntries, getValues, insertChilds, render, selek, selekFn, Span } from "./lib7.js";
 import russo from "./russo.js";
-import { close } from "./template.js";
+import { btn_close } from "./template.js";
 
 export default () => {
-    const [txt, res] = selek(['#txt', '#res']);
+    const [txt, res] = selek(['#txt-search', '#res']);
 
     const search = getValues(russo)
         .flatMap(trads => getEntries(trads))
@@ -11,7 +11,7 @@ export default () => {
 
     selekFn('#search', 'click', ({ target }) => {
         const fn = {
-            ok: () => {
+            'btn-search': () => {
                 res.innerHTML = '';
 
                 if (txt.value !== '') {
@@ -21,12 +21,12 @@ export default () => {
 
                     insertChilds('#res', [
                         Span(`${txt.value} - ${search[str] ?? 'Ainda não temos essa palavra no dicionário'}`),
-                        render(close, 'X')
+                        render(btn_close, 'X')
                     ]);
                 }
 
                 txt.value = '';
-            }, close: () => res.hidden = true
+            }, 'btn-res': () => res.hidden = true
         };
 
         if (target.localName === 'button') fn[target.id]();

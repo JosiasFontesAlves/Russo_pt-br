@@ -1,28 +1,16 @@
-#btn-menu {
-    left: 15px;
-}
-
-.drop_hidden {
-    top: -100vh !important;
-}
-
 #drop {
-    border-radius: 0 0 25px 25px;
-    left: 10px;
+    border: 3px solid #bbbbbb8c;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    left: 7px;
     top: 43px;
+    width: fit-content;
 }
 
-#drop a {
+.link {
     color: black;
-    padding: 5px;
-    text-decoration: none;
 }
 
-#drop a:hover {
+.link:hover {
     color: blue;
-}
-
-#lua {
-    margin-right: 15px;
-    width: 30px;
 }

@@ -1,0 +1,27 @@
+#search {
+    top: 50px;
+}
+
+.searchBox * {
+    outline: none;
+}
+
+#btn-search {
+    border: 3px solid var(--nardoGray);
+    height: 40px;
+    transform: translateX(-3vw);
+    width:  40px;
+}
+
+#btn-search:hover {
+    background: var(--nardoGray);
+}
+
+#res {
+    margin-top: 7px;
+}
+
+#btn-res {
+    right: 3px;
+    position: absolute;
+}

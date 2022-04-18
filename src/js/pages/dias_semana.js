@@ -5,6 +5,6 @@ export default render({ section: { id: 'semana' } }, [
     'Domingo', 'Segunda-feira', 'Terça-feira',
     'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'
 ].map((dia, i) => render(
-    { p: { id: `dia_${i}`, class: 'diaSem' } },
+    { p: { id: `dia_${i}`, class: 'diaSem padd15' } },
     `${dia} - ${russo[dia[0].toUpperCase()][dia]}`
 )));

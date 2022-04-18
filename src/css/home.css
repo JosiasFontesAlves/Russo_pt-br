@@ -1,11 +1,19 @@
 #container {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    margin: 100px 0 10px;
+    margin: 93px 0 10px;
     width: 97vw;
 }
 
 .blocos {
     border-radius: 5px;
     margin: 7px;
-    text-shadow: var(--neon2) var(--ghost_bg);
+}
+
+.trads {
+    border-bottom: 1px solid var(--nardoGray);
+    text-align: left;
+}
+
+.ru {
+    float: right;
 }

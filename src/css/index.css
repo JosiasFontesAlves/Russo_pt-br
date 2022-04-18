@@ -1,43 +1,35 @@
-@import "alfabeto.css";
-@import 'drop.css';
-@import "home.css";
-@import 'search.css';
-@import 'num.css';
-
 * {
-    transition: all 0.3s;
+    font-family: 'work sans', sans-serif;
+    text-shadow: var(--ghost_neon);
+}
+
+.drop_hidden {
+    transform: translateY(-100vw);
 }
 
 body {
-    font-family: 'work sans', sans-serif;
     text-align: center;
 }
 
 header {
     color: black;
-    font-family: 'roboto mono', sans-serif;
-    top: 0;
     z-index: 1;
 }
 
-.diaSem,
-.meses_ano {
-    padding: 10px;
+#ttl,
+.letra,
+.link {
+    font-family: 'roboto mono', sans-serif;
 }
 
-td {
-    height: 70px;
+.burger {
+    left: 10px;
 }
 
-.trad {
-    padding: 3px;
-}
-
-#title-tab-pronomes {
-    margin: 25px;
+#tab-num {
+    margin: 50px 0 15px;
 }
 
 footer {
     bottom: 3px;
-    color: #505050;
 }

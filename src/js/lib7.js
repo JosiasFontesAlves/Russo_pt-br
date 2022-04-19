@@ -224,12 +224,6 @@ export const menuLateral = (id, btn, toggle) =>
 export const templatr = (/** @type {HTMLElement[]} */ elems) => elems.forEach(tag => document.body.appendChild(tag));
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/** 
- * @param {{id: string}} tags - { id: texto }
- */
-export const texto = tags => Object.entries(tags).forEach(([tag, texto]) => document.getElementById(tag).textContent = texto);
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
 export const Animatus = {
     /**
      * @param {string} id 
@@ -388,7 +382,7 @@ export const AJAX = async (url, fn) => {
 /**
  * @param {{[hash: string]: HTMLElement}} pages
  * @param {string} parent - componente que será atualizado
- * @param {function} [fn] - CallBack opcional
+ * @param {(hash: string) => void} [fn] - CallBack opcional
  */
 export const SPA = (pages, parent, fn) => {
     const $parent = document.querySelector(parent);
@@ -403,7 +397,7 @@ export const SPA = (pages, parent, fn) => {
     window.addEventListener('hashchange', () => {
         setParent();
 
-        if (fn) fn(pages);
+        if (fn) fn(location.hash);
     });
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 

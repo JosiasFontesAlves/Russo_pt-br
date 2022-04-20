@@ -1,11 +1,7 @@
-import { mapEntries, render, SearchBox, Span } from '../lib7.js';
+import { mapEntries, render, Span } from '../lib7.js';
 import russo from '../russo.js';
-import { blocos, container, h2_letra, props_searchBox, p_trads, res, search } from '../template.js';
-
-const Search = render(search, [
-    SearchBox(...props_searchBox),
-    render(res)
-]);
+import { blocos, container, h2_letra, p_trads } from '../template.js';
+import Search from '../components/Search.js';
 
 const Container = mapEntries(russo, ([letra, trads]) => {
     const $trads = mapEntries(trads, ([pt, ru]) =>

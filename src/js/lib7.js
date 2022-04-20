@@ -11,7 +11,7 @@
  * @author Josias Fontes Alves
 */
 
-let versão = '4.3.6';
+let versão = '4.4';
 
 /**
  * @param {{[tag: string]: {[prop: string]: string | number}} | string} elem
@@ -283,17 +283,19 @@ export const DropDown = (/** @type {string} */ id, /** @type {any[]} */ lista) =
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {{[local: string]: {[pesq: string]: string | number}}} args 
+ * @param {{[local: string]: string | number | {[pesq: string]: string | number}}} args 
  */
-export const replacer = args => {
+export const replacer = args =>
     Object.entries(args).forEach(([local, res]) => {
         const $local = document.querySelector(local);
 
-        Object.entries(res).forEach(
-            ([search, textContent]) => $local.textContent = $local.textContent.replace(search, String(textContent))
-        );
+        (typeof res === 'string' || typeof res === 'number')
+            ? $local.textContent = String(res)
+            : Object.entries(res).forEach(([search, textContent]) =>
+                $local.textContent = $local.textContent.replace(search, String(textContent))
+            );
     });
-} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
  * @param {string} id 

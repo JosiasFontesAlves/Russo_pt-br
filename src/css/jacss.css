@@ -129,6 +129,10 @@ td {
     box-shadow: 3px 3px 10px #acacac;
 }
 
+.bs_neon4 {
+    box-shadow: 0 2px 7px #a0a0a08e;
+}
+
 .center {
     align-items: center;
     justify-content: center;

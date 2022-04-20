@@ -1,4 +1,4 @@
-import { AJAX, httpPost, replacer, selek, selekFn, SPA, temEsc, toggle } from './lib7.js';
+import { AJAX, httpPost, replacer, selekFn, SPA, temEsc, toggle } from './lib7.js';
 import routes from './routes.js';
 import search from './search.js';
 import { lista_drop } from './template.js';
@@ -10,12 +10,8 @@ export default () => {
 
     SPA(routes, '#root', hash => {
         lista_drop['#home'] = 'Dicionário de russo';
-        
-        replacer({
-            '#ttl': {
-                [selek('#ttl').textContent]: lista_drop[hash]
-            }
-        });
+
+        replacer({ '#ttl': lista_drop[hash] });
 
         dropHidden();
     });

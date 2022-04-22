@@ -2,7 +2,7 @@ import { getEntries, getValues, replacer, selek, selekFn } from "./lib7.js";
 import russo from "./russo.js";
 
 export default () => {
-    const [txt, res] = selek(['#txt-search', '#res']);
+    const [txt, res] = selek('#txt-search', '#res');
 
     const search = getValues(russo)
         .flatMap(trads => getEntries(trads))

@@ -1,10 +1,12 @@
-import { insertChilds, render, selek, Span } from '../lib7.js';
+import { render, Span } from '../lib7.js';
 
-export default (/** @type {string} */ ru) => {
-    selek('#pergunta').innerHTML = '';
-
-    insertChilds('#pergunta', [
-        Span('Qual é o significado de '),
-        render('b', ru), Span(' Em russo?')
-    ]);
-};
+export default render({
+    p: {
+        class: 'padd15',
+        id: 'pergunta'
+    }
+}, [
+    Span('Qual é o significado de '),
+    render({ b: { id: 'resposta' } }),
+    Span(' Em russo?')
+]);

@@ -10,7 +10,7 @@ export default api => {
     }
 
     temEsc('btn-temesc', ['body'], 'temesc', ({ target }) => {
-        api.temEsc = toggle(`#${target.id}`, 'x30');
+        api.temEsc = toggle({ [`#${target.id}`]: 'x30' });
 
         setAPI(api);
     });

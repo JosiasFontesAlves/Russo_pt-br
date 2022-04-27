@@ -5,6 +5,6 @@ export default SearchBox({
     id: 'txt-search',
     placeholder: 'Digite a resposta'
 }, {
-    class: 'brd_nardo br15',
+    class: 'brd_nardo br15 btn_search fn',
     id: 'btn-search'
 });

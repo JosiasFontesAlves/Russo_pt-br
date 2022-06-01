@@ -11,7 +11,7 @@ export default () => {
     selekFn('#search', 'click', ({ target }) => {
         const fn = {
             'btn-search': () => {
-                if (txt.value !== '') {
+                if (txt.value.trim()) {
                     const str = txt.value.replace(txt.value[0], txt.value[0].toUpperCase());
 
                     res.hidden = false;

@@ -2,16 +2,16 @@ import Alfabeto from './pages/Alfabeto.js';
 import Decl from './pages/Decl.js';
 import Home from './pages/Home.js';
 import Meses from './pages/Meses.js';
-import Semana from './pages/Dias_semana.js';
 import Num from './pages/Num.js';
 import Pronomes from './pages/Pronomes.js';
+import Semana from './pages/Semana.js';
 
 export default {
     '#home': Home,
-    '#decl': Decl,
-    '#semana': Semana,
     '#alfabeto': Alfabeto,
+    '#decl': Decl,
     '#meses': Meses,
     '#num': Num,
+    '#semana': Semana,
     '#pronomes': Pronomes
 }

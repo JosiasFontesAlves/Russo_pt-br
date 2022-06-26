@@ -1,3 +1,7 @@
+.drop_hidden {
+    transform: translateY(-100vw);
+}
+
 #drop {
     border: 3px solid #bbbbbb8c;
     border-top: none;

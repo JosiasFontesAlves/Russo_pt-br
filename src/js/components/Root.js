@@ -1,4 +1,3 @@
-import { render } from '../lib7.js'; 
-import { root } from '../template.js';
+import { render } from '../lib7.js';
 
-export default render(root);
+export default render({ div: { id: 'root' } });

@@ -1,8 +1,11 @@
 import { Burger, render, Title } from '../lib7.js';
-import { header } from '../template.js';
 import Drop from './Drop.js';
 
-export default render(header, [
-    Burger({ class: 'fix', id: 'burger' }), Drop,
+export default render({
+    header: {
+        className: 'blur2 bs_neon3 center fix flex w100'
+    }
+}, [
+    Burger({ className: 'fix', id: 'burger' }), Drop,
     Title('Dicionário de russo', { id: 'ttl' })
 ]);

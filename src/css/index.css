@@ -1,28 +1,15 @@
-* {
-    font-family: 'work sans', sans-serif;
+body {
+    font-family: 'roboto mono', sans-serif;
     text-shadow: var(--ghost_neon);
 }
 
-.drop_hidden {
-    transform: translateY(-100vw);
-}
-
-body {
-    text-align: center;
-}
-
 header {
+    top: 0;
     color: black;
     z-index: 1;
 }
 
-#ttl,
-.letra,
-.link {
-    font-family: 'roboto mono', sans-serif;
-}
-
-.burger {
+#burger {
     left: 10px;
 }
 

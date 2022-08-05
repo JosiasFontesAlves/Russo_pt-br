@@ -11,7 +11,8 @@ export default render({
         id: 'txt-search'
     }, {
         className: 'br50 bs_neon3',
-        id: 'btn-search'
+        id: 'btn-search', 
+        textContent: '=>'
     }, {
         id: 'search'
     }),

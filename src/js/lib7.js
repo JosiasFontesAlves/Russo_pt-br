@@ -10,7 +10,7 @@
  * @author Josias Fontes Alves
 */
 
-let versão = '4.5';
+let versão = '4.5.7';
 
 /**
  * @param {{[tag: string]: {[prop: string]: string | number}} | string} tag 
@@ -348,13 +348,11 @@ export const SearchBox = (...props) => {
     const searchBox = Component({ 'section': { ...props[2] } });
     searchBox.classList.add('searchBox');
 
-    ['input', 'button'].map((el, i) => {
+    ['input', 'button'].forEach((el, i) => {
         const child = Component({ [el]: props[i] });
 
         searchBox.appendChild(child);
     });
-
-    searchBox.children[1].textContent = props[1].value ?? '=>';
 
     return searchBox;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -368,28 +366,6 @@ export const AJAX = async (url, fn) => {
     const res = await api.json();
 
     return fn(res);
-} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-/**
- * @param {{[hash: string]: HTMLElement}} pages
- * @param {string} parent - componente que será atualizado
- * @param {(hash: string) => void} [fn] - CallBack opcional
- */
-export const SPA = (pages, parent, fn) => {
-    const $parent = document.querySelector(parent);
-
-    const setParent = () => {
-        $parent.innerHTML = '';
-        $parent.appendChild(pages[location.hash]);
-    }
-
-    setParent();
-
-    window.addEventListener('hashchange', () => {
-        setParent();
-
-        if (fn) fn(location.hash);
-    });
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 export const insertChilds = (/** @type {string} */ local, /** @type {HTMLElement[] | HTMLElement} */ childs) => {
@@ -516,18 +492,18 @@ export const toggle = (elems, force) => {
 
 /**
  * @param {{[prop: string]: string}} [props]
+ * @param {{[prop: string]: string}} [propsChilds]
  */
-export const Burger = props => {
-    const burger = Component({ div: { ...props } });
-    burger.style.display = 'grid';
-    burger.style.gap = '2px';
+export const Burger = (props, propsChilds) => {
+    const burger = Component({ div: { ...props, style: 'display: grid; gap: 2px;' } });
 
-    for (let i = 0; i < 3; i++) {
-        const btn = Component('button');
+    Array.from({ length: 3 }, () => {
+        const btn = Component({ button: { ...propsChilds } });
+
         btn.classList.add('btn_burger');
 
-        burger.appendChild(btn);
-    }
+        return btn;
+    }).forEach(child => burger.appendChild(child));
 
     burger.classList.add('burger');
 
@@ -582,10 +558,29 @@ export const Span = (texto, props) => Component({ span: { ...props } }, texto);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * Adiciona um id numérico a uma classe CSS
- * @param {string} classe 
- * @param {string} id 
+ * @param {{[hash: string]: HTMLElement}} routes 
+ * @param {{ [prop: string]: string; }} [props]
+ * @param {function} fn 
  */
-export const addId = (classe, id) => [...document.getElementsByClassName(classe)].forEach((elem, i) => elem.id = `${id}-${i}`);
+export const Router = (routes, props, fn) => {
+    const router = Component({ div: { ...props } });
+
+    router.classList.add('router');
+
+    const setContent = () => {
+        router.innerHTML = '';
+        router.append(routes[location.hash]);
+    }
+
+    setContent();
+
+    window.addEventListener('hashchange', () => {
+        setContent();
+
+        if (fn) fn(location.hash);
+    });
+
+    return router;
+} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2020 - ${new Date().getFullYear()}\nCriada por Josias Fontes Alves`);

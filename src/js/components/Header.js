@@ -7,5 +7,5 @@ export default render({
     }
 }, [
     Burger({ className: 'fix', id: 'burger' }), Drop,
-    Title('Dicionário de russo', { id: 'ttl' })
+    Title(1, 'Dicionário de russo', { id: 'ttl' })
 ]);

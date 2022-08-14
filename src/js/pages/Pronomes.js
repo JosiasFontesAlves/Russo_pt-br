@@ -13,7 +13,7 @@ export default render({
         },
         'Declinação dos pronomes pessoais'
     ]),
-    Tabela('tab-pronomes', [
+    Tabela([
         {
             Pronome: 'Eu', Nominativo: 'Я', Genitivo: 'Меня',
             Dativo: 'Мне', Acusativo: 'Меня',
@@ -44,5 +44,5 @@ export default render({
             Genitivo: 'Их', Dativo: 'Им', Acusativo: 'Их',
             Instrumental: 'ими', Preposicional: '(o) них',
         }
-    ])
+    ], { id: 'tab-pronomes' })
 ]);

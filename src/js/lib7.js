@@ -10,7 +10,7 @@
  * @author Josias Fontes Alves
 */
 
-let versão = '4.5.7';
+let versão = '4.6.5';
 
 /**
  * @param {{[tag: string]: {[prop: string]: string | number}} | string} tag 
@@ -213,49 +213,6 @@ export const temEsc = (btn, elems, toggle, fn) => document.getElementById(btn)?.
 export const templatr = (/** @type {Node[]} */ ...childs) => document.querySelector('body')?.append(...childs);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-export const Animatus = {
-    /**
-     * @param {string} id 
-     * @param {{background: string, border: string, height: number, width: number }} props
-     * @param {number} vel
-     */
-    barr(id, { background, border, height, width }, vel) {
-        const $render = () => Component('div');
-        const barr = $render(), innerBarr = $render();
-
-        let px = 0;
-
-        barr.style.border = border;
-        barr.id = id;
-
-        Object.entries({
-            background,
-            float: 'left',
-            height: 'inherit'
-        }).forEach(([prop, val]) => innerBarr.style[prop] = val);
-
-        const { style } = innerBarr;
-
-        Object.entries({ height, width }).forEach(([prop, val]) => barr.style[prop] = `${val}px`);
-
-        const count = setInterval(() => (style.width != `${width}px`) ? style.width = `${px++}px` : clearInterval(count), vel);
-
-        barr.appendChild(innerBarr);
-
-        return barr;
-    },
-    /**
-     * @param {string} id 
-     * @param {number} z 
-     * @param {number} vel 
-     */
-    girar(id, z, vel) {
-        let ang = 0;
-        //const { style } = ;
-        const count = setInterval(() => (ang <= z) ? document.getElementById(id).style.transform = `rotateZ(${ang++}deg)` : clearInterval(count), vel);
-    }
-} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
 export const DropDown = (/** @type {string} */ id, /** @type {any[]} */ lista) => {
     const drop = Component('select');
     drop.id = id;
@@ -287,51 +244,36 @@ export const replacer = args =>
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {string} id 
  * @param {string[]} lista 
- * @param {...{[prop: string]: string}} [props]
+ * @param {{[prop: string]: string}} [props]
+ * @param {{[prop: string]: string}} [propsChilds]
  */
-export const Lista = (id, lista, ...props) => {
-    const $lista = Component({ ul: { ...props[1] } });
-    $lista.id = id;
+export const Lista = (lista, props, propsChilds) =>
+    Component({
+        ul: {
+            ...props
+        }
+    }, lista.map(item =>
+        Component({ li: { ...propsChilds } }, item)
+    ));
 
-    lista.forEach((item, i) => {
-        const li = Component('li');
-        li.id = `${id}-${i}`;
-        li.append(item);
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-        if (props) Object.entries(props[0]).forEach(([prop, val]) => li.setAttribute(prop, val));
+export const Tabela = (/** @type {{}[]}*/ data,/** @type {{[prop: string]: string }} */ props) => {
+    const Thead = Component('thead', Object.keys(...data).map(item => Component('th', item)));
 
-        $lista.appendChild(li);
-    });
+    const items = Object.values(data).map((item) =>
+        Component('tr', Object.values(item).map(text => Component('td', text)))
+    );
 
-    return $lista;
-} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-export const Tabela = (/** @type {string} */ id, /** @type {{}[]} */ tabela) => {
-    const [table, thead, tbody] = ['table', 'thead', 'tbody'].map(el => Component(el));
-
-    const Tr = (/** @type {*} */ data) => Component('tr', data);
-    const keys = tabela.map(key => Object.keys(key));
-
-    table.id = id;
-
-    thead.appendChild(Tr(keys[0].map(th => Component('th', th))));
-
-    const Body = tabela.flatMap(tab => [
-        Object.values(tab).map(dado => {
-            const Td = Component('td');
-            Td.append(dado);
-
-            return Td;
-        })
-    ].map(row => Tr(row)));
-
-    tbody.append(...Body)
-
-    table.append(thead, tbody);
-
-    return table;
+    return Component({
+        table: {
+            ...props
+        }
+    }, [
+        Thead,
+        Component('tbody', items)
+    ]);
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
@@ -371,7 +313,7 @@ export const AJAX = async (url, fn) => {
 export const insertChilds = (/** @type {string} */ local, /** @type {HTMLElement[] | HTMLElement} */ childs) => {
     const $local = document.querySelector(local);
 
-    Array.isArray(childs) ? childs.forEach(child => $local.appendChild(child)) : $local.appendChild(childs);
+    Array.isArray(childs) ? childs.forEach(child => $local.append(child)) : $local.append(childs);
 }
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
@@ -381,12 +323,7 @@ export const insertChilds = (/** @type {string} */ local, /** @type {HTMLElement
  * @param {{[prop: string]: string}} [props]
  */
 export const Link = (href, textContent, props) => {
-    const link = document.createElement('a');
-
-    Object.entries({ textContent, href }).forEach(([prop, val]) => link[prop] = val);
-
-    if (props && typeof props === 'object')
-        Object.entries(props).forEach(([prop, val]) => link.setAttribute(prop, val));
+    const link = Component({ a: { ...props, href, textContent } });
 
     link.classList.add('link');
 
@@ -415,7 +352,6 @@ export const mapValues = (obj, callBack) => Object.values(obj).map(callBack);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 export const getEntries = (/** @type {{ [s: string]: any; } | ArrayLike<any>} */ obj) => Object.entries(obj);
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 export const getKeys = (/** @type {{}} */ obj) => Object.keys(obj);
 
@@ -460,14 +396,12 @@ export const LinkBar = (links, /** @type {{ [prop: string]: string; }} */ propsN
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {string} title 
+ * @param {number} size - 1 - 6
+ * @param {string} textContent
  * @param {{[prop: string]: string}} [props]
  */
-export const Title = (title, props) => {
-    const h1 = Component({ h1: { ...props, textContent: title } });
-
-    return h1;
-} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+export const Title = (size, textContent, props) => Component({ [`h${size}`]: { ...props, textContent } });
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
  * @param {string} src 
@@ -487,8 +421,7 @@ export const toggle = (elems, force) => {
     );
 
     return force;
-}
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
  * @param {{[prop: string]: string}} [props]
@@ -499,7 +432,6 @@ export const Burger = (props, propsChilds) => {
 
     Array.from({ length: 3 }, () => {
         const btn = Component({ button: { ...propsChilds } });
-
         btn.classList.add('btn_burger');
 
         return btn;
@@ -521,21 +453,6 @@ export const addClass = (/** @type {{[el: string]: string[]}} */ el) =>
         document.querySelectorAll(tag).forEach(item => item.classList.add(...classes));
     });
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-/**
- * @param {string} src 
- * @param {{ [prop: string]: string | number }} props
- */
-export const Video = (src, props) => {
-    const video = document.createElement('video');
-    video.src = src;
-
-    if (props && typeof props === 'object') {
-        Object.entries(props).forEach(([prop, val]) => video.setAttribute(prop, String(val)));
-    }
-
-    return video;
-} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
  * @param {string} str 
@@ -560,7 +477,7 @@ export const Span = (texto, props) => Component({ span: { ...props } }, texto);
 /**
  * @param {{[hash: string]: HTMLElement}} routes 
  * @param {{ [prop: string]: string; }} [props]
- * @param {function} fn 
+ * @param {function} [fn]
  */
 export const Router = (routes, props, fn) => {
     const router = Component({ div: { ...props } });

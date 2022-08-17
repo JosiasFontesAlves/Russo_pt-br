@@ -10,7 +10,7 @@
  * @author Josias Fontes Alves
 */
 
-let versão = '4.6.5';
+let versão = '4.7';
 
 /**
  * @param {{[tag: string]: {[prop: string]: string | number}} | string} tag 
@@ -197,33 +197,24 @@ export const selekFn = (id, ev, fn) => document.querySelector(id)?.addEventListe
 export const seleKlass = classe => [...document.getElementsByClassName(classe)];
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/**
- * @param {string} btn - Botão que será responsável pelo evento
- * @param {string[]} elems - Elementos que serão alterados pelo toggle
- * @param {string} toggle - Classe CSS que será responsável pelo tema escuro
- * @param {function} [fn] - Callback opcional
- */
-export const temEsc = (btn, elems, toggle, fn) => document.getElementById(btn)?.addEventListener('click', ev => {
-    elems.map(elem => document.querySelector(elem)?.classList.toggle(toggle));
-
-    if (fn) fn(ev);
-});
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
 export const templatr = (/** @type {Node[]} */ ...childs) => document.querySelector('body')?.append(...childs);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-export const DropDown = (/** @type {string} */ id, /** @type {any[]} */ lista) => {
-    const drop = Component('select');
-    drop.id = id;
+/**
+ * @param {string} lista 
+ * @param {{[prop: string]: string}} [props] 
+ * @param {{[prop: string]: string}} [propsChilds]
+ */
+export const DropDown = (lista, props, propsChilds) => {
+    const drop = Component({
+        select: {
+            ...props
+        }
+    }, lista.map(textContent =>
+        Component({ option: { textContent, ...propsChilds } })
+    ));
+
     drop.classList.add('drop');
-
-    lista.forEach(item => {
-        const option = Component('option');
-        option.textContent = item;
-
-        drop.appendChild(option);
-    });
 
     return drop;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -324,7 +315,6 @@ export const insertChilds = (/** @type {string} */ local, /** @type {HTMLElement
  */
 export const Link = (href, textContent, props) => {
     const link = Component({ a: { ...props, href, textContent } });
-
     link.classList.add('link');
 
     return link;
@@ -412,12 +402,14 @@ export const Img = (src, alt, props) => Component({ img: { ...props, src, alt } 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {{[elem: string]: string}} elems 
- * @param {boolean} [force] 
+ * @param {{[elem: string]: string}} elems
+ * @returns {boolean}
  */
-export const toggle = (elems, force) => {
+export const toggle = elems => {
+    let force;
+
     Object.entries(elems).forEach(([el, toggle]) =>
-        force = document.querySelector(el).classList.toggle(toggle, force)
+        force = document.querySelector(el).classList.toggle(toggle)
     );
 
     return force;

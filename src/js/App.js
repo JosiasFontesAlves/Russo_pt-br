@@ -1,32 +1,26 @@
-import { getEntries, getValues, replacer, selek, selekFn, toggle } from './lib7.js';
-import russo from './russo.js';
-
-const getTrad = getValues(russo)
-    .flatMap(trads => getEntries(trads))
-    .reduce((acc, [pt, ru]) => ({ ...acc, [pt]: ru }), {});
-
-const fn = {
-    'btn-temesc': () => toggle({ body: 'temesc', '#btn-temesc-child': 'x30' }),
-    burger: () => toggle({ '#drop': 'drop_hidden' }),
-    res: () => res.hidden = true,
-    search: () => {
-        const [txt, res] = selek('#txt-search', '#res');
-
-        if (!txt.value) return;
-
-        const str = txt.value.replace(txt.value[0], txt.value[0].toUpperCase());
-
-        res.hidden = false;
-
-        replacer({
-            '#pesquisa': `${txt.value} - ${getTrad[str] ?? 'Ainda não temos essa palavra no dicionário'}`
-        });
-
-        txt.value = '';
-    }
-};
+import { selek, selekFn, toggle } from './lib7.js';
+import Res from './components/Res.js';
 
 export default () => {
+    const [txt, search] = selek('#txt-search', '#container-search');
+
+    const fn = {
+        'btn-temesc': () => toggle({ body: 'temesc', '#btn-temesc-child': 'x30' }),
+        burger: () => toggle({ '#drop': 'drop_hidden' }),
+        res: () => search.removeChild(selek('#res')),
+        search: () => {
+            if (!txt.value.trim()) return;
+            
+            const str = txt.value.trim().replace(txt.value.trim()[0], txt.value.trim()[0].toUpperCase());
+
+            if (search.children.length > 1) fn.res();
+
+            search.appendChild(Res(str));
+
+            txt.value = '';
+        }
+    };
+
     location.hash = '#home';
 
     selekFn('body', 'click', ev => {

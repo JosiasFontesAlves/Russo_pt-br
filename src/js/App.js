@@ -1,4 +1,4 @@
-import { selek, selekFn, toggle } from './lib7.js';
+import { replacer, selek, selekFn, toggle } from './lib7.js';
 import Res from './components/Res.js';
 
 export default () => {
@@ -9,9 +9,11 @@ export default () => {
         burger: () => toggle({ '#drop': 'drop_hidden' }),
         res: () => search.removeChild(selek('#res')),
         search: () => {
-            if (!txt.value.trim()) return;
-            
-            const str = txt.value.trim().replace(txt.value.trim()[0], txt.value.trim()[0].toUpperCase());
+            let str = txt.value.trim();
+
+            if (!str) return;
+
+            str = replacer(str, /\w/, str[0].toUpperCase());
 
             if (search.children.length > 1) fn.res();
 

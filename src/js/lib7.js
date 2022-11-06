@@ -10,7 +10,7 @@
  * @author Josias Fontes Alves
 */
 
-let versão = '4.7.3';
+let versão = '4.7.6';
 
 /**
  * @param {{[tag: string]: {[prop: string]: string | number}} | string} tag 
@@ -216,18 +216,11 @@ export const DropDown = (lista, props, propsChilds) => {
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {{[local: string]: string | number | {[pesq: string]: string | number}}} args 
+ * @param {string} str
+ * @param {string | RegExp} search
+ * @param {string | number} replace
  */
-export const replacer = args =>
-    Object.entries(args).forEach(([local, res]) => {
-        const $local = document.querySelector(local);
-
-        (typeof res === 'string' || typeof res === 'number')
-            ? $local.textContent = String(res)
-            : Object.entries(res).forEach(([search, textContent]) =>
-                $local.textContent = $local.textContent.replace(search, String(textContent))
-            );
-    });
+export const replacer = (str, search, replace) => str.replace(search, replace);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
@@ -475,8 +468,8 @@ export const Router = (routes, props, fn) => {
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {HTMLElement[]} arr 
- * @param {number} columns - divisão do array
+ * @param {any[]} arr 
+ * @param {number} childs - divisão do array
  * @param {string} key - chave do objeto
  * @param {{ [prop: string]: string; }} [props]
  */

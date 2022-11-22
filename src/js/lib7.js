@@ -10,7 +10,7 @@
  * @author Josias Fontes Alves
 */
 
-let versão = '4.7.6';
+let versão = '4.8';
 
 /**
  * @param {{[tag: string]: {[prop: string]: string | number}} | string} tag 
@@ -100,80 +100,57 @@ export const Btn = (idBtn, estilo, cor, { height, value, props, width }) => {
     return borda;
 } /* ----- Lib de botões ----- */
 
-export const Tempus = {
-    getCal: {
-        diaSem: ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB'],
-        mês: ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ']
-    },
-    getRlg: () => {
-        const date = new Date();
+export const Tempus = (() => {
+    const Elem = props => render({ p: { ...props } });
 
-        return [
-            date.getHours(), date.getMinutes(), date.getSeconds()
-        ].map(num => num < 10 ? `0${num}` : num);
-    },
-    /**
-     * @param {number} estilo - 0: relógio completo; 1: horas e minutos;
-     * @param {{[prop: string]: string}} [props]
-     */
-    relógio(estilo, props) {
-        const rel = render({ p: { ...props } });
+    return {
+        /**
+         * @param {number} style 0 - 1
+         * @param {{[prop: string]: string}} [props]
+         */
+        clock: (style, props) => {
+            const Clock = Elem(props);
 
-        setInterval(() => {
-            const rlg = this.getRlg();
+            setInterval(() => {
+                const date = new Date();
 
-            if (estilo === 1) rlg.pop();
+                const rlg = [
+                    date.getHours(), date.getMinutes(), date.getSeconds()
+                ].map(num => num < 10 ? `0${num}` : num);
 
-            rel.textContent = rlg.join(':');
-        }, 1000);
+                if (style === 1) rlg.pop();
 
-        return rel;
-    },
-    /**
-     * @param {number} estilo
-     * @param {{[prop: string]: string}} [props]
-     */
-    calendário(estilo, props) {
-        const cal = render({ p: { ...props } });
+                Clock.textContent = rlg.join(':');
+            }, 1000);
 
-        setInterval(() => {
-            const date = new Date();
-            const estilos = [
-                `${this.getCal.diaSem[date.getDay()]} ${date.getDate()} ${this.getCal.mês[date.getMonth()]} ${date.getFullYear()}`,
-                `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
-            ];
+            return Clock;
+        },
+        /**
+         * @param {number} style 0 - 1
+         * @param {{[prop: string]: string}} [props]
+         */
+        calendar: (style, props) => {
+            const Calendar = Elem(props),
+                setCal = {
+                    diaSem: ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB'],
+                    mês: ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ']
+                };
 
-            cal.textContent = estilos[estilo];
+            setInterval(() => {
+                const date = new Date();
+                const styles = [
+                    `${setCal.diaSem[date.getDay()]} ${date.getDate()} ${setCal.mês[date.getMonth()]} ${date.getFullYear()}`,
+                    `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+                ];
 
-        }, 1000);
+                Calendar.textContent = styles[style];
 
-        return cal;
-    },
-    /**
-     * @param {{[prop: string]: string}} [props]
-     */
-    saudação(props) {
-        const sdc = render({ p: { ...props } });
+            }, 1000);
 
-        setInterval(() => {
-            const hora = new Date().getHours();
-
-            sdc.textContent = (hora <= 12) ? 'Bom dia!' : (hora >= 18) ? 'Boa noite!' : 'Boa tarde!';
-        }, 1000);
-
-        return sdc;
-    },
-    /**
-     * @param {number[]} startEnd
-     * @param {number} vel
-     */
-    contador([start, end], vel) {
-        const res = render('p'),
-            count = setInterval(() => (start <= end) ? res.textContent = String(start++) : clearInterval(count), vel);
-
-        return res;
+            return Calendar;
+        }
     }
-} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+})(); /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 export const selek = (/** @type {string[]} */ ...elems) =>
     (elems.length === 1)
@@ -187,10 +164,7 @@ export const selek = (/** @type {string[]} */ ...elems) =>
  */
 export const selekFn = (id, ev, fn) => document.querySelector(id)?.addEventListener(ev, fn)
 
-/**
- * @param {string} classe 
- */
-export const seleKlass = classe => [...document.getElementsByClassName(classe)];
+export const seleKlass = (/** @type {string} */classe) => [...document.getElementsByClassName(classe)];
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 export const templatr = (/** @type {Node[]} */ ...childs) => document.querySelector('body')?.append(...childs);
@@ -484,6 +458,45 @@ export const paginatr = (arr, columns, key, props) => {
     return pages
         .filter(({ children }) => children.length > 0)
         .reduce((acc, item, i) => ({ ...acc, [`${key + i}`]: item }), {});
+} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
+ * @param {{ [prop: string]: string; }} [propsBtn]
+ * @param {{ [prop: string]: string; }} [propsCounter] 
+ */
+export const Counter = (propsBtn, propsCounter) => {
+    const Btn = (className, textContent, onclick) => {
+        const btn = render({
+            button: {
+                ...propsBtn, onclick, textContent
+            }
+        });
+
+        btn.classList.add('counter_btn', className);
+
+        return btn;
+    }
+
+    const SpanBtn = render({ span: { className: 'span_counter' } }, '0');
+
+    const fn = btn => {
+        const setNum = {
+            decr: num => num > 0 ? num - 1 : 0,
+            incr: num => num + 1
+        }
+
+        SpanBtn.textContent = setNum[btn](Number(SpanBtn.textContent));
+    }
+
+    return render({
+        section: {
+            ...propsCounter
+        }
+    }, [
+        Btn('decr', '-', () => fn('decr')),
+        SpanBtn,
+        Btn('incr', '+', () => fn('incr'))
+    ]);
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2020 - ${new Date().getFullYear()}\nCriada por Josias Fontes Alves`);

@@ -10,7 +10,7 @@
  * @author Josias Fontes Alves
 */
 
-let versão = '4.8';
+let versão = '4.9.7';
 
 /**
  * @param {{[tag: string]: {[prop: string]: string | number}} | string} tag 
@@ -20,9 +20,10 @@ export const render = (tag, childs) => {
     const $elem = document.createElement(typeof tag === 'string' ? tag : Object.keys(tag)[0]);
 
     if (typeof tag === 'object')
-        for (const props of Object.values(tag)) Object.entries(props).forEach(([prop, val]) => $elem[prop] = val);
+        Object.entries(...Object.values(tag)).forEach(([prop, val]) => $elem[prop] = val);
 
-    if (childs) Array.isArray(childs) ? childs.map(item => $elem.append(item)) : $elem.append(childs);
+    if (childs)
+        Array.isArray(childs) ? childs.forEach(item => $elem.append(item)) : $elem.append(childs);
 
     return $elem;
 }
@@ -101,53 +102,72 @@ export const Btn = (idBtn, estilo, cor, { height, value, props, width }) => {
 } /* ----- Lib de botões ----- */
 
 export const Tempus = (() => {
-    const Elem = props => render({ p: { ...props } });
+    const Elem = (props, fn) => {
+        const elem = render({ p: { ...props } });
+
+        setInterval(() => elem.textContent = fn(), 1000);
+
+        return elem;
+    }
 
     return {
         /**
          * @param {number} style 0 - 1
          * @param {{[prop: string]: string}} [props]
          */
-        clock: (style, props) => {
-            const Clock = Elem(props);
+        clock: (style, props) =>
+            Elem(props, () => {
+                const rlg = new Date().toLocaleTimeString();
 
-            setInterval(() => {
-                const date = new Date();
-
-                const rlg = [
-                    date.getHours(), date.getMinutes(), date.getSeconds()
-                ].map(num => num < 10 ? `0${num}` : num);
-
-                if (style === 1) rlg.pop();
-
-                Clock.textContent = rlg.join(':');
-            }, 1000);
-
-            return Clock;
-        },
+                return style == 1 ? rlg.match(/(\d+:\d+)/)[0] : rlg;
+            }),
         /**
-         * @param {number} style 0 - 1
+         * @param {number} style 0 - 2
          * @param {{[prop: string]: string}} [props]
          */
         calendar: (style, props) => {
-            const Calendar = Elem(props),
-                setCal = {
-                    diaSem: ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SÁB'],
-                    mês: ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ']
-                };
+            const getCal = {
+                day: {
+                    Sun: 'DOM', Mon: 'SEG', Tue: 'TER', Wed: 'QUA',
+                    Thu: 'QUI', Fri: 'SEX', Sat: 'SÁB'
+                },
+                month: {
+                    Jan: 'JAN', Feb: 'FEV', Mar: 'MAR', Apr: 'ABR',
+                    May: 'MAI', Jun: 'JUN', Jul: 'JUL', Aug: 'AGO',
+                    Sep: 'SET', Oct: 'OUT', Nov: 'NOV', Dec: 'DEZ'
+                }
+            };
 
-            setInterval(() => {
-                const date = new Date();
+            return Elem(props, () => {
+                const [weekDay, month, day, year] = String(new Date()).match(/\w+/g);
+
                 const styles = [
-                    `${setCal.diaSem[date.getDay()]} ${date.getDate()} ${setCal.mês[date.getMonth()]} ${date.getFullYear()}`,
-                    `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`
+                    `${getCal.day[weekDay]} ${day} ${getCal.month[month]} ${year}`,
+                    `${day}/${getCal.month[month]}/${year}`,
+                    new Date().toLocaleDateString()
                 ];
 
-                Calendar.textContent = styles[style];
-
+                return styles[style];
             }, 1000);
+        },
+        /**
+         * @param {number} start
+         * @param {number} end
+         * @param {number} vel
+         * @param {{[prop: string]: string}} [props]
+         */
+        timer: ({ start, end }, vel = 1000, props) => {
+            const Timer = render({ p: { ...props } });
 
-            return Calendar;
+            const setTimer = setInterval(() => {
+                end
+                    ? start < end ? start++ : clearInterval(setTimer)
+                    : start > 0 ? start-- : clearInterval(setTimer);
+
+                Timer.textContent = String(start);
+            }, vel);
+
+            return Timer;
         }
     }
 })(); /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -164,7 +184,10 @@ export const selek = (/** @type {string[]} */ ...elems) =>
  */
 export const selekFn = (id, ev, fn) => document.querySelector(id)?.addEventListener(ev, fn)
 
-export const seleKlass = (/** @type {string} */classe) => [...document.getElementsByClassName(classe)];
+/**
+ * @param {string} classe 
+ */
+export const seleKlass = classe => [...document.getElementsByClassName(classe)];
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 export const templatr = (/** @type {Node[]} */ ...childs) => document.querySelector('body')?.append(...childs);
@@ -246,16 +269,26 @@ export const SearchBox = (...props) => {
     return searchBox;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-/**
- * @param {string} url 
- * @param {function} fn 
- */
-export const AJAX = async (url, fn) => {
-    const api = await fetch(url);
-    const res = await api.json();
+export const AJAX = {
+    get: async (/** @type {string} */ url) => {
+        const api = await fetch(url);
 
-    return fn(res);
-} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+        return await api.json();
+    },
+    set: (/** @type {string} */ url, /** @type {{} | *[]} */ body) =>
+        fetch(url, {
+            body: JSON.stringify(body),
+            headers: { 'Content-Type': 'application/json' },
+            method: 'POST'
+        }),
+    update: async (/** @type {string} */ file, /** @type {string} */ url, /** @type {{[key: string]: *}} */ keys) => {
+        const api = await AJAX.get(file);
+
+        Object.entries(keys).forEach(([key, val]) => api[key] = val);
+
+        AJAX.set(url, api);
+    }
+}; /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 export const insertChilds = (/** @type {string} */ local, /** @type {HTMLElement[] | HTMLElement} */ childs) => {
     const $local = document.querySelector(local);
@@ -303,16 +336,6 @@ export const getKeys = (/** @type {{}} */ obj) => Object.keys(obj);
 
 export const getValues = (/** @type {{ [s: string]: any; } | ArrayLike<any>} */ obj) => Object.values(obj);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-/**
- * @param {string} url 
- * @param {{} | *[]} body 
- */
-export const httpPost = (url, body) => fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body)
-}); /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
  * @param {{[href: string]: string}} links 
@@ -442,22 +465,39 @@ export const Router = (routes, props, fn) => {
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {any[]} arr 
+ * @param {HTMLElement[]} arr 
  * @param {number} childs - divisão do array
  * @param {string} key - chave do objeto
  * @param {{ [prop: string]: string; }} [props]
+ * @param {{ [prop: string]: string; }} [propsLinks]
  */
-export const paginatr = (arr, columns, key, props) => {
-    const Page = childs => render({ section: { ...props } }, childs);
-    const pages = [];
+export const paginatr = (arr, columns, key, props, propsLinks) => {
+    const Page = childs => render({ section: { ...props } }, childs),
+        Link = (href, textContent) =>
+            render({
+                a: {
+                    href,
+                    ...propsLinks
+                }
+            }, textContent + 1);
+
+    const pages = [], $arr = [...arr];
 
     let ctrl = Math.ceil(arr.length / columns);
 
-    while (columns) pages[--columns] = Page(arr.splice(columns * ctrl));
+    while (columns) pages[--columns] = Page($arr.splice(columns * ctrl));
 
-    return pages
+    const routes = pages
         .filter(({ children }) => children.length > 0)
         .reduce((acc, item, i) => ({ ...acc, [`${key + i}`]: item }), {});
+
+    const Links = render({
+        nav: {
+            className: 'nav_paginatr'
+        }
+    }, Object.keys(routes).map(Link));
+
+    return [routes, Links];
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**

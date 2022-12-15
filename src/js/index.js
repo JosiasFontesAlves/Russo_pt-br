@@ -4,8 +4,6 @@ import Root from './components/Root.js';
 import Footer from './components/Footer.js';
 import App from './App.js';
 
-location.hash = '#home';
-
 templatr(Header, Root, Footer);
 
 App();

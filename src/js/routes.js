@@ -7,11 +7,12 @@ import Pronomes from './pages/Pronomes.js';
 import Semana from './pages/Semana.js';
 
 export default {
-    '#home': Home,
-    '#alfabeto': Alfabeto,
-    '#decl': Decl,
-    '#meses': Meses,
-    '#num': Num,
-    '#semana': Semana,
-    '#pronomes': Pronomes
+    '/': Home,
+    '/home': Home,
+    '/alfabeto': Alfabeto,
+    '/decl': Decl,
+    '/meses': Meses,
+    '/num': Num,
+    '/semana': Semana,
+    '/pronomes': Pronomes
 }

@@ -2,7 +2,7 @@ import { Burger, render, Router, Title } from '../lib7.js';
 import lista_drop from '../lista_drop.js';
 import Drop from './Drop.js';
 
-lista_drop['#home'] = 'Dicionário de russo';
+['/', '/home'].forEach(route => lista_drop[route] = 'Dicionário de russo');
 
 for (const hash in lista_drop)
     lista_drop[hash] = Title(1, lista_drop[hash], { id: 'ttl' });

@@ -10,7 +10,7 @@
  * @author Josias Fontes Alves
 */
 
-let versão = '4.9.7';
+let versão = '5.0.5';
 
 /**
  * @param {{[tag: string]: {[prop: string]: string | number}} | string} tag 
@@ -314,14 +314,12 @@ export const Link = (href, textContent, props) => {
  * @param {(value: [string, any], index: number, array: [string, any][]) => any} callBack 
  */
 export const mapEntries = (obj, callBack) => Object.entries(obj).map(callBack);
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
  * @param {{[item: string]: any}} obj 
  * @param {(value: string, index: number, array: string[]) => any} callBack
  */
 export const mapKeys = (obj, callBack) => Object.keys(obj).map(callBack);
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
  * @param {{[item: string]: any} | *[]} obj 
@@ -335,6 +333,14 @@ export const getEntries = (/** @type {{ [s: string]: any; } | ArrayLike<any>} */
 export const getKeys = (/** @type {{}} */ obj) => Object.keys(obj);
 
 export const getValues = (/** @type {{ [s: string]: any; } | ArrayLike<any>} */ obj) => Object.values(obj);
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
+ * @param {{}} obj 
+ * @param {(previousValue: {}, currentValue: [string, any], currentIndex: number, array: [string, any][])} callBack 
+ * @param {*} initialValue
+ */
+export const reduceEntries = (obj, callBack, initialValue) => Object.entries(obj).reduce(callBack, initialValue);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
@@ -429,7 +435,7 @@ export const getSubstring = (str, start, end) =>
         ? end
             ? str.substring(str.indexOf(start), str.indexOf(end))
             : str.substring(str.indexOf(start))
-        : str.match(start)[0];
+        : str.match(start);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
@@ -453,17 +459,19 @@ export const Router = (routes, props, fn) => {
         const route = search ? pathname + search : pathname;
 
         router.innerHTML = '';
-        router.append(routes[hash || route]);
+        router.append(routes[hash || route] ?? routes['/']);
     }
 
     setContent();
+
+    window.addEventListener('hashchange', setContent);
 
     window.addEventListener('click', ev => {
         if (ev.target.localName !== 'a') return;
 
         const getRoute = ev.target.href.match(/\/[^\/]+$/)[0];
 
-        if (!Object.keys(routes).includes(getRoute)) return; 
+        if (!Object.keys(routes).includes(getRoute)) return;
 
         ev.preventDefault();
 

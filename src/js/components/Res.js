@@ -1,9 +1,10 @@
-import { getEntries, getValues, render, Span } from '../lib7.js';
+import { reduceEntries, render, Span } from '../lib7.js';
 import russo from '../russo.js';
 
-const getTrad = getValues(russo)
-    .flatMap(trads => getEntries(trads))
-    .reduce((acc, [pt, ru]) => ({ ...acc, [pt]: ru }), {});
+const getTrad = reduceEntries(russo, (acc, [, trad]) => ({
+    ...acc, 
+    ...trad
+}), {});
 
 export default (/**@type {string} */ txt) =>
     render({
@@ -12,8 +13,7 @@ export default (/**@type {string} */ txt) =>
             id: 'res'
         }
     }, [
-        Span(`${txt} - ${getTrad[txt] ?? 'Ainda não temos essa palavra no dicionário'}`, { id: 'resposta' 
-    }),
+        Span(`${txt} - ${getTrad[txt] ?? 'Ainda não temos essa palavra no dicionário'}`, { id: 'resposta' }),
         render({
             button: {
                 className: 'br7',

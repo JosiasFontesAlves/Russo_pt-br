@@ -6,4 +6,6 @@ import App from './App.js';
 
 templatr(Header, Root, Footer);
 
+location.hash = '#home';
+
 App();

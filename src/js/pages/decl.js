@@ -1,6 +1,6 @@
 import { Tabela } from "../lib7.js";
 
-export default Tabela('tab', [
+export default Tabela([
     {
         caso: 'nominativo',
         masculino: 'consoante -- й/ь ый/ой -- ий',
@@ -43,4 +43,4 @@ export default Tabela('tab', [
         feminino: 'e -- ии',
         plural: 'ах -- ях -- иях'
     }
-]);
+], { id: 'tab-decl' });

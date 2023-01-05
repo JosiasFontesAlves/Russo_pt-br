@@ -1,13 +1,13 @@
-import { render, Tabela } from '../lib7.js';
+import { mapValues, render, Tabela } from '../lib7.js';
 import russo from '../russo.js';
 
-const $num = [
-    'Zero', 'Um', 'Dois', 'Três', 
-    'Quatro', 'Cinco', 'Seis', 
+const $num = mapValues([
+    'Zero', 'Um', 'Dois', 'Três',
+    'Quatro', 'Cinco', 'Seis',
     'Sete', 'Oito', 'Nove', 'Dez'
-].map((n, i) => ({
-    Número: i,
-    Russo: russo[n[0]][n]
+], (num, i) => ({
+    Número: String(i),
+    Russo: russo[num[0]][num]
 }));
 
-export default render('div', Tabela('tab-num', $num));
+export default render('div', Tabela($num, { id: 'tab-num' }));

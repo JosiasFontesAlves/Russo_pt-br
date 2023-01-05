@@ -1,43 +1,29 @@
-import { getEntries, getValues, replacer, selek, selekFn, SPA, toggle } from './lib7.js';
-import russo from './russo.js';
-import routes from './routes.js';
-import lista_drop from './lista_drop.js';
+import { replacer, selek, selekFn, toggle } from './lib7.js';
+import Res from './components/Res.js';
 
 export default () => {
-    location.hash = '#home';
+    const [txt, search] = selek('#txt-search', '#container-search');
 
-    const getTrad = getValues(russo)
-        .flatMap(trads => getEntries(trads))
-        .reduce((acc, [pt, ru]) => ({ ...acc, [pt]: ru }), {});
+    const fn = {
+        'btn-temesc': () => toggle({ body: 'temesc', '#btn-temesc-child': 'x30' }),
+        burger: () => toggle({ '#drop': 'drop_hidden' }),
+        res: () => selek('#res').remove(),
+        search: () => {
+            let str = txt.value.trim();
+
+            if (!str) return;
+
+            str = replacer(str, str[0], str[0].toUpperCase());
+
+            if (search.children.length > 1) fn.res();
+
+            search.appendChild(Res(str));
+
+            txt.value = '';
+        }
+    };
 
     selekFn('body', 'click', ev => {
-        const fn = {
-            'btn-temesc': () => toggle({ body: 'temesc', [`#${ev.target.id}`]: 'x30' }),
-            burger: () => toggle({ '#drop': 'drop_hidden' }),
-            res: () => res.hidden = true,
-            search: () => {
-                const [txt, res] = selek('#txt-search', '#res');
-
-                if (txt.value.trim()) {
-                    const str = txt.value.replace(txt.value[0], txt.value[0].toUpperCase());
-
-                    res.hidden = false;
-
-                    replacer({
-                        '#pesquisa': `${txt.value} - ${getTrad[str] ?? 'Ainda não temos essa palavra no dicionário'}`
-                    });
-
-                    txt.value = '';
-                }
-            }
-        };
-
         if (ev.target.localName === 'button') fn[ev.composedPath()[1].id]();
-    });
-
-    SPA(routes, '#root', hash => {
-        lista_drop['#home'] = 'Dicionário de russo';
-
-        replacer({ '#ttl': lista_drop[hash] });
     });
 }

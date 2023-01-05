@@ -1,3 +1,4 @@
-import { render } from '../lib7.js';
+import { Router } from '../lib7.js';
+import routes from '../routes.js';
 
-export default render({ div: { id: 'root' } });
+export default Router(routes, { id: 'root' });

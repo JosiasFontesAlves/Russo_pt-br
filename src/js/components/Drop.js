@@ -1,5 +1,7 @@
-import { Btn, Img, LinkBar, render } from '../lib7.js';
+import { Btn, Img, LinkBar, render, toggle } from '../lib7.js';
 import lista_drop from '../lista_drop.js';
+
+const setTheme = () => toggle({ body: 'temesc', '#btn-temesc': 'x30' });
 
 export default render({
     section: {
@@ -19,6 +21,13 @@ export default render({
         }
     }, [
         Img('./img/lua.png', 'lua', { width: 30 }),
-        Btn('btn-temesc', 4, 'blue', { height: 20, width: 20 })
+        Btn({
+            id: 'btn-temesc',
+            className: 'br50',
+            onclick: setTheme
+        }, {
+            className: 'br15 bs_neon2',
+            id: 'container-btn-temesc'
+        })
     ])
 ]);

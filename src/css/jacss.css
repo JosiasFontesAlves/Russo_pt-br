@@ -164,6 +164,10 @@ td {
     display: grid;
 }
 
+.marg15 {
+    margin: 15px auto;
+}
+
 .oceanic_blur {
     backdrop-filter: blur(2px);
     background: #00ccffc9;
@@ -243,6 +247,10 @@ td {
 .temesc {
     background: black;
     color: var(--nardoGray);
+}
+
+.x20 {
+    transform: translateX(20px);
 }
 
 .x30 {

@@ -18,3 +18,16 @@
 .link:hover {
     color: blue;
 }
+
+#container-btn-temesc {
+    border: 2px solid;
+    width: 55px;
+}
+
+#btn-temesc {
+    background: none;
+    border: 5px solid blue;
+    float: left;
+    height: 20px;
+    width: 15px;
+}

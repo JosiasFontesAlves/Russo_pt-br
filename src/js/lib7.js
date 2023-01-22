@@ -10,7 +10,7 @@
  * @author Josias Fontes Alves
 */
 
-let versão = '5.1.5';
+let versão = '5.1.8';
 
 /**
  * @param {{[tag: string]: {[prop: string]: string | number}} | string} tag
@@ -390,43 +390,43 @@ export const Span = (texto, props) => render({ span: { ...props } }, texto);
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
- * @param {{[hash: string]: HTMLElement}} routes
+ * @param {{[route: string]: HTMLElement}} routes
  * @param {{ [prop: string]: string; }} [props]
  * @param {function} [fn]
  */
 export const Router = (routes, props, fn) => {
-    const router = render({ div: { ...props } });
-    router.classList.add('router');
+    const Route = render({ div: { ...props } });
+    Route.classList.add('router');
 
-    const setContent = () => {
-        const { hash, pathname, search } = location;
-        const route = search ? pathname + search : pathname;
+    const setContent = (route, ev) => {
+        Route.innerHTML = '';
 
-        router.innerHTML = '';
-        router.append(routes[hash || route] ?? routes['/']);
+        Route.append(routes[route] ?? '');
+
+        if (fn) fn(location, ev);
     }
 
-    setContent();
+    setContent('/');
 
-    window.addEventListener('hashchange', setContent);
+    window.addEventListener('hashchange', ev => setContent(location.hash, ev));
 
     window.addEventListener('click', ev => {
-        if (ev.target.localName !== 'a') return;
+        const { href, localName } = ev.target;
 
-        const getRoute = ev.target.href.match(/\/[^\/]+$/)[0];
+        if (localName !== 'a') return;
 
-        if (!Object.keys(routes).includes(getRoute)) return;
+        const route = href.split(location.host)[1];
+
+        if (!Object.keys(routes).includes(route)) return;
 
         ev.preventDefault();
 
-        history.replaceState('', '', ev.target.href);
+        setContent(route, ev);
 
-        setContent();
-
-        if (fn) fn(location, ev);
+        history.replaceState('', '', route);
     });
 
-    return router;
+    return Route;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 export const splitArray = (/**@type {any[]}*/ arr, /**@type {number}*/ length) => {

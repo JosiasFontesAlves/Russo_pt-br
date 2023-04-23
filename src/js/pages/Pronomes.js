@@ -1,19 +1,12 @@
-import { render, Tabela } from '../lib7.js';
+import { render, Table, Title } from '../lib7.js';
 
 export default render({
     section: {
         id: 'pronomes'
     }
 }, [
-    render(...[
-        {
-            h2: {
-                id: 'title-tab-pronomes'
-            }
-        },
-        'Declinação dos pronomes pessoais'
-    ]),
-    Tabela([
+    Title(2, 'Declinação dos pronomes pessoais', { id: 'title-tab-pronomes' }),
+    Table([
         {
             Pronome: 'Eu', Nominativo: 'Я', Genitivo: 'Меня',
             Dativo: 'Мне', Acusativo: 'Меня',

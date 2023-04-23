@@ -1,6 +1,6 @@
-import { Tabela } from "../lib7.js";
+import { Table } from "../lib7.js";
 
-export default Tabela([
+export default Table([
     {
         caso: 'nominativo',
         masculino: 'consoante -- й/ь ый/ой -- ий',

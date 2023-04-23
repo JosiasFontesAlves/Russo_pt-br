@@ -1,4 +1,4 @@
-import { render, replacer, SearchBox, selek } from '../lib7.js';
+import { capitalizeStr, render, SearchBox, selek } from '../lib7.js';
 import Res from './Res.js';
 
 const search = () => {
@@ -8,7 +8,7 @@ const search = () => {
 
     if (!str) return;
 
-    str = replacer(str, str[0], str[0].toUpperCase());
+    str = capitalizeStr(str);
 
     if (search.children.length > 1) selek('#res').remove();
 

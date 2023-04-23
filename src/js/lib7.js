@@ -10,17 +10,17 @@
  * @author Josias Fontes Alves
 */
 
-let versão = '5.1.8';
+let versão = '5.2';
 
 /**
- * @param {{[tag: string]: {[prop: string]: string | number}} | string} tag
+ * @param {{[tag: string]: {[prop: string]: string | number}} | string} elem
  * @param {string | Node | Node[]} [childs]
  */
-export const render = (tag, childs) => {
-    const $elem = document.createElement(typeof tag === 'string' ? tag : Object.keys(tag)[0]);
+export const render = (elem, childs) => {
+    const $elem = document.createElement(typeof elem === 'string' ? elem : Object.keys(elem)[0]);
 
-    if (typeof tag === 'object')
-        Object.entries(...Object.values(tag)).forEach(([prop, val]) => $elem[prop] = val);
+    if (typeof elem === 'object')
+        Object.entries(...Object.values(elem)).forEach(([prop, val]) => $elem[prop] = val);
 
     if (childs)
         Array.isArray(childs) ? childs.forEach(item => $elem.append(item)) : $elem.append(childs);
@@ -173,21 +173,14 @@ export const Lista = (lista, props, propsChilds) =>
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-export const Tabela = (/** @type {{}[]}*/ data, /** @type {{[prop: string]: string }} */ props) => {
-    const Thead = render('thead', Object.keys(...data).map(item => render('th', item)));
+export const Table = (/** @type {{}[]}*/ data, /** @type {{[prop: string]: string }} */ props) => {
+    const Row = (items, elem) => render('tr', items.map(txt => render(elem, String(txt))));
 
-    const items = Object.values(data).map((item) =>
-        render('tr', Object.values(item).map(text => render('td', text)))
-    );
+    const Thead = render('thead', Row(Object.keys(data[0]), 'th'));
 
-    return render({
-        table: {
-            ...props
-        }
-    }, [
-        Thead,
-        render('tbody', items)
-    ]);
+    const Tbody = render('tbody', data.map(item => Row(Object.values(item), 'td')));
+
+    return render({ table: { ...props } }, [Thead, Tbody]);
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
@@ -292,7 +285,7 @@ export const reduceValues = (obj, callBack, initialValue) => Object.values(obj).
  * @param {{[prop: string]: string}} [propsNav]
  * @param {{[prop: string]: string}} [propsChilds]
  */
-export const LinkBar = (links, /** @type {{ [prop: string]: string; }} */ propsNav, /** @type {{ [prop: string]: string; }} */ propsChilds) => {
+export const LinkBar = (links, propsNav, propsChilds) => {
     const linkBarr = render({ nav: { ...propsNav } });
 
     const $links = Object.entries(links).map(([href, textContent]) => {
@@ -503,5 +496,15 @@ export const Counter = (propsBtn, propsCounter) => {
 
     return counter;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
+ * @param {{}} obj 
+ * @param {(predicate: (value: [string, any], index: number, array: [string, any][]) => unknown, thisArg?: any)} fn 
+ */
+export const filterEntries = (obj, fn) => Object.fromEntries(Object.entries(obj).filter(fn));
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+export const capitalizeStr = (/** @type {string} */ str) => str.replace(str[0], str[0].toUpperCase());
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2020 - ${new Date().getFullYear()}\nCriada por Josias Fontes Alves`);

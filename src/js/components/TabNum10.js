@@ -1,4 +1,4 @@
-import { mapValues, render, Tabela } from '../lib7.js';
+import { mapValues, render, Table } from '../lib7.js';
 import russo from '../russo.js';
 
 const $num = mapValues([
@@ -10,4 +10,4 @@ const $num = mapValues([
     Russo: russo[num[0]][num]
 }));
 
-export default render('div', Tabela($num, { id: 'tab-num' }));
+export default render('div', Table($num, { id: 'tab-num' }));

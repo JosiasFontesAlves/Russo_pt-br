@@ -1,4 +1,4 @@
-import { mapEntries, render, Span } from '../lib7.js';
+import { mapEntries, render, Span, Title } from '../lib7.js';
 import russo from '../russo.js';
 
 const Trad = (pt, ru) =>
@@ -22,7 +22,7 @@ export default render({
             className: 'blocos brd_nardo bs_neon3 padd7'
         }
     }, [
-        render({ h2: { className: 'letra' } }, letra),
+        Title(2, letra, { className: 'letra' }),
         ...mapEntries(trads, ([pt, ru]) => Trad(pt, ru))
     ]))
 );

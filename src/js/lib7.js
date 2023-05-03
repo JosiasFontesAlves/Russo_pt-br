@@ -10,7 +10,7 @@
  * @author Josias Fontes Alves
 */
 
-let versão = '5.2';
+let versão = '5.2.3';
 
 /**
  * @param {{[tag: string]: {[prop: string]: string | number}} | string} elem
@@ -423,13 +423,12 @@ export const Router = (routes, props, fn) => {
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 export const splitArray = (/**@type {any[]}*/ arr, /**@type {number}*/ length) => {
-    const $arr = [...arr], res = [];
+    const $arr = [...arr], ctrl = Math.ceil($arr.length / length);
 
-    let items = Math.ceil($arr.length / length);
-
-    while (length) res[--length] = $arr.splice(length * items);
-
-    return res.filter(({ length }) => length);
+    return Array
+        .from({ length })
+        .map(() => $arr.splice(--length * ctrl))
+        .filter(({ length }) => length);
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**

@@ -10,7 +10,7 @@
     border: 3px solid var(--nardoGray);
     height: 40px;
     transform: translateX(-3vw);
-    width:  40px;
+    width: 40px;
 }
 
 #btn-search:hover {

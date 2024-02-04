@@ -1,15 +1,6 @@
 import russo from '../russo.js';
-import { mapValues, render, Span } from '../lib7.js';
-
-const DiaSem = (/** @type {string} */ dia) =>
-    render({
-        p: {
-            className: 'diaSem padd10 subl_nardo w50'
-        }
-    }, [
-        Span(dia, { className: 'pt' }),
-        Span(russo[dia[0].toUpperCase()][dia], { className: 'ru' })
-    ]);
+import { mapValues, render } from '../lib7.js';
+import Trad from '../components/Trad.js';
 
 export default render({
     section: {
@@ -18,4 +9,6 @@ export default render({
 }, mapValues([
     'Domingo', 'Segunda-feira', 'Terça-feira',
     'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'
-], dia => DiaSem(dia)));
+], dia =>
+    Trad(dia, russo[dia[0]][dia], ['diaSem', 'padd10', 'w50'])
+));

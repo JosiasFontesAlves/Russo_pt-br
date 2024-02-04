@@ -10,7 +10,7 @@
  * @author Josias Fontes Alves
 */
 
-let versão = '5.2.3';
+let versão = '5.2.5';
 
 /**
  * @param {{[tag: string]: {[prop: string]: string | number}} | string} elem
@@ -30,8 +30,6 @@ export const render = (elem, childs) => {
 
 export const Btn = (/** @type {{[prop: string]: string}[]} */ ...props) => {
     const [button, border] = ['button', 'div'].map((elem, i) => render({ [elem]: { ...props[i] } }));
-
-    button.style.margin = '1px';
 
     border.appendChild(button);
 
@@ -433,7 +431,7 @@ export const splitArray = (/**@type {any[]}*/ arr, /**@type {number}*/ length) =
 
 /**
  * @param {HTMLElement[]} arr
- * @param {number} length - divisão do array
+ * @param {number} length - quantidade de páginas
  * @param {string} key - chave do objeto
  * @param {{ [prop: string]: string; }} [props]
  * @param {{ [prop: string]: string; }} [propsLinks]
@@ -505,5 +503,56 @@ export const filterEntries = (obj, fn) => Object.fromEntries(Object.entries(obj)
 
 export const capitalizeStr = (/** @type {string} */ str) => str.replace(str[0], str[0].toUpperCase());
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/** 
+ * @param {*[]} items
+ * @param {number} length
+ * @param {{[prop: string]: string}} [propsCard] 
+ * @param {{[prop: string]: string}} [propsBtn]
+*/
+export const CardSlider = (items, length, propsCard, propsBtn) => {
+    const arr_items = splitArray(items, length).reverse();
+
+    const Cards = arr_items.map(route =>
+        render({
+            div: {
+                className: 'card_route flex padd7'
+            }
+        }, route)
+    );
+
+    const onclick = ev => {
+        const getRoute = ev.target.className.split(/route_/)[1];
+        const route = ev.composedPath()[2];
+
+        route.replaceChild(Cards[getRoute], route.children[0]);
+    }
+
+    const BtnRouter = render({
+        div: {
+            className: 'btn_router',
+            onclick
+        }
+    },
+        Array.from({ length: arr_items.length }, (_, id) => {
+            const route = Btn({ ...propsBtn });
+
+            route.classList.add(`route_${id}`);
+
+            return route;
+        })
+    );
+
+    const router = render({
+        section: { ...propsCard }
+    }, [
+        Cards[0],
+        BtnRouter
+    ]);
+
+    router.classList.add('card_router', 'grid');
+
+    return router;
+}
 
 console.log(`Lib 7 v${versão} - Matsa \u00A9 2020 - ${new Date().getFullYear()}\nCriada por Josias Fontes Alves`);

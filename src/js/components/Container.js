@@ -1,15 +1,6 @@
-import { mapEntries, render, Span, Title } from '../lib7.js';
+import { mapEntries, render, Title } from '../lib7.js';
 import russo from '../russo.js';
-
-const Trad = (pt, ru) =>
-    render({
-        p: {
-            className: 'padd7 subl_nardo trads'
-        }
-    }, [
-        Span(pt, { className: 'pt' }),
-        Span(ru, { className: 'ru' })
-    ]);
+import Trad from './Trad.js';
 
 export default render({
     section: {

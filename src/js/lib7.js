@@ -10,7 +10,7 @@
  * @author Josias Fontes Alves
 */
 
-let versão = '5.2.5';
+let versão = '5.2.8';
 
 /**
  * @param {{[tag: string]: {[prop: string]: string | number}} | string} elem
@@ -185,14 +185,10 @@ export const Table = (/** @type {{}[]}*/ data, /** @type {{[prop: string]: strin
  * @param {{[prop: string]: string}[]} props
  */
 export const SearchBox = (...props) => {
-    const searchBox = render({ 'section': { ...props[2] } });
+    const childs = ['input', 'button'].map((el, i) => render({ [el]: props[i] }));
+
+    const searchBox = render({ 'section': { ...props[2] } }, childs);
     searchBox.classList.add('searchBox');
-
-    ['input', 'button'].forEach((el, i) => {
-        const child = render({ [el]: props[i] });
-
-        searchBox.appendChild(child);
-    });
 
     return searchBox;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -284,23 +280,11 @@ export const reduceValues = (obj, callBack, initialValue) => Object.values(obj).
  * @param {{[prop: string]: string}} [propsChilds]
  */
 export const LinkBar = (links, propsNav, propsChilds) => {
-    const linkBarr = render({ nav: { ...propsNav } });
+    const $links = mapEntries(links, ([href, textContent]) => Link(href, textContent, propsChilds));
 
-    const $links = Object.entries(links).map(([href, textContent]) => {
-        const link = render({
-            a: {
-                ...propsChilds,
-                href, textContent
-            }
-        });
-
-        link.classList.add('link');
-
-        return link;
-    });
+    const linkBarr = render({ nav: { ...propsNav } }, $links);
 
     linkBarr.classList.add('linkBar');
-    linkBarr.append(...$links);
 
     return linkBarr;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -340,14 +324,14 @@ export const toggle = elems => {
  * @param {{[prop: string]: string}} [propsChilds]
  */
 export const Burger = (props, propsChilds) => {
-    const burger = render({ div: { ...props, style: 'display: grid; gap: 2px;' } });
-
-    Array.from({ length: 3 }, () => {
-        const btn = render({ button: { ...propsChilds } });
+    const btn_burger = Array.from({ length: 3 }, () => {
+        const btn = Btn(propsChilds);
         btn.classList.add('btn_burger');
 
         return btn;
-    }).forEach(child => burger.appendChild(child));
+    });
+
+    const burger = render({ div: { ...props, style: 'display: grid; gap: 2px;' } }, btn_burger);
 
     burger.classList.add('burger');
 

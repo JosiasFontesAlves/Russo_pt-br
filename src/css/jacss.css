@@ -52,13 +52,6 @@ a {
     text-decoration: none;
 }
 
-.btn_burger {
-    background: black;
-    border: none;
-    height: 5px;
-    width: 30px;
-}
-
 button {
     cursor: pointer;
 }

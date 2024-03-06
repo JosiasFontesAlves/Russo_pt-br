@@ -11,6 +11,13 @@
     width: fit-content;
 }
 
+.btn_burger {
+    background: black;
+    border: none;
+    height: 5px;
+    width: 30px;
+}
+
 .link {
     color: black;
 }
@@ -21,13 +28,13 @@
 
 #container-btn-temesc {
     border: 2px solid;
-    width: 55px;
+    width: 52px;
 }
 
 #btn-temesc {
     background: none;
     border: 5px solid blue;
     float: left;
-    height: 20px;
+    height: 22px;
     width: 15px;
 }

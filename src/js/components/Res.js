@@ -1,4 +1,4 @@
-import { reduceValues, render, Span } from '../lib7.js';
+import { Btn, reduceValues, render, Span } from '../lib7.js';
 import russo from '../russo.js';
 
 const getTrad = reduceValues(russo, (acc, trad) => ({
@@ -14,10 +14,9 @@ export default (/**@type {string} */ txt) =>
         }
     }, [
         Span(`${txt} - ${getTrad[txt] ?? 'Ainda não temos essa palavra no dicionário'}`, { id: 'resposta' }),
-        render({
-            button: {
-                className: 'br7', id: 'btn-res',
-                onclick: ev => ev.composedPath()[1].remove()
-            }
-        }, 'X')
+        Btn({
+            className: 'br7', id: 'btn-res',
+            onclick: ({ target }) => target.parentNode.remove(),
+            textContent: 'X'
+        })
     ]);

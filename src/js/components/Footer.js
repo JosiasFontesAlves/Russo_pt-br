@@ -4,4 +4,4 @@ export default render({
     footer: {
         className: 'fix w100'
     }
-}, Span('Matsa © 2022', { id: 'copyright' }));
+}, Span(`Matsa © ${new Date().getFullYear()}`, { id: 'copyright' }));

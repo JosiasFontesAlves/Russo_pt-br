@@ -1,5 +1,5 @@
-import { Btn, reduceValues, render, Span } from '../lib7.js';
-import russo from '../russo.js';
+import { Btn, reduceValues, render, Span } from '../../lib7.js';
+import russo from '../../russo.js';
 
 const getTrad = reduceValues(russo, (acc, trad) => ({
     ...acc,

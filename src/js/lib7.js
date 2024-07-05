@@ -10,7 +10,7 @@
  * @author Josias Fontes Alves
 */
 
-let versão = '5.2.8';
+let ver = '5.3';
 
 /**
  * @param {{[tag: string]: {[prop: string]: string | number}} | string} elem
@@ -294,7 +294,7 @@ export const LinkBar = (links, propsNav, propsChilds) => {
  * @param {string} textContent
  * @param {{[prop: string]: string}} [props]
  */
-export const Title = (size, textContent, props) => render({ [`h${size}`]: { ...props, textContent } });
+export const Title = (size = 1, textContent, props) => render({ [`h${size}`]: { ...props, textContent } });
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
@@ -537,6 +537,21 @@ export const CardSlider = (items, length, propsCard, propsBtn) => {
     router.classList.add('card_router', 'grid');
 
     return router;
+} /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+export const TypeWriter = (/**@type {string}*/ textContent, timeout = 150,/**@type {{[prop: string]: string}}*/ props) => {
+    const elem = render({ div: { ...props } });
+    elem.classList.add('typewriter');
+
+    let ctrl = 0;
+
+    const writer = setInterval(() => {
+        elem.textContent += textContent[ctrl++];
+
+        if (ctrl >= textContent.length) clearInterval(writer);
+    }, timeout);
+
+    return elem;
 }
 
-console.log(`Lib 7 v${versão} - Matsa \u00A9 2020 - ${new Date().getFullYear()}\nCriada por Josias Fontes Alves`);
+console.log(`Lib 7 v${ver} - Matsa \u00A9 2020 - ${new Date().getFullYear()}\nCriada por Josias Fontes Alves`);

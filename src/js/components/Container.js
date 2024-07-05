@@ -1,6 +1,6 @@
 import { mapEntries, render, Title } from '../lib7.js';
 import russo from '../russo.js';
-import Trad from './Trad.js';
+import ContainerTrads from './ContainerTrads.js';
 
 export default render({
     section: {
@@ -14,6 +14,6 @@ export default render({
         }
     }, [
         Title(2, letra, { className: 'letra' }),
-        ...mapEntries(trads, ([pt, ru]) => Trad(pt, ru))
+        ContainerTrads(trads)
     ]))
 );

@@ -1,6 +1,6 @@
 import { Burger, render, Router, Title, toggle } from '../lib7.js';
 import lista_drop from '../lista_drop.js';
-import Drop from './Drop.js';
+import Drop from './Drop/Drop.js';
 
 ['/', '/home'].forEach(route => lista_drop[route] = 'Dicionário de russo');
 

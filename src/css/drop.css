@@ -11,6 +11,11 @@
     width: fit-content;
 }
 
+#burger {
+    top: 10px;
+    left: 15px;
+}
+
 .btn_burger {
     background: black;
     border: none;

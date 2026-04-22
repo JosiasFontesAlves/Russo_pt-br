@@ -10,7 +10,55 @@
  * @author Josias Fontes Alves
 */
 
-let ver = '5.3';
+let ver = '5.4';
+
+/**
+ * @param {{[item: string]: any}} obj
+ * @param {(value: [string, any], index: number, array: [string, any][]) => any} callBack
+ */
+export const mapEntries = (obj, callBack) => Object.entries(obj).map(callBack);
+
+/**
+ * @param {{[item: string]: any}} obj
+ * @param {(value: string, index: number, array: string[]) => any} callBack
+ */
+export const mapKeys = (obj, callBack) => Object.keys(obj).map(callBack);
+
+/**
+ * @param {{[item: string]: any} | *[]} obj
+ * @param {(value: [string, any], index: number, array: [string, any][]) => any} callBack
+ */
+export const mapValues = (obj, callBack) => Object.values(obj).map(callBack);
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+export const getEntries = (/** @type {{ [s: string]: any; } | ArrayLike<any>} */ obj) => Object.entries(obj);
+
+export const getKeys = (/** @type {{}} */ obj) => Object.keys(obj);
+
+export const getValues = (/** @type {{ [s: string]: any; } | ArrayLike<any>} */ obj) => Object.values(obj);
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
+ * @param {{}} obj
+ * @param {(previousValue: {}, currentValue: [string, any], currentIndex: number, array: [string, any][])} callBack
+ * @param {*} initialValue
+ */
+export const reduceEntries = (obj, callBack, initialValue) => Object.entries(obj).reduce(callBack, initialValue);
+
+/**
+ * @param {{}} obj
+ * @param {(previousValue: {}, currentValue: [string, any], currentIndex: number, array: [string, any][])} callBack
+ * @param {*} initialValue
+ */
+export const reduceValues = (obj, callBack, initialValue) => Object.values(obj).reduce(callBack, initialValue);
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+/**
+ * @param {{}} obj 
+ * @param {(predicate: (value: [string, any], index: number, array: [string, any][]) => unknown, thisArg?: any)} fn 
+ */
+export const filterEntries = (obj, fn) => Object.fromEntries(Object.entries(obj).filter(fn));
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
  * @param {{[tag: string]: {[prop: string]: string | number}} | string} elem
@@ -20,7 +68,7 @@ export const render = (elem, childs) => {
     const $elem = document.createElement(typeof elem === 'string' ? elem : Object.keys(elem)[0]);
 
     if (typeof elem === 'object')
-        Object.entries(...Object.values(elem)).forEach(([prop, val]) => $elem[prop] = val);
+        getEntries(...getValues(elem)).forEach(([prop, val]) => $elem[prop] = val);
 
     if (childs)
         Array.isArray(childs) ? childs.forEach(item => $elem.append(item)) : $elem.append(childs);
@@ -208,14 +256,14 @@ export const AJAX = {
     update: async (/** @type {string} */ file, /** @type {string} */ url, /** @type {{[key: string]: *}} */ keys) => {
         const api = await AJAX.get(file);
 
-        Object.entries(keys).forEach(([key, val]) => api[key] = val);
+        getEntries(keys).forEach(([key, val]) => api[key] = val);
 
         AJAX.set(url, api);
     }
 }; /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 export const insertChilds = (/** @type {string} */ local, /** @type {HTMLElement[] | HTMLElement} */ childs) => {
-    const $local = document.querySelector(local);
+    const $local = selek(local);
 
     Array.isArray(childs) ? childs.forEach(child => $local.append(child)) : $local.append(childs);
 }
@@ -232,47 +280,6 @@ export const Link = (href, textContent, props) => {
 
     return link;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-/**
- * @param {{[item: string]: any}} obj
- * @param {(value: [string, any], index: number, array: [string, any][]) => any} callBack
- */
-export const mapEntries = (obj, callBack) => Object.entries(obj).map(callBack);
-
-/**
- * @param {{[item: string]: any}} obj
- * @param {(value: string, index: number, array: string[]) => any} callBack
- */
-export const mapKeys = (obj, callBack) => Object.keys(obj).map(callBack);
-
-/**
- * @param {{[item: string]: any} | *[]} obj
- * @param {(value: [string, any], index: number, array: [string, any][]) => any} callBack
- */
-export const mapValues = (obj, callBack) => Object.values(obj).map(callBack);
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-export const getEntries = (/** @type {{ [s: string]: any; } | ArrayLike<any>} */ obj) => Object.entries(obj);
-
-export const getKeys = (/** @type {{}} */ obj) => Object.keys(obj);
-
-export const getValues = (/** @type {{ [s: string]: any; } | ArrayLike<any>} */ obj) => Object.values(obj);
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-/**
- * @param {{}} obj
- * @param {(previousValue: {}, currentValue: [string, any], currentIndex: number, array: [string, any][])} callBack
- * @param {*} initialValue
- */
-export const reduceEntries = (obj, callBack, initialValue) => Object.entries(obj).reduce(callBack, initialValue);
-
-/**
- * @param {{}} obj
- * @param {(previousValue: {}, currentValue: [string, any], currentIndex: number, array: [string, any][])} callBack
- * @param {*} initialValue
- */
-export const reduceValues = (obj, callBack, initialValue) => Object.values(obj).reduce(callBack, initialValue);
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
  * @param {{[href: string]: string}} links
@@ -313,7 +320,7 @@ export const toggle = elems => {
     let force;
 
     Object.entries(elems).forEach(([el, toggle]) =>
-        force = document.querySelector(el).classList.toggle(toggle)
+        force = selek(el).classList.toggle(toggle)
     );
 
     return force;
@@ -338,10 +345,12 @@ export const Burger = (props, propsChilds) => {
     return burger;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
+export const getRandomNumber = (/**@type {number}*/ max) => Math.floor(Math.random() * max);
+
 /**
  * Retorna um item aleatório de um array ou string
  */
-export const getRandomItem = (/** @type {string | any[]} */ arr) => arr[Math.floor(Math.random() * arr.length)];
+export const getRandomItem = (/** @type {string | any[]} */ arr) => arr[getRandomNumber(arr.length)];
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 /**
@@ -433,7 +442,7 @@ export const paginatr = (arr, length, key, props, propsLinks) => {
         nav: {
             className: 'nav_paginatr'
         }
-    }, Object.keys(routes).map(Link));
+    }, getKeys(routes).map(Link));
 
     return [routes, Links];
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
@@ -477,13 +486,6 @@ export const Counter = (propsBtn, propsCounter) => {
 
     return counter;
 } /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
-
-/**
- * @param {{}} obj 
- * @param {(predicate: (value: [string, any], index: number, array: [string, any][]) => unknown, thisArg?: any)} fn 
- */
-export const filterEntries = (obj, fn) => Object.fromEntries(Object.entries(obj).filter(fn));
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 export const capitalizeStr = (/** @type {string} */ str) => str.replace(str[0], str[0].toUpperCase());
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
